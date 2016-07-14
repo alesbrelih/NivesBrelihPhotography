@@ -3,7 +3,7 @@
     ViewBag.Title = "About Me";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<link href="~/Content/About_Section/about-index.css" rel="stylesheet" />
 <style>
     
      .about-content-container {
@@ -74,6 +74,26 @@
         color: #777777;
     }
 
+    #social-links-container>.container-body>.row {
+        text-align: center;
+    }
+    #social-links-container ul {
+        display: inline-block;
+        text-align: center;
+        list-style-type: none;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    #social-links-container li>img {
+        margin-right: 20px;
+
+    }
+    #social-links-container li {
+        margin: 5px;
+        text-align: left;
+    }
+
+
 </style>
 
 <br/>
@@ -99,26 +119,29 @@
         </div>
     </div>
     <div class="col-lg-4">
-        <div class="about-content-container">
+        <div id="social-links-container"class="about-content-container">
 
             <div class="container-title">
                 Social Links
             </div>
             <div class="container-body">
                 <div class="row">
-                    @foreach (var link in Model.SocialLinks)
-                    {
-                        <a href="@link.Link">
-                            <div class="row social-link-container">
-                                <div class="col-md-6 col-lg-4 social-icon">
-                                    <img src="@link.IconLink" />
-                                </div>
-                                <div class="col-md-6 col-lg-8 hidden-xs hidden-sm social-description">
-                                    @link.Description
-                                </div>
-                            </div>
-                        </a>
-                    }
+                    <ul>
+                        @foreach (var link in Model.SocialLinks)
+                        {
+                            @*<a href="@link.Link">
+                    <div class="row social-link-container">
+                        <div class="col-md-6 col-lg-4 social-icon">
+                            <img src="@link.IconLink" />
+                        </div>
+                        <div class="col-md-6 col-lg-8 hidden-xs hidden-sm social-description">
+                            @link.Description
+                        </div>
+                    </div>
+                </a>*@
+                            <li><img src="@link.IconLink"/><span class="social-link-description hidden-xs">@link.Description</span></li>
+                        }
+                    </ul>
                 </div>
             </div>
 

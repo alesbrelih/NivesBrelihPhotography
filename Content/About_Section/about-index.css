@@ -1,3 +1,11 @@
-﻿@media(max-width: 1199px) {
-    
+﻿@media(max-width: 767px) {
+    #social-links-container li {
+        display: inline;
+        
+    }
+    #social-links-container li>img {
+        margin-right: 10px !important;
+        margin-left: 10px !important;
+        
+    }
 }
