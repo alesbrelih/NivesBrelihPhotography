@@ -1,0 +1,37 @@
+﻿/*img container*/
+.img-container {
+/*remove padding from left and righ side of images*/
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    /*set 1x border around img container*/
+    border: 1px solid white;
+    /*curson change when hovering image containers*/
+    cursor: pointer;
+}
+
+
+/*adding inline border hack*/
+.img-container:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    -moz-box-shadow: inset 0 0 4px 2px #000000;
+    -webkit-box-shadow: inset 0 0 4px 2px #000000;
+    -o-box-shadow: inset 0 0 4px 2px #000000;
+    box-shadow: inset 0 0 4px 2px #000000;
+
+}
+.masonry-image {
+         /*remove padding from left and righ side of images*/
+         padding-left: 0 !important;
+         padding-right: 0 !important;
+
+         /*set 1x border around img container*/
+         border: 1px solid white;
+        
+         /*curson change when hovering image containers*/
+         cursor: pointer;
+     }

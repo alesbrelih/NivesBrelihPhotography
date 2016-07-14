@@ -1,0 +1,7 @@
+﻿@import url('album-photos.css');
+#back-to {
+    display: block;
+}
+#back-to a:hover {
+    text-decoration: none;
+}

@@ -1,0 +1,99 @@
+﻿.no-side-padding {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+/*CSS FOR TWO-PHOTOS-GROUP - START*/
+
+/*Default margin for smaller screens*/
+.two-photo-group > div:nth-child(1) {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.two-photo-group > div:nth-child(2) {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/*margins form bigger screens*/
+@media(min-width: 992px) {
+
+    .two-photo-group > div:nth-child(1) {
+        padding-left: 0 !important;
+        padding-right: 5px !important;
+    }
+
+    .two-photo-group > div:nth-child(2) {
+        padding-left: 5px !important;
+        padding-right: 0 !important;
+    }
+}
+
+/*CSS FOR TWO-PHOTOS-GROUP - END*/
+
+    /*show pointer cursor on every img hover*/
+    .blog-content img {
+        cursor: pointer;
+    }
+
+    /*additional css for two photo group container*/
+     .two-photo-group {
+         width: 90%;
+         margin-left: auto;
+         margin-right: auto;
+     }
+
+     /*blog description centered*/
+    .blog-description {
+        text-align: center;
+    }
+
+    /*css for main title*/
+    .blog-description h3,h5 {
+        color: #eb6864;
+        font-weight: lighter;
+    }
+    /*no margin for hr before album link*/
+    .blog-description h5 {
+        margin-top: 0;
+    }
+
+    /*black color on main text*/
+    .blog-content > p {
+        color: black;
+    }
+
+    /*container size for images outside two photo group*/
+    .blog-content > img {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /*blog categories listed*/
+    .blog-category-nav {
+        padding-left: 0 !important;
+        list-style-type: none;
+        padding-bottom: 3%;
+    }
+
+    .blog-category-nav > li {
+        display: inline;
+        text-transform: capitalize !important;
+    }
+    
+    /*blog date color*/
+    .blog-date {
+        color: #999999 !important;
+
+    }
+
+    /*extra margin for photos where photos are nested (one under another)*/
+    .img-bottom-margin {
+        margin-bottom: 10px;
+    }
+    .padding-sides-5p {
+    padding-right: 5%;
+    padding-left: 5%;
+}
+
+

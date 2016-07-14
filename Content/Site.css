@@ -1,0 +1,115 @@
+﻿/*CUSTOM FONTS IMPORTING*/
+@font-face {
+    font-family: 'JaneAusU';
+    src: url('../fonts/Custom Fonts/jane_austen/JaneAusU.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Jura-Light';
+    src: url('../fonts/Custom Fonts/Jura/Jura-Light.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Jura-Regular';
+    src: url('../fonts/Custom Fonts/Jura/Jura-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Raleway-Regular';
+    src: url('../fonts/Custom Fonts/Raleway/Raleway-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Raleway-SemiBold';
+    src: url('../fonts/Custom Fonts/Raleway/Raleway-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Raleway-Thin';
+    src: url('../fonts/Custom Fonts/Raleway/Raleway-Thin.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Raleway-Light';
+    src: url('../fonts/Custom Fonts/Raleway/Raleway-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Raleway-Heavy';
+    src: url('../fonts/Custom Fonts/Raleway/Raleway-Heavy.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Raleway-Bold';
+    src: url('../fonts/Custom Fonts/Raleway/Raleway-Bold.ttf') format('truetype');
+}
+/*CUSTOM FONTS IMPORTING - END*/
+
+/*CUSTOM STYLES IN PAGE - START*/
+    /*remove overflow*/
+    .overflow-hidden {
+        overflow: hidden;
+    }
+
+/*CUSTOM STYLES IN PAGE - END*/
+
+/*CUSTOM FONTS USAGE*/
+
+body {
+    font-family: "Jura-Regular";
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.navbar {
+    font-family: "Jura-Regular","News Cycle", "Arial Narrow Bold";
+    font-weight: normal;
+
+}
+
+.navbar-brand {
+    font-family: "JaneAusU", "News Cycle", "Arial Narrow Bold";
+    text-transform: none;
+    font-weight: normal;
+}
+
+h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
+    font-family: "Jura-Regular","News Cycle", "Arial Narrow Bold",sans-serif !important;
+}
+
+/*CUSTOM FONTS USAGE - END*/
+
+/*.navbar-default > .container > .navbar-header > a:hover, .navbar-default > .container > .navbar-header > a:focus {
+    background-color: rgb(68,226, 68);
+    background-color: rgba(68,226, 68,0.8);
+    /*border-bottom: 2px solid #2D952D;
+
+
+}
+.navbar-default>.container > .navbar-collapse>.navbar-nav a:hover,.navbar-default>.container > .navbar-collapse>.navbar-nav a:focus {
+    background-color: rgb(15,73, 15);
+    background-color: rgba(15,73,15,0.5);
+    /*border-bottom: 1px solid #2D952D;
+
+
+}*/
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}

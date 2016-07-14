@@ -1,0 +1,97 @@
+﻿@model List<NivesBrelihPhotography.Models.BlogModels.ViewModels.Index.BlogIndexView>
+
+@for (int i = 0; i < Model.Count; i++) //cycle all blogs, need index to switch position (left right) ~ model count needs to be even
+{
+
+
+    if (!(ViewBag.PageNumber == 0 && i==0)) //if not first page first blog add separation line
+    {
+        <hr class="hidden-xs hidden-sm" />
+    }
+
+    if (i % 2 == 0) //even number
+    {
+        <div class="row">
+            <a href="@Url.Action("ViewBlog",new {blogId=Model[i].BlogId})">
+
+                <div class="blog-img-container col-xs-12 col-sm-12 col-md-6">
+                    @*img*@
+
+                    <img class="img-responsive blog-img-border" src="@Model[i].BlogCoverPhoto" />
+                    <div class="blog-description-above visible-xs visible-sm">
+                        <span class="blog-name">@Model[i].BlogTitle<span class="blog-date">@Model[i].BlogDateMonthAsString</span></span>
+                    </div>
+
+                </div>
+            </a>
+
+            <div class="hidden-xs hidden-sm col-md-6">
+                @*desc*@
+
+                <div class="blog-description">
+                    <h3>
+                        @Model[i].BlogTitle <br /><small>@Model[i].BlogDateMonthAsString</small>
+                    </h3>
+
+                    <ul class="blog-category-nav">
+                        @foreach (var category in Model[i].Categories)
+                        {
+                            <li><a href="@Url.Action("Index", new {categoryId = category.CategoryId})">@category.Category.CategoryTitle</a></li>
+                        }
+                    </ul>
+
+                    <p>
+                        @Model[i].Description
+                    </p>
+                    <div class="blog-read-more">
+                        <a href="@Url.Action("ViewBlog", new {blogId = Model[i].BlogId})">Read More</a>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    }
+    else //odd number
+    {
+        <div class="row">
+        <div class="hidden-xs hidden-sm col-md-6">
+
+            <div class="blog-description">
+                <h3>
+                    @Model[i].BlogTitle<br/><small>@Model[i].BlogDateMonthAsString</small>
+                </h3>
+
+                <ul class="blog-category-nav">
+                    @foreach (var category in Model[i].Categories)
+                    {
+                        <li><a href="@Url.Action("Index", new {categoryId = category.CategoryId})">@category.Category.CategoryTitle</a></li>
+                    }
+                </ul>
+
+                <p>
+                    @Model[i].Description
+                </p>
+                <div class="blog-read-more">
+                    <a href="@Url.Action("ViewBlog", new {blogId = Model[i].BlogId})">Read More</a>
+                </div>
+            </div>
+
+        </div>
+            <a href="@Url.Action("ViewBlog",new {blogId=Model[i].BlogId})">
+
+                <div class="blog-img-container col-sm-12 col-md-6">
+                    <img class="img-responsive blog-img-border" src="@Model[i].BlogCoverPhoto" />
+                    <div class="blog-description-above visible-xs visible-sm">
+                        <span class="blog-name">@Model[i].BlogTitle<span class="blog-date">@Model[i].BlogDateMonthAsString</span></span>
+                    </div>
+                </div>
+            </a>
+
+
+        </div>
+    }
+    
+
+}

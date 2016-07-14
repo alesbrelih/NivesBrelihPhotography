@@ -1,0 +1,28 @@
+﻿@using System.Collections
+@model IEnumerable<NivesBrelihPhotography.Models.PhotoModels.ViewModels.PhotoAlbumView>
+
+@{
+    ViewBag.Title = "Albums";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Styles.Render("~/Content/albums-index-styles")
+
+<br/>
+
+@*everything will be inside content container*@
+<div id="back-to">
+    <h4> <i class="glyphicon glyphicon-chevron-left"></i><i class="hidden-xs">Albums</i></h4>
+</div>
+<div id="content-container">
+    
+
+    @Html.Partial("_indexAlbums",Model)
+
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/albums-index-scripts");
+}
+

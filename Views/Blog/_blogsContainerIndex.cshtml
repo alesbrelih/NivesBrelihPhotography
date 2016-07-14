@@ -1,0 +1,8 @@
+﻿@model List<NivesBrelihPhotography.Models.BlogModels.ViewModels.Index.BlogIndexView>
+
+@*container to select current to write current category*@
+<div id="blogs-container" data-blogs-category="@ViewBag.CurrentCategory">
+
+    @Html.Partial("_blogsListIndex",Model)
+
+</div>

@@ -1,0 +1,110 @@
+﻿.centerText {
+    text-align: center;
+}
+.row-eq-height {  /*row-eq designed by bootstrap to stretch all col to same size*/
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+/*.vcenter {
+    display: inline-flex;
+    align-items: center !important;
+    vertical-align: middle !important;
+
+    test with flex css to vertical center item
+}*/
+
+.vCenterContainer { /*flex css to center all containers items*/
+    display: flex;
+    align-items: center;
+}
+
+.sideMargines {  /*side margins for photo display, auto resize because responsive*/
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+.testClass {
+    display: table-cell;
+   text-align: center;
+   vertical-align: middle;
+}
+/*.vertical-center {
+  min-height: 100%;
+ min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  -webkit-justify-content: center;  For Safari
+  -webkit-align-items: center; /* For Safari
+}*/
+
+ /*.vertical-align {
+  display: flex;
+  flex-direction: row;
+}
+
+.vertical-align > [class^="col-"],
+.vertical-align > [class*=" col-"] {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Optional, to align inner items 
+                              horizontally inside the column
+}*/
+
+.center-row {
+	display:table;
+}
+.center {
+	display:table-cell;
+    vertical-align:middle;
+    float:none;
+}
+
+/*vertical align that works in bootstrap*/
+.v-align {
+    float:none;
+    display:inline-block;
+    vertical-align:middle;
+    margin-right:-4px;
+}
+
+.valign-middle {
+    display: table;
+}
+
+.valign-middle .columns {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.valign-middle .columns,
+.valign-middle [class*="column"] + [class*="column"]:last-child {
+    float: none;
+}
+
+.parent {
+  position: relative;
+}
+.child {
+  position: absolute;
+  top: 50%;
+  -ms-transform:translateY(-50%);
+  -webkit-transform:translateY(-50%);
+  -moz-transform:translateY(-50%);
+  -o-transform:translateY(-50%);
+  transform: translateY(-50%);
+}
+/*margins to use for adding margins before next container*/
+.margin-top-05 { margin-top: 0.5em; }
+.margin-top-10 { margin-top: 1.0em; }
+.margin-top-15 { margin-top: 1.5em; }
+.margin-top-20 { margin-top: 2.0em; }
+.margin-top-25 { margin-top: 2.5em; }
+.margin-top-30 { margin-top: 3.0em; }

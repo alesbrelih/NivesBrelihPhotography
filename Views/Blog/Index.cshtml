@@ -1,0 +1,32 @@
+﻿@using NivesBrelihPhotography.Models.CategoryModels
+@model List<NivesBrelihPhotography.Models.BlogModels.ViewModels.Index.BlogIndexView>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section CustomStyles
+{
+    @Styles.Render("~/Content/blog-index-styles")
+}
+<br />
+<div class="row">
+    <div class="dropdown pull-right">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+            Categories
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            @foreach (Category category in ViewBag.Categories)
+            {
+                <li><a href="@Url.Action("Index",new {categoryId=category.CategoryId})">@category.CategoryTitle</a></li>
+            }
+        </ul>
+    </div>
+</div>
+
+@Html.Partial("_blogsContainerIndex", Model)
+
+@section Scripts{
+    @Scripts.Render("~/bundles/blog-index-scripts");
+}
+

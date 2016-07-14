@@ -1,0 +1,76 @@
+﻿@import url('cover-descriptions-containers.css');
+
+.img-description {
+        /*img description visible on hover above picture*/
+
+        position: absolute;
+
+        
+        /*fallback color*/
+        background-color: black;
+        background-color: rgba(0, 0, 0, 0.7);
+
+        /*text color*/
+        color: whitesmoke;
+
+        /*positioned botom side, 25% height*/
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        padding-top: 10px;
+        padding-bottom: 12px;
+
+
+        /*showed above image*/
+        z-index: 100;
+
+        /*text align horizontal*/
+        text-align: center;
+
+
+        /*hide before hovered*/
+
+        opacity: 0;
+        /* IE 8 */
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        
+        /*transition for opacity*/
+        -webkit-transition: opacity 0.2s ease-in;
+        -moz-transition: opacity 0.2s ease-in;
+        -ms-transition: opacity 0.2s ease-in;
+        -o-transition: opacity 0.2s ease-in;
+        transition: opacity 0.2s ease-in;
+    }
+
+    /*shows description*/
+    .show-description {
+        opacity: 1;
+        /* IE 8 */
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    }
+
+        /*font type form image description*/
+.img-description span {
+    /*font-style: italic;*/
+    /*vertical centering*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    /*font - size*/
+    font-size: 16px;
+
+    /*text shadow to image title font (obroba)*/
+    text-shadow: -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;
+
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}

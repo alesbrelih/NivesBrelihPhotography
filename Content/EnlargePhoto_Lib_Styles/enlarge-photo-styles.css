@@ -1,0 +1,75 @@
+﻿/*PHOTO ENLARGE - ZOOM*/
+/*////////////////////*/
+
+/*layout for photo enlarge*/
+#photo-enlarge {
+    display: none; /*Hidden at first*/
+    position: fixed; /*Shows above other content*/
+    background-color: white; /*Background*/
+    /*size - takes full screen*/
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /*padding margin 0, overwrites defaults*/
+    padding: 0;
+    margin: 0;
+    z-index: 1050; /*z-index to show it above everything*/
+}
+
+/*photo and photo title container*/
+#photo {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    text-align: center; /*center aligned content*/
+    padding: 50px 2% 5% 2%;
+}
+
+    /*img css*/
+    #photo > img {
+        max-width: 100%; /*doesnt escape container*/
+        max-height: 100%; /*doesnt escape container*/
+        border: 1px solid #eee;
+    }
+
+    /*photo  title*/
+    #photo > span {
+        display: block;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        z-index: 5000;
+        width: 80%; /*Width of title container*/
+        margin: auto;
+        font-weight: bold;
+    }
+
+    /*CLose photo enlargement button*/
+#close-photo-enlarge {
+    /*positioned top right*/
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px 20px;
+
+    /*color*/
+    color: #eee;
+
+    /*size*/
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+
+    /*cursor*/
+    cursor: pointer;
+
+    z-index: 100000;
+}
+
+/*close photo enlargement on hover*/
+    #close-photo-enlarge:hover {
+
+        color: darkgray;
+    }

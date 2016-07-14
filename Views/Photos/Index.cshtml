@@ -1,0 +1,60 @@
+﻿@using NivesBrelihPhotography.Models.CategoryModels
+@using NivesBrelihPhotography.Models.PhotoModels
+@model IEnumerable<NivesBrelihPhotography.Models.PhotoModels.Photo>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br>
+<div class="row">
+    <label id="category-button" type="button" class="btn btn-default">
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+    </label>
+    @*category nav bar for photos*@
+    <div id="category-navigation" class="col-xs-12 col-sm-6 col-md-2 col-lg-1">
+
+            <ul id="category-selector" class="nav nav-pills nav-stacked text-center">
+                @*category for all can be hardcoded*@
+                @*calling masonry on updated targets with OnSuccess*@
+                <li>
+                    @Ajax.ActionLink("All", "Index", null, new AjaxOptions() {InsertionMode = InsertionMode.ReplaceWith, UpdateTargetId = "photos", OnSuccess = "SetMasonry()"}, new {@class = "h5"})
+                </li>
+
+                @*dynamical display of all categories*@
+                @{
+                    foreach (Category category in ViewBag.Categories)
+                    {
+                        <li role="presentation">
+                            @Ajax.ActionLink(category.CategoryTitle, "Index", new {categoryId = category.CategoryId}, new AjaxOptions() {InsertionMode = InsertionMode.ReplaceWith, UpdateTargetId = "photos", OnSuccess = "SetMasonry()"}, new {@class = "h5"})
+                        </li>
+                    }
+                }
+            </ul>
+
+    </div>
+
+
+    <div id="photo-container" class="col-md-12">
+
+
+        @Html.Partial("_indexPhotos", Model)
+
+
+        
+
+    </div>
+
+</div>
+
+@section scripts
+{
+
+    @Scripts.Render("~/bundles/page-index-scripts")
+}
+
+@section CustomStyles{
+    @Styles.Render("~/Content/page-index-styles")
+}
+
+
+

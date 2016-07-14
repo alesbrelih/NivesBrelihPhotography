@@ -1,0 +1,165 @@
+﻿    /*SMALLER SCREENS BLOG DESCRIPTION - START*/
+
+    /*blog description visible above img on smaller screens*/
+    .blog-description-above {
+        /*position above image*/
+        position: absolute;
+        top: 0;
+        left: 15px;
+        right: 15px;
+        height: 100%;
+
+        /*styles*/
+        background-color: black;
+        background-color: rgba(0, 0, 0, 0.0);
+        color: white;
+
+        /*nice transition when hovered*/
+        -webkit-transition: background-color 0.2s ease-in;
+        -moz-transition: background-color 0.2s ease-in;
+        -ms-transition: background-color 0.2s ease-in;
+        -o-transition: background-color 0.2s ease-in;
+        transition: background-color 0.2s ease-in;
+    }
+
+    /*background color change on hover*/
+        .blog-description-above:hover {
+            background-color: black;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        /*blog-name inside blog description on smaller screens*/
+    .blog-name {
+        /*positioning absolute so we can center it inside container*/
+        position: absolute;
+        /*max width*/
+        max-width: 90%;
+        /*centering inside container*/
+        top: 50%;
+        left: 50%;
+        text-align: center;
+
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        /*font size*/
+        font-size: 20px;
+        /*font outline text (black lines)*/
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        /*visible on the black background*/
+        z-index: 150;
+    }
+
+    .blog-date {
+        /*block position so its displayed below album name*/
+        display: block;
+        /*smaller font size than album name*/
+        font-size: 14px;
+        /*top margin for space between album name and album date*/
+        margin-top: 5%;
+        /*font-style: italic;*/
+    }
+
+    /*SMALLER SCREENS BLOG DESCRIPTION - END*/
+
+    /*IMG BORDER AND INLINE SHADOW - START*/
+    .blog-img-border {
+        border: 1px solid white;
+    }
+
+    /*black img border hack*/
+    .blog-img-container:before {
+        content: "";
+        cursor: pointer;
+
+        /*position*/
+        position: absolute;
+        left: 15px;
+        right: 15px;
+        top: 1px;
+        bottom: 1px;
+
+        /*inline shadow*/
+        -webkit-box-shadow: inset 0 0 4px 2px #000000;
+        -ms-box-shadow: inset 0 0 4px 2px #000000;
+        box-shadow: inset 0 0 4px 2px #000000;
+
+    }
+    
+    /*IMG BORDER AND INLINE SHADOW - END*/
+
+    /* BLOG DESCRIPTION ON BIGGER SCREEN STYLES - START*/
+
+    /*blog descrition title on bigger screens*/
+    .blog-description h3 {
+        padding-bottom: 1%;
+    }
+
+    /*add shadow to title when hovered*/
+        .blog-description h3:hover {
+            -ms-text-shadow: 3px 3px #eee;
+            text-shadow: 3px 3px #eee;
+            cursor: pointer;
+        }
+
+        /*font family for description date*/
+        .blog-description h3 small {
+            font-family: "JaneAusU", "News Cycle", "Arial Narrow Bold";
+        }
+
+        /*font color for blog description*/
+    .blog-description > p {
+        color: black;
+    }
+
+    /*category list inside each blog description*/
+    .blog-category-nav {
+
+        /*overwrite default padding in chrome*/
+        padding-left: 0 !important;
+
+        /*no list li markup*/
+        list-style-type: none;
+
+        /*padding bot*/
+        padding-bottom: 3%;
+    }
+
+    /*each category*/
+        .blog-category-nav > li {
+            /*all in same line*/
+            display: inline;
+        }
+
+        
+    /*read more css*/
+    .blog-read-more {
+        /*position*/
+        float: right;
+        margin: 2%;
+
+        /*font style changes*/
+        font-weight: bolder;
+    }
+
+    /* BLOG DESCRIPTION ON BIGGER SCREEN STYLES - END*/
+
+    /* CATEGORY SELECTOR DROPDOWN CSS - START*/
+
+    /*position fix for category selector in blog index page*/
+    .dropdown {
+        margin-bottom: 1em;
+        margin-right: 5px;
+    }
+
+
+    /*change color when category selector is visited/hovered/focused*/
+    .btn-primary:active,.btn-primary:visited,.btn-primary:focus,.btn-primary:active:hover, .btn-primary.active:hover, .open > .dropdown-toggle.btn-primary:hover, .btn-primary:active:focus, .btn-primary.active:focus, .open > .dropdown-toggle.btn-primary:focus, .btn-primary:active.focus, .btn-primary.active.focus, .open > .dropdown-toggle.btn-primary.focus {
+
+        background-color: rgb(209, 84, 81);
+        border-color: rgb(209, 84, 81);
+    }
+
+     /* CATEGORY SELECTOR DROPDOWN CSS - END*/

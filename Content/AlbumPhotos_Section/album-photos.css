@@ -1,0 +1,53 @@
+﻿
+/*hide back to albums until we move to photos group*/
+#back-to {
+    display: none;
+    margin-left: -10px;
+}
+/*button to move back to albums*/
+#back-to h4 {
+    color: #eee;
+}
+#back-to h4:hover {
+    color: black;
+    cursor: pointer;
+}
+#back-to span {
+    vertical-align: middle;
+}
+    /*SELECTED ALBUM TEXTS - START*/
+
+    .selected-album-description {
+        display: block;
+        width: 100%
+    }
+
+    .selected-album-description > h3 {
+        margin-top: 2%;
+        font-size: 20px;
+        text-transform: capitalize;
+    }
+    .selected-album-description>.selected-album-date {
+        margin-top: 2%;
+        font-size: 18px;
+        color: gray;
+        font-style: italic;
+    }
+        .selected-album-description  .selected-album-text {
+            margin-top: 2%;
+            margin-bottom: 2%;
+
+            font-size: 16px;
+            text-align: left;
+            -ms-word-wrap: break-word;
+            word-wrap: break-word;
+            color: black;
+        }
+
+        .selected-album-description > .selected-album-text::first-letter {
+
+            font-size: 24px;
+
+        }
+
+    /*SELECTED ALBUM TEXTS - END*/

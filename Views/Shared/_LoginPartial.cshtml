@@ -1,0 +1,39 @@
+﻿@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.EntityFramework
+@using NivesBrelihPhotography.Models
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @{
+                //added 27.12.2015, it shows users display name instead of his email
+
+                //gets current user id
+                var currentUserId = User.Identity.GetUserId();
+
+                //gets manager for all current users
+                var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+
+                //gets current user from manager using user id
+                var currentUser = manager.FindById(currentUserId);
+
+                //writes the hello line on top
+            }
+            @Html.ActionLink("Hello " + currentUser.DisplayName + "!", "Index", "Manage", routeValues: null, htmlAttributes: new {title = "Manage"})
+
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

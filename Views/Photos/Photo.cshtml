@@ -1,0 +1,124 @@
+﻿@model IEnumerable<NivesBrelihPhotography.Models.PhotoModels.Photo>
+
+@{
+    ViewBag.Title = "Photo";
+}
+<br>
+<div class="row">
+    @*category nav bar for photos*@
+    <div class="col-md-2">
+        <div>
+            <ul class="nav nav-pills nav-stacked">
+                <li role="presentation">
+                    @Html.ActionLink("All", null, null, new {@class = "h5"})
+                </li>
+                <li role="presentation">
+                    @Html.ActionLink("Weddings", "Edit", null, new {@class = "h5"})
+                </li>
+                <li role="presentation">
+                    @Html.ActionLink("Babies", "Edit", null, new {@class = "h5 "})
+                </li>
+                <li role="presentation">
+                    @Html.ActionLink("Nature", "Edit", null, new {@class = "h5"})
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="col-md-10">
+
+        @*Displayed currently selected photo*@
+        <div class="row sideMargines">
+            <img src="../../Images/Photos/nivesBrelihPhoto.jpg" class="img-rounded img-responsive"/>
+        </div>
+
+
+        @*Other near photos avaliable to be selected*@
+        <div class="row vCenterContainer margin-top-10">
+            <div class="col-md-1 center-block">
+                <span class="glyphicon glyphicon-chevron-left pull-left"></span>
+            </div>
+            <div class="col-md-2 center-block">
+
+                <a href="#">
+                    <img src="~/Images/Photos/Thumbnail_Test/nbPic1.jpg" class="img-thumbnail center-block"/>
+                </a>
+
+            </div>
+            <div class="col-md-2">
+                <a href="#">
+                    <img src="~/Images/Photos/Thumbnail_Test/nbPic2.jpg" class="img-thumbnail center-block"/>
+                </a>
+            </div>
+            <div class="col-md-2">
+                <a href="#">
+                    <img src="~/Images/Photos/Thumbnail_Test/nbPic3.jpg" class="img-thumbnail center-block"/>
+                </a>
+            </div>
+            <div class="col-md-2">
+                <a href="#">
+                    <img src="~/Images/Photos/Thumbnail_Test/nbPic3.jpg" class="img-thumbnail center-block"/>
+                </a>
+            </div>
+            <div class="col-md-2">
+                <a href="#">
+                    <img src="~/Images/Photos/Thumbnail_Test/nbPic1.jpg" class="img-thumbnail center-block"/>
+                </a>
+            </div>
+            <div class="col-md-1 center-block">
+                <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Uploaded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CommentsEnabled)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhotoTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhotoText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhotoUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Uploaded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommentsEnabled)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.PhotoId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.PhotoId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.PhotoId })
+            </td>
+        </tr>
+    }
+
+    </table>*@
