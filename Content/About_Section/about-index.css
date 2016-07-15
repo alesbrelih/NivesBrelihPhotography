@@ -9,3 +9,160 @@
         
     }
 }
+
+.about-content-container {
+         /*default container border style*/
+         border: #eee solid 2px;
+         border-radius: 2px;
+
+         /*padding*/
+         padding: 10px;
+         padding-top: 30px;
+         padding-bottom: 30px;
+
+         /*margin bottom*/
+         margin-bottom: 30px !important;
+
+     }
+
+     /*default container title - top center of border*/
+    .about-content-container>.container-title {
+
+        /*change display so it occupies only space it needs*/
+        display: inline-block;
+
+        /*bg color*/
+        /*background-color: #eb6864;*/
+        /*background-color:#eee;*/
+                background-color:white;
+
+
+        /*making larger container sicnce its inline*/
+        padding: 10px;
+
+        /*text color and size*/
+        /*color: white;*/
+        /*color: #eb6864;*/
+        color: black;
+        font-size: 1.1em;
+
+        /*round border*/
+        /*border: 2px solid #eb6864;*/
+        /*border: 1px solid black;*/
+                /*border: 1px solid #777;*/
+
+        border-radius: 2px;
+
+        /*it can be moved inside container*/
+        position: absolute;
+
+        /*centering it inside top border*/
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        
+
+    }
+    /*every ul inside should have 0 list style and default padding*/
+    .about-content-container ul {
+        list-style-type: none;
+        padding: 10px;
+    }
+
+    /*default body container styles*/
+    .container-body {
+
+        text-align: center;
+        
+    }
+
+    /*PROFILE SECTION - START*/
+
+    /*profile description*/
+    .profile-about {
+
+        /*extra margin on top*/
+        margin-top: 20px;
+
+    }
+
+
+    /*PROFILE SECTION - END*/
+
+    /*default style for every anchor inside <li> on this page*/
+    .container-body li>a {
+        color:  #777777;
+        cursor: pointer;
+    }
+    /*default hover style for every anchor inside <li> on this page*/
+    .container-body li :hover{
+        color:  black;
+        text-decoration: none;
+    }
+    
+    /*style for img inside profile container (self picture)*/
+    #profile-container>.container-body>img {
+
+        /*centering when window resized*/
+        margin: auto;
+
+        /*rounded borders*/
+        border-radius: 2px;
+    }
+
+    }
+    /*default ul style - when normalize used*/
+    .container-body ul {
+        display: inline-block !important;
+        text-align: center;
+        padding: 0 !important;
+        margin: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    /*specific ul styles - to overwrite chrome or other browser defaults*/
+    #social-links-container ul,#reviews-container ul,#contact-container ul,#references-container ul {
+        display: inline-block;
+        margin-bottom: 0 !important;
+
+    }
+
+    /*styles for every li icon*/
+    li>img {
+
+        /*space between icon and text*/
+        margin-right: 20px;
+
+        /*height and width because of svg*/
+        height: 32px;
+        width: 32px;
+
+    }
+
+    /*li styles for left aligned lists*/
+     #social-links-container li,#reviews-container li,#contact-container li {
+        
+        text-align: left;
+        margin: 5px;
+        
+    }
+
+     /*social li extra styles*/
+     #social-links-container li {
+         cursor: pointer;
+         
+     }
+     /*social li hover font color*/
+     #social-links-container li:hover {
+         color: black;
+     }
+     /*social li icon hover size*/
+    .social-link-img-hovered {
+        transform: scale(1.05);
+
+    }
+.reviewer-name {
+    color: #eb6864;
+    font-size: 1.2em;
+}

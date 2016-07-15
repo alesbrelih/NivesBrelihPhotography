@@ -17,5 +17,9 @@ namespace NivesBrelihPhotography.Models.AboutModels.ViewModels
 
         public string ProfilePhoto { get; set; }
 
+        public string ContactEmail { get; set; }
+
+        public string ContactPhone { get; set; }    
+
     }
 }

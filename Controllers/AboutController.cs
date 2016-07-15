@@ -28,7 +28,9 @@ namespace NivesBrelihPhotography.Controllers
                     Name = profileDb.Name,
                     LastName = profileDb.Lastname,
                     About = profileDb.About,
-                    ProfilePhoto = profileDb.ProfilePicture
+                    ProfilePhoto = profileDb.ProfilePicture,
+                    ContactEmail = profileDb.ContactEmail,
+                    ContactPhone = profileDb.ContactPhone
                 };
             }
 
@@ -56,12 +58,21 @@ namespace NivesBrelihPhotography.Controllers
                             })
                     .ToList();
 
+            //photoshot reviews list (view model)
+            var photoShootReviewsList = _db.PhotoShootReviews.OrderByDescending(x => x.PhotoShootReviewId).Take(6).Select(x=>new PhotoShotReviewView
+            {
+                PhotoShotReviewId = x.PhotoShootReviewId,
+                ReviewerName = x.ReviewerName,
+                Review = x.Review
+            }).ToList();
+
             //about index VM
             var aboutIndexVm = new AboutIndexViewModel()
             {
                 Profile = profileVm,
                 References = referenceList,
-                SocialLinks = socialLinks
+                SocialLinks = socialLinks,
+                PhotoShootReviews = photoShootReviewsList
             };
             return View(aboutIndexVm);
         }

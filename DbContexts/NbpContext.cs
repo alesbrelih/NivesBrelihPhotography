@@ -54,6 +54,9 @@ namespace NivesBrelihPhotography.DbContexts
         //reference photos
         public DbSet<ReferencePhoto> ReferencePhotos { get; set; }
 
+        //photoshoot reviews
+        public DbSet<PhotoShootReview> PhotoShootReviews { get; set; }
+
         #endregion
 
         #region onModelCreatig

@@ -223,12 +223,18 @@
     <Compile Include="Migrations\NbpContextMigrations\201607112122548_Added Profile Link Icon Url row.Designer.cs">
       <DependentUpon>201607112122548_Added Profile Link Icon Url row.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\NbpContextMigrations\201607151104523_Added contact info to profile and new table photoshoot reviews.cs" />
+    <Compile Include="Migrations\NbpContextMigrations\201607151104523_Added contact info to profile and new table photoshoot reviews.Designer.cs">
+      <DependentUpon>201607151104523_Added contact info to profile and new table photoshoot reviews.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\NbpContextMigrations\Configuration.cs" />
+    <Compile Include="Models\AboutModels\PhotoShootReview.cs" />
     <Compile Include="Models\AboutModels\Profile.cs" />
     <Compile Include="Models\AboutModels\ProfileLink.cs" />
     <Compile Include="Models\AboutModels\Reference.cs" />
     <Compile Include="Models\AboutModels\ReferencePhoto.cs" />
     <Compile Include="Models\AboutModels\ViewModels\AboutIndexViewModel.cs" />
+    <Compile Include="Models\AboutModels\ViewModels\PhotoShotReviewView.cs" />
     <Compile Include="Models\AboutModels\ViewModels\ProfileLinkView.cs" />
     <Compile Include="Models\AboutModels\ViewModels\ProfileView.cs" />
     <Compile Include="Models\AboutModels\ViewModels\ReferenceDetailsView.cs" />
@@ -310,6 +316,18 @@
     <Content Include="Images\Social_Media_Icons\facebook-logo.png" />
     <Content Include="Images\Social_Media_Icons\linkedin-logo.png" />
     <Content Include="Images\Social_Media_Icons\pinterest-logo.png" />
+    <Content Include="Images\Social_Media_Icons\Svg\EmptyFill\facebook-logo.svg" />
+    <Content Include="Images\Social_Media_Icons\Svg\EmptyFill\linkedin-logo.svg" />
+    <Content Include="Images\Social_Media_Icons\Svg\EmptyFill\pinterest-logo.svg" />
+    <Content Include="Images\Social_Media_Icons\Svg\EmptyFill\twitter-logo.svg" />
+    <Content Include="Images\Social_Media_Icons\Svg\EmptyFill\youtube-play-button.svg" />
+    <Content Include="Images\Social_Media_Icons\Svg\envelope.svg" />
+    <Content Include="Images\Social_Media_Icons\Svg\facebook-logo.svg" />
+    <Content Include="Images\Social_Media_Icons\Svg\linkedin-logo.svg" />
+    <Content Include="Images\Social_Media_Icons\Svg\phone-call.svg" />
+    <Content Include="Images\Social_Media_Icons\Svg\pinterest-logo.svg" />
+    <Content Include="Images\Social_Media_Icons\Svg\twitter-logo.svg" />
+    <Content Include="Images\Social_Media_Icons\Svg\youtube-play-button.svg" />
     <Content Include="Images\Social_Media_Icons\twitter-logo.png" />
     <Content Include="Images\Social_Media_Icons\youtube-play-button.png" />
     <Content Include="Scripts\AlbumPhotos_Section\album-photos-from-blog.js" />
@@ -428,6 +446,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\NbpContextMigrations\201607112122548_Added Profile Link Icon Url row.resx">
       <DependentUpon>201607112122548_Added Profile Link Icon Url row.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\NbpContextMigrations\201607151104523_Added contact info to profile and new table photoshoot reviews.resx">
+      <DependentUpon>201607151104523_Added contact info to profile and new table photoshoot reviews.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

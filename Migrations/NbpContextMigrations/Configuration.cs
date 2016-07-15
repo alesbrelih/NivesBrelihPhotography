@@ -356,7 +356,7 @@ namespace NivesBrelihPhotography.Migrations.NbpContextMigrations
                                         "I like to capture spontaneous moments in combination with good light." +
                                         "I enjoy taking photos of newborn babies, children, couples, weddings, nature, animales & landscapes, ...";
 
-            context.Profile.AddOrUpdate(new Profile() { ProfileId = 1, Name = "Nives", Lastname = "Brelih", About = profileAbout,ProfilePicture = "/Images/Profile_Img/profile_pic.jpg" });
+            context.Profile.AddOrUpdate(new Profile() { ProfileId = 1, Name = "Nives", Lastname = "Brelih", About = profileAbout,ProfilePicture = "/Images/Profile_Img/profile_pic.jpg",ContactEmail = "nivesbrelih@gmail.com",ContactPhone = "+38641212438"});
 
             //profileLink
             const string twitter = "https://twitter.com/_NBPhotography";
@@ -371,14 +371,27 @@ namespace NivesBrelihPhotography.Migrations.NbpContextMigrations
             const string linkedIcon = "/Images/Social_Media_Icons/linkedin-logo.png";
             const string pinterestIcon = "/Images/Social_Media_Icons/pinterest-logo.png";
 
+            const string twitterIconSvg = "/Images/Social_Media_Icons/Svg/twitter-logo.svg";
+            const string facebookIconSvg = "/Images/Social_Media_Icons/Svg/facebook-logo.svg";
+            const string youtubeIconSvg = "/Images/Social_Media_Icons/Svg/youtube-play-button.svg";
+            const string linkedIconSvg = "/Images/Social_Media_Icons/Svg/linkedin-logo.svg";
+            const string pinterestIconSvg = "/Images/Social_Media_Icons/Svg/pinterest-logo.svg";
+
+            const string twitterIconSvgEmpty = "/Images/Social_Media_Icons/Svg/EmptyFill/twitter-logo.svg";
+            const string facebookIconSvgEmpty = "/Images/Social_Media_Icons/Svg/EmptyFill/facebook-logo.svg";
+            const string youtubeIconSvgEmpty = "/Images/Social_Media_Icons/Svg/EmptyFill/youtube-play-button.svg";
+            const string linkedIconSvgEmpty = "/Images/Social_Media_Icons/Svg/EmptyFill/linkedin-logo.svg";
+            const string pinterestIconSvgEmpty = "/Images/Social_Media_Icons/Svg/EmptyFill/pinterest-logo.svg";
+
+
 
             new List<ProfileLink>()
             {
-                new ProfileLink() {ProfileLinkId = 1,LinkName = "Twitter",LinkDescription = "Check my twits",LinkUrl = twitter,LinkImgUrl = twitterIcon},
-                new ProfileLink() {ProfileLinkId = 2,LinkName = "Facebook",LinkDescription = "Follow me on facebook",LinkUrl = facebook,LinkImgUrl = facebookIcon},
-                new ProfileLink() {ProfileLinkId = 3,LinkName = "Youtube",LinkDescription = "Check my videos",LinkUrl = youtube,LinkImgUrl = youtubeIcon},
-                new ProfileLink() {ProfileLinkId = 4,LinkName = "LinkedIn",LinkDescription = "See my linkedIn",LinkUrl = linkedIn,LinkImgUrl = linkedIcon},
-                new ProfileLink() {ProfileLinkId = 5,LinkName = "Pinterest",LinkDescription = "Check my pinterest",LinkUrl = pinterest,LinkImgUrl = pinterestIcon}
+                new ProfileLink() {ProfileLinkId = 1,LinkName = "Twitter",LinkDescription = "Check my twits",LinkUrl = twitter,LinkImgUrl = twitterIconSvg,},
+                new ProfileLink() {ProfileLinkId = 2,LinkName = "Facebook",LinkDescription = "Follow me on facebook",LinkUrl = facebook,LinkImgUrl = facebookIconSvg},
+                new ProfileLink() {ProfileLinkId = 3,LinkName = "Youtube",LinkDescription = "Check my videos",LinkUrl = youtube,LinkImgUrl = youtubeIconSvg},
+                new ProfileLink() {ProfileLinkId = 4,LinkName = "LinkedIn",LinkDescription = "See my linkedIn",LinkUrl = linkedIn,LinkImgUrl = linkedIconSvg},
+                new ProfileLink() {ProfileLinkId = 5,LinkName = "Pinterest",LinkDescription = "Check my pinterest",LinkUrl = pinterest,LinkImgUrl = pinterestIconSvg}
             }.ForEach(x=>context.ProfileLinks.AddOrUpdate(x));
 
             const string refDesc =
@@ -424,6 +437,31 @@ namespace NivesBrelihPhotography.Migrations.NbpContextMigrations
 
 
             }.ForEach(x=>context.ReferencePhotos.AddOrUpdate(x));
+
+            const string photoShootReview =
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur a nisi at fermentum. Curabitur mattis nibh sed nisl posuere, eu gravida nulla pellentesque. Fusce sodales augue id urna laoreet blandit. Proin vel nibh pharetra, blandit arcu et, dictum nisl. Phasellus ante ligula, euismod ac nisl scelerisque, volutpat maximus turpis. Curabitur tortor enim, finibus eu tristique eu, eleifend vitae neque. Donec ultricies pharetra mi, eu fringilla turpis commodo sed. Maecenas lobortis augue sed volutpat facilisis. Nunc non est volutpat, gravida sapien vitae, fermentum lorem.";
+            //photoshoot reviews
+            new List<PhotoShootReview>()
+            {
+                new PhotoShootReview() {PhotoShootReviewId = 1, ReviewerName = "Maja",Review = photoShootReview},
+                new PhotoShootReview() {PhotoShootReviewId = 2, ReviewerName = "Nina",Review = photoShootReview+photoShootReview},
+                new PhotoShootReview() {PhotoShootReviewId = 3, ReviewerName = "Nika",Review = photoShootReview},
+                new PhotoShootReview() {PhotoShootReviewId = 4, ReviewerName = "Marija",Review = photoShootReview+photoShootReview},
+                new PhotoShootReview() {PhotoShootReviewId = 5, ReviewerName = "Magda",Review = photoShootReview},
+                new PhotoShootReview() {PhotoShootReviewId = 6, ReviewerName = "Snezana",Review = photoShootReview},
+                new PhotoShootReview() {PhotoShootReviewId = 7, ReviewerName = "Tina",Review = photoShootReview+photoShootReview},
+                new PhotoShootReview() {PhotoShootReviewId = 8, ReviewerName = "Eva",Review = photoShootReview+photoShootReview},
+                new PhotoShootReview() {PhotoShootReviewId = 9, ReviewerName = "Melisa",Review = photoShootReview},
+                new PhotoShootReview() {PhotoShootReviewId = 10, ReviewerName = "Boris",Review = photoShootReview},
+                new PhotoShootReview() {PhotoShootReviewId = 11, ReviewerName = "Francl",Review = photoShootReview+photoShootReview},
+                new PhotoShootReview() {PhotoShootReviewId = 12, ReviewerName = "Martin",Review = photoShootReview},
+                new PhotoShootReview() {PhotoShootReviewId = 13, ReviewerName = "Anja",Review = photoShootReview+photoShootReview},
+                new PhotoShootReview() {PhotoShootReviewId = 14, ReviewerName = "Ivo",Review = photoShootReview},
+                new PhotoShootReview() {PhotoShootReviewId = 15, ReviewerName = "Milena",Review = photoShootReview+photoShootReview},
+                new PhotoShootReview() {PhotoShootReviewId = 16, ReviewerName = "Tjasa",Review = photoShootReview}
+
+            }.ForEach(x=>context.PhotoShootReviews.AddOrUpdate(x));
+
 
             #endregion
             #region blog categories seed
