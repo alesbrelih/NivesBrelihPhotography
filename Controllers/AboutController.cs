@@ -28,7 +28,9 @@ namespace NivesBrelihPhotography.Controllers
                     Name = profileDb.Name,
                     LastName = profileDb.Lastname,
                     About = profileDb.About,
-                    ProfilePhoto = profileDb.ProfilePicture
+                    ProfilePhoto = profileDb.ProfilePicture,
+                    ContactEmail = profileDb.ContactEmail,
+                    ContactPhone = profileDb.ContactPhone
                 };
             }
 
@@ -56,12 +58,21 @@ namespace NivesBrelihPhotography.Controllers
                             })
                     .ToList();
 
+            //photoshot reviews list (view model)
+            var photoShootReviewsList = _db.PhotoShootReviews.OrderByDescending(x => x.PhotoShootReviewId).Take(6).Select(x => new PhotoShotReviewView
+            {
+                PhotoShotReviewId = x.PhotoShootReviewId,
+                ReviewerName = x.ReviewerName,
+                Review = x.Review
+            }).ToList();
+
             //about index VM
             var aboutIndexVm = new AboutIndexViewModel()
             {
                 Profile = profileVm,
                 References = referenceList,
-                SocialLinks = socialLinks
+                SocialLinks = socialLinks,
+                PhotoShootReviews = photoShootReviewsList
             };
             return View(aboutIndexVm);
         }
@@ -81,19 +92,27 @@ namespace NivesBrelihPhotography.Controllers
                 var morePhotosQuery =
                     _db.ReferencePhotos.Where(x => x.ReferenceId == referenceId)
                         .OrderBy(x => x.PhotoId)
-                        .Skip(pageNumber*10)
+                        .Skip(pageNumber * 10)
                         .Take(10)
-                        .Select(x=>new PhotoView() {PhotoTitle = x.Photo.PhotoTitle,PhotoUrl = x.Photo.PhotoUrl})
+                        .Select(x => new PhotoView() { PhotoTitle = x.Photo.PhotoTitle, PhotoUrl = x.Photo.PhotoUrl })
                         .ToList();
-                return Json(morePhotosQuery,JsonRequestBehavior.AllowGet);
+                return Json(morePhotosQuery, JsonRequestBehavior.AllowGet);
             }
 
             var referenceDb = _db.References.Find(referenceId);
 
             var referenceDetailsVm = new ReferenceDetailsView(referenceDb);
             //referenceDetailsVm.ReferencePhotos = referencesPhotosVm;
-            
+
             return View(referenceDetailsVm);
+        }
+
+        public ActionResult Reviews()
+        {
+            //all reviews
+            var reviewsVm = _db.PhotoShootReviews.OrderByDescending(x => x.PhotoShootReviewId).Select(x => new PhotoShotReviewView() { PhotoShotReviewId = x.PhotoShootReviewId, ReviewerName = x.ReviewerName, Review = x.Review }).ToList();
+
+            return View(reviewsVm);
         }
 
         // POST: About/Create

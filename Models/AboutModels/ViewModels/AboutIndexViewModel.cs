@@ -15,5 +15,7 @@ namespace NivesBrelihPhotography.Models.AboutModels.ViewModels
 
         public ICollection<ReferenceView> References { get; set; }
 
+        public ICollection<PhotoShotReviewView> PhotoShootReviews { get; set; } 
+
     }
 }

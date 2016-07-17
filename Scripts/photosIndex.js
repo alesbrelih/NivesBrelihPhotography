@@ -1,5 +1,20 @@
 ﻿
+function SetMasonry() {
+    $($("#photos").imagesLoaded(function () {
+        $('.masonry-layout').masonry({
+            // options
+            itemSelector: '.masonry-image',
+            columnWidth: '.grid-sizer'
+            //percentPosition: true
+        });
+    }));
 
+    //delegating hover to display discription even on dynamically added photos
+    $(".masonry-layout").on("mouseenter mouseleave", ".masonry-image", function () {
+        $(this).find(".img-description").toggleClass("show-description"); //shows description
+    });
+
+}
 
 //DOM on READY function
 ///////////////////////
@@ -7,22 +22,7 @@
 $(function () {
 
     //function that sets masonry on photos
-    function setMasonry() {
-        $($("#photos").imagesLoaded(function () {
-            $('.masonry-layout').masonry({
-                // options
-                itemSelector: '.masonry-image',
-                columnWidth: '.grid-sizer'
-                //percentPosition: true
-            });
-        }));
-
-        //delegating hover to display discription even on dynamically added photos
-        $(".masonry-layout").on("mouseenter mouseleave", ".masonry-image", function () {
-            $(this).find(".img-description").toggleClass("show-description"); //shows description
-        });
-
-    }
+    
 
     //currentPageofPhotos
     var pageNm = 0;
@@ -32,7 +32,7 @@ $(function () {
     var photosEnd = false;
 
     //masonry initialize
-    setMasonry();
+    SetMasonry();
 
     //enable photo enlargement on click
     EnablePhotoZoom("#photo-container", ".masonry-image");

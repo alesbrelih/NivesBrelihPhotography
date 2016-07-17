@@ -1,0 +1,27 @@
+﻿@model List<NivesBrelihPhotography.Models.AboutModels.ViewModels.PhotoShotReviewView>
+@{
+    ViewBag.Title = "Reviews";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br/>
+@section CustomStyles
+{
+    @Styles.Render("~/Content/about-reviews-styles")
+
+}
+
+<div class="reviews-title">
+    <h3>
+        Reviews
+    </h3>
+</div>
+<div class="reviews-container">
+    <ul>
+        @foreach (var review in Model)
+        {
+            <li><span class="reviewer-name">@review.ReviewerName: </span>@review.Review</li>
+        }
+    </ul>
+</div>
+

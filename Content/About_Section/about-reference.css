@@ -1,0 +1,15 @@
+﻿.selected-reference-text::first-letter {
+        margin-left: 20px;
+    }
+     .selected-reference-description > h3 {
+         font-weight: lighter;
+         /*font-size: 20px;*/
+         color: #777;
+         padding: 10px;
+
+     }
+
+    .reference-photo {
+        position: relative;
+
+    }

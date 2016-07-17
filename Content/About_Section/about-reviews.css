@@ -1,0 +1,34 @@
+﻿/*review title styles*/
+     .reviews-title {
+         padding: 10px;
+     }
+
+     /*review title h3 modification*/
+    .reviews-title>h3 {
+        color: #777;
+        font-weight: lighter;
+    }
+
+    /*reviewer name styles*/
+    .reviewer-name {
+        color: #eb6864;
+        /*font-style: italic;*/
+        font-size: 1.1em;
+    }
+
+    /*unordered lists styles*/
+    .reviews-container ul {
+        list-style-type: none;
+        padding: 0px;
+    }
+
+    /*space between reviews*/
+    .reviews-container ul li {
+        margin-bottom: 10px;
+    }
+
+    /*extra style for every start of li*/
+    .reviews-container li::first-letter {
+        margin-left: 20px;
+        font-size: 20px;
+    }
