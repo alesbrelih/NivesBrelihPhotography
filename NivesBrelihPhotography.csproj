@@ -262,6 +262,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\About_Section\about-index.css" />
+    <Content Include="Content\About_Section\about-reference.css" />
+    <Content Include="Content\About_Section\about-reviews.css" />
     <Content Include="Content\AlbumPhotos_Section\album-photos-from-blog.css" />
     <Content Include="Content\AlbumPhotos_Section\album-photos.css" />
     <Content Include="Content\Blog_Section\blog-index.css" />
@@ -330,6 +332,9 @@
     <Content Include="Images\Social_Media_Icons\Svg\youtube-play-button.svg" />
     <Content Include="Images\Social_Media_Icons\twitter-logo.png" />
     <Content Include="Images\Social_Media_Icons\youtube-play-button.png" />
+    <Content Include="Scripts\About_Section\about-index.js" />
+    <Content Include="Scripts\About_Section\about-reference.js" />
+    <Content Include="Scripts\About_Section\about-reviews.js" />
     <Content Include="Scripts\AlbumPhotos_Section\album-photos-from-blog.js" />
     <Content Include="Scripts\AlbumPhotos_Section\album-section.js" />
     <Content Include="Scripts\Blog_Section\blog-index.js" />
@@ -404,6 +409,7 @@
     <Content Include="Views\Photos\AlbumPhotos.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\About\Reference.cshtml" />
+    <Content Include="Views\About\Reviews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

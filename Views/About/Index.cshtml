@@ -3,22 +3,9 @@
     ViewBag.Title = "About Me";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link href="~/Content/About_Section/about-index.css" rel="stylesheet" />
-<style>
-    
-     .show-more-reviews {
-         float: right;
-         margin-right: 10px;
-         margin-top: 20px;
-         color: #eb6864;
-         cursor: pointer;
-     }
-
-
-
-</style>
-
-<br/>
+@section CustomStyles{
+    @Styles.Render("~/Content/about-index-styles")
+}
 <br/>
 
 <div class="row masonry-layout">
@@ -107,7 +94,7 @@
                     }
                 </ul>
                 <div class="show-more-reviews">
-                    <a>Show More</a>
+                    <a href="@Url.Action("Reviews")">Show More</a>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -119,28 +106,6 @@
 </div>
 
 @section scripts{
-<script src="~/Scripts/masonry.pkgd.min.js"></script>
-    <script>
-        $(function() {
-            
-            $("#social-links-container li").hover(function () {
-                $(this).find("img").toggleClass("social-link-img-hovered");
-            });
-            $(".masonry-layout").masonry({
-                itemSelector: ".masonry-content",
-                columnWidth: ".grid-sizer"
-        });
-
-            //$('.masonry-layout').masonry({
-            //    // options
-            //    itemSelector: '.masonry-content',
-            //    columnWidth: '.grid-sizer'
-            //    //percentPosition: true
-            //});
-
-
-        });
-        
-    </script>
+@Scripts.Render("~/bundles/about-index-scripts")
 }
 

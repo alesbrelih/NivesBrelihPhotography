@@ -3,8 +3,13 @@
     ViewBag.Title = "Reference";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link href="~/Content/ImgDescriptions_Styles/photo-cover-descriptions.css" rel="stylesheet" />
-<link href="~/Content/EnlargePhoto_Lib_Styles/enlarge-photo-styles.css" rel="stylesheet" />
+
+@section CustomStyles{
+
+    @Styles.Render("~/Content/about-reference-styles")
+
+}
+
 <br/>
 <div id="content-container">
 
@@ -14,9 +19,13 @@
         @if (Model.Description.Trim().Length > 0)
         {
             <div class="row">
-                <div class="col-md-8 selected-album-text">
+                <div class="col-md-8 selected-reference-text">
                     @Model.Description
-                    <hr>
+
+                    @if (Model.ReferencePhotos.Count() != 0)
+                    {
+                        <hr>
+                    }
                 </div>
             </div>
         }
@@ -37,83 +46,11 @@
     </div>
 </div>
 
-<style>
-    .selected-reference-description > h3 {
-        font-weight: lighter;
-        font-size: 20px;
-        color: #eb6864;
 
-    }
 
-    .reference-photo {
-        position: relative;
+@section scripts{
 
-    }
-</style>
-
-@section scripts
-{
-
-    <script src="~/Scripts/ImgDescription_Scripts/cover-descriptions-scripts.js"></script>
-<script src="~/Scripts/EnlargePhoto_Lib/enlarge-photo-scripts.js"></script>
-
-    <script>
-        EnableShowBackgroundOnHover("#selected-reference-photos", ".img-container", "photos");
-        EnablePhotoZoom("#selected-reference-photos", ".img-container");
-
-        $(function() {
-
-            var pageControl = {
-                pageNumber: 0,
-                endScroll: false
-            }
-
-            function loadMorePhotos() {
-
-                //getting reference id
-                var $referenceId = $(".selected-reference-description").attr("data-reference-id");
-
-                $.get("/About/Reference", { referenceId: $referenceId, pageNumber: pageControl.pageNumber + 1 }, function(data) {
-
-                    //reached end of photos - no return data
-                    if (jQuery.isEmptyObject(data)) {
-                        pageControl.endScroll = true;
-                        return;
-
-                    }
-
-                    var html = "";
-                    $.each(data, function(index, item) {
-                        var $row = '<div class="img-container">' +
-                            '<img src="' + item.PhotoUrl + '" class="img-responsive"/>' +
-                            '<div class="img-description">' +
-                            '<span>' + item.PhotoTitle + '</span>' +
-                            '</div>' +
-                            '</div>';
-                        html += $row;
-                    });
-
-                    var $html = $(html);
-                    $("#selected-reference-photos").append($html);
-                    pageControl.pageNumber++;
-                });
-
-            }
-
-           
-
-            $(document).scroll(function() {
-                if (!pageControl.endScroll) {
-                    
-                    if ($(document).height() == $(window).scrollTop() + $(window).height()) {
-
-                        loadMorePhotos();
-                    }
-                }
-            });
-
-        });
-    </script>
+    @Scripts.Render("~/bundles/about-reference-scripts")
 
 }
 

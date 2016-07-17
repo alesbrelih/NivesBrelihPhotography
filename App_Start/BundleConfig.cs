@@ -88,6 +88,34 @@ namespace NivesBrelihPhotography
                 "~/Scripts/AlbumPhotos_Section/album-photos-from-blog.js"
                 ));
 
+
+            //about reference
+            bundles.Add(new StyleBundle("~/Content/about-reference-styles").Include(
+                "~/Content/ImgDescriptions_Styles/photo-cover-descriptions.css",
+                "~/Content/EnlargePhoto_Lib_Styles/enlarge-photo-styles.css",
+                "~/Content/About_Section/about-reference.css"
+                ));
+            bundles.Add(new ScriptBundle("~/bundles/about-reference-scripts").Include(
+                "~/Scripts/ImgDescription_Scripts/cover-descriptions-scripts.js",
+                "~/Scripts/EnlargePhoto_Lib/enlarge-photo-scripts.js",
+                "~/Scripts/About_Section/about-reference.js"
+                ));
+
+            //about reviews - currently only style bundle
+            bundles.Add(new StyleBundle("~/Content/about-reviews-styles").Include(
+                "~/Content/About_Section/about-reviews.css"
+                ));
+
+            //about index bundles
+            bundles.Add(new StyleBundle("~/Content/about-index-styles").Include(
+                "~/Content/About_Section/about-index.css"
+                ));
+            bundles.Add(new ScriptBundle("~/bundles/about-index-scripts").Include(
+                "~/Scripts/masonry.pkgd.min.js",
+                "~/Scripts/imagesloaded.pkgd.min.js",
+                "~/Scripts/About_Section/about-index.js"
+                ));
+
         }
     }
 }
