@@ -22,13 +22,17 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Photos", "Index", "Photos")</li>
-                    <li>@Html.ActionLink("Albums", "Albums", "Photos")</li>
-                    <li>@Html.ActionLink("Blog", "Index", "Blog")</li>
-                    <li>@Html.ActionLink("About", "Index", "About")</li>
+                    <li>@Html.ActionLink(NivesBrelihPhotography.Resources.Layout.LayoutText.Photos, "Index", "Photos")</li>
+                    <li>@Html.ActionLink(NivesBrelihPhotography.Resources.Layout.LayoutText.Albums, "Albums", "Photos")</li>
+                    <li>@Html.ActionLink(NivesBrelihPhotography.Resources.Layout.LayoutText.Blog, "Index", "Blog")</li>
+                    <li>@Html.ActionLink(NivesBrelihPhotography.Resources.Layout.LayoutText.About, "Index", "About")</li>
                 </ul>
                 @*@Html.Partial("_LoginPartial")*@
+                @Html.Partial("_LanguageSelectPartial")
             </div>
+           
+
+
         </div>
     </div>
     <div class="container body-content">

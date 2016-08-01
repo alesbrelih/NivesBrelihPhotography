@@ -10,7 +10,7 @@ using WebGrease.Css.Extensions;
 
 namespace NivesBrelihPhotography.Controllers
 {
-    public class AboutController : Controller
+    public class AboutController : BaseController
     {
         private NbpContext _db = new NbpContext();
         // GET: About

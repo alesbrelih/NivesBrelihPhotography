@@ -12,7 +12,7 @@ using NivesBrelihPhotography.Models.PhotoModels.ViewModels;
 
 namespace NivesBrelihPhotography.Controllers
 {
-    public class PhotosController : Controller
+    public class PhotosController : BaseController
     {
         private NbpContext db = new NbpContext();
         //current category

@@ -7,7 +7,7 @@ using NivesBrelihPhotography.Models.BlogModels.ViewModels.Index;
 
 namespace NivesBrelihPhotography.Controllers
 {
-    public class BlogController : Controller
+    public class BlogController : BaseController
     {
         private NbpContext _db = new NbpContext();
         private int _numberOfBlogs = 6;

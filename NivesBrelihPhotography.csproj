@@ -169,14 +169,17 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PhotosController.cs" />
     <Compile Include="DbContexts\NbpContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HelperClasses\CultureHelper.cs" />
     <Compile Include="HelperClasses\HelperMethods.cs" />
     <Compile Include="Migrations\201512271112412_InitialCreate.cs" />
     <Compile Include="Migrations\201512271112412_InitialCreate.Designer.cs">
@@ -258,6 +261,26 @@
     <Compile Include="Models\PhotoModels\ViewModels\PhotoAlbumView.cs" />
     <Compile Include="Models\PhotoModels\ViewModels\PhotoView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\About\AboutText.sl-SI.Designer.cs">
+      <DependentUpon>AboutText.sl-SI.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\About\AboutText.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AboutText.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Layout\LayoutText.sl-SI.Designer.cs">
+      <DependentUpon>LayoutText.sl-SI.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Layout\LayoutText.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LayoutText.resx</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -410,9 +433,13 @@
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\About\Reference.cshtml" />
     <Content Include="Views\About\Reviews.cshtml" />
+    <Content Include="Views\Shared\_LanguageSelectPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="NewFolder1\" />
+    <Folder Include="Views\Base\" />
+    <Folder Include="Views\Language\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -455,6 +482,22 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\NbpContextMigrations\201607151104523_Added contact info to profile and new table photoshoot reviews.resx">
       <DependentUpon>201607151104523_Added contact info to profile and new table photoshoot reviews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\About\AboutText.sl-SI.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AboutText.sl-SI.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\About\AboutText.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AboutText.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Layout\LayoutText.sl-SI.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LayoutText.sl-SI.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Layout\LayoutText.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LayoutText.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
