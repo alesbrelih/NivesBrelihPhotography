@@ -77,6 +77,23 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
     font-family: "Jura-Regular","News Cycle", "Arial Narrow Bold",sans-serif !important;
 }
 
+#language-selector li{
+    font-size: 0.9em;
+    cursor: pointer;
+    
+
+}
+#language-selector li>a {
+    color: #777;
+}
+#language-selector li>a:hover {
+    color: black;
+}
+
+#language-selector .dropdown-menu > li:hover,#language-selector .dropdown-menu a:hover {
+    background-color: #eee;
+}
+
 /*CUSTOM FONTS USAGE - END*/
 
 /*.navbar-default > .container > .navbar-header > a:hover, .navbar-default > .container > .navbar-header > a:focus {
