@@ -1,15 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
+using WebGrease.Css.Extensions;
 
 namespace NivesBrelihPhotography.Controllers
 {
     public class LanguageController : BaseController
     {
+        protected override bool DisableAsyncSupport
+        {
+            get { return true; }
+        }
+
         // GET: Language
         public ActionResult Index()
         {
@@ -44,15 +52,87 @@ namespace NivesBrelihPhotography.Controllers
             //set cookie in response
             Response.SetCookie(cookie);
 
+            
+
             //if request happened from a page
             var returnPage = Request.UrlReferrer;
             if (returnPage != null)
             {
-              return  Redirect(returnPage.ToString());
+                //get action and controller names from url refferer
+                var controllerName = GetReferrerControlerName(returnPage.ToString());
+                var actionName = GetReferrerActionName(returnPage.ToString());
+
+                //get route values from url refferer
+                var routeValues = GetReffererRouteValues(returnPage.ToString());
+                
+                //returns to correct action
+                return RedirectToAction(actionName, controllerName, routeValues);
             }
 
             //request was manually requested with link
             return RedirectToAction("Index", "Photos");
+        }
+
+
+        //gets refferer controller name
+        private string GetReferrerControlerName(string urlRefferer)
+        {
+            var fullUrl = urlRefferer;
+            string url = fullUrl;
+
+            var request = new HttpRequest(null, url, null);
+            var response = new HttpResponse(new StringWriter());
+            var httpContext = new HttpContext(request, response);
+
+            var routeData = RouteTable.Routes.GetRouteData(new HttpContextWrapper(httpContext));
+
+            var values = routeData.Values;
+            string controllerName = values["controller"].ToString();
+
+            return controllerName;
+        }
+
+        //gets refferer action name
+        private string GetReferrerActionName(string urlRefferer)
+        {
+            var fullUrl = urlRefferer;
+            string url = fullUrl;
+
+            var request = new HttpRequest(null, url, null);
+            var response = new HttpResponse(new StringWriter());
+            var httpContext = new HttpContext(request, response);
+
+            var routeData = RouteTable.Routes.GetRouteData(new HttpContextWrapper(httpContext));
+
+            var values = routeData.Values;
+            string actionName = values["action"].ToString();
+
+            return actionName;
+        }
+
+        //gets refferer route values
+        private RouteValueDictionary GetReffererRouteValues(string urlRefferer)
+        {
+            //split refferer url to main address and route keys/values
+            var splitReffererUrl = urlRefferer.Split(new char[] { '?', '&' });
+
+            //create new dictionary - if no values it will remain empty
+            var urlReffererRouteValues = new RouteValueDictionary();
+
+            //check all route values if exist - 0 index is main url before route values
+            for (int i = 1; i < splitReffererUrl.Length; i++)
+            {
+                //split value and key from every route value
+                var paramSplit = splitReffererUrl[i].Split('=');
+
+                //check length just in case
+                if (paramSplit.Length.Equals(2))
+                {
+                    //add to route value dictionary
+                    urlReffererRouteValues.Add(paramSplit[0], paramSplit[1]);
+                }
+            }
+            return urlReffererRouteValues;
         }
     }
 }

@@ -116,6 +116,10 @@ namespace NivesBrelihPhotography
                 "~/Scripts/About_Section/about-index.js"
                 ));
 
+            //admin index bundles
+            bundles.Add(new StyleBundle("~/Content/admin-index-styles").Include(
+                "~/Content/Admin_Section/admin-index.css"
+                ));
         }
     }
 }

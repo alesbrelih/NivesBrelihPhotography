@@ -1,0 +1,43 @@
+﻿.admin-controller-selector {
+        
+        /*block styling - container of clickables*/
+        min-height: 250px;
+        border: 3px solid #eee;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 2px;
+        color: #eb6864;
+
+        /*transition for every change on hover*/
+        -webkit-transition: all 0.2s ease;
+        -moz-transition: all 0.2s ease;
+        -ms-transition: all 0.2s ease;
+        -o-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+
+    }
+    /*hover effects*/
+    .admin-controller-selector:hover {
+
+        /*bg color*/
+        background-color: #eee;
+        /*border color*/
+        border-color: #777;
+
+        /*font styles*/
+        font-size: 1.3em;
+        font-weight: bolder;
+
+    }
+    .admin-selector-text {
+
+        /*text position - centered in block*/
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        /*font size*/
+        font-size: 1.2em;
+
+    }

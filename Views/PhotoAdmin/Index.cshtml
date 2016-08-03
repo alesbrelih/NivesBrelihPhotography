@@ -1,0 +1,177 @@
+﻿@using System.Diagnostics.Eventing.Reader
+@model IEnumerable<NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels.AdminPhotoIndexVm>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Photos Index</h2>
+<style>
+    .photo-preview {
+        max-width: 50px;
+    }
+
+    th, td {
+        text-align: center !important;
+    }
+
+    td {
+        vertical-align: middle !important;
+    }
+    .page-selector {
+        width: 100%;
+        padding: 20px;
+    }
+    .page-selector ul {
+        width: 100%;
+        text-align: center;
+    }
+    .page-selector li {
+        display: inline;
+        padding: 5px;
+        cursor: pointer;
+    }
+    .page-selector li:hover {
+        color: #eb6864;
+    }
+    .active-page {
+        color: #eb6864;
+        font-weight: bold;
+    }
+</style>
+<p>
+    @Html.ActionLink("Upload More", "Create")
+</p>
+<div id="photos-container">
+    <table class="table photos-table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoUrl)
+            </th>
+            <th>
+                <a href="@Url.Action("Index", new {orderBy = 1})">
+                    @Html.DisplayNameFor(model => model.PhotoTitle)
+                </a>
+            </th>
+            <th>
+                <a href="@Url.Action("Index", new {orderBy = 2})">
+                    @Html.DisplayNameFor(model => model.Album)
+                </a>
+            </th>
+            <th>
+                <a href="@Url.Action("Index", new {orderBy = 3})">
+                    @Html.DisplayNameFor(model => model.OnPortfolio)
+                </a>
+            </th>
+            <th>
+                <a href="@Url.Action("Index", new {orderBy = 4})">
+                    @Html.DisplayNameFor(model => model.UploadedString)
+                </a>
+            </th>
+
+            <th></th>
+        </tr>
+
+        @Html.Partial("_photoAdminIndexList", Model)
+
+    </table>
+</div>
+@if (ViewBag.NumberOfPages > 0)
+{
+    <div class="page-selector">
+        <ul>
+            <li class="previous-page">Previous</li>
+            @for (int i = 1; i <= ViewBag.NumberOfPages; i++)
+            {
+                if (i == 5)
+                {
+                    <li class="active-page">
+                        @i
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        @i
+                    </li>
+                }
+
+            }
+            <li class="next-page">Next</li>
+        </ul>
+    </div>
+}
+
+@section Scripts{
+    <script>
+
+        $(function () {
+
+            function loadSelectedPageIntoDom(pageNumber) {
+
+                $.get("/PhotoAdmin/Index", { page: pageNumber }, function(data) {
+                    if (!data || data.trim().length === 0) {
+                        return;
+                    } else {
+                        $(".data-tr").remove();
+
+                        $(".photos-table").append(data);
+
+                        $(".active-page").removeClass("active-page");
+                        $("li:contains(" + pageNumber + ")").addClass("active-page");
+
+                        //TODO: WHEN REFRESH BROWSER SELECTED PAGE RESETS
+                    }
+                });
+
+            }
+
+
+            $(".page-selector li").click(function () {
+
+                //click on previous page
+                if ($(this).is(".previous-page")) {
+
+                    //currently on first page
+                    if ($(this).next("li").is(".active-page")) {
+
+                        //nothing happens
+                        return;
+
+                    } else {
+
+                        //load next page
+                        //TODO:implement next page call
+                    }
+                }
+                    //click on next page
+                else if ($(this).is(".next-page")) {
+
+                    //currently on last page
+                    if ($(this).prev("li").is(".active-page")) {
+
+                        //nothing happens
+                        return;
+
+                    } else {
+
+                        //TODO:implement previous page
+                    }
+                } else { //clicked on number
+                    if ($(this).is(".active-page")) {
+
+                        //already located on this page
+                        return;
+                    } else {
+
+                        loadSelectedPageIntoDom($(this).text());
+
+                    }
+                }
+            });
+
+        });
+
+    </script>
+}

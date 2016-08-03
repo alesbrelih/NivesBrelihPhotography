@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using NivesBrelihPhotography.DbContexts;
@@ -13,19 +14,20 @@ namespace NivesBrelihPhotography.Controllers
         private int _numberOfBlogs = 6;
 
         // GET: Blogs
-        public ActionResult Index(int categoryId=-1, int pageNumber = 0)
+        public ActionResult Index(int categoryId = -1, int pageNumber = 0)
         {
 
             if (Request.IsAjaxRequest())
             {
                 if (pageNumber == 0)  //user selects new category so pageNumber is 0
                 {
+
                     var query =
                         _db.BlogCategories.Where(x => x.CategoryId == categoryId)
                             .OrderBy(x => x.Blog.BlogDate)
                             .Take(_numberOfBlogs)
                             .Select(x => new BlogIndexView() //creates viewmodel with needed data
-                            {
+                                {
                                 BlogId = x.Blog.BlogId,
                                 BlogDate = x.Blog.BlogDate,
                                 BlogTitle = x.Blog.BlogTitle,
@@ -39,14 +41,14 @@ namespace NivesBrelihPhotography.Controllers
                     ViewBag.PageNumber = pageNumber;  //page number
 
                     //return partial view
-                    return PartialView("_blogsContainerIndex",query);
+                    return PartialView("_blogsContainerIndex", query);
                 }
                 else  //its continuation of blogs
                 {
-                 
-                    
-                    var query = _db.BlogCategories.Where(x=>x.CategoryId==categoryId)
-                        .OrderBy(x => x.Blog.BlogDate).Skip(pageNumber*_numberOfBlogs)
+
+
+                    var query = _db.BlogCategories.Where(x => x.CategoryId == categoryId)
+                        .OrderBy(x => x.Blog.BlogDate).Skip(pageNumber * _numberOfBlogs)
                             .Take(_numberOfBlogs)
                             .Select(x => new BlogIndexView() //creates viewmodel with needed data
                             {
@@ -61,7 +63,7 @@ namespace NivesBrelihPhotography.Controllers
 
                     ViewBag.PageNumber = pageNumber;  //page number
 
-                    return PartialView("_blogsListIndex",query); //list of blogs
+                    return PartialView("_blogsListIndex", query); //list of blogs
 
                 }
             }
@@ -74,7 +76,7 @@ namespace NivesBrelihPhotography.Controllers
                         .Take(_numberOfBlogs)
                         .Select(
                             x => new BlogIndexView()  //creates viewmodel with needed data
-                        {
+                            {
                                 BlogId = x.BlogId,
                                 BlogDate = x.BlogDate,
                                 BlogTitle = x.BlogTitle,
@@ -94,7 +96,7 @@ namespace NivesBrelihPhotography.Controllers
 
                 return View(query); //returns blogs index view
             }
-            
+
         }
 
         //GET: Blog

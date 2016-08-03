@@ -1,0 +1,30 @@
+﻿@model IEnumerable<NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels.AdminPhotoIndexVm>
+
+
+
+@foreach (var item in Model)
+{
+    <tr class="data-tr">
+        <td class="photo-preview">
+            <img class="img-responsive" src="@item.PhotoUrl" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhotoTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Album)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OnPortfolio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UploadedString)
+        </td>
+
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.PhotoId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.PhotoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.PhotoId })
+        </td>
+    </tr>
+}

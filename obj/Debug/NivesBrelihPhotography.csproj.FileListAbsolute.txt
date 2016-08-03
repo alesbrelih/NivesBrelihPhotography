@@ -160,3 +160,6 @@ C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPho
 C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\sl-SI\NivesBrelihPhotography.resources.dll
 C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotography.Resources.About.AboutText.resources
 C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotography.Resources.About.AboutText.sl-SI.resources
+C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotography.Resources.Admin.AdminText.resources
+C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotography.Resources.Admin.AdminText.sl-SI.resources
+C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotography.Migrations.NbpContextMigrations.Addinguserabilitytoadddeleteeditdataindb.resources

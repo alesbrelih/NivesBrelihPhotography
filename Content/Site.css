@@ -80,8 +80,10 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
 #language-selector li{
     font-size: 0.9em;
     cursor: pointer;
-    
 
+}
+#language-dropdown {
+    margin: 0 !important;
 }
 #language-selector li>a {
     color: #777;

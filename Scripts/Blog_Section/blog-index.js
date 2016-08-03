@@ -67,7 +67,7 @@ $(function () {  //on document ready
 
     //load blogs based on category when selecting it from dropdown menu
 
-    LoadCategoryOfBlogsOnClickAJAX("click", ".dropdown-menu a", "href", "#blogs-container", pageControl);
+    LoadCategoryOfBlogsOnClickAJAX("click", ".blog-category-selector a", "href", "#blogs-container", pageControl);
 
 
 
