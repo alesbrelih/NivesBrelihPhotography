@@ -23,9 +23,9 @@ namespace NivesBrelihPhotography.Controllers
         private NbpContext _db = new NbpContext();
 
         // GET: PhotoAdmin
-        public ActionResult Index(int categoryId = -1, int orderBy = -1,int page = 0)
+        public ActionResult Index(int categoryId = -1, int orderBy = -1,int page = 1)
         {
-
+            ViewBag.CurrentPage = page;
             if (Request.IsAjaxRequest())
             {
                 var query = PhotosDatabase.ReturnPhotosForAdminPhotoIndex(_orderBy, _orderType, page - 1, _pageSize);
@@ -68,6 +68,31 @@ namespace NivesBrelihPhotography.Controllers
                 return View(query);
             }
             return View();
+        }
+
+        //GET: PhotoAdd
+        [HttpGet]
+        public ActionResult Add()
+        {
+            //create viewmodel for photo create
+            var photoAdminView = new AdminPhotoCreateVm();
+
+            //return view
+            return View(photoAdminView);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Add(
+            [Bind(Include = "PhotoDescription,AlbumId,IsOnPortfolio,IsAlbumCover,PhotoCategories,PhotoTitle,PhotoUrl")] AdminPhotoCreateVm photoCreateVm)
+        {
+            if (ModelState.IsValid)
+            {
+                PhotosDatabase.AddNewPhotoToDatabase(photoCreateVm);
+
+                return RedirectToAction("Index");
+            }
+            return View(photoCreateVm);
         }
 
         private int GetNumberOfPages(IEnumerable<AdminPhotoIndexVm> query)

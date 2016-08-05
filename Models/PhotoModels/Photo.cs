@@ -42,5 +42,7 @@ namespace NivesBrelihPhotography.Models.PhotoModels
 
         public virtual ICollection<Comment> Comments { get; set; } //all comments
 
+        public virtual ICollection<PhotoCategory> Categories  { get; set; } //all categories
+
     }
 }

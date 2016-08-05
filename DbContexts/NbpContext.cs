@@ -67,5 +67,6 @@ namespace NivesBrelihPhotography.DbContexts
             base.OnModelCreating(modelBuilder);
         }
         #endregion
+
     }
 }

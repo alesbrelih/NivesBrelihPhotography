@@ -39,13 +39,16 @@
         color: #eb6864;
         font-weight: bold;
     }
+    .table-header {
+        background-color: #eee;
+    }
 </style>
 <p>
     @Html.ActionLink("Upload More", "Create")
 </p>
-<div id="photos-container">
+<div>
     <table class="table photos-table">
-        <tr>
+        <tr class="table-header">
             <th>
                 @Html.DisplayNameFor(model => model.PhotoUrl)
             </th>
@@ -72,9 +75,9 @@
 
             <th></th>
         </tr>
-
-        @Html.Partial("_photoAdminIndexList", Model)
-
+        <tbody id="photos-container">
+            @Html.Partial("_photoAdminIndexList", Model)
+        </tbody>
     </table>
 </div>
 @if (ViewBag.NumberOfPages > 0)
@@ -84,7 +87,7 @@
             <li class="previous-page">Previous</li>
             @for (int i = 1; i <= ViewBag.NumberOfPages; i++)
             {
-                if (i == 5)
+                if (i == ViewBag.CurrentPage)
                 {
                     <li class="active-page">
                         @i
@@ -116,7 +119,7 @@
                     } else {
                         $(".data-tr").remove();
 
-                        $(".photos-table").append(data);
+                        $("#photos-container").append(data);
 
                         $(".active-page").removeClass("active-page");
                         $("li:contains(" + pageNumber + ")").addClass("active-page");
@@ -141,8 +144,9 @@
 
                     } else {
 
-                        //load next page
-                        //TODO:implement next page call
+                        var num = $(".active-page").prev("li").text();
+                        loadSelectedPageIntoDom(num);
+
                     }
                 }
                     //click on next page
@@ -156,13 +160,15 @@
 
                     } else {
 
-                        //TODO:implement previous page
+                        var num = $(".active-page").next("li").text();
+                        loadSelectedPageIntoDom(num);
                     }
                 } else { //clicked on number
                     if ($(this).is(".active-page")) {
 
                         //already located on this page
                         return;
+
                     } else {
 
                         loadSelectedPageIntoDom($(this).text());

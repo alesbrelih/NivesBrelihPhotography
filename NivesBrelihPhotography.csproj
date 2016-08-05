@@ -182,6 +182,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HelperClasses\CultureHelper.cs" />
+    <Compile Include="HelperClasses\DatabaseCommunication\AlbumsDatabase.cs" />
+    <Compile Include="HelperClasses\DatabaseCommunication\CategoriesDatabase.cs" />
     <Compile Include="HelperClasses\DatabaseCommunication\PhotosDatabase.cs" />
     <Compile Include="HelperClasses\HelperMethods.cs" />
     <Compile Include="Migrations\201512271112412_InitialCreate.cs" />
@@ -257,6 +259,7 @@
     <Compile Include="Models\BlogModels\ViewModels\BlogView.cs" />
     <Compile Include="Models\BlogModels\ViewModels\Detail\BlogDetailsView.cs" />
     <Compile Include="Models\BlogModels\ViewModels\Index\BlogIndexView.cs" />
+    <Compile Include="Models\CategoryModels\Admin ViewModels\AdminCategoryVm.cs" />
     <Compile Include="Models\CategoryModels\Category.cs" />
     <Compile Include="Models\CommentModels\Comment.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -264,6 +267,7 @@
     <Compile Include="Models\PhotoModels\Photo.cs" />
     <Compile Include="Models\PhotoModels\PhotoAlbum.cs" />
     <Compile Include="Models\PhotoModels\PhotoCategory.cs" />
+    <Compile Include="Models\PhotoModels\ViewModels\Admin ViewModels\AdminPhotoCreateVm.cs" />
     <Compile Include="Models\PhotoModels\ViewModels\Admin ViewModels\AdminPhotoIndexVm.cs" />
     <Compile Include="Models\PhotoModels\ViewModels\AlbumAndPhotosView.cs" />
     <Compile Include="Models\PhotoModels\ViewModels\AlbumView.cs" />
@@ -458,6 +462,7 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\PhotoAdmin\Index.cshtml" />
     <Content Include="Views\PhotoAdmin\_photoAdminIndexList.cshtml" />
+    <Content Include="Views\PhotoAdmin\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

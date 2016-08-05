@@ -121,7 +121,12 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
                     
             }
             return new List<AdminPhotoIndexVm>();
-        } 
+        }
 
+        //adds adminphotocreate vm to db and converts it before
+        public static void AddNewPhotoToDatabase(AdminPhotoCreateVm photoCreateVm)
+        {
+            var photo = AdminPhotoCreateVm.CovertToDbModel(photoCreateVm);
+        }
     }
 }
