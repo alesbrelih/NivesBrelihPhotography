@@ -1,0 +1,12 @@
+﻿@model List<NivesBrelihPhotography.Models.CategoryModels.Admin_ViewModels.AdminCategoryVm>
+
+@for (var i = 0; i < Model.Count(); i++)
+{
+    <label class="checkbox">
+        @Html.HiddenFor(model => Model[i].CategoryId)
+        @Html.EditorFor(model => Model[i].Checked)
+        @Html.DisplayFor(model => Model[i].CategoryName)
+        @Html.HiddenFor(model => Model[i].CategoryName)
+    </label>
+}
+

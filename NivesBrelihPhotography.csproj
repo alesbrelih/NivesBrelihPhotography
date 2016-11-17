@@ -178,6 +178,7 @@
     <Compile Include="Controllers\PhotoAdminController.cs" />
     <Compile Include="Controllers\PhotosController.cs" />
     <Compile Include="DbContexts\NbpContext.cs" />
+    <Compile Include="Enums\DbResults.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -186,6 +187,7 @@
     <Compile Include="HelperClasses\DatabaseCommunication\CategoriesDatabase.cs" />
     <Compile Include="HelperClasses\DatabaseCommunication\PhotosDatabase.cs" />
     <Compile Include="HelperClasses\HelperMethods.cs" />
+    <Compile Include="HelperClasses\HttpPostedFileBaseExtensions.cs" />
     <Compile Include="Migrations\201512271112412_InitialCreate.cs" />
     <Compile Include="Migrations\201512271112412_InitialCreate.Designer.cs">
       <DependentUpon>201512271112412_InitialCreate.cs</DependentUpon>
@@ -268,6 +270,8 @@
     <Compile Include="Models\PhotoModels\PhotoAlbum.cs" />
     <Compile Include="Models\PhotoModels\PhotoCategory.cs" />
     <Compile Include="Models\PhotoModels\ViewModels\Admin ViewModels\AdminPhotoCreateVm.cs" />
+    <Compile Include="Models\PhotoModels\ViewModels\Admin ViewModels\AdminPhotoDeleteVm.cs" />
+    <Compile Include="Models\PhotoModels\ViewModels\Admin ViewModels\AdminPhotoDetailsVm.cs" />
     <Compile Include="Models\PhotoModels\ViewModels\Admin ViewModels\AdminPhotoIndexVm.cs" />
     <Compile Include="Models\PhotoModels\ViewModels\AlbumAndPhotosView.cs" />
     <Compile Include="Models\PhotoModels\ViewModels\AlbumView.cs" />
@@ -325,6 +329,7 @@
     <Content Include="Content\ImgDescriptions_Styles\cover-descriptions-containers.css" />
     <Content Include="Content\ImgDescriptions_Styles\photo-cover-descriptions.css" />
     <Content Include="Content\photos-index.css" />
+    <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\Custom Fonts\Raleway\OFL.txt" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -356,6 +361,19 @@
     <Content Include="fonts\Custom Fonts\Jura\Jura-Medium.otf" />
     <Content Include="fonts\Custom Fonts\Jura\Jura-Regular.otf" />
     <Content Include="fonts\Custom Fonts\jane_austen\JaneAusU.ttf" />
+    <Content Include="Scripts\angular-animate.js" />
+    <Content Include="Scripts\angular-animate.min.js" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-ui-router.js" />
+    <Content Include="Scripts\angular-ui-router.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Scripts\angular-animate.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Images\Photos\Thumbnail_Test\nbPic4.jpg" />
     <Content Include="Images\Photos\Thumbnail_Test\nbPic5.jpg" />
@@ -463,6 +481,9 @@
     <Content Include="Views\PhotoAdmin\Index.cshtml" />
     <Content Include="Views\PhotoAdmin\_photoAdminIndexList.cshtml" />
     <Content Include="Views\PhotoAdmin\Add.cshtml" />
+    <Content Include="Views\PhotoAdmin\_photoAdminAddCategories.cshtml" />
+    <Content Include="Views\PhotoAdmin\Remove.cshtml" />
+    <Content Include="Views\PhotoAdmin\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

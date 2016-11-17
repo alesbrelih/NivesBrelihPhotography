@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using NivesBrelihPhotography.DbContexts;
+using WebGrease.Css.Extensions;
 
 namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
 {
@@ -16,10 +17,11 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
         public static SelectList ReturnAlbumsForSelectList()
         {
             //selectlist items from db
-            var selectListItems =
-                _db.PhotoAlbums.OrderBy(x => x.AlbumName)
-                    .Select(x => new SelectListItem() {Text = x.AlbumName, Value = x.PhotoAlbumId.ToString()})
-                    .ToList();
+            var selectListItems = new List<SelectListItem>() {new SelectListItem() {Text = "", Value = "-1"}};
+
+            _db.PhotoAlbums.OrderBy(x => x.AlbumName).ForEach(x=>selectListItems.Add(new SelectListItem() {Text = x.AlbumName,Value = x.PhotoAlbumId.ToString()}));
+
+
 
             //selectlist items in list
             var selectList = new SelectList(selectListItems,"Value","Text");

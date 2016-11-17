@@ -1,0 +1,81 @@
+﻿@model NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels.AdminPhotoDetailsVm
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    dd ul {
+        padding-left: 0 !important;
+        list-style-type: none !important;
+    }
+    dd img {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+</style>
+<h2>Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PhotoTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhotoTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhotoDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhotoDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhotoUrl)
+        </dt>
+
+        <dd>
+            <img src="@Model.PhotoUrl" class="img-responsive"/>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Categories)
+        </dt>
+        <dd>
+            <ul>
+                @foreach (var category in Model.Categories)
+                {
+                    <li>@category.CategoryName</li>
+                }
+            </ul>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OnPortfolio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OnPortfolio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AlbumName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlbumName)
+        </dd>
+
+
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

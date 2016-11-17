@@ -1,0 +1,73 @@
+﻿@model NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels.AdminPhotoDeleteVm
+
+@{
+    ViewBag.Title = "Remove";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .img-container {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+</style>
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PhotoTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhotoTitle)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PhotoDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhotoDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhotoUrl)
+        </dt>
+
+        <dd>
+            <div class="img-container"><img src="@Model.PhotoUrl" class="img-responsive" /></div>
+           
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsOnPortfolio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsOnPortfolio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AlbumName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlbumName)
+        </dd>
+
+        
+
+        
+
+
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

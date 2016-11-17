@@ -16,6 +16,7 @@ namespace NivesBrelihPhotography.Models.PhotoModels.ViewModels
 
         //photo title
         [Display(Name = "Photo Title")]
+        [Required(ErrorMessage = "Write photo title.")]
         public string PhotoTitle { get; set; }
     }
 }

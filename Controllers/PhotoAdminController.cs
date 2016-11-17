@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using NivesBrelihPhotography.DbContexts;
+using NivesBrelihPhotography.Enums;
 using NivesBrelihPhotography.HelperClasses.DatabaseCommunication;
 using NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels;
+using WebGrease.Css.Extensions;
 
 namespace NivesBrelihPhotography.Controllers
 {
@@ -28,7 +31,7 @@ namespace NivesBrelihPhotography.Controllers
             ViewBag.CurrentPage = page;
             if (Request.IsAjaxRequest())
             {
-                var query = PhotosDatabase.ReturnPhotosForAdminPhotoIndex(_orderBy, _orderType, page - 1, _pageSize);
+                var query = PhotosDatabase.ReturnPhotosForAdminPhotoIndex(_orderBy, _orderType, page - 1, _pageSize,_db);
                 return PartialView("_photoAdminIndexList",query);
             }
 
@@ -44,7 +47,7 @@ namespace NivesBrelihPhotography.Controllers
                     _orderBy = orderBy;
                 }
                
-                var query = PhotosDatabase.ReturnPhotosForAdminPhotoIndex(_orderBy,_orderType,page,_pageSize);
+                var query = PhotosDatabase.ReturnPhotosForAdminPhotoIndex(_orderBy,_orderType,page-1,_pageSize,_db);
 
                 ViewBag.NumberOfPages = GetNumberOfPages(query);
                 return View(query);
@@ -84,17 +87,118 @@ namespace NivesBrelihPhotography.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Add(
-            [Bind(Include = "PhotoDescription,AlbumId,IsOnPortfolio,IsAlbumCover,PhotoCategories,PhotoTitle,PhotoUrl")] AdminPhotoCreateVm photoCreateVm)
+            [Bind(Include = "PhotoDescription,AlbumId,PhotoFile,IsOnPortfolio,IsAlbumCover,PhotoCategories,PhotoTitle,PhotoUrl")] AdminPhotoCreateVm photoCreateVm)
         {
+            //check if user selected any of the categories (1 is needed)
+            var numberOfCategories = photoCreateVm.PhotoCategories.Count(x => x.Checked);
+            if (numberOfCategories == 0)
+            {
+                //return view with error that categories needs to be checked
+                ModelState.AddModelError(string.Empty,"Please select atelast one category for the picture");
+                return View(photoCreateVm);
+            }
+
+
             if (ModelState.IsValid)
             {
-                PhotosDatabase.AddNewPhotoToDatabase(photoCreateVm);
+                var result = PhotosDatabase.AddNewPhotoToDatabase(photoCreateVm,_db);
 
-                return RedirectToAction("Index");
+                if (result == DbResults.PhotoDb.OtherFailure)
+                {
+                    ModelState.AddModelError(string.Empty, "Other failure with database saving / connection. Please try later.");                
+                    return View(photoCreateVm);
+                }
+
+                if (result == DbResults.PhotoDb.FileIsNotImage)
+                {
+                    ModelState.AddModelError(string.Empty, "Selected file is not an image file.");
+                    return View(photoCreateVm);
+                }
+
+                if (result == DbResults.PhotoDb.NameAlreadyExist)
+                {
+                    ModelState.AddModelError(string.Empty, "Selected image with same name already exist in database.");
+                    return View(photoCreateVm);
+                }
+
+                if (result == DbResults.PhotoDb.Success)
+                {
+                    return RedirectToAction("Index");
+                }
             }
             return View(photoCreateVm);
         }
 
+
+        //GET: Details
+        [HttpGet]
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var photo = _db.Photos.Find(id);
+
+            var photoVm = new AdminPhotoDetailsVm(photo);
+
+            return View(photoVm);
+        }
+
+
+        //GET: Edit
+        [HttpGet]
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            return View();
+        }
+
+
+        //GET: Remove
+        [HttpGet]
+        public ActionResult Remove(int? id)
+        {
+            var photoDb = _db.Photos.Find(id);
+
+            var photoVm = AdminPhotoDeleteVm.CreateAdminPhotoDeleteVm(photoDb);
+
+            return View(photoVm);
+        }
+
+        //POST: Remove
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Remove(int id)
+        {
+
+            try
+            {
+                var photo = _db.Photos.Find(id);
+                _db.Photos.Remove(photo);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Remove", new {id = id});
+            }
+            
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (_db != null)
+            {
+                _db.Dispose();
+                _db = null;
+            }
+        }
+
+        //gets number of pages for index page - needs page ceiling
         private int GetNumberOfPages(IEnumerable<AdminPhotoIndexVm> query)
         {
             return (int)Math.Ceiling((double)_db.Photos.Count() / _pageSize);
