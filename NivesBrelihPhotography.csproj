@@ -52,12 +52,24 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -167,6 +179,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
@@ -176,6 +189,7 @@
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PhotoAdminController.cs" />
+    <Compile Include="Controllers\Api\PhotosApiController.cs" />
     <Compile Include="Controllers\PhotosController.cs" />
     <Compile Include="DbContexts\NbpContext.cs" />
     <Compile Include="Enums\DbResults.cs" />
@@ -361,6 +375,12 @@
     <Content Include="fonts\Custom Fonts\Jura\Jura-Medium.otf" />
     <Content Include="fonts\Custom Fonts\Jura\Jura-Regular.otf" />
     <Content Include="fonts\Custom Fonts\jane_austen\JaneAusU.ttf" />
+    <Content Include="Scripts\Admin_Angular\app.js" />
+    <Content Include="Scripts\Admin_Angular\components\admin-photos\admin.photos.component.js" />
+    <Content Include="Scripts\Admin_Angular\services\PhotosService\photos.service.js" />
+    <Content Include="Scripts\Admin_Angular\templates\components\admin-photos\admin.photos.component.html" />
+    <Content Include="Scripts\Admin_Angular\templates\components\admin-view\admin.view.component.html" />
+    <Content Include="Scripts\Admin_Angular\routes\app-states.js" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-mocks.js" />
@@ -374,6 +394,7 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
+    <Content Include="Scripts\Admin_Angular\components\admin-view\admin.view.component.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Images\Photos\Thumbnail_Test\nbPic4.jpg" />
     <Content Include="Images\Photos\Thumbnail_Test\nbPic5.jpg" />

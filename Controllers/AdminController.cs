@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace NivesBrelihPhotography.Controllers
 {
+    [Authorize]
     public class AdminController : BaseController
     {
         // GET: Admin

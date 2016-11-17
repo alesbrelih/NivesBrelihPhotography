@@ -1,0 +1,83 @@
+﻿<br />
+
+<div class="row" id="admin-photos-index">
+    
+    <a ui-sref="photos.add" class="pull-right">
+        <i class="glyphicon glyphicon-plus"></i>
+    </a>
+
+    <table class="table">
+
+        <thead>
+        <tr>
+            <th>Img Preview</th>
+            <th>Title</th>
+            <th>Album</th>
+            <th>On Portfolio</th>
+            <th>Date Uploaded</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody class="admin-photos">
+        <tr ng-repeat="photo in vm.Photos">
+            <td class="photo-preview">
+                <img class="img-responsive" ng-src="{{photo.PhotoUrl}}"/>
+            </td>
+            <td>
+                {{photo.PhotoTitle}}
+            </td>
+            <td>
+
+                {{photo.Album}}
+            </td>
+            <td>
+                {{photo.OnPortfolio}}
+            </td>
+            <td>
+                {{photo.UploadedString}}
+            </td>
+
+            <td class="action-btns">
+                <button type="button" class="btn btn-info">Edit</button>
+                <button type="button" class="btn btn-danger">Delete</button>
+
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
+
+<style>
+    
+    /*responsive image*/
+     .photo-preview {
+         max-width: 100px;
+     }
+
+    /*th*/
+    th, td {
+        text-align: center !important;
+    }
+
+    /*table data*/
+    td {
+        vertical-align: middle !important;
+    }
+
+    /*extra margin for photo actions*/
+    .admin-photos .action-btns button {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    /*add new photo link*/
+    #admin-photos-index>a {
+        text-align: right;
+        font-size: 1.4em;
+        margin-top: 10px;
+        margin-right: 20px;
+        cursor: pointer;
+    }
+</style>

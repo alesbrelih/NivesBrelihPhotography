@@ -6,32 +6,19 @@
 @section CustomStyles
 {
     @Styles.Render("~/Content/admin-index-styles")
+    
 }
-
-<h3>Admin</h3>
-<hr/>
-
-<div class="row">
-    <div class="col-xs-12 col-md-6 col-lg-4 admin-controller-selector">
-        <span class="admin-selector-text">
-            @NivesBrelihPhotography.Resources.Admin.AdminText.Photos
-        </span>
-    </div>
-    <div class="col-xs-12 col-md-6 col-lg-4 admin-controller-selector">
-        <span class="admin-selector-text">
-            @NivesBrelihPhotography.Resources.Admin.AdminText.Albums
-        </span>
-    </div>
-    <div class="col-xs-12 col-md-6 col-lg-4 admin-controller-selector">
-        <span class="admin-selector-text">
-            @NivesBrelihPhotography.Resources.Admin.AdminText.Blogs
-        </span>
-    </div>
-    <div class="col-xs-12 col-md-6 col-lg-4 admin-controller-selector">
-        <span class="admin-selector-text">
-            @NivesBrelihPhotography.Resources.Admin.AdminText.About
-        </span>
-    </div>
-
+<div class="angular-app" ng-app="adminApp" ui-view>
+    
+    <h4>{{1+1}}</h4>
 
 </div>
+
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/angular-dependencies");
+
+    @Scripts.Render("~/bundles/angular-scripts");
+
+}

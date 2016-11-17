@@ -1,12 +1,21 @@
-﻿.admin-controller-selector {
+﻿.angular-app {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+
+.admin-controller-selector {
         
         /*block styling - container of clickables*/
         min-height: 250px;
-        border: 3px solid #eee;
+    border: 3px solid #eee;
         border-radius: 5px;
         cursor: pointer;
         padding: 2px;
-        color: #eb6864;
+        color: #777;
+    /*background-color: #eeeeee;*/
+    font-weight: bolder;
 
         /*transition for every change on hover*/
         -webkit-transition: all 0.2s ease;
@@ -20,13 +29,16 @@
     .admin-controller-selector:hover {
 
         /*bg color*/
-        background-color: #eee;
+        /*background-color: #eee;*/
+        background-color: white;
         /*border color*/
-        border-color: #777;
+        /*border-color: #777;*/
+        border-color: #eb6864;
+        color:#eb6864;
 
         /*font styles*/
         font-size: 1.3em;
-        font-weight: bolder;
+        /*font-weight: bolder;*/
 
     }
     .admin-selector-text {

@@ -120,6 +120,37 @@ namespace NivesBrelihPhotography
             bundles.Add(new StyleBundle("~/Content/admin-index-styles").Include(
                 "~/Content/Admin_Section/admin-index.css"
                 ));
+
+
+
+
+            // ------ ANGULAR BASE BUNDLES ------- //
+
+            
+            //dependencies
+            bundles.Add(new ScriptBundle("~/bundles/angular-dependencies").Include(
+                "~/Scripts/angular.js",
+                "~/Scripts/angular-ui-router.js",
+                "~/Scripts/angular-animate.js",
+                "~/Scripts/angular-ui/ui-bootstrap.js",
+                "~/Scripts/angular-ui/ui-bootstrap-tpls.js"
+                ));
+
+            //styles
+            bundles.Add(new StyleBundle("~/Content/angular-styles").Include(
+                "~/Content/ui-bootstrap-csp.css"
+                ));
+
+
+
+            // --------- ANGULAR SCRIPTS ------------ //
+
+            //scripts
+
+            bundles.Add(new ScriptBundle("~/bundles/angular-scripts").IncludeDirectory(
+                "~/Scripts/Admin_Angular/",
+                "*.js",true         
+                ));
         }
     }
 }

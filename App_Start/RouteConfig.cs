@@ -12,6 +12,7 @@ namespace NivesBrelihPhotography
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.IgnoreRoute("Scripts/Admin_Angular/templates/");
 
             routes.MapRoute(
                 name: "Default",

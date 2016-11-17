@@ -31,7 +31,7 @@ namespace NivesBrelihPhotography.Controllers
             ViewBag.CurrentPage = page;
             if (Request.IsAjaxRequest())
             {
-                var query = PhotosDatabase.ReturnPhotosForAdminPhotoIndex(_orderBy, _orderType, page - 1, _pageSize,_db);
+                var query = PhotosDatabase.ReturnPhotosForAdminPhotoIndex( page - 1, _pageSize,_db);
                 return PartialView("_photoAdminIndexList",query);
             }
 
@@ -47,7 +47,7 @@ namespace NivesBrelihPhotography.Controllers
                     _orderBy = orderBy;
                 }
                
-                var query = PhotosDatabase.ReturnPhotosForAdminPhotoIndex(_orderBy,_orderType,page-1,_pageSize,_db);
+                var query = PhotosDatabase.ReturnPhotosForAdminPhotoIndex(page-1,_pageSize,_db);
 
                 ViewBag.NumberOfPages = GetNumberOfPages(query);
                 return View(query);
@@ -196,6 +196,7 @@ namespace NivesBrelihPhotography.Controllers
                 _db.Dispose();
                 _db = null;
             }
+            base.Dispose(disposing);
         }
 
         //gets number of pages for index page - needs page ceiling

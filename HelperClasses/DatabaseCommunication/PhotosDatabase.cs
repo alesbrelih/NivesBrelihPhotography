@@ -17,115 +17,140 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
     public class PhotosDatabase
     {
 
-        public static IEnumerable<AdminPhotoIndexVm> ReturnPhotosForAdminPhotoIndex(int orderBy, bool ascending,int page, int pagesize,NbpContext _db)
+        public static IEnumerable<AdminPhotoIndexVm> ReturnPhotosForAdminPhotoIndex(int page, int pagesize,NbpContext _db)
         {
 
-            switch (orderBy)
+            try
             {
+                var photos = _db.Photos.OrderBy(x=>x.Uploaded).Skip(page*pagesize).Take(pagesize).Select(x=>new AdminPhotoIndexVm()
+                {
+                    PhotoTitle = x.PhotoTitle,
+                    Album = x.PhotoAlbum.AlbumName,
+                    OnPortfolio = x.IsOnFrontPage,
+                    PhotoId = x.PhotoId,
+                    PhotoUrl = x.PhotoUrl,
+                    Uploaded = x.Uploaded
+                }).ToList();
 
-                case 1:
-                    if (ascending)
-                    {
-                        return _db.Photos.OrderBy(x => x.PhotoTitle).Skip(page*pagesize).Take(pagesize).Select(x => new AdminPhotoIndexVm()
-                        {
-                            PhotoTitle = x.PhotoTitle,
-                            Album = x.PhotoAlbum.AlbumName,
-                            OnPortfolio = x.IsOnFrontPage,
-                            PhotoId = x.PhotoId,
-                            PhotoUrl = x.PhotoUrl,
-                            Uploaded = x.Uploaded
-                        }).ToList();
-                    }
-                    else
-                    {
-                        return _db.Photos.OrderByDescending(x => x.PhotoTitle).Skip(page * pagesize).Take(pagesize).Select(x => new AdminPhotoIndexVm()
-                        {
-                            PhotoTitle = x.PhotoTitle,
-                            Album = x.PhotoAlbum.AlbumName,
-                            OnPortfolio = x.IsOnFrontPage,
-                            PhotoId = x.PhotoId,
-                            PhotoUrl = x.PhotoUrl,
-                            Uploaded = x.Uploaded
-                        }).ToList();
-                    }
-                case 2:
-                    if (ascending)
-                    {
-                        return _db.Photos.OrderBy(x => x.PhotoAlbum.AlbumName).Skip(page * pagesize).Take(pagesize).Select(x => new AdminPhotoIndexVm()
-                        {
-                            PhotoTitle = x.PhotoTitle,
-                            Album = x.PhotoAlbum.AlbumName,
-                            OnPortfolio = x.IsOnFrontPage,
-                            PhotoId = x.PhotoId,
-                            PhotoUrl = x.PhotoUrl,
-                            Uploaded = x.Uploaded
-                        }).ToList();
-                    }
-                    else
-                    {
-                        return _db.Photos.OrderByDescending(x => x.PhotoAlbum.AlbumName).Skip(page * pagesize).Take(pagesize).Select(x => new AdminPhotoIndexVm()
-                        {
-                            PhotoTitle = x.PhotoTitle,
-                            Album = x.PhotoAlbum.AlbumName,
-                            OnPortfolio = x.IsOnFrontPage,
-                            PhotoId = x.PhotoId,
-                            PhotoUrl = x.PhotoUrl,
-                            Uploaded = x.Uploaded
-                        }).ToList();
-                    }
-                case 3:
-                    if (ascending)
-                    {
-                        return _db.Photos.OrderBy(x => x.IsOnFrontPage).Skip(page * pagesize).Take(pagesize).Select(x => new AdminPhotoIndexVm()
-                        {
-                            PhotoTitle = x.PhotoTitle,
-                            Album = x.PhotoAlbum.AlbumName,
-                            OnPortfolio = x.IsOnFrontPage,
-                            PhotoId = x.PhotoId,
-                            PhotoUrl = x.PhotoUrl,
-                            Uploaded = x.Uploaded
-                        }).ToList();
-                    }
-                    else
-                    {
-                        return _db.Photos.OrderByDescending(x => x.IsOnFrontPage).Skip(page * pagesize).Take(pagesize).Select(x => new AdminPhotoIndexVm()
-                        {
-                            PhotoTitle = x.PhotoTitle,
-                            Album = x.PhotoAlbum.AlbumName,
-                            OnPortfolio = x.IsOnFrontPage,
-                            PhotoId = x.PhotoId,
-                            PhotoUrl = x.PhotoUrl,
-                            Uploaded = x.Uploaded
-                        }).ToList();
-                    }
-                case 4:
-                    if (ascending)
-                    {
-                        return _db.Photos.OrderBy(x => x.Uploaded).Skip(page * pagesize).Take(pagesize).Select(x => new AdminPhotoIndexVm()
-                        {
-                            PhotoTitle = x.PhotoTitle,
-                            Album = x.PhotoAlbum.AlbumName,
-                            OnPortfolio = x.IsOnFrontPage,
-                            PhotoId = x.PhotoId,
-                            PhotoUrl = x.PhotoUrl,
-                            Uploaded = x.Uploaded
-                        }).ToList();
-                    }
-                    else
-                    {
-                        return _db.Photos.OrderByDescending(x => x.Uploaded).Skip(page * pagesize).Take(pagesize).Select(x => new AdminPhotoIndexVm()
-                        {
-                            PhotoTitle = x.PhotoTitle,
-                            Album = x.PhotoAlbum.AlbumName,
-                            OnPortfolio = x.IsOnFrontPage,
-                            PhotoId = x.PhotoId,
-                            PhotoUrl = x.PhotoUrl,
-                            Uploaded = x.Uploaded
-                        }).ToList();
-                    }
-                    
+                if (!photos.Any())
+                {
+                    throw new Exception("No more photos");
+                }
+
+                return photos;
             }
-            return new List<AdminPhotoIndexVm>();
+            catch (Exception err)
+            {
+                //throw err if any errors
+                throw new Exception(err.Message);
+            }
+
+            //switch (orderBy)
+            //{
+
+            //    case 1:
+            //        if (ascending)
+            //        {
+            //            return _db.Photos.OrderBy(x => x.PhotoTitle).Skip(page*pagesize).Take(pagesize).Select(x => new AdminPhotoIndexVm()
+            //            {
+            //                PhotoTitle = x.PhotoTitle,
+            //                Album = x.PhotoAlbum.AlbumName,
+            //                OnPortfolio = x.IsOnFrontPage,
+            //                PhotoId = x.PhotoId,
+            //                PhotoUrl = x.PhotoUrl,
+            //                Uploaded = x.Uploaded
+            //            }).ToList();
+            //        }
+            //        else
+            //        {
+            //            return _db.Photos.OrderByDescending(x => x.PhotoTitle).Skip(page * pagesize).Take(pagesize).Select(x => new AdminPhotoIndexVm()
+            //            {
+            //                PhotoTitle = x.PhotoTitle,
+            //                Album = x.PhotoAlbum.AlbumName,
+            //                OnPortfolio = x.IsOnFrontPage,
+            //                PhotoId = x.PhotoId,
+            //                PhotoUrl = x.PhotoUrl,
+            //                Uploaded = x.Uploaded
+            //            }).ToList();
+            //        }
+            //    case 2:
+            //        if (ascending)
+            //        {
+            //            return _db.Photos.OrderBy(x => x.PhotoAlbum.AlbumName).Skip(page * pagesize).Take(pagesize).Select(x => new AdminPhotoIndexVm()
+            //            {
+            //                PhotoTitle = x.PhotoTitle,
+            //                Album = x.PhotoAlbum.AlbumName,
+            //                OnPortfolio = x.IsOnFrontPage,
+            //                PhotoId = x.PhotoId,
+            //                PhotoUrl = x.PhotoUrl,
+            //                Uploaded = x.Uploaded
+            //            }).ToList();
+            //        }
+            //        else
+            //        {
+            //            return _db.Photos.OrderByDescending(x => x.PhotoAlbum.AlbumName).Skip(page * pagesize).Take(pagesize).Select(x => new AdminPhotoIndexVm()
+            //            {
+            //                PhotoTitle = x.PhotoTitle,
+            //                Album = x.PhotoAlbum.AlbumName,
+            //                OnPortfolio = x.IsOnFrontPage,
+            //                PhotoId = x.PhotoId,
+            //                PhotoUrl = x.PhotoUrl,
+            //                Uploaded = x.Uploaded
+            //            }).ToList();
+            //        }
+            //    case 3:
+            //        if (ascending)
+            //        {
+            //            return _db.Photos.OrderBy(x => x.IsOnFrontPage).Skip(page * pagesize).Take(pagesize).Select(x => new AdminPhotoIndexVm()
+            //            {
+            //                PhotoTitle = x.PhotoTitle,
+            //                Album = x.PhotoAlbum.AlbumName,
+            //                OnPortfolio = x.IsOnFrontPage,
+            //                PhotoId = x.PhotoId,
+            //                PhotoUrl = x.PhotoUrl,
+            //                Uploaded = x.Uploaded
+            //            }).ToList();
+            //        }
+            //        else
+            //        {
+            //            return _db.Photos.OrderByDescending(x => x.IsOnFrontPage).Skip(page * pagesize).Take(pagesize).Select(x => new AdminPhotoIndexVm()
+            //            {
+            //                PhotoTitle = x.PhotoTitle,
+            //                Album = x.PhotoAlbum.AlbumName,
+            //                OnPortfolio = x.IsOnFrontPage,
+            //                PhotoId = x.PhotoId,
+            //                PhotoUrl = x.PhotoUrl,
+            //                Uploaded = x.Uploaded
+            //            }).ToList();
+            //        }
+            //    case 4:
+            //        if (ascending)
+            //        {
+            //            return _db.Photos.OrderBy(x => x.Uploaded).Skip(page * pagesize).Take(pagesize).Select(x => new AdminPhotoIndexVm()
+            //            {
+            //                PhotoTitle = x.PhotoTitle,
+            //                Album = x.PhotoAlbum.AlbumName,
+            //                OnPortfolio = x.IsOnFrontPage,
+            //                PhotoId = x.PhotoId,
+            //                PhotoUrl = x.PhotoUrl,
+            //                Uploaded = x.Uploaded
+            //            }).ToList();
+            //        }
+            //        else
+            //        {
+            //            return _db.Photos.OrderByDescending(x => x.Uploaded).Skip(page * pagesize).Take(pagesize).Select(x => new AdminPhotoIndexVm()
+            //            {
+            //                PhotoTitle = x.PhotoTitle,
+            //                Album = x.PhotoAlbum.AlbumName,
+            //                OnPortfolio = x.IsOnFrontPage,
+            //                PhotoId = x.PhotoId,
+            //                PhotoUrl = x.PhotoUrl,
+            //                Uploaded = x.Uploaded
+            //            }).ToList();
+            //        }
+
+            //}
+            //return new List<AdminPhotoIndexVm>();
         }
 
         //adds adminphotocreate vm to db and converts it before
