@@ -1,11 +1,17 @@
 ﻿<br />
 
 <div class="row" id="admin-photos-index">
-    
+
     <a ui-sref="photos.add" class="pull-right">
         <i class="glyphicon glyphicon-plus"></i>
     </a>
 
+    <div class="search-bar">
+        <i class="glyphicon glyphicon-search"></i>
+        <input type="text" ng-model="vm.searchText" placeholder="Search"/>
+
+    </div>
+    <br />
     <table class="table">
 
         <thead>
@@ -13,13 +19,13 @@
             <th>Img Preview</th>
             <th>Title</th>
             <th>Album</th>
-            <th>On Portfolio</th>
-            <th>Date Uploaded</th>
+            <th class="hidden-xs">On Portfolio</th>
+            <th class="hidden-xs">Date Uploaded</th>
             <th></th>
         </tr>
         </thead>
         <tbody class="admin-photos">
-        <tr ng-repeat="photo in vm.Photos">
+        <tr ng-repeat="photo in vm.Photos | limitTo:vm.pageSize">
             <td class="photo-preview">
                 <img class="img-responsive" ng-src="{{photo.PhotoUrl}}"/>
             </td>
@@ -30,26 +36,58 @@
 
                 {{photo.Album}}
             </td>
-            <td>
+            <td class="hidden-xs">
                 {{photo.OnPortfolio}}
             </td>
-            <td>
+            <td class="hidden-xs">
                 {{photo.UploadedString}}
             </td>
 
             <td class="action-btns">
-                <button type="button" class="btn btn-info">Edit</button>
-                <button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-warning">Edit</button>
+                <button type="button" class="btn btn-danger" ng-click="vm.deletePhoto(photo)">Delete</button>
 
             </td>
         </tr>
         </tbody>
 
+
     </table>
+    <div class="admin-photos-pagination">
+        <button class="btn btn-info" ng-click="vm.previousPage()" ng-disabled="vm.currentPage == 1"> Previous </button>
+        <span>{{vm.currentPage}} / {{vm.allPages}}</span>
+        <button class="btn btn-info" ng-click="vm.nextPage()" ng-disabled="vm.currentPage == vm.allPages"> Next </button>
+    </div>
 
 </div>
 
 <style>
+
+    .search-bar {
+        display: block;
+        padding: 10px 10px;
+    }
+    .search-bar i {
+        color: #eb6864;
+        padding-right: 20px;
+    }
+    .search-bar input {
+        /*border-radius: 5px;*/
+        padding: 5px;
+        border: none;
+        border-bottom: 2px solid #eee;
+        outline: none;
+    }
+    
+    .admin-photos-pagination {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+    }
+    .admin-photos-pagination>span {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
     
     /*responsive image*/
      .photo-preview {

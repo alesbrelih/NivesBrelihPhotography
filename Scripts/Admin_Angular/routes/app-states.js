@@ -19,9 +19,9 @@
                     url: "/photos",
                     template: "<admin-photos></admin-photos>"
                 })
-                .state("photos.add", {
-                    url: "/add",
-                    template: "to be inserted"
+                .state("photos-add", {
+                    url: "/photos/add",
+                    template: "<admin-photos-add></admin-photos-add>"
                 })
                 .state("photos.edit", {
                     url: "/edit",

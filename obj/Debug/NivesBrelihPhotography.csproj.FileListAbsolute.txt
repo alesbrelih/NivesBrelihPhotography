@@ -168,3 +168,4 @@ C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPho
 C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\bin\System.Net.Http.Formatting.xml
 C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\bin\System.Web.Http.xml
 C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\bin\System.Web.Http.WebHost.xml
+C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotography.csprojResolveAssemblyReference.cache

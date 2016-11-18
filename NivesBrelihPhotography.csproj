@@ -376,8 +376,11 @@
     <Content Include="fonts\Custom Fonts\Jura\Jura-Regular.otf" />
     <Content Include="fonts\Custom Fonts\jane_austen\JaneAusU.ttf" />
     <Content Include="Scripts\Admin_Angular\app.js" />
+    <Content Include="Scripts\Admin_Angular\components\admin-photos\add\admin.photos.add.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-photos\admin.photos.component.js" />
+    <Content Include="Scripts\Admin_Angular\filters\ng_repeat\startswith.filter.js" />
     <Content Include="Scripts\Admin_Angular\services\PhotosService\photos.service.js" />
+    <Content Include="Scripts\Admin_Angular\templates\components\admin-photos\add\admin.photos.add.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-photos\admin.photos.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-view\admin.view.component.html" />
     <Content Include="Scripts\Admin_Angular\routes\app-states.js" />
@@ -508,6 +511,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\Admin_Angular\templates\components\modal-view\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Language\" />
   </ItemGroup>

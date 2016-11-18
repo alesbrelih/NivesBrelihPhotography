@@ -2,7 +2,7 @@
 (function angularModule(angular) {
 
     //register angular module
-    angular.module("adminApp", ["ui.router"]);
+    angular.module("adminApp", ["ngAnimate","ui.router","ui.bootstrap"]);
 
 
 })(window.angular);

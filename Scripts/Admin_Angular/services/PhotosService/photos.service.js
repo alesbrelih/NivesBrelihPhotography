@@ -35,14 +35,14 @@
 
 
         //gets photos list from api
-        photosFactory.GetPhotos = function (vm) {
+        photosFactory.GetPhotos = function (pageSize,cb) {
 
             //paging
             var _page = 0;
 
             //recursive function
             function getPhotosFromApi(page) {
-                $http.get("/api/photos", { params: { "page": page } }).then(function (success) {
+                $http.get("/api/photos", { params: { "page": page, "pagesize":pageSize } }).then(function (success) {
 
                     //add each returned item to list
                     success.data.forEach(function(el) {
@@ -52,13 +52,16 @@
                     //increase page
                     page = ++page;
 
+                    //if cb exists call it
+                    cb();
+
                     //recursive call untill end of list
 
                     getPhotosFromApi(page);
 
 
                 }, function (err) {
-
+                    console.log(_photos);
                     //no more items or err connecting to db
                     console.log(err);
                 });
