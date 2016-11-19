@@ -29,8 +29,18 @@
 
         //------- METHODS --------//
 
-        photosFactory.RemovePhoto = function() {
-            console.log("GONNA REMOVE THE PHOTO YO!");
+        //delete photo from DB and returns promise
+
+        photosFactory.RemovePhoto = function (photo) {
+            //calls api to delete selected photo
+            console.log("PHOTO SERVICE: ");
+            console.log(photo);
+            var promise = $http.delete("/api/photos", {
+                params: { "id": photo.PhotoId }
+            });
+
+            return promise;
+
         }
 
 
@@ -66,6 +76,7 @@
                     console.log(err);
                 });
             }
+
 
             //gets all photos from
             getPhotosFromApi(_page);

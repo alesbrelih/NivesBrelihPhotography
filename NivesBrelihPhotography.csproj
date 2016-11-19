@@ -331,6 +331,8 @@
     <Content Include="Content\Admin_Section\admin-index.css" />
     <Content Include="Content\AlbumPhotos_Section\album-photos-from-blog.css" />
     <Content Include="Content\AlbumPhotos_Section\album-photos.css" />
+    <Content Include="Content\angular-toastr.css" />
+    <Content Include="Content\angular-toastr.min.css" />
     <Content Include="Content\Blog_Section\blog-index.css" />
     <Content Include="Content\Blog_Section\blog-view.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -378,15 +380,21 @@
     <Content Include="Scripts\Admin_Angular\app.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-photos\add\admin.photos.add.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-photos\admin.photos.component.js" />
+    <Content Include="Scripts\Admin_Angular\components\modal-view\modal.view.component.js" />
     <Content Include="Scripts\Admin_Angular\filters\ng_repeat\startswith.filter.js" />
     <Content Include="Scripts\Admin_Angular\services\PhotosService\photos.service.js" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-photos\add\admin.photos.add.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-photos\admin.photos.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-view\admin.view.component.html" />
     <Content Include="Scripts\Admin_Angular\routes\app-states.js" />
+    <Content Include="Scripts\Admin_Angular\templates\components\modal-view\modal.view.component.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-toastr.js" />
+    <Content Include="Scripts\angular-toastr.min.js" />
+    <Content Include="Scripts\angular-toastr.tpls.js" />
+    <Content Include="Scripts\angular-toastr.tpls.min.js" />
     <Content Include="Scripts\angular-ui-router.js" />
     <Content Include="Scripts\angular-ui-router.min.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
@@ -511,7 +519,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\Admin_Angular\templates\components\modal-view\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Language\" />
   </ItemGroup>

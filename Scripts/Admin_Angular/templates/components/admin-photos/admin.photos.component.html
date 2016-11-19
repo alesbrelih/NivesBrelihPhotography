@@ -25,7 +25,7 @@
         </tr>
         </thead>
         <tbody class="admin-photos">
-        <tr ng-repeat="photo in vm.Photos | limitTo:vm.pageSize">
+        <tr ng-repeat="photo in vm.Photos | limitTo:vm.pageSize" class="animate">
             <td class="photo-preview">
                 <img class="img-responsive" ng-src="{{photo.PhotoUrl}}"/>
             </td>
@@ -62,6 +62,7 @@
 </div>
 
 <style>
+
 
     .search-bar {
         display: block;

@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.EnterpriseServices;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using NivesBrelihPhotography.DbContexts;
 using NivesBrelihPhotography.Enums;
+using NivesBrelihPhotography.Models.PhotoModels;
 using NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels;
 
 namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
@@ -198,6 +201,40 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
 
 
             
+        }
+
+        //deletes photo from db
+        public static void DeletePhotoFromDatabase(int? id, NbpContext _db)
+        {
+            //get photo from database
+            Photo photo = _db.Photos.Find(id);
+            if (photo == null)
+            {
+                //photo wasnt found
+                throw new Exception("Photo couldn't be found in database. Already deleted?");
+            }
+            else
+            {
+                //image was found, so try to delete it
+                try
+                {
+                    //Set entry state to deleted
+                    _db.Entry(photo).State = EntityState.Deleted;
+
+                    //save changes to db
+                    _db.SaveChanges();
+
+                }
+
+                //error modifying db
+                catch (Exception e)
+                {
+                    throw new Exception(e.Message);
+                }
+
+            }
+
+           
         }
 
         //returns true if path already exist in db

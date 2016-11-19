@@ -133,12 +133,15 @@ namespace NivesBrelihPhotography
                 "~/Scripts/angular-ui-router.js",
                 "~/Scripts/angular-animate.js",
                 "~/Scripts/angular-ui/ui-bootstrap.js",
-                "~/Scripts/angular-ui/ui-bootstrap-tpls.js"
+                "~/Scripts/angular-ui/ui-bootstrap-tpls.js",
+                "~/Scripts/angular-toastr.js",
+                "~/Scripts/angular-toastr.tpls.js"
                 ));
 
             //styles
             bundles.Add(new StyleBundle("~/Content/angular-styles").Include(
-                "~/Content/ui-bootstrap-csp.css"
+                "~/Content/ui-bootstrap-csp.css",
+                "~/Content/angular-toastr.css"
                 ));
 
 

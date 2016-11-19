@@ -13,13 +13,13 @@ using NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels;
 
 namespace NivesBrelihPhotography.Controllers.Api
 {
+    [System.Web.Http.Authorize]
     public class PhotosController : ApiController
     {
 
         private NbpContext _db = new NbpContext();
         
         [System.Web.Http.HttpGet]
-        [System.Web.Http.Authorize]
         //GET LIST OF ALL PHOTOS, LIMITED BY PAGE
         public IHttpActionResult GetPhotos([FromUri] int page = 0,[FromUri] int pagesize=20)
         {
@@ -38,6 +38,25 @@ namespace NivesBrelihPhotography.Controllers.Api
 
 
 
+        }
+
+        [System.Web.Http.HttpDelete]
+        public IHttpActionResult DeletePhoto([FromUri]int? id)
+        {
+            //try to delete photo
+            try
+            {
+                PhotosDatabase.DeletePhotoFromDatabase(id, _db);
+
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.OK, "Photo deleted"));
+            }
+            //error 
+            catch (Exception e)
+            {
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.BadRequest, e.Message));
+            }
+            
+            
         }
 
         protected override void Dispose(bool disposing)
