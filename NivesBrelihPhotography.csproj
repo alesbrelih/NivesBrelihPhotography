@@ -183,6 +183,8 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\Api\AlbumsApiController.cs" />
+    <Compile Include="Controllers\Api\CategoriesApiController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -382,6 +384,9 @@
     <Content Include="Scripts\Admin_Angular\components\admin-photos\admin.photos.component.js" />
     <Content Include="Scripts\Admin_Angular\components\modal-view\modal.view.component.js" />
     <Content Include="Scripts\Admin_Angular\filters\ng_repeat\startswith.filter.js" />
+    <Content Include="Scripts\Admin_Angular\services\AlbumsService\albums.service.js" />
+    <Content Include="Scripts\Admin_Angular\services\app.services.js" />
+    <Content Include="Scripts\Admin_Angular\services\CategoriesService\categories.service.js" />
     <Content Include="Scripts\Admin_Angular\services\PhotosService\photos.service.js" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-photos\add\admin.photos.add.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-photos\admin.photos.component.html" />
@@ -406,6 +411,7 @@
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\Admin_Angular\components\admin-view\admin.view.component.js" />
+    <Content Include="Scripts\Admin_Angular\directives\attribute\ab.photo.input.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Images\Photos\Thumbnail_Test\nbPic4.jpg" />
     <Content Include="Images\Photos\Thumbnail_Test\nbPic5.jpg" />
@@ -519,6 +525,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\Admin_Angular\templates\components\admin-photos\edit\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Language\" />
   </ItemGroup>

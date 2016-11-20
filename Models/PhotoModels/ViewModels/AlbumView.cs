@@ -7,21 +7,39 @@ using System.Threading.Tasks;
 
 namespace NivesBrelihPhotography.Models.PhotoModels.ViewModels
 {
-    public class AlbumView
+
+    public class AlbumViewBase
     {
         public int AlbumId { get; set; }
 
         public string AlbumName { get; set; } //album name
 
-        public string AlbumDate{ get; set; }  //album date
+        public string AlbumDate { get; set; }  //album date
+
+        public AlbumViewBase()
+        {
+            
+        }
+
+        public AlbumViewBase(int id, string name, DateTime date):this()
+        {
+            AlbumId = id;
+            AlbumName = name;
+            AlbumDate = date.ToShortDateString();
+        }
+    }
+
+    public class AlbumView:AlbumViewBase
+    {
+       
+
+
 
         public string AlbumText { get; set; }  //album text
 
-        public AlbumView(int id,string name, DateTime date, string text)
+        public AlbumView(int id,string name, DateTime date, string text):base(id,name, date)
         {
-            AlbumId = id;
-            AlbumDate = date.ToShortDateString();
-            AlbumName = name;
+            
             AlbumText = text;
         }
 

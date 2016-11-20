@@ -5,28 +5,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using NivesBrelihPhotography.DbContexts;
+using NivesBrelihPhotography.Models.PhotoModels.ViewModels;
 using WebGrease.Css.Extensions;
 
 namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
 {
     public class AlbumsDatabase
     {
-        private static NbpContext _db = new NbpContext();
+
 
         //returns select list to select album on photo create/edit
-        public static SelectList ReturnAlbumsForSelectList()
+        public static ICollection<AlbumViewBase> ReturnAlbumsForSelectList(NbpContext _db)
         {
             //selectlist items from db
-            var selectListItems = new List<SelectListItem>() {new SelectListItem() {Text = "", Value = "-1"}};
+            var albums = new List<AlbumViewBase>() {new AlbumViewBase() { AlbumName = "", AlbumId = -1, AlbumDate  = DateTime.Now.ToShortDateString()}};
 
-            _db.PhotoAlbums.OrderBy(x => x.AlbumName).ForEach(x=>selectListItems.Add(new SelectListItem() {Text = x.AlbumName,Value = x.PhotoAlbumId.ToString()}));
+            _db.PhotoAlbums.OrderBy(x => x.AlbumName).ForEach(x=>albums.Add(new AlbumViewBase(x.PhotoAlbumId,x.AlbumName,x.AlbumDate)));
 
 
 
-            //selectlist items in list
-            var selectList = new SelectList(selectListItems,"Value","Text");
-
-            return selectList;
+            return albums;
         }
+
     }
 }

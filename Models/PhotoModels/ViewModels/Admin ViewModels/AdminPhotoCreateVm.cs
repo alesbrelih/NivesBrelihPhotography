@@ -23,7 +23,7 @@ namespace NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels
         [Display(Name = "Album")]
         public int AlbumId { get; set; }
 
-        public SelectList AllAlbums { get; set; }
+        public ICollection<AlbumViewBase> AllAlbums { get; set; }
 
         [Display(Name = "Photo")]
         [Required(ErrorMessage = "Select photo to upload")]
@@ -40,9 +40,9 @@ namespace NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels
 
         public AdminPhotoCreateVm()
         {
-            PhotoCategories = CategoriesDatabase.ReturnAllCategoriesViewModels();
+            //PhotoCategories = CategoriesDatabase.ReturnAllCategoriesViewModels();
 
-            AllAlbums = AlbumsDatabase.ReturnAlbumsForSelectList();
+            //AllAlbums = AlbumsDatabase.ReturnAlbumsForSelectList();
         }
 
         //contects vm to db model

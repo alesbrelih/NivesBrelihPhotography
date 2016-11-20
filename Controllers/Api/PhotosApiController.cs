@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web.Http.Results;
 using System.Web.Mvc;
 using NivesBrelihPhotography.DbContexts;
+using NivesBrelihPhotography.Enums;
 using NivesBrelihPhotography.HelperClasses.DatabaseCommunication;
 using NivesBrelihPhotography.Models.PhotoModels.ViewModels;
 using NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels;
@@ -41,6 +42,7 @@ namespace NivesBrelihPhotography.Controllers.Api
         }
 
         [System.Web.Http.HttpDelete]
+        //DELETES PHOTO FROM DATABASE
         public IHttpActionResult DeletePhoto([FromUri]int? id)
         {
             //try to delete photo
@@ -56,6 +58,33 @@ namespace NivesBrelihPhotography.Controllers.Api
                 return ResponseMessage(Request.CreateResponse(HttpStatusCode.BadRequest, e.Message));
             }
             
+            
+        }
+
+        [System.Web.Http.HttpPost]
+        //ADDS PHOTO TO DATABASE AND SERVER
+        public IHttpActionResult AddPhoto([FromBody] AdminPhotoCreateVm photo)
+        {
+            //check if there is any data recieved
+            if (photo == null)
+            {
+                return
+                    ResponseMessage(Request.CreateResponse(HttpStatusCode.BadRequest, "No data attached to the request"));
+            }
+            //tries to adds photo to db
+            var result = PhotosDatabase.AddNewPhotoToDatabase(photo, _db);
+           
+            //check if it was added successfully
+            if (result == DbResults.PhotoDb.Success)
+            {
+                //response with OK - 200
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.OK, DbResults.PhotoDb.Success));
+            }
+
+            //img wasnt added, return error msg
+            return ResponseMessage(Request.CreateResponse(HttpStatusCode.BadRequest, result));
+
+
             
         }
 

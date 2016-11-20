@@ -6,10 +6,21 @@
     var app = angular.module("adminApp");
 
     //photos add admin controller
-    function photosAdminAddController(PhotosService) {
+    function photosAdminAddController(PhotosService,AlbumsService,CategoriesService) {
 
         //current scope
         var vm = this;
+
+        // get all albums
+        AlbumsService.GetAlbums();
+
+        //get all categories
+        CategoriesService.GetCategories();
+
+        // ---- properties ---- //
+        vm.Albums = AlbumsService.Albums;
+        vm.Categories = CategoriesService.Categories;
+
 
         //photo
         vm.Photo = {
@@ -22,11 +33,14 @@
         vm.UploadPhoto = function() {
             PhotosService.UploadPhoto(vm.Photo);
         }
+        vm.CheckAlbums = function() {
+            console.log(vm.Albums);
+            console.log(vm.Categories);
+        }
     }
 
-
     //inject service
-    photosAdminAddController.$inject = ["PhotosService"];
+    photosAdminAddController.$inject = ["PhotosService","AlbumsService","CategoriesService"];
 
     //register component
     app.component("adminPhotosAdd", {

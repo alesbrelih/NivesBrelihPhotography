@@ -1,7 +1,7 @@
 ﻿(function(angular) {
     
     //get main module
-    var app = angular.module("adminApp");
+    var app = angular.module("adminApp.services");
 
     //returned factory
     function PhotosServiceFactory($http) {

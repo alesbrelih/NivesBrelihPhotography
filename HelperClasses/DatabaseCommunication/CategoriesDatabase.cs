@@ -12,25 +12,31 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
     public class CategoriesDatabase
     {
 
-        private static NbpContext _db = new NbpContext();
-
 
         //return admincategoryVm for all categories
-        public static List<AdminCategoryVm> ReturnAllCategoriesViewModels()
+        public static List<AdminCategoryVm> ReturnAllCategoriesViewModels(NbpContext _db)
         {
-            var query = _db.Categories.OrderBy(x => x.CategoryId)
+            try
+            {
+                var query = _db.Categories.OrderBy(x => x.CategoryId)
                     .Select(
                         x =>
                             new AdminCategoryVm()
                             {
                                 CategoryId = x.CategoryId,
                                 CategoryName = x.CategoryTitle,
-                                Checked = false
                             })
                     .ToList();
-            //if query returns results return query else empty list, because i dont know interaction if 0 elements found in db query
-            return query.Count != 0 ? query : new List<AdminCategoryVm>();
+
+                //if query returns results return query else empty list, because i dont know interaction if 0 elements found in db query
+                return query.Count != 0 ? query : new List<AdminCategoryVm>();
+            }
+            catch
+            {
+                throw new Exception("Error connecting to database");
+            } 
 
         }
+
     }
 }

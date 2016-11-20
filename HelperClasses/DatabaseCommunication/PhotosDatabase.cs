@@ -19,7 +19,7 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
 {
     public class PhotosDatabase
     {
-
+        //returns photos for admin photo index
         public static IEnumerable<AdminPhotoIndexVm> ReturnPhotosForAdminPhotoIndex(int page, int pagesize,NbpContext _db)
         {
 

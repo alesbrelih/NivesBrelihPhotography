@@ -7,14 +7,12 @@
         "$stateProvider", "$urlRouterProvider", function ($stateProvider, $urlRouterProvider) {
             $stateProvider
                 //--- ADMIN DEFAULT VIEW --- //
-
                 .state("view", {
                     url: "/",
                     template: "<admin-view></admin-view>"
                 })
 
                 // --- ADMIN PHOTOS SECTION --- //
-
                 .state("photos", {
                     url: "/photos",
                     template: "<admin-photos></admin-photos>"
@@ -23,14 +21,11 @@
                     url: "/photos/add",
                     template: "<admin-photos-add></admin-photos-add>"
                 })
-                .state("photos.edit", {
+                .state("photos-edit", {
                     url: "/edit",
                     template: "to be inserted"
-                })
-                .state("photos.remove", {
-                    url: "/remove",
-                    template: "TBI"
                 });
+                
 
             $urlRouterProvider.otherwise("/");
         }
