@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using NivesBrelihPhotography.DbContexts;
 using NivesBrelihPhotography.HelperClasses.DatabaseCommunication;
+using NivesBrelihPhotography.Models.CategoryModels.Admin_ViewModels;
 
 namespace NivesBrelihPhotography.Controllers.Api
 {
@@ -31,6 +32,26 @@ namespace NivesBrelihPhotography.Controllers.Api
             }
             
         }
+
+        [HttpPost]
+        //creates new category
+        public HttpResponseMessage AddCategory([FromBody] AdminCategoryCreateVm newCategory )
+        {
+            try
+            {
+                //tries to create new category type in db
+                var category = CategoriesDatabase.CreateNewCategory(newCategory, _db);
+                return Request.CreateResponse(HttpStatusCode.OK, category);
+            }
+            catch(Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+
+            
+        }
+
+       
 
 
         protected override void Dispose(bool disposing)

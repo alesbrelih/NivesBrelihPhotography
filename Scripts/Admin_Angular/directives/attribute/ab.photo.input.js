@@ -18,17 +18,15 @@
 			// ----- VALIDATORS ------ //
 
 			//valid type
-		    ngCtrl.$validators.validType = function(modelValue, viewValue) {
+		    ngCtrl.$validators.validType = function (modelValue, viewValue) {
 		        var value = modelValue || viewValue;
-
-		        if (!value) {
-		            return true; //no file was uploaded so its valid type
+		        if (value == null) {
+		            return true;
 		        }
 		        if (value.type.startsWith("image")) {
-		            return true; // valid types
+		            return true;
 		        }
-		        return false;
-		    }
+		    };
 
 			//CHECK IF ALL VALIDATION RETURNS TRUE AND SET IMG PREVIEW
 		    ngCtrl.$viewChangeListeners.push(function () {
@@ -38,8 +36,12 @@
 					//set fileReader
 					var reader = new FileReader();
 					reader.onload = function (event) {
-						//if successfully read, set the preview img prop
-				        scope.previewImg = event.target.result;
+
+					    scope.$apply(function() {
+					        //if successfully read, set the preview img prop
+					        scope.previewImg = event.target.result;
+					    });
+
 					};
 
 					//read file
@@ -71,7 +73,7 @@
 			scope:{
 				previewImg:"=" //directive that will have scope prop that will point to preview picture
 			},
-			link:linkFuction //link function
+			link:linkFunction //link function
 	    };
 	}
 

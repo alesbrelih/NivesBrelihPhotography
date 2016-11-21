@@ -277,6 +277,7 @@
     <Compile Include="Models\BlogModels\ViewModels\BlogView.cs" />
     <Compile Include="Models\BlogModels\ViewModels\Detail\BlogDetailsView.cs" />
     <Compile Include="Models\BlogModels\ViewModels\Index\BlogIndexView.cs" />
+    <Compile Include="Models\CategoryModels\Admin ViewModels\AdminCategoryCreateVm.cs" />
     <Compile Include="Models\CategoryModels\Admin ViewModels\AdminCategoryVm.cs" />
     <Compile Include="Models\CategoryModels\Category.cs" />
     <Compile Include="Models\CommentModels\Comment.cs" />

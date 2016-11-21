@@ -6,7 +6,7 @@
     var app = angular.module("adminApp");
 
     //photos add admin controller
-    function photosAdminAddController(PhotosService,AlbumsService,CategoriesService) {
+    function photosAdminAddController(PhotosService,AlbumsService,CategoriesService,$scope) {
 
         //current scope
         var vm = this;
@@ -20,27 +20,52 @@
         // ---- properties ---- //
         vm.Albums = AlbumsService.Albums;
         vm.Categories = CategoriesService.Categories;
+        vm.Category = {
+            CategoryName:""
+            };
+        vm.newCategoryForm = false;
 
 
         //photo
         vm.Photo = {
-            Title: "Test photo",
-            OnPortfolio: false,
-            AlbumId: 4
+            PhotoTitle: "",
+            IsOnPortfolio: false,
+            AlbumId: -1,
+            IsAlbumCover: false,
+            PhotoFile: null,
+            PhotoCategories:[]
+            
         }
 
         //upload photo
         vm.UploadPhoto = function() {
             PhotosService.UploadPhoto(vm.Photo);
         }
-        vm.CheckAlbums = function() {
-            console.log(vm.Albums);
-            console.log(vm.Categories);
+
+        //create category
+        vm.CreateCategory = function () {
+
+            //hide new category input if category created.
+            CategoriesService.CreateCategory(vm.Category,true).then(function(success) {
+                vm.newCategoryForm = false;
+            },function(err) {
+                console.log(err);
+            });
         }
+
+
+
+        //watch for selection change on albums dropdown
+        //and uncheck album cover if selected album in null
+        $scope.$watch("vm.Photo.AlbumId", function() {
+            if (vm.Photo.AlbumId == "-1") {
+                vm.Photo.IsAlbumCover = false;
+            }
+        });
     }
 
     //inject service
-    photosAdminAddController.$inject = ["PhotosService","AlbumsService","CategoriesService"];
+    photosAdminAddController.$inject = ["PhotosService","AlbumsService","CategoriesService","$scope"];
 
     //register component
     app.component("adminPhotosAdd", {

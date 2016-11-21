@@ -5,7 +5,7 @@
     var services = angular.module("adminApp.services");
 
     //factory controller
-    function categoriesFactoryController($http) {
+    function categoriesFactoryController($http,toastr) {
 
         //returned singleton
         var categoriesFactory = {};
@@ -30,6 +30,29 @@
                     });
 
         };
+
+        //creates new category
+        categoriesFactory.CreateCategory = function(category,promise) {
+           var requestPromise =  $http.post("/api/categories", category)
+                .then(function (success) {
+                    //add category to categories list
+                    categories.push(success.data);
+
+                    //show toastr that category was successfully added
+                    toastr.success("Category successfuly created.", "Success");
+
+                    
+                    
+                }, function (err) {
+                    //err 
+                    toastr.error(err.data, "Error");
+                });
+
+            //if promise is true return promise
+            if (promise) {
+                return requestPromise;
+            }
+        }
         
 
 
@@ -38,7 +61,7 @@
     }
 
     //inject dependencies
-    categoriesFactoryController.$inject = ["$http"];
+    categoriesFactoryController.$inject = ["$http","toastr"];
 
     //register factory
     services.factory("CategoriesService", categoriesFactoryController);

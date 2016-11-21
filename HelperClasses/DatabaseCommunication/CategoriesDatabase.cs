@@ -38,5 +38,38 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
 
         }
 
+        //creates new category
+        public static AdminCategoryVm CreateNewCategory(AdminCategoryCreateVm category, NbpContext db)
+        {
+            var dbCategory = category.CreateDbModel();
+
+            try
+            {
+                //get categories and check if there is a category with same name
+                var query =
+                    db.Categories.ToList()
+                        .Where(x => x.CategoryTitle.ToLowerInvariant() == category.CategoryName.ToLowerInvariant());
+
+                if (query.Count() != 0)
+                {
+                    throw new Exception("Category with the same name already exists");
+                }
+                else
+                {
+                    //no categories with same name exist
+                    db.Categories.Add(dbCategory);
+                    db.SaveChanges();
+
+                    //returns created category
+                    return new AdminCategoryVm() {CategoryId = dbCategory.CategoryId,CategoryName = dbCategory.CategoryTitle};
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }

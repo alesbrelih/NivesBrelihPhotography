@@ -86,48 +86,48 @@ namespace NivesBrelihPhotography.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Add(
-            [Bind(Include = "PhotoDescription,AlbumId,PhotoFile,IsOnPortfolio,IsAlbumCover,PhotoCategories,PhotoTitle,PhotoUrl")] AdminPhotoCreateVm photoCreateVm)
-        {
-            //check if user selected any of the categories (1 is needed)
-            var numberOfCategories = photoCreateVm.PhotoCategories.Count(x => x.Checked);
-            if (numberOfCategories == 0)
-            {
-                //return view with error that categories needs to be checked
-                ModelState.AddModelError(string.Empty,"Please select atelast one category for the picture");
-                return View(photoCreateVm);
-            }
+        //public ActionResult Add(
+        //    [Bind(Include = "PhotoDescription,AlbumId,PhotoFile,IsOnPortfolio,IsAlbumCover,PhotoCategories,PhotoTitle,PhotoUrl")] AdminPhotoCreateVm photoCreateVm)
+        //{
+        //    //check if user selected any of the categories (1 is needed)
+        //    var numberOfCategories = photoCreateVm.PhotoCategories.Count();
+        //    if (numberOfCategories == 0)
+        //    {
+        //        //return view with error that categories needs to be checked
+        //        ModelState.AddModelError(string.Empty,"Please select atelast one category for the picture");
+        //        return View(photoCreateVm);
+        //    }
 
 
-            if (ModelState.IsValid)
-            {
-                var result = PhotosDatabase.AddNewPhotoToDatabase(photoCreateVm,_db);
+        //    if (ModelState.IsValid)
+        //    {
+        //        var result = PhotosDatabase.AddNewPhotoToDatabase(photoCreateVm,_db);
 
-                if (result == DbResults.PhotoDb.OtherFailure)
-                {
-                    ModelState.AddModelError(string.Empty, "Other failure with database saving / connection. Please try later.");                
-                    return View(photoCreateVm);
-                }
+        //        if (result == DbResults.PhotoDb.OtherFailure)
+        //        {
+        //            ModelState.AddModelError(string.Empty, "Other failure with database saving / connection. Please try later.");                
+        //            return View(photoCreateVm);
+        //        }
 
-                if (result == DbResults.PhotoDb.FileIsNotImage)
-                {
-                    ModelState.AddModelError(string.Empty, "Selected file is not an image file.");
-                    return View(photoCreateVm);
-                }
+        //        if (result == DbResults.PhotoDb.FileIsNotImage)
+        //        {
+        //            ModelState.AddModelError(string.Empty, "Selected file is not an image file.");
+        //            return View(photoCreateVm);
+        //        }
 
-                if (result == DbResults.PhotoDb.NameAlreadyExist)
-                {
-                    ModelState.AddModelError(string.Empty, "Selected image with same name already exist in database.");
-                    return View(photoCreateVm);
-                }
+        //        if (result == DbResults.PhotoDb.NameAlreadyExist)
+        //        {
+        //            ModelState.AddModelError(string.Empty, "Selected image with same name already exist in database.");
+        //            return View(photoCreateVm);
+        //        }
 
-                if (result == DbResults.PhotoDb.Success)
-                {
-                    return RedirectToAction("Index");
-                }
-            }
-            return View(photoCreateVm);
-        }
+        //        if (result == DbResults.PhotoDb.Success)
+        //        {
+        //            return RedirectToAction("Index");
+        //        }
+        //    }
+        //    return View(photoCreateVm);
+        //}
 
 
         //GET: Details

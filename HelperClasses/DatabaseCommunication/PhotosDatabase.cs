@@ -6,6 +6,7 @@ using System.EnterpriseServices;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Net.Http;
 using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Threading.Tasks;
@@ -157,17 +158,35 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
         }
 
         //adds adminphotocreate vm to db and converts it before
-        public static DbResults.PhotoDb AddNewPhotoToDatabase(AdminPhotoCreateVm photoCreateVm,NbpContext _db)
+        public static DbResults.PhotoDb AddNewPhotoToDatabase(AdminPhotoCreateVm photoCreateVm,MultipartFileData file,NbpContext _db)
         {
 
 
             //check if image
-            if (!HttpPostedFileBaseExtensions.IsImage(photoCreateVm.PhotoFile)) //selected file isnt img
-            {
-                
-                return DbResults.PhotoDb.FileIsNotImage;
+            //if (!HttpPostedFileBaseExtensions.IsImage(photoCreateVm.PhotoFile)) //selected file isnt img
+            //{
 
+            //    return DbResults.PhotoDb.FileIsNotImage;
+
+            //}
+
+            //extract file name
+            string fileName = file.Headers.ContentDisposition.FileName;
+
+            if (fileName.StartsWith("\"") && fileName.EndsWith("\""))
+            {
+                fileName = fileName.Trim('"');
             }
+            if (fileName.Contains(@"/") || fileName.Contains(@"\"))
+            {
+                fileName = Path.GetFileName(fileName);
+            }
+
+            //set filepath to where file will be saved
+            var imagePath = Path.Combine(HttpContext.Current.Server.MapPath("~/Images/Photos"), fileName);
+
+            //dynamic path in db
+            photoCreateVm.PhotoUrl = "/Images/Photos/" + fileName;
 
             //convert to db model
             var photo = photoCreateVm.CovertToDbModel();
@@ -183,17 +202,21 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
 
                 _db.Photos.Add(photo);
 
-                var fileName = Path.GetFileName(photoCreateVm.PhotoFile.FileName);
-                var imagePath = Path.Combine(HttpContext.Current.Server.MapPath("~/Images/Photos"), fileName);
+                //var fileName = Path.GetFileName(photoCreateVm.PhotoFile.FileName);
+                //var imagePath = Path.Combine(HttpContext.Current.Server.MapPath("~/Images/Photos"), fileName);
 
-                photoCreateVm.PhotoFile.SaveAs(imagePath);
+                //photoCreateVm.PhotoFile.SaveAs(imagePath);
 
+                //move file from temp folder to main folder, ovveride if needed
+                File.Copy(file.LocalFileName, imagePath,true);
+
+                //save changes in db
                 _db.SaveChanges();
 
                 return DbResults.PhotoDb.Success;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 return DbResults.PhotoDb.OtherFailure;

@@ -4,7 +4,7 @@
     var app = angular.module("adminApp.services");
 
     //returned factory
-    function PhotosServiceFactory($http) {
+    function PhotosServiceFactory($http,toastr,$state) {
 
         //returned singleton
         var photosFactory = {};
@@ -84,12 +84,37 @@
         }
 
         
+        //adds new photo to DB
+        photosFactory.UploadPhoto = function (photo) {
+
+            //create form data for multitype form upload
+            var multiForm = new FormData();
+            for (var prop in photo) {
+                multiForm.append(prop, photo[prop]);
+            }
+            
+            //request for api with photo content appended - set it multitype form
+            $http.post("/api/photos", multiForm, {
+                transformRequest: angular.identity,
+                headers: { "Content-Type": undefined }
+            })
+                .then(function(success) {
+
+                    toastr.success("Photo successfully uploaded.","Success");
+                    $state.go("photos");
+                },
+                    
+                    function(err) {
+                        console.log(err);
+                        toastr.error(err.data,"Error");
+                    });
+        }
 
         return photosFactory;
 
     }
 
-    PhotosServiceFactory.$inject = ["$http"];
+    PhotosServiceFactory.$inject = ["$http","toastr","$state"];
 
     //register factory
     app.factory("PhotosService", PhotosServiceFactory);

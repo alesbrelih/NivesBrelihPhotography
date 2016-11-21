@@ -18,7 +18,7 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
         public static ICollection<AlbumViewBase> ReturnAlbumsForSelectList(NbpContext _db)
         {
             //selectlist items from db
-            var albums = new List<AlbumViewBase>() {new AlbumViewBase() { AlbumName = "", AlbumId = -1, AlbumDate  = DateTime.Now.ToShortDateString()}};
+            var albums = new List<AlbumViewBase>() {};
 
             _db.PhotoAlbums.OrderBy(x => x.AlbumName).ForEach(x=>albums.Add(new AlbumViewBase(x.PhotoAlbumId,x.AlbumName,x.AlbumDate)));
 

@@ -5,53 +5,67 @@
 
     <!--PICTURE PREVIEW-->
     <div class="photo-preview-container">
-        <!--<img ng-src="{{vm.previewPhoto}}" alt="Photo preview"/>-->
-        <img src="http://www.uwplatt.edu/files/styles/high_resolution/public/image_fields/directory_image/PhotoNotAvailable_124.jpg" alt="" />
+        <img ng-show="addPhotoForm.photoUpload.$valid" ng-src="{{vm.previewPhoto}}" alt="Photo preview"/>
+        <img ng-show="addPhotoForm.photoUpload.$invalid" src="http://www.uwplatt.edu/files/styles/high_resolution/public/image_fields/directory_image/PhotoNotAvailable_124.jpg" alt="" />
     </div>
 
-    <form class="form-horizontal">
+    <form name="addPhotoForm" class="form-horizontal" novalidate ng-submit="vm.UploadPhoto()">
         <fieldset>
             <div class="form-group">
                 <label for="inputPhoto" class="col-lg-2 control-label">Photo</label>
                 <div class="col-lg-10 browse-photo">
                     <label for="inputPhoto" ><i class="glyphicon glyphicon-file btn btn-info"></i></label>
-                    <input type="file" class="form-control" id="inputPhoto" placeholder="Email">
+                    <input type="file" class="form-control" id="inputPhoto" name="photoUpload" required ng-model="vm.Photo.PhotoFile" ab-photo-input preview-img="vm.previewPhoto" placeholder="Email">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputTitle" class="col-lg-2 control-label">Title</label>
                 <div class="col-lg-10">
-                    <input type="text" class="form-control" id="inputTitle" placeholder="Photo Title">
+                    <input type="text" ng-model="vm.Photo.PhotoTitle" required ng-disabled="addPhotoForm.photoUpload.$invalid" class="form-control" id="inputTitle" placeholder="Photo Title">
                 </div>
             </div>
             <div class="form-group">
                 <label for="album" class="col-lg-2 control-label">Album</label>
                 <div class="col-lg-10">
-                    <select class="form-control" id="album">
+                    <select class="form-control" id="album" ng-model="vm.Photo.AlbumId" ng-disabled="addPhotoForm.photoUpload.$invalid" ng-change="vm.disableAlbumCoverSelectIfNeeded">
+                        <option value="-1"> / </option>
                         <option ng-repeat="album in vm.Albums" value="{{album.AlbumId}}">{{album.AlbumName}}</option>
                     </select>
+                    <label for="isAlbumCover" class="control-label" > <input type="checkbox" id="isAlbumCover"  ng-change="" ng-disabled="vm.Photo.AlbumId == -1" ng-model="vm.Photo.IsAlbumCover" /> Album Cover</label>
                 </div>
             </div>
             <div class="form-group">
                 <label for="categories" class="col-lg-2 control-label"> Categories </label>
                 <div class="col-lg-10">
-                    <select multiple="" class="form-control" id="categories">
+                    <select multiple="" required class="form-control" ng-model="vm.Photo.PhotoCategories" id="categories" ng-disabled="addPhotoForm.photoUpload.$invalid">
                         <option ng-repeat="category in vm.Categories" value="{{category.CategoryId}}">{{category.CategoryName}}</option>
                     </select>
+
+
+                    <label id="new-category" ng-click="vm.newCategoryForm = true" ng-hide="vm.newCategoryForm == true" class="control-label">New Category</label>
+
+                    <div class="new-category-wrapper" ng-show="vm.newCategoryForm">
+                        <input type="text" ng-model="vm.Category.CategoryName" class="form-control" placeholder="Category Name">
+                        <i class="glyphicon glyphicon-plus" ng-click="vm.CreateCategory()"></i>
+                    </div>
+
                 </div>
+
+                
+               
+
+
             </div>
-            <div class="form-group">
+            <div class="form-group" >
                 <label class="col-lg-2 control-label">Portfolio</label>
                 <div class="col-lg-10">
-                    <label class="control-label"><input type="checkbox" /></label>
+                    <label class="control-label"><input ng-model="vm.Photo.IsOnPortfolio" ng-disabled="addPhotoForm.photoUpload.$invalid" type="checkbox" /></label>
                     
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-lg-10 col-lg-offset-4">
-                    <button type="reset" class="btn btn-default">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <button ng-click="vm.CheckAlbums()"> TEST </button>
+                    <button type="submit" ng-disabled="addPhotoForm.$invalid" class="btn btn-primary">Submit</button>
                 </div>
             </div>
         </fieldset>
@@ -61,17 +75,37 @@
 
 
 <style>
-    .add-photo-form {
-        width: 100%;
-        max-width: 500px;
-    }
-    .add-photo-container > h3 {
-        color: #eb6864;
+    /*new category label (opens input to create category)*/
+     #new-category {
+         color: #eb6864;
+         cursor: pointer;
+     }
+    #new-category:hover {
+        text-decoration: underline;
     }
 
+    /*wrapper form new category input fields*/
+    .new-category-wrapper {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        
+    }
+    .new-category-wrapper i {
+        color:#eb6864;
+        font-size: 1.5em;
+        margin-left: 20px;
+        cursor: pointer;
+    }
+
+
+
+    /*hide default input file*/
     .browse-photo input[type="file"] {
         display: none;
     }
+
+    /*new input file button*/
     .browse-photo {
         text-align: center;
     }
@@ -80,10 +114,14 @@
         padding-left: 30px;
         padding-right: 30px;
     }
+
+    /*form styles*/
     form {
         width: 100%;
         max-width: 600px;
     }
+
+    /*photo preview container styles*/
     .photo-preview-container {
         max-width: 600px;
         width: 100%;
@@ -91,8 +129,11 @@
     }
     .photo-preview-container img {
         border-radius: 3px;
+        max-width: 100%;
     }
 
+
+    /*responsive*/
     @media(max-width:1200px) {
         .browse-photo {
             text-align: left;
