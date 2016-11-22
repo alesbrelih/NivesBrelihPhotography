@@ -153,6 +153,9 @@ namespace NivesBrelihPhotography.Controllers.Api
        
         }
 
+
+        public async Task<HttpResponseMessage> EditPhoto(AdminPhotoEditVm photo)
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
