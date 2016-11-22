@@ -14,6 +14,32 @@
         // ----- PRIVATES -------- //
         var _photos = [];
 
+        var currentPhoto = {
+            Id:null,
+            PhotoTitle: "",
+            AlbumId: "",
+            IsAlbumCover:false,
+            PhotoUrl: "",
+            IsOnPortfolio: false,
+            PhotoCategories:[]
+
+        };
+
+
+        function setCurrentPhoto(photo) {
+            currentPhoto.Id = photo.Id;
+            currentPhoto.PhotoTitle = photo.PhotoTitle;
+            currentPhoto.AlbumId = photo.AlbumId;
+            currentPhoto.IsAlbumCover = photo.IsAlbumCover;
+            currentPhoto.PhotoUrl = photo.PhotoUrl;
+            currentPhoto.IsOnPortfolio = photo.IsOnPortfolio;
+            console.log(currentPhoto);
+            photo.PhotoCategories.forEach(function(item) {
+                currentPhoto.PhotoCategories.push(item);
+            });
+
+        }
+
        
 
 
@@ -22,6 +48,7 @@
 
         //all photos
         photosFactory.Photos = _photos;
+        photosFactory.CurrentPhoto = currentPhoto;
 
 
 
@@ -83,6 +110,19 @@
 
         }
 
+        // gets single photo for photo edit
+        photosFactory.GetUserForEdit = function(id) {
+            $http.get("/api/photos", {
+                params: {
+                    "id": id
+                }
+            }).then(function (success) {
+                console.log(success.data);
+                setCurrentPhoto(success.data);
+            },function(err) {
+                console.log(err);
+            });
+        }
         
         //adds new photo to DB
         photosFactory.UploadPhoto = function (photo) {

@@ -36,6 +36,8 @@ namespace NivesBrelihPhotography.DbContexts
         //photo albums
         public DbSet<PhotoAlbum> PhotoAlbums { get; set; }
 
+        public DbSet<AlbumCover> AlbumCovers { get; set; }
+
         //blogs
         public DbSet<Blog> Blogs { get; set; }
 

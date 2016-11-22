@@ -102,15 +102,14 @@ namespace NivesBrelihPhotography.Controllers
             //
             if (Request.IsAjaxRequest())
             {
-                var query = db.Photos.Where(x => x.IsPhotoAlbumCover)
-                    .OrderBy(x => x.Uploaded).Skip(pageNumber * 10)
+                var query = db.AlbumCovers.OrderBy(x=>x.Album.AlbumDate).Skip(pageNumber * 10)
                     .Take(10)
                     .Select(x => new PhotoAlbumView()
                 {
-                    PhotoAlbumId = x.PhotoAlbum.PhotoAlbumId,
-                    AlbumName = x.PhotoAlbum.AlbumName,
-                    AlbumPhotoUrl = x.PhotoUrl,
-                    AlbumDate = x.PhotoAlbum.AlbumDate
+                    PhotoAlbumId = x.Album.PhotoAlbumId,
+                    AlbumName = x.Album.AlbumName,
+                    AlbumPhotoUrl = x.Photo.PhotoUrl,
+                    AlbumDate = x.Album.AlbumDate
                 }).ToList();
 
                 if (pageNumber == 0)
@@ -126,13 +125,13 @@ namespace NivesBrelihPhotography.Controllers
             //query to find all albums and its cover photos
             else
             {
-                var query = db.Photos.Where(x => x.IsPhotoAlbumCover).OrderBy(x=>x.Uploaded)
+                var query = db.AlbumCovers.OrderBy(x => x.Album.AlbumDate)
                     .Take(10).Select(x => new PhotoAlbumView()
                 {
-                    PhotoAlbumId = x.PhotoAlbum.PhotoAlbumId,
-                    AlbumName = x.PhotoAlbum.AlbumName,
-                    AlbumPhotoUrl = x.PhotoUrl,
-                    AlbumDate = x.PhotoAlbum.AlbumDate
+                    PhotoAlbumId = x.Album.PhotoAlbumId,
+                    AlbumName = x.Album.AlbumName,
+                    AlbumPhotoUrl = x.Photo.PhotoUrl,
+                    AlbumDate = x.Album.AlbumDate
                 }).ToList();
                 return View(query);
             }

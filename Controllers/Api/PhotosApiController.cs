@@ -24,23 +24,38 @@ namespace NivesBrelihPhotography.Controllers.Api
         
         [System.Web.Http.HttpGet]
         //GET LIST OF ALL PHOTOS, LIMITED BY PAGE
-        public IHttpActionResult GetPhotos([FromUri] int page = 0,[FromUri] int pagesize=20)
+        public IHttpActionResult GetPhotos([FromUri] int page = 0,[FromUri] int pagesize=20, [FromUri] int? id = null)
         {
-            try
+            //not a single id get.
+            if (id != null)
             {
-                //query for db, need only size and page, everything else will take angular over
-                var query = PhotosDatabase.ReturnPhotosForAdminPhotoIndex(page, pagesize, _db);
+                try
+                {
+                    var query = PhotosDatabase.ReturnSinglePhotoForEdit(id, _db);
+                    return ResponseMessage(Request.CreateResponse(HttpStatusCode.OK, query));
+                }
+                catch(Exception ex)
+                {
+                    return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.BadRequest,ex.Message));
+                }
+                
 
-                return ResponseMessage(Request.CreateResponse(HttpStatusCode.OK,query));
             }
-            catch(Exception err)
+            else
             {
-                return ResponseMessage(Request.CreateResponse(HttpStatusCode.BadRequest, err.Message));
+                try
+                {
+                    //query for db, need only size and page, everything else will take angular over
+                    var query = PhotosDatabase.ReturnPhotosForAdminPhotoIndex(page, pagesize, _db);
+
+                    return ResponseMessage(Request.CreateResponse(HttpStatusCode.OK, query));
+                }
+                catch (Exception err)
+                {
+                    return ResponseMessage(Request.CreateResponse(HttpStatusCode.BadRequest, err.Message));
+                }
             }
             
-
-
-
         }
 
         [System.Web.Http.HttpDelete]
@@ -153,8 +168,24 @@ namespace NivesBrelihPhotography.Controllers.Api
        
         }
 
-
+        [System.Web.Http.HttpPut]
+        //EDITS PHOTO IN DATABASE AND SERVER
         public async Task<HttpResponseMessage> EditPhoto(AdminPhotoEditVm photo)
+        {
+            try
+            {
+                //try to edit photo in database
+                await PhotosDatabase.EditPhotoInDatabase(photo, _db);
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "success");
+
+            }
+            catch(Exception ex)
+            {
+                //throw exception
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+            
+        }
 
         protected override void Dispose(bool disposing)
         {

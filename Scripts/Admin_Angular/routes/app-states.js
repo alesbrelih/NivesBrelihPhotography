@@ -22,8 +22,13 @@
                     template: "<admin-photos-add></admin-photos-add>"
                 })
                 .state("photos-edit", {
-                    url: "/edit",
-                    template: "to be inserted"
+                    url: "/photos/edit",
+                    template: "<admin-photos-edit></admin-photos-edit>",
+                    resolve: {
+                        photo: ["$stateParams","PhotosService","$state",function($stateParams,PhotosService,$state) {
+                            PhotosService.GetUserForEdit(55);
+                        }]
+                    }
                 });
                 
 

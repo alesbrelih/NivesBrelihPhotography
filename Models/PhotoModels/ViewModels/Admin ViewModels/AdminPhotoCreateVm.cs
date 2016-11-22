@@ -45,7 +45,6 @@ namespace NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels
                     PhotoTitle = this.PhotoTitle,
                     PhotoText = "",
                     IsOnFrontPage = this.IsOnPortfolio,
-                    IsPhotoAlbumCover = this.IsAlbumCover,
                     Categories = new List<PhotoCategory>(),
                     Uploaded = DateTime.Now,
                     PhotoUrl = this.PhotoUrl

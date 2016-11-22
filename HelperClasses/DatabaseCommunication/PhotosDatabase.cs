@@ -216,13 +216,13 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
                 //save changes in db
                 _db.SaveChanges();
 
-                if (photo.IsPhotoAlbumCover) //if new album cover
+                if (photoCreateVm.IsAlbumCover) //if new album cover
                 {
                     try
                     {
-                        var previousAlbumPhotoCover = _db.Photos.First(x=>x.PhotoAlbumId == photo.PhotoAlbumId && x.IsPhotoAlbumCover == true); //find photo that was previous album cover
-                        previousAlbumPhotoCover.IsPhotoAlbumCover = false; //set album cover photo id to this one
-                        _db.Entry(previousAlbumPhotoCover).State = EntityState.Modified; //notify EF6 that entry was changed
+                        var albumCover = _db.AlbumCovers.First(x=>x.AlbumId == photo.PhotoAlbumId); //find photo that was previous album cover
+                        albumCover.PhotoId = photo.PhotoId;
+                        _db.Entry(albumCover).State = EntityState.Modified; //notify EF6 that entry was changed
 
                         _db.SaveChanges(); //save changes
                     }
@@ -280,6 +280,29 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
            
         }
 
+        //returns single photo details
+        public static AdminPhotoEditVm ReturnSinglePhotoForEdit(int? id, NbpContext db)
+        {
+            var photoVm = new AdminPhotoEditVm();
+
+            try
+            {
+                var photoDb = db.Photos.Find(id);
+
+                var isAlbumCover =
+                    db.AlbumCovers.Count(x => x.AlbumId == photoDb.PhotoAlbumId && x.PhotoId == photoDb.PhotoId) > 0;
+
+                photoVm.ChangeProps(photoDb,isAlbumCover);
+
+                return photoVm;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            
+        }
+
         //returns true if path already exist in db
         private static bool CheckIfPathAlreadyExist(string path, NbpContext _db)
         {
@@ -288,6 +311,68 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
                 _db.Photos.Where(x => x.PhotoUrl.Equals(path, StringComparison.InvariantCultureIgnoreCase)).ToList();
 
             return images.Count != 0;
+        }
+
+        public static async Task<bool> EditPhotoInDatabase(AdminPhotoEditVm photo,NbpContext db)
+        {
+            var photoDb = await db.Photos.FindAsync(photo.Id);
+            photoDb.PhotoTitle = photo.PhotoTitle;
+            
+            //find if unedited was album cover to some album
+            var albumCoverQuery =
+                await
+                    db.AlbumCovers.Where(x => x.AlbumId == photoDb.PhotoAlbumId && x.PhotoId == photoDb.PhotoId)
+                        .ToListAsync();
+
+            // ------ flag if it was a cover ----- //
+            var wasAlbumCover = albumCoverQuery.Count() != 0;
+
+            #region handling album change and album cover change
+            // ---------- handling album changing ----------- //
+            if (photoDb.PhotoAlbumId != photo.AlbumId) //if album id is different
+            {
+                if (wasAlbumCover) //and it was a cover for previus album
+                {
+                    var albumCoverEntry = albumCoverQuery[0]; //reset previous album cover
+                    albumCoverEntry.PhotoId = null;
+
+                    if (photo.IsAlbumCover)
+                    {
+                        albumCoverEntry.PhotoId = photo.Id;
+                    }
+
+                }
+
+                photoDb.PhotoAlbumId = photo.AlbumId; //change album id
+            }
+            else
+            {
+                if (photo.IsAlbumCover != wasAlbumCover)
+                {
+                    if (photo.IsAlbumCover)
+                    {
+                        //if it becomes album cover then set it as album cover
+                        var query = await db.AlbumCovers.SingleOrDefaultAsync(x => x.AlbumId == photo.AlbumId);
+                        query.PhotoId = photoDb.PhotoId;
+                    }
+                    else
+                    {
+                        var albumCoverEntry = albumCoverQuery[0]; //reset previous album cover
+                        albumCoverEntry.PhotoId = null;
+                    }
+                }
+            }
+            #endregion
+
+            // handle portfolio change //
+
+            photoDb.IsOnFrontPage = photo.IsOnPortfolio;
+
+            // handle categories //
+            photoDb.Categories = photoDb.Categories.Where(x => photo.PhotoCategories.Contains(x.CategoryId.ToString())).ToList();
+
+            await db.SaveChangesAsync();
+            return true;
         }
 
         //initialize db

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebGrease.Css.Extensions;
 
 namespace NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels
 {
@@ -24,6 +25,19 @@ namespace NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels
         public AdminPhotoEditVm()
         {
             PhotoCategories = new List<string>();
+        }
+
+        public void ChangeProps(Photo photo,bool isAlbumCover)
+        {
+            Id = photo.PhotoId;
+            AlbumId = photo.PhotoAlbumId ?? -1;
+            PhotoTitle = photo.PhotoTitle;
+            IsOnPortfolio = photo.IsOnFrontPage;
+            photo.Categories.ForEach(x=>PhotoCategories.Add(x.CategoryId.ToString()));
+            PhotoUrl = photo.PhotoUrl;
+            IsAlbumCover = isAlbumCover;
+
+
         }
 
 

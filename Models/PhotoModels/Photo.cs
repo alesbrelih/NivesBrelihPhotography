@@ -38,7 +38,7 @@ namespace NivesBrelihPhotography.Models.PhotoModels
         public virtual PhotoAlbum PhotoAlbum { get; set; }  //album picture is in NOT REQUIRED
         public int? PhotoAlbumId { get; set; }
 
-        public bool IsPhotoAlbumCover { get; set; }  //is album cover 3 max for 1 album
+        //public bool? IsPhotoAlbumCover { get; set; }  //is album cover 3 max for 1 album
 
         public virtual ICollection<Comment> Comments { get; set; } //all comments
 
