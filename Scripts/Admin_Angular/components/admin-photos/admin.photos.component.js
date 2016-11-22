@@ -101,7 +101,15 @@
         vm.deletePhoto = function (photo) {
             var modal = $uibModal.open({
                 component: "abModalView",
-                size: "sm"
+                size: "sm",
+                resolve: {
+                    type:function() {
+                        return "delete";
+                    },
+                    entry:function() {
+                        return "photo";
+                    }
+                }
             });
 
 
