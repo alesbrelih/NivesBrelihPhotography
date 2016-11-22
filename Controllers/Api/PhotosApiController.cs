@@ -157,7 +157,11 @@ namespace NivesBrelihPhotography.Controllers.Api
         {
             if (disposing)
             {
-                _db?.Dispose();
+                if (_db != null)
+                {
+                    _db.Dispose();
+                    _db = null;
+                }
             }
             base.Dispose(disposing);
         }

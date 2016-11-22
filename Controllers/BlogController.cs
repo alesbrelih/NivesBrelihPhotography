@@ -120,5 +120,18 @@ namespace NivesBrelihPhotography.Controllers
 
             return View(viewModel); //returns Blog/Details View
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (_db != null)
+                {
+                    _db.Dispose();
+                    _db = null;
+                }
+            }
+            base.Dispose(disposing);
+        }
     }
 }

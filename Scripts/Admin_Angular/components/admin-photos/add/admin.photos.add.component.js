@@ -6,7 +6,7 @@
     var app = angular.module("adminApp");
 
     //photos add admin controller
-    function photosAdminAddController(PhotosService,AlbumsService,CategoriesService,$scope) {
+    function photosAdminAddController(PhotosService,AlbumsService,CategoriesService,$scope,$uibModal) {
 
         //current scope
         var vm = this;
@@ -38,8 +38,50 @@
         }
 
         //upload photo
-        vm.UploadPhoto = function() {
-            PhotosService.UploadPhoto(vm.Photo);
+        vm.UploadPhoto = function () {
+
+            //modal for confirmation about uploading to db
+            var modalUpload = $uibModal.open({
+                component: "abModalView",
+                size: "sm",
+                resolve: {
+                    type: function () {
+                        return "upload";
+                    },
+                    entry: function () {
+                        return "photo";
+                    }
+                }
+            });
+
+            modalUpload.result.then(function (success) {
+
+                //confirmation accepted
+                if (vm.Photo.IsAlbumCover) { //if overrides curent album cover
+
+                    //another modal for user to accept if he didnt see
+                    var modalAlbumCover = $uibModal.open({
+                        component: "abModalView",
+                        size: "sm",
+                        resolve: {
+                            type: function() {
+                                return "changeAlbumCover";
+                            }
+                        }
+                    });
+                    modalAlbumCover.result.then(function (success) {
+                        //both modals accepted
+                        PhotosService.UploadPhoto(vm.Photo);
+                    }, function(err) {
+                        console.log(err);
+                    });
+                } else {
+
+                    //wasnt album cover and first modal was accepted
+                    PhotosService.UploadPhoto(vm.Photo);
+                }
+            });
+
         }
 
         //create category
@@ -65,7 +107,7 @@
     }
 
     //inject service
-    photosAdminAddController.$inject = ["PhotosService","AlbumsService","CategoriesService","$scope"];
+    photosAdminAddController.$inject = ["PhotosService","AlbumsService","CategoriesService","$scope","$uibModal"];
 
     //register component
     app.component("adminPhotosAdd", {

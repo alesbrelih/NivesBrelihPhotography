@@ -202,16 +202,36 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
 
                 _db.Photos.Add(photo);
 
+
+                #region previousCode
                 //var fileName = Path.GetFileName(photoCreateVm.PhotoFile.FileName);
                 //var imagePath = Path.Combine(HttpContext.Current.Server.MapPath("~/Images/Photos"), fileName);
 
                 //photoCreateVm.PhotoFile.SaveAs(imagePath);
+                #endregion
 
                 //move file from temp folder to main folder, ovveride if needed
                 File.Copy(file.LocalFileName, imagePath,true);
 
                 //save changes in db
                 _db.SaveChanges();
+
+                if (photo.IsPhotoAlbumCover) //if new album cover
+                {
+                    try
+                    {
+                        var previousAlbumPhotoCover = _db.Photos.First(x=>x.PhotoAlbumId == photo.PhotoAlbumId && x.IsPhotoAlbumCover == true); //find photo that was previous album cover
+                        previousAlbumPhotoCover.IsPhotoAlbumCover = false; //set album cover photo id to this one
+                        _db.Entry(previousAlbumPhotoCover).State = EntityState.Modified; //notify EF6 that entry was changed
+
+                        _db.SaveChanges(); //save changes
+                    }
+                    catch(Exception ex)
+                    {
+                        return DbResults.PhotoDb.ErrorSettingAlbumCoverPhoto;
+                    }
+                    
+                }
 
                 return DbResults.PhotoDb.Success;
 

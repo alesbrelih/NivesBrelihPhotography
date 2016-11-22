@@ -32,9 +32,12 @@ namespace NivesBrelihPhotography.Controllers.Api
         protected override void Dispose(bool disposing)
         {
             if (disposing)
-            {   
-                //dispose if not null
-                _db?.Dispose();
+            {
+                if (_db != null)
+                {
+                    _db.Dispose();
+                    _db = null;
+                }
             }
             base.Dispose(disposing);
         }

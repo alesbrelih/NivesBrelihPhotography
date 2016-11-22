@@ -14,6 +14,7 @@ namespace NivesBrelihPhotography.Enums
             FileIsNotImage,
             NameAlreadyExist,
             OtherFailure,
+            ErrorSettingAlbumCoverPhoto
         }
 
     }

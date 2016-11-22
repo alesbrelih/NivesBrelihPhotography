@@ -32,7 +32,7 @@
             }
         }
 
-
+        //texts on modal if not set (resolve.type incorrect // failsave)
         vm.titleText = "Title";
         vm.bodyText = "Body";
         vm.acceptText = "Accepted";
