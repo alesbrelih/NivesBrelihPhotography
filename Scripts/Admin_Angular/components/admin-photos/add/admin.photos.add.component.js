@@ -22,7 +22,9 @@
         vm.Categories = CategoriesService.Categories;
         vm.Category = {
             CategoryName:""
-            };
+        };
+
+        //flag if new category form is shown
         vm.newCategoryForm = false;
 
 

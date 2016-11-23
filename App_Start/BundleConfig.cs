@@ -118,7 +118,8 @@ namespace NivesBrelihPhotography
 
             //admin index bundles
             bundles.Add(new StyleBundle("~/Content/admin-index-styles").Include(
-                "~/Content/Admin_Section/admin-index.css"
+                "~/Content/Admin_Section/admin-index.css",
+                "~/Content/Admin_Section/admin-photos-angular.css"
                 ));
 
 

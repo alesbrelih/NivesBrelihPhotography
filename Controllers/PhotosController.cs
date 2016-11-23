@@ -108,7 +108,7 @@ namespace NivesBrelihPhotography.Controllers
                 {
                     PhotoAlbumId = x.Album.PhotoAlbumId,
                     AlbumName = x.Album.AlbumName,
-                    AlbumPhotoUrl = x.Photo.PhotoUrl,
+                    AlbumPhotoUrl = x.Photo.PhotoUrl ?? Properties.Resources.NoAlbumCoverPhoto,
                     AlbumDate = x.Album.AlbumDate
                 }).ToList();
 
@@ -130,7 +130,7 @@ namespace NivesBrelihPhotography.Controllers
                 {
                     PhotoAlbumId = x.Album.PhotoAlbumId,
                     AlbumName = x.Album.AlbumName,
-                    AlbumPhotoUrl = x.Photo.PhotoUrl,
+                    AlbumPhotoUrl = x.Photo.PhotoUrl ?? Properties.Resources.NoAlbumCoverPhoto,
                     AlbumDate = x.Album.AlbumDate
                 }).ToList();
                 return View(query);

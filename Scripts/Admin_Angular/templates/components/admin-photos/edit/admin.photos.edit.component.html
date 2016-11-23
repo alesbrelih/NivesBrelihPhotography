@@ -1,1 +1,142 @@
-﻿<button ng-click="vm.testPhoto()"> CLICK ME </button>
+﻿<br />
+
+
+<div class="row modify-photo-container">
+
+    <!--PICTURE PREVIEW-->
+    <div class="photo-preview-container">
+        <img ng-src="{{vm.Photo.PhotoUrl}}" alt="Photo preview" />
+    </div>
+
+    <form name="editPhotoForm" class="form-horizontal" novalidate ng-submit="vm.EditPhoto()">
+        <fieldset>
+
+            <div class="form-group">
+                <label for="inputTitle" class="col-lg-2 control-label">Title</label>
+                <div class="col-lg-10">
+                    <input type="text" ng-model="vm.Photo.PhotoTitle" required class="form-control" id="inputTitle" placeholder="Photo Title">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="album" class="col-lg-2 control-label">Album</label>
+                <div class="col-lg-10">
+                    <select class="form-control" id="album" ng-model="vm.Photo.AlbumId" ng-change="vm.disableAlbumCoverSelectIfNeeded">
+                        <option value="-1"> / </option>
+                        <option ng-repeat="album in vm.Albums" value="{{album.AlbumId}}">{{album.AlbumName}}</option>
+                    </select>
+                    <label for="isAlbumCover" class="control-label"> <input type="checkbox" id="isAlbumCover" ng-change="" ng-disabled="vm.Photo.AlbumId == -1" ng-model="vm.Photo.IsAlbumCover" /> Album Cover</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="categories" class="col-lg-2 control-label"> Categories </label>
+                <div class="col-lg-10">
+                    <select multiple="" required class="form-control" ng-model="vm.Photo.PhotoCategories" id="categories">
+                        <option ng-repeat="category in vm.Categories" value="{{category.CategoryId}}">{{category.CategoryName}}</option>
+                    </select>
+
+
+                    <label id="new-category" ng-click="vm.newCategoryForm = true" ng-hide="vm.newCategoryForm == true" class="control-label">New Category</label>
+
+                    <div class="new-category-wrapper" ng-show="vm.newCategoryForm">
+                        <input type="text" ng-model="vm.Category.CategoryName" class="form-control" placeholder="Category Name">
+                        <i class="glyphicon glyphicon-plus" ng-click="vm.CreateCategory()"></i>
+                    </div>
+
+                </div>
+
+
+
+
+
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">Portfolio</label>
+                <div class="col-lg-10">
+                    <label class="control-label"><input ng-model="vm.Photo.IsOnPortfolio" ng-disabled="addPhotoForm.photoUpload.$invalid" type="checkbox" /></label>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-4">
+                    <button type="submit" ng-disabled="addPhotoForm.$invalid" class="btn btn-primary">Save Changes</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+
+</div>
+
+
+<style>
+    /*new category label (opens input to create category)*/
+    .modify-photo-container #new-category {
+        color: #eb6864;
+        cursor: pointer;
+    }
+
+        #new-category:hover {
+            text-decoration: underline;
+        }
+
+    /*wrapper form new category input fields*/
+    .modify-photo-container .new-category-wrapper {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+       .modify-photo-container .new-category-wrapper i {
+            color: #eb6864;
+            font-size: 1.5em;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+
+
+
+    /*hide default input file*/
+    .modify-photo-container .browse-photo input[type="file"] {
+        display: none;
+    }
+
+    /*new input file button*/
+    .modify-photo-container .browse-photo {
+        text-align: center;
+    }
+
+        .modify-photo-container .browse-photo i {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+    /*form styles*/
+    .modify-photo-container form {
+        width: 100%;
+        max-width: 600px;
+    }
+
+    /*photo preview container styles*/
+    .modify-photo-container .photo-preview-container {
+        max-width: 600px;
+        width: 100%;
+        padding: 30px 10px;
+    }
+
+        .modify-photo-container .photo-preview-container img {
+            border-radius: 3px;
+            max-width: 100%;
+        }
+
+
+    /*responsive*/
+    @media(max-width:1200px) {
+        .modify-photo-container .browse-photo {
+            text-align: left;
+        }
+
+            .modify-photo-container .browse-photo i {
+                padding-left: 50px;
+                padding-right: 50px;
+            }
+    }
+</style>

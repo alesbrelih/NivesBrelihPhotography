@@ -13,20 +13,21 @@
                 })
 
                 // --- ADMIN PHOTOS SECTION --- //
-                .state("photos", {
+                .state("photos", { //list
                     url: "/photos",
                     template: "<admin-photos></admin-photos>"
                 })
-                .state("photos-add", {
+                .state("photos-add", { //add
                     url: "/photos/add",
                     template: "<admin-photos-add></admin-photos-add>"
                 })
-                .state("photos-edit", {
-                    url: "/photos/edit",
-                    template: "<admin-photos-edit></admin-photos-edit>",
+                .state("photos-edit", { //edit
+                    url: "/photos/edit/:id",
+                    template: "<admin-photos-edit photo-promise='$resolve.photo'></admin-photos-edit>",
                     resolve: {
-                        photo: ["$stateParams","PhotosService","$state",function($stateParams,PhotosService,$state) {
-                            PhotosService.GetUserForEdit(55);
+                        //resolves photo from id in url param
+                        photo: ["$stateParams","PhotosService",function($stateParams,PhotosService) {
+                            return PhotosService.GetUserForEdit($stateParams.id);
                         }]
                     }
                 });

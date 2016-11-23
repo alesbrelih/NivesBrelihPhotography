@@ -4,54 +4,24 @@
     var app = angular.module("adminApp.services");
 
     //returned factory
-    function PhotosServiceFactory($http,toastr,$state) {
-
-        //returned singleton
-        var photosFactory = {};
-
-
+    function PhotosServiceFactory($http, toastr, $state) {
 
         // ----- PRIVATES -------- //
         var _photos = [];
 
-        var currentPhoto = {
-            Id:null,
-            PhotoTitle: "",
-            AlbumId: "",
-            IsAlbumCover:false,
-            PhotoUrl: "",
-            IsOnPortfolio: false,
-            PhotoCategories:[]
-
-        };
+        var currentPhoto = null;
 
 
-        function setCurrentPhoto(photo) {
-            currentPhoto.Id = photo.Id;
-            currentPhoto.PhotoTitle = photo.PhotoTitle;
-            currentPhoto.AlbumId = photo.AlbumId;
-            currentPhoto.IsAlbumCover = photo.IsAlbumCover;
-            currentPhoto.PhotoUrl = photo.PhotoUrl;
-            currentPhoto.IsOnPortfolio = photo.IsOnPortfolio;
-            console.log(currentPhoto);
-            photo.PhotoCategories.forEach(function(item) {
-                currentPhoto.PhotoCategories.push(item);
-            });
 
-        }
-
-       
-
+        //returned singleton
+        var photosFactory = {};
 
 
         // ------ PROPS -----------//
 
         //all photos
         photosFactory.Photos = _photos;
-        photosFactory.CurrentPhoto = currentPhoto;
-
-
-
+        
 
 
         //------- METHODS --------//
@@ -74,8 +44,15 @@
         //gets photos list from api
         photosFactory.GetPhotos = function (pageSize,cb) {
 
+            //reset paging and photo aray
+
             //paging
             var _page = 0;
+
+            //array
+            while (_photos.length !== 0) {
+                _photos.pop();
+            }
 
             //recursive function
             function getPhotosFromApi(page) {
@@ -111,17 +88,40 @@
         }
 
         // gets single photo for photo edit
-        photosFactory.GetUserForEdit = function(id) {
-            $http.get("/api/photos", {
+        photosFactory.GetUserForEdit = function (id) {
+
+            //returns promise
+            return $http.get("/api/photos", {
                 params: {
                     "id": id
                 }
             }).then(function (success) {
-                console.log(success.data);
-                setCurrentPhoto(success.data);
-            },function(err) {
+                currentPhoto = success.data;
+            }, function (err) {
+                $state.go("photos");
                 console.log(err);
             });
+        }
+
+        // saves changes for edited photo in db
+        photosFactory.EditPhoto = function(photo) {
+            console.log(photo);
+            $http.put("/api/photos", photo)
+                .then(function() {
+
+                    toastr.success("Photo information changed successfully.", "Success");
+
+                    //change item in list array if exists (avoid extra calls to server)
+
+                    
+                    
+                    $state.go("photos",{},{reload:true});
+
+            }, function(err) {
+
+                toastr.error(err.data, "Error");
+            });
+
         }
         
         //adds new photo to DB
@@ -150,7 +150,17 @@
                     });
         }
 
+        
+        //gets current photo
+        photosFactory.GetCurrentPhoto = function() {
+            return currentPhoto;
+        }
+
+
+
+
         return photosFactory;
+        
 
     }
 

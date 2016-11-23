@@ -15,6 +15,7 @@ using NivesBrelihPhotography.DbContexts;
 using NivesBrelihPhotography.Enums;
 using NivesBrelihPhotography.Models.PhotoModels;
 using NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels;
+using ListExtensions = WebGrease.Css.Extensions.ListExtensions;
 
 namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
 {
@@ -280,7 +281,7 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
            
         }
 
-        //returns single photo details
+        //returns single photo edit
         public static AdminPhotoEditVm ReturnSinglePhotoForEdit(int? id, NbpContext db)
         {
             var photoVm = new AdminPhotoEditVm();
@@ -313,6 +314,7 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
             return images.Count != 0;
         }
 
+        //async task for changing photo in db
         public static async Task<bool> EditPhotoInDatabase(AdminPhotoEditVm photo,NbpContext db)
         {
             var photoDb = await db.Photos.FindAsync(photo.Id);
@@ -329,7 +331,7 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
 
             #region handling album change and album cover change
             // ---------- handling album changing ----------- //
-            if (photoDb.PhotoAlbumId != photo.AlbumId) //if album id is different
+            if (photoDb.PhotoAlbumId.ToString() != photo.AlbumId) //if album id is different
             {
                 if (wasAlbumCover) //and it was a cover for previus album
                 {
@@ -343,7 +345,7 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
 
                 }
 
-                photoDb.PhotoAlbumId = photo.AlbumId; //change album id
+                photoDb.PhotoAlbumId = int.Parse(photo.AlbumId); //change album id
             }
             else
             {
@@ -352,7 +354,7 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
                     if (photo.IsAlbumCover)
                     {
                         //if it becomes album cover then set it as album cover
-                        var query = await db.AlbumCovers.SingleOrDefaultAsync(x => x.AlbumId == photo.AlbumId);
+                        var query = await db.AlbumCovers.SingleOrDefaultAsync(x => x.AlbumId.ToString() == photo.AlbumId);
                         query.PhotoId = photoDb.PhotoId;
                     }
                     else
@@ -368,9 +370,36 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
 
             photoDb.IsOnFrontPage = photo.IsOnPortfolio;
 
-            // handle categories //
-            photoDb.Categories = photoDb.Categories.Where(x => photo.PhotoCategories.Contains(x.CategoryId.ToString())).ToList();
 
+
+            ///////////////////////////////////////////
+            // -------- handle categories ---------- //
+            //////////////////////////////////////////
+            
+            // 1. get those categories that already existed before
+
+            var list = photoDb.Categories.Where(x => photo.PhotoCategories.Contains(x.CategoryId.ToString())).Select(x=>x.CategoryId.ToString()).ToList();
+
+            // 2. foreach na photoDB categories, if not in photo.categories, entrystate deleted
+
+            var removedCategories = photoDb.Categories.Where(x => !photo.PhotoCategories.Contains(x.CategoryId.ToString())).ToList();
+
+            //linq doesnt support foreach
+            removedCategories.ForEach(x =>
+            {
+                db.Entry(x).State = EntityState.Deleted;
+            });
+
+
+            // 3. add those categories that didnt match before
+            photo.PhotoCategories.Where(x => !list.Contains(x)).ToList().ForEach(x => photoDb.Categories.Add(new PhotoCategory()
+            {
+                CategoryId = int.Parse(x),
+                PhotoId = photo.Id
+            }));
+
+
+            // ------ SAVE CHANGES TO DB ----- //
             await db.SaveChangesAsync();
             return true;
         }

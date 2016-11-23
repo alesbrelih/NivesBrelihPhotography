@@ -309,6 +309,16 @@
     <Compile Include="Models\PhotoModels\ViewModels\PhotoAlbumView.cs" />
     <Compile Include="Models\PhotoModels\ViewModels\PhotoView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Resources\About\AboutText.sl-SI.Designer.cs">
       <DependentUpon>AboutText.sl-SI.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -345,6 +355,7 @@
     <Content Include="Content\About_Section\about-index.css" />
     <Content Include="Content\About_Section\about-reference.css" />
     <Content Include="Content\About_Section\about-reviews.css" />
+    <Content Include="Content\Admin_Section\admin-photos-angular.css" />
     <Content Include="Content\Admin_Section\admin-index.css" />
     <Content Include="Content\AlbumPhotos_Section\album-photos-from-blog.css" />
     <Content Include="Content\AlbumPhotos_Section\album-photos.css" />
@@ -369,6 +380,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\Photos\nivesBrelihPhoto.jpg" />
+    <Content Include="Images\Photos\PhotoNotAvailable.jpg" />
     <Content Include="Images\Photos\Thumbnail_Test\nbPic1.jpg" />
     <Content Include="Images\Photos\Thumbnail_Test\nbPic2.jpg" />
     <Content Include="Images\Photos\Thumbnail_Test\nbPic3.jpg" />
@@ -429,6 +441,10 @@
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\Admin_Angular\components\admin-view\admin.view.component.js" />
     <Content Include="Scripts\Admin_Angular\directives\attribute\ab.photo.input.js" />
+    <None Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Images\Photos\Thumbnail_Test\nbPic4.jpg" />
     <Content Include="Images\Photos\Thumbnail_Test\nbPic5.jpg" />
@@ -598,6 +614,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\NbpContextMigrations\201611221411536_deleted isalbumcover on photo table.resx">
       <DependentUpon>201611221411536_deleted isalbumcover on photo table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\About\AboutText.sl-SI.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

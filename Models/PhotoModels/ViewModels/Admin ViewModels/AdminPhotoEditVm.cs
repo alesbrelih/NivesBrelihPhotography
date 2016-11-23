@@ -11,7 +11,7 @@ namespace NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels
     {
         public int Id { get; set; }
 
-        public int AlbumId { get; set; }
+        public string AlbumId { get; set; }
 
 
         public bool IsOnPortfolio { get; set; }
@@ -30,7 +30,7 @@ namespace NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels
         public void ChangeProps(Photo photo,bool isAlbumCover)
         {
             Id = photo.PhotoId;
-            AlbumId = photo.PhotoAlbumId ?? -1;
+            AlbumId = photo.PhotoAlbumId?.ToString() ?? "-1";
             PhotoTitle = photo.PhotoTitle;
             IsOnPortfolio = photo.IsOnFrontPage;
             photo.Categories.ForEach(x=>PhotoCategories.Add(x.CategoryId.ToString()));

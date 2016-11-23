@@ -1,0 +1,139 @@
+﻿    /*STYLES FOR ADMIN ANGULAR PHOTO INDEX START*/
+     #admin-photos-index .search-bar {
+        display: block;
+        padding: 10px 10px;
+    }
+    #admin-photos-index .search-bar i {
+        color: #eb6864;
+        padding-right: 20px;
+    }
+    #admin-photos-index .search-bar input {
+        /*border-radius: 5px;*/
+        padding: 5px;
+        border: none;
+        border-bottom: 2px solid #eee;
+        outline: none;
+    }
+    
+    #admin-photos-index .admin-photos-pagination {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+    }
+    #admin-photos-index .admin-photos-pagination>span {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    /*responsive image*/
+     #admin-photos-index .photo-preview {
+         max-width: 100px;
+     }
+
+    /*th*/
+    #admin-photos-index th, #admin-photos-index td {
+        text-align: center !important;
+    }
+
+    /*table data*/
+    #admin-photos-index td {
+        vertical-align: middle !important;
+    }
+
+    /*extra margin for photo actions*/
+    #admin-photos-index .admin-photos .action-btns button {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    /*add new photo link*/
+    #admin-photos-index>a {
+        text-align: right;
+        font-size: 1.4em;
+        margin-top: 10px;
+        margin-right: 20px;
+        cursor: pointer;
+    }
+
+
+
+    /*STYLES FOR ADMIN ANGULAR PHOTO INDEX END*/
+
+
+
+
+
+    /*STYLES FOR ADMIN ANGULAR PHOTO MODIFY START*/
+
+    /*new category label (opens input to create category)*/
+    .modify-photo-container #new-category {
+         color: #eb6864;
+         cursor: pointer;
+     }
+    .modify-photo-container #new-category:hover {
+        text-decoration: underline;
+    }
+
+    /*wrapper form new category input fields*/
+    .modify-photo-container .new-category-wrapper {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        
+    }
+    .modify-photo-container .new-category-wrapper i {
+        color:#eb6864;
+        font-size: 1.5em;
+        margin-left: 20px;
+        cursor: pointer;
+    }
+
+
+
+    /*hide default input file*/
+    .modify-photo-container .browse-photo input[type="file"] {
+        display: none;
+    }
+
+    /*new input file button*/
+    .modify-photo-container .browse-photo {
+        text-align: center;
+    }
+    .modify-photo-container .browse-photo i {
+        
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    /*form styles*/
+    .modify-photo-container form {
+        width: 100%;
+        max-width: 600px;
+    }
+
+    /*photo preview container styles*/
+    .modify-photo-container .photo-preview-container {
+        max-width: 600px;
+        width: 100%;
+        padding: 30px 10px;
+    }
+    .modify-photo-container .photo-preview-container img {
+        border-radius: 3px;
+        max-width: 100%;
+    }
+
+
+    /*responsive*/
+    @media(max-width:1200px) {
+        .modify-photo-container .browse-photo {
+            text-align: left;
+        }
+        .modify-photo-container .browse-photo i {
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+    }
+
+
+    /*STYLES FOR ADMIN ANGULAR PHOTO MODIFY END*/
+

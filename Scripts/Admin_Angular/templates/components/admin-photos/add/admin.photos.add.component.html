@@ -1,12 +1,12 @@
 ﻿<br />
 
 
-<div class="row add-photo-container">
+<div class="row modify-photo-container">
 
     <!--PICTURE PREVIEW-->
     <div class="photo-preview-container">
         <img ng-show="addPhotoForm.photoUpload.$valid" ng-src="{{vm.previewPhoto}}" alt="Photo preview"/>
-        <img ng-show="addPhotoForm.photoUpload.$invalid" src="http://www.uwplatt.edu/files/styles/high_resolution/public/image_fields/directory_image/PhotoNotAvailable_124.jpg" alt="" />
+        <img ng-show="addPhotoForm.photoUpload.$invalid" src="/Images/Photos/PhotoNotAvailable.jpg" alt="" />
     </div>
 
     <form name="addPhotoForm" class="form-horizontal" novalidate ng-submit="vm.UploadPhoto()">
@@ -73,74 +73,3 @@
 
 </div>
 
-
-<style>
-    /*new category label (opens input to create category)*/
-     #new-category {
-         color: #eb6864;
-         cursor: pointer;
-     }
-    #new-category:hover {
-        text-decoration: underline;
-    }
-
-    /*wrapper form new category input fields*/
-    .new-category-wrapper {
-        margin-top: 10px;
-        display: flex;
-        align-items: center;
-        
-    }
-    .new-category-wrapper i {
-        color:#eb6864;
-        font-size: 1.5em;
-        margin-left: 20px;
-        cursor: pointer;
-    }
-
-
-
-    /*hide default input file*/
-    .browse-photo input[type="file"] {
-        display: none;
-    }
-
-    /*new input file button*/
-    .browse-photo {
-        text-align: center;
-    }
-    .browse-photo i {
-        
-        padding-left: 30px;
-        padding-right: 30px;
-    }
-
-    /*form styles*/
-    form {
-        width: 100%;
-        max-width: 600px;
-    }
-
-    /*photo preview container styles*/
-    .photo-preview-container {
-        max-width: 600px;
-        width: 100%;
-        padding: 30px 10px;
-    }
-    .photo-preview-container img {
-        border-radius: 3px;
-        max-width: 100%;
-    }
-
-
-    /*responsive*/
-    @media(max-width:1200px) {
-        .browse-photo {
-            text-align: left;
-        }
-        .browse-photo i {
-            padding-left: 50px;
-            padding-right: 50px;
-        }
-    }
-</style>

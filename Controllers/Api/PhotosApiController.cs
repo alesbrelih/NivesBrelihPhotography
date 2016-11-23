@@ -176,7 +176,7 @@ namespace NivesBrelihPhotography.Controllers.Api
             {
                 //try to edit photo in database
                 await PhotosDatabase.EditPhotoInDatabase(photo, _db);
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "success");
+                return Request.CreateErrorResponse(HttpStatusCode.OK, "success");
 
             }
             catch(Exception ex)
