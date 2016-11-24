@@ -12,11 +12,10 @@
         //gets input (array) and starting index
         return function(input, startingIndex) {
 
-            console.log("slicing");
-            console.log(input);
-            //gets array and returns it sliced from starting index
-            return input.slice(startingIndex);
-
+            if (input != null) {
+                //gets array and returns it sliced from starting index
+                return input.slice(startingIndex);
+            }
         }
     }
 

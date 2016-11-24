@@ -1,0 +1,59 @@
+﻿/*STYLES FOR ANGULAR CATEGORIES ADMIN section START*/
+
+/*wrapper width*/
+#category-admin-index {
+        width: 100%;
+    }
+
+    /*categories wrapper styles*/
+    #category-admin-index ul {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        list-style-type: none;
+    }
+
+    /*every category size*/
+    #category-admin-index ul li {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    /*extra padding form edit/remove button*/
+    #category-admin-index .list-group-item-text {
+        padding: 10px;
+    }
+
+        /*styles form edit inputs*/
+        #category-admin-index ul li .change-category {
+            display: flex;
+            padding: 10px;
+            align-items: center;
+        }
+
+            /*textarea input extra styles*/
+            #category-admin-index ul li .change-category input {
+                margin-right: 15px;
+            }
+                    
+            /*extra padding for between buttons*/
+            #category-admin-index ul li .change-category button {
+                margin:0px 5px;
+            }
+                
+    /*styles for page pagination*/
+    #category-admin-index .category-admin-pagination {
+        padding-left: 40px;
+        max-width: 350px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /*style for pagination page number texts*/
+    #category-admin-index .category-admin-pagination span {
+        padding: 0 10px;
+    }
+
+/*STYLES FOR ANGULAR CATEGORIES ADMIN section START*/

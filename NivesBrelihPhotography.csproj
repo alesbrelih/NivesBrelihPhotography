@@ -355,6 +355,7 @@
     <Content Include="Content\About_Section\about-index.css" />
     <Content Include="Content\About_Section\about-reference.css" />
     <Content Include="Content\About_Section\about-reviews.css" />
+    <Content Include="Content\Admin_Section\admin-categories-angular.css" />
     <Content Include="Content\Admin_Section\admin-photos-angular.css" />
     <Content Include="Content\Admin_Section\admin-index.css" />
     <Content Include="Content\AlbumPhotos_Section\album-photos-from-blog.css" />

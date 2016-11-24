@@ -13,23 +13,35 @@
                 })
 
                 // --- ADMIN PHOTOS SECTION --- //
-                .state("photos", { //list
+                .state("photos", {
+                    //list
                     url: "/photos",
                     template: "<admin-photos></admin-photos>"
                 })
-                .state("photos-add", { //add
+                .state("photos-add", {
+                    //add
                     url: "/photos/add",
                     template: "<admin-photos-add></admin-photos-add>"
                 })
-                .state("photos-edit", { //edit
+                .state("photos-edit", {
+                    //edit
                     url: "/photos/edit/:id",
                     template: "<admin-photos-edit photo-promise='$resolve.photo'></admin-photos-edit>",
                     resolve: {
                         //resolves photo from id in url param
-                        photo: ["$stateParams","PhotosService",function($stateParams,PhotosService) {
-                            return PhotosService.GetUserForEdit($stateParams.id);
-                        }]
+                        photo: [
+                            "$stateParams", "PhotosService", function($stateParams, PhotosService) {
+                                return PhotosService.GetUserForEdit($stateParams.id);
+                            }
+                        ]
                     }
+                })
+
+                // --- ADMIN CATEGORIES SECTION --- //
+                .state("categories", {
+                    //list 
+                    url: "/categories",
+                    template: "<admin-categories></admin-categories>"
                 });
                 
 

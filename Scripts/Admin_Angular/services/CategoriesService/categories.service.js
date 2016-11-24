@@ -82,8 +82,8 @@
         }
         
         //edit category
-        categoriesFactory.EditCategory = function(category) {
-            $http.put("/api/categories", category)
+        categoriesFactory.EditCategory = function(category,promise) {
+            var promiseReq = $http.put("/api/categories", category)
                 .then(function(success) {
 
                     //category edited
@@ -102,6 +102,11 @@
                 toastr.error(err.data, "Error");
 
             });
+
+            //return promise if needed
+            if (promise) {
+                return promiseReq;
+            }
         }
 
 

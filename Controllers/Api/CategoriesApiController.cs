@@ -54,12 +54,12 @@ namespace NivesBrelihPhotography.Controllers.Api
 
         [HttpDelete]
         //deleted selected category
-        public HttpResponseMessage RemoveCategory([FromUri] int id)
+        public async Task<HttpResponseMessage> RemoveCategory([FromUri] int id)
         {
             //try to delete
             try
             {
-                CategoriesDatabase.RemoveCategory(id,_db);
+                await CategoriesDatabase.RemoveCategory(id,_db);
 
                 return Request.CreateResponse(HttpStatusCode.OK, "Category successfully deleted");
 
@@ -72,11 +72,11 @@ namespace NivesBrelihPhotography.Controllers.Api
 
         [HttpPut]
         //edits category
-        public HttpResponseMessage EditCategory([FromBody] AdminCategoryVm category)
+        public async Task<HttpResponseMessage> EditCategory([FromBody] AdminCategoryVm category)
         {
             try
             {
-                CategoriesDatabase.EditCategory(category, _db);
+                await CategoriesDatabase.EditCategory(category, _db);
                 return Request.CreateResponse(HttpStatusCode.OK, "Success");
             }
             catch (Exception ex)

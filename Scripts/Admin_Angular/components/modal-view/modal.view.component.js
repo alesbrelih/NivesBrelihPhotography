@@ -12,6 +12,7 @@
         // function to set all texts
         function setTexts(type) {
             switch (type) {
+
                 case "upload":
                     vm.titleText = "Save " + vm.resolve.entry;
                     vm.bodyText = "Do you wish to save this " + vm.resolve.entry + " ?";
@@ -27,7 +28,12 @@
                     vm.bodyText = "Saving this will change current album cover photo. Do you wish to continue?";
                     vm.acceptText = "Continue";
                     break;
-
+                case "edit":
+                    vm.titleText = "Edit "+vm.resolve.entry;
+                    vm.bodyText = "Do you wish to edit this " + vm.resolve.entry + "?";
+                    vm.acceptText = "Edit";
+                    break;
+                 
                 default:
             }
         }

@@ -5,33 +5,128 @@
     var app = angular.module("adminApp");
 
     // controller function
-    function categoriesComponentController(CategoriesService) {
+    function categoriesComponentController(CategoriesService,$uibModal) {
 
         //reference to scope
         var vm = this;
+        vm.pageSize = 5;
+        vm.currentPage = 0;
+        vm.selected = {};
 
         //gets all categories
-        CategoriesService.GetCategories()
+        CategoriesService.GetCategories(true)
             .then(function(success) {
-            vm.Categories = CategoriesService.Categories;
+                vm.Categories = CategoriesService.Categories;
+                vm.allPages = Math.ceil(vm.Categories.length / vm.pageSize)-1;
+
         }).catch(function(err) {
                 console.log(err);
+        });
+
+        // ----- PUBLIC METHODS ------- //
+
+        //creates "copy" of selected item in vm.selected
+        vm.selectForEdit = function(category) {
+            vm.selected.CategoryId = category.CategoryId;
+            vm.selected.CategoryName = category.CategoryName;
+
+            console.log(vm.selected);
+        }
+
+        //resets selected
+        vm.resetSelected = function() {
+            vm.selected.CategoryId = null;
+            vm.selected.CategoryName = "";
+        }
+
+
+        // ----- SERVICE METHODS ------ //
+
+        //edit category
+
+        vm.EditCategory = function () {
+
+            //creates modal first
+            var modal = $uibModal.open({
+                component: "abModalView",
+                size: "sm",
+                resolve: {
+                    type: function () {
+                        return "edit";
+                    },
+                    entry: function () {
+                        return "category";
+                    }
+                }
             });
 
-        // ----- PUBLIC METHODS ------ //
-        vm.EditCategory = function(category) {
+            //depending on modal result -> actions
+            modal.result.then(function () {
+
+                CategoriesService.EditCategory(vm.selected,true).then(function(success) {
+
+                    vm.resetSelected();
+
+                }).catch(function (err) {
+                    //catch err
+                    console.log(err);
+                });
+
+            }).catch(function (err) {
+
+                console.log(err);
+
+            });
+
             
         }
-        vm.DeleteCategory = function(category) {
-            
+
+        //delete category
+        vm.DeleteCategory = function (category) {
+
+            //creates modal first
+            var modal = $uibModal.open({
+                component: "abModalView",
+                size: "sm",
+                resolve: {
+                    type: function () {
+                        return "delete";
+                    },
+                    entry: function () {
+                        return "category";
+                    }
+                }
+            });
+
+            modal.result.then(function() {
+
+                CategoriesService.DeleteCategory(category);
+
+            }).catch(function (err) {
+
+                //catch err
+                console.log(err);
+
+            });
+   
         }
+
+        //create category
         vm.CreateCategory = function() {
             CategoriesService.CreateCategory(vm.newCategory);
         }
 
+
+        vm.nextPage = function() {
+            vm.currentPage++;
+        }
+        vm.previousPage = function() {
+            vm.currentPage--;
+        }
     }
 
-    categoriesComponentController.$inject = ["CategoriesService"];
+    //inject needed services
+    categoriesComponentController.$inject = ["CategoriesService","$uibModal"];
 
     app.component("adminCategories", {
         controller: categoriesComponentController,

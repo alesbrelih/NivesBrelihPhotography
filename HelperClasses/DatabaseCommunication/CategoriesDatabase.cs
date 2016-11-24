@@ -73,7 +73,7 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
         }
 
         //deletes category
-        public static async void RemoveCategory(int id,NbpContext db)
+        public static async Task RemoveCategory(int id,NbpContext db)
         {
             //finds category
             var category = await db.Categories.FindAsync(id);
@@ -83,10 +83,11 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
 
             //saves changes
             await db.SaveChangesAsync();
+
         }
 
         //edits category
-        public static async void EditCategory(AdminCategoryVm category, NbpContext db)
+        public static async Task EditCategory(AdminCategoryVm category, NbpContext db)
         {
             //find category in db
             var categoryDb = await db.Categories.FindAsync(category.CategoryId);
