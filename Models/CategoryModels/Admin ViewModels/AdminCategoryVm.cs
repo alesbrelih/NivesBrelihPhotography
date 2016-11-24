@@ -16,8 +16,5 @@ namespace NivesBrelihPhotography.Models.CategoryModels.Admin_ViewModels
         //category Name
         [Display(Name = "Name")]
         public string CategoryName { get; set; }
-
-        //checked bool for category checkboxes on photo upload
-        public bool Checked { get; set; }
     }
 }

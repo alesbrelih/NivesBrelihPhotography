@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using NivesBrelihPhotography.DbContexts;
 using NivesBrelihPhotography.HelperClasses.DatabaseCommunication;
@@ -51,7 +52,38 @@ namespace NivesBrelihPhotography.Controllers.Api
             
         }
 
-       
+        [HttpDelete]
+        //deleted selected category
+        public HttpResponseMessage RemoveCategory([FromUri] int id)
+        {
+            //try to delete
+            try
+            {
+                CategoriesDatabase.RemoveCategory(id,_db);
+
+                return Request.CreateResponse(HttpStatusCode.OK, "Category successfully deleted");
+
+            }
+            catch (Exception ex) //catch any error
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpPut]
+        //edits category
+        public HttpResponseMessage EditCategory([FromBody] AdminCategoryVm category)
+        {
+            try
+            {
+                CategoriesDatabase.EditCategory(category, _db);
+                return Request.CreateResponse(HttpStatusCode.OK, "Success");
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
 
 
         protected override void Dispose(bool disposing)

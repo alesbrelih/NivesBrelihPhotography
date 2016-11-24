@@ -17,17 +17,22 @@
         categoriesFactory.Categories = categories;
         
         // --- methods --- //
-        categoriesFactory.GetCategories = function() {
+        categoriesFactory.GetCategories = function(returnPromise) {
 
-            $http.get("/api/categories")
-                .then(function(success) {
-                    success.data.forEach(function(category) {
+            var promise = $http.get("/api/categories")
+                .then(function (success) {
+                    success.data.forEach(function (category) {
                         categories.push(category);
                     });
                 },
-                    function(err) {
+                    function (err) {
                         console.log(err);
                     });
+
+            if (returnPromise) {
+                return promise;
+            }
+            
 
         };
 
@@ -53,7 +58,51 @@
                 return requestPromise;
             }
         }
+
+        //deletes category
+        categoriesFactory.DeleteCategory = function (category) {
+
+            //because of default api routing next param is id
+            $http.delete("/api/categories/" + category.CategoryId)
+                .then(function(success) {
+                    //category deleted
+
+                    toastr.success("Category deleted successfully.", "Success");
+
+                    //remove category from categories list
+                    var catIndex = categories.indexOf(category);
+                    categories.splice(catIndex, 1);
+
+
+            }, function(err) {
+                    //err occured
+                console.log(err);
+                toastr.error(err.data, "Error");
+            });
+        }
         
+        //edit category
+        categoriesFactory.EditCategory = function(category) {
+            $http.put("/api/categories", category)
+                .then(function(success) {
+
+                    //category edited
+
+                    var changedCat = categories.find(function(cat) {
+                        return cat.CategoryId == category.CategoryId;
+                    });
+                    changedCat.CategoryName = category.CategoryName;
+
+                    toastr.success("Category edited successfully", "Success");
+
+
+            }, function(err) {
+
+                console.log(err);
+                toastr.error(err.data, "Error");
+
+            });
+        }
 
 
         //return singleton

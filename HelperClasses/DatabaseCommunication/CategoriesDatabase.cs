@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -69,6 +70,36 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
             {
                 throw new Exception(ex.Message);
             }
+        }
+
+        //deletes category
+        public static async void RemoveCategory(int id,NbpContext db)
+        {
+            //finds category
+            var category = await db.Categories.FindAsync(id);
+
+            //sets state to deleted
+            db.Entry(category).State = EntityState.Deleted;
+
+            //saves changes
+            await db.SaveChangesAsync();
+        }
+
+        //edits category
+        public static async void EditCategory(AdminCategoryVm category, NbpContext db)
+        {
+            //find category in db
+            var categoryDb = await db.Categories.FindAsync(category.CategoryId);
+
+            //edit category
+            categoryDb.CategoryTitle = category.CategoryName;
+
+            //set that it was modified
+            db.Entry(categoryDb).State = EntityState.Modified;
+
+            // save changes
+            await db.SaveChangesAsync();
+
         }
 
     }
