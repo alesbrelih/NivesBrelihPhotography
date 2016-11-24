@@ -42,6 +42,12 @@
                     //list 
                     url: "/categories",
                     template: "<admin-categories></admin-categories>"
+                })
+
+                // --- ADMIN ABOUT SECTION --- //
+                .state("about-main", {
+                    url: "/about",
+                    template: "<admin-about-main></admin-about-main>"
                 });
                 
 

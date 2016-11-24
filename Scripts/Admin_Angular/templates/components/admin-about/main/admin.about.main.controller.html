@@ -1,0 +1,12 @@
+﻿<div id="about-main">
+    <div class="main-wrapper">
+        <a ui-sref="view"> Back to Admin </a>
+        <hr>
+        <div class="list-group">
+            <a ui-sref="{{section.state}}" ng-repeat="section in vm.sections" class="list-group-item">
+                <h4 class="list-group-item-heading">{{section.title}}</h4>
+                <p class="list-group-item-text">{{section.body}}</p>
+            </a>
+        </div>
+    </div>
+</div>

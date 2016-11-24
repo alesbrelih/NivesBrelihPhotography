@@ -1,0 +1,29 @@
+﻿
+/*ADMIN ABOUT main VIEW STYLES START*/ 
+
+/*main wrapper styles*/
+#about-main .main-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-height: 80vh;
+        
+    }
+
+    /*section listing wrapper styles*/
+    #about-main .main-wrapper .list-group{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 300px;
+
+    }
+
+    /*pointer cursor for sections*/
+    #about-main .main-wrapper .list-group .list-group-item {
+        cursor: pointer;
+    }
+
+/*ADMIN ABOUT main VIEW STYLES END*/ 
