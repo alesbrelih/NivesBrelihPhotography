@@ -186,6 +186,7 @@
     <Compile Include="Controllers\Api\AlbumsApiController.cs" />
     <Compile Include="Controllers\Api\CategoriesApiController.cs" />
     <Compile Include="Controllers\Api\ProfileApiController.cs" />
+    <Compile Include="Controllers\Api\SocialsApiController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -415,6 +416,7 @@
     <Content Include="Scripts\Admin_Angular\app.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-about\main\admin.about.main.controller.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-about\personal\admin.about.personal.component.js" />
+    <Content Include="Scripts\Admin_Angular\components\admin-about\social-links\admin.about.social.links.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-categories\admin.categories.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-photos\add\admin.photos.add.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-photos\admin.photos.component.js" />
@@ -428,6 +430,7 @@
     <Content Include="Scripts\Admin_Angular\services\ProfileService\profile.service.js" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-about\main\admin.about.main.controller.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-about\personal\admin.about.personal.controller.html" />
+    <Content Include="Scripts\Admin_Angular\templates\components\admin-about\social-links\admin.about.social.links.controller.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-categories\admin.categories.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-photos\add\admin.photos.add.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-photos\admin.photos.component.html" />

@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using NivesBrelihPhotography.DbContexts;
+using NivesBrelihPhotography.Models.AboutModels;
 using NivesBrelihPhotography.Models.AboutModels.ViewModels.Admin_ViewModels;
+using System.Collections;
 
 namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
 {
@@ -61,6 +63,14 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
 
             await db.SaveChangesAsync();
 
+        }
+
+        public static async Task<ICollection<ProfileLink>> GetSocialLinks(NbpContext db)
+        {
+            
+            var query = await db.ProfileLinks.ToListAsync();
+
+            return query;
         }
 
     }

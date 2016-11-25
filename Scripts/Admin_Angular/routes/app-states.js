@@ -54,6 +54,12 @@
                 .state("about-personal", {
                     url: "/about/personal",
                     template: "<admin-about-personal></admin-about-personal>"
+                })
+
+                // --- ADMIN SOCIAL LINKS SECTION ---- //
+                .state("about-social-links", {
+                    url: "/about/social-links",
+                    template: "<admin-about-social-links></admin-about-social-links>"
                 });
                 
 

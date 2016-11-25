@@ -13,6 +13,8 @@
 
         var profileObject = null;
 
+        var socialLinks = null;
+
 
 
         // ---- publics ---- //
@@ -63,6 +65,29 @@
                     toastr.error(err.data, "Error");
 
                 });
+        }
+
+
+
+        //returns profile social links
+        profileFactory.GetSocialLinks = function() {
+            return socialLinks;
+        }
+
+        //retrieves profile social links
+        profileFactory.RefreshSocialLinks = function() {
+
+            $http.get("/api/socials")
+                .then(function(success) {
+
+                    //set social links array
+                    socialLinks = success.data;
+
+                },
+                    function(err) {
+                        console.log(err);
+                    });
+
         }
 
         //return singleton
