@@ -15,6 +15,8 @@
 
         var socialLinks = null;
 
+        var reviews = null;
+
 
 
         // ---- publics ---- //
@@ -101,6 +103,30 @@
                     function(err) {
                         console.log(err);
                         toastr.error(err.data,"Error")
+                    });
+        }
+
+
+        // ---- REVIEWS ---- //
+
+        //get reviews
+        profileFactory.GetReviews = function() {
+            return reviews;
+        }
+
+        //refresh reviews
+        profileFactory.RefreshReviews = function() {
+            return $http.get("/api/reviews")
+                .then(function(success) {
+
+                        //reviews got successfully
+                        reviews = success.data;
+                    },
+                    function(err) {
+
+                        //err getting reviews
+                        toastr.error(err.data, "Error");
+                        console.log(err);
                     });
         }
 

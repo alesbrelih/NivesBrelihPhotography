@@ -101,5 +101,66 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
             await db.SaveChangesAsync();
         }
 
+
+        //gets reviews
+        public static async Task<ICollection<PhotoShootReview>> GetReviews(NbpContext db)
+        {
+            var reviews = await db.PhotoShootReviews.ToListAsync();
+            return reviews;
+        }
+
+        //adds review
+        public static async Task<PhotoShootReview> AddReview(AdminPhotoShootReviewCreate review, NbpContext db)
+        {
+            //create review db model
+            var reviewDb = new PhotoShootReview()
+            {
+                Review = review.Review,
+                ReviewerName = review.ReviewerName
+            };
+
+            //add review to db
+            db.PhotoShootReviews.Add(reviewDb);
+
+            //save changes async
+            await db.SaveChangesAsync();
+
+            //return created object
+            return reviewDb;
+
+        }
+
+        //updates review
+        public static async Task UpdateReview(PhotoShootReview review, NbpContext db)
+        {
+            //get review in db
+            var reviewDb = await db.PhotoShootReviews.FindAsync(review.PhotoShootReviewId);
+
+            //update data
+            reviewDb.Review = review.Review;
+            reviewDb.ReviewerName = review.ReviewerName;
+
+            //notify EF6 that it was modified
+            db.Entry(reviewDb).State = EntityState.Modified;
+
+            //save changes async
+            await db.SaveChangesAsync();
+
+        }
+
+        //remove review
+        public static async Task RemoveReview(int id, NbpContext db)
+        {
+            //find entry in db
+            var reviewDb = await db.PhotoShootReviews.FindAsync(id);
+
+            //set it was deleted
+            db.Entry(reviewDb).State = EntityState.Deleted;
+
+            //save changes async
+            await db.SaveChangesAsync();
+
+        }
+
     }
 }
