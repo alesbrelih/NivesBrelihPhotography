@@ -1,0 +1,25 @@
+﻿
+/*ADMIN ABOUT PERSNAL SECTION START*/
+
+#about-personal-form #profilePhoto {
+        display: none;
+    }
+     #about-personal-form #file-submit-btn {
+         width: 100px;
+     }
+     #about-personal-form>.img-preview {
+         max-width: 500px;
+         padding: 20px;
+         margin-bottom: 10px;
+
+     }
+     #about-personal-form>.img-preview>img {
+         max-width: 100%;
+         border-radius: 2px;
+
+     }
+
+  /*ADMIN ABOUT PERSNAL SECTION END*/
+
+
+

@@ -121,7 +121,8 @@ namespace NivesBrelihPhotography
                 "~/Content/Admin_Section/admin-index.css",
                 "~/Content/Admin_Section/admin-photos-angular.css",
                 "~/Content/Admin_Section/admin-categories-angular.css",
-                "~/Content/Admin_Section/admin-about-main.css"
+                "~/Content/Admin_Section/admin-about-main.css",
+                "~/Content/Admin_Section/admin-about-personal.css"
                 ));
 
 

@@ -44,10 +44,16 @@
                     template: "<admin-categories></admin-categories>"
                 })
 
-                // --- ADMIN ABOUT SECTION --- //
+                // --- ADMIN ABOUT ALL SECTION --- //
                 .state("about-main", {
                     url: "/about",
                     template: "<admin-about-main></admin-about-main>"
+                })
+
+                // --- ADMIN ABOUT PERSONAL SECTION ---- /
+                .state("about-personal", {
+                    url: "/about/personal",
+                    template: "<admin-about-personal></admin-about-personal>"
                 });
                 
 

@@ -9,12 +9,13 @@
 
     //component controller
     function aboutMainController() {
+
         var vm = this;
 
         //avaliable sections for admin about
         vm.sections = [
             {
-                state:"about-information",
+                state: "about-personal",
                 title:"Personal Information",
                 body:"Personal information section, where you can change your personal information display"
             },
@@ -29,6 +30,7 @@
                 body: "Reference section, where you can add,modify or delete references"
             }
         ];
+
     }
 
     //register component

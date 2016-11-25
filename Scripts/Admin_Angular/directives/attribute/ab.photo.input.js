@@ -8,7 +8,8 @@
 	//directive controller
 	function photoInputController() {
 
-		function linkFunction(scope, el, attr, ngCtrl) {
+	    function linkFunction(scope, el, attr, ngCtrl) {
+
 			//if no ngCtrl don't do anything (ng-model)
 		    if (!ngCtrl) {
 		    	return;
@@ -26,32 +27,34 @@
 		        if (value.type.startsWith("image")) {
 		            return true;
 		        }
+		        return false;
 		    };
 
 			//CHECK IF ALL VALIDATION RETURNS TRUE AND SET IMG PREVIEW
 		    ngCtrl.$viewChangeListeners.push(function () {
 				//if el is valid
 				if (ngCtrl.$valid) {
-				    
-					//set fileReader
-					var reader = new FileReader();
-					reader.onload = function (event) {
 
-					    scope.$apply(function() {
-					        //if successfully read, set the preview img prop
-					        scope.previewImg = event.target.result;
-					    });
+				    //set fileReader
+				    var reader = new FileReader();
+				    reader.onload = function(event) {
 
-					};
+				        scope.$apply(function() {
+				            //if successfully read, set the preview img prop
+				            scope.previewImg = event.target.result;
+				        });
 
-					//read file
+				    };
+
+				    //read file
 				    reader.readAsDataURL(ngCtrl.$modelValue);
 
 
-				}
+				} 
+		        
+
+
 		    });
-
-
 
 
 		    function onElChangeFnc() {
