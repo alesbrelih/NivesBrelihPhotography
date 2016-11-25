@@ -24,7 +24,7 @@ namespace NivesBrelihPhotography.Controllers.Api
         {
             try
             {
-                var profile = await _db.Profile.FirstOrDefaultAsync();
+                var profile = await ProfileDatabase.GetProfile(_db);
                 return Request.CreateResponse(HttpStatusCode.OK, profile);
             }
             catch (Exception ex)

@@ -122,7 +122,8 @@ namespace NivesBrelihPhotography
                 "~/Content/Admin_Section/admin-photos-angular.css",
                 "~/Content/Admin_Section/admin-categories-angular.css",
                 "~/Content/Admin_Section/admin-about-main.css",
-                "~/Content/Admin_Section/admin-about-personal.css"
+                "~/Content/Admin_Section/admin-about-personal.css",
+                "~/Content/Admin_Section/admin-about-social-links.css"
                 ));
 
 
@@ -135,7 +136,7 @@ namespace NivesBrelihPhotography
             bundles.Add(new ScriptBundle("~/bundles/angular-dependencies").Include(
                 "~/Scripts/angular.js",
                 "~/Scripts/angular-ui-router.js",
-                "~/Scripts/angular-animate.js",
+                "~/Scripts/angular-animate.min.js",
                 "~/Scripts/angular-ui/ui-bootstrap.js",
                 "~/Scripts/angular-ui/ui-bootstrap-tpls.js",
                 "~/Scripts/angular-toastr.js",

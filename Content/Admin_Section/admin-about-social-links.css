@@ -1,0 +1,24 @@
+﻿
+/*ADMIN ABOUT SOCIAL LINKS SECTION START*/
+
+#admin-social-link .social-link .list-group-item-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
+    #admin-social-link .social-link {
+        max-width: 500px;
+    }
+    #admin-social-link .social-link-body .is-shown {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    #admin-social-link .social-link-body .is-shown .label {
+        padding: 10px;
+        display: block;
+    }
+
+/*ADMIN ABOUT SOCIAL LINKS SECTION END*/

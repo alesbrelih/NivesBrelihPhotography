@@ -273,6 +273,10 @@
     <Compile Include="Migrations\NbpContextMigrations\201611221411536_deleted isalbumcover on photo table.Designer.cs">
       <DependentUpon>201611221411536_deleted isalbumcover on photo table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\NbpContextMigrations\201611251549200_Added shown on page bool to social links table.cs" />
+    <Compile Include="Migrations\NbpContextMigrations\201611251549200_Added shown on page bool to social links table.Designer.cs">
+      <DependentUpon>201611251549200_Added shown on page bool to social links table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\NbpContextMigrations\Configuration.cs" />
     <Compile Include="Models\AboutModels\PhotoShootReview.cs" />
     <Compile Include="Models\AboutModels\Profile.cs" />
@@ -281,6 +285,7 @@
     <Compile Include="Models\AboutModels\ReferencePhoto.cs" />
     <Compile Include="Models\AboutModels\ViewModels\AboutIndexViewModel.cs" />
     <Compile Include="Models\AboutModels\ViewModels\Admin ViewModels\AdminAboutProfileInformation.cs" />
+    <Compile Include="Models\AboutModels\ViewModels\Admin ViewModels\AdminAboutProfileLinkUpdate.cs" />
     <Compile Include="Models\AboutModels\ViewModels\PhotoShotReviewView.cs" />
     <Compile Include="Models\AboutModels\ViewModels\ProfileLinkView.cs" />
     <Compile Include="Models\AboutModels\ViewModels\ProfileView.cs" />
@@ -361,6 +366,7 @@
     <Content Include="Content\About_Section\about-reviews.css" />
     <Content Include="Content\Admin_Section\admin-about-main.css" />
     <Content Include="Content\Admin_Section\admin-about-personal.css" />
+    <Content Include="Content\Admin_Section\admin-about-social-links.css" />
     <Content Include="Content\Admin_Section\admin-categories-angular.css" />
     <Content Include="Content\Admin_Section\admin-photos-angular.css" />
     <Content Include="Content\Admin_Section\admin-index.css" />
@@ -430,7 +436,7 @@
     <Content Include="Scripts\Admin_Angular\services\ProfileService\profile.service.js" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-about\main\admin.about.main.controller.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-about\personal\admin.about.personal.controller.html" />
-    <Content Include="Scripts\Admin_Angular\templates\components\admin-about\social-links\admin.about.social.links.controller.html" />
+    <Content Include="Scripts\Admin_Angular\templates\components\admin-about\social-links\admin.about.social.links.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-categories\admin.categories.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-photos\add\admin.photos.add.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-photos\admin.photos.component.html" />
@@ -630,6 +636,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\NbpContextMigrations\201611221411536_deleted isalbumcover on photo table.resx">
       <DependentUpon>201611221411536_deleted isalbumcover on photo table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\NbpContextMigrations\201611251549200_Added shown on page bool to social links table.resx">
+      <DependentUpon>201611251549200_Added shown on page bool to social links table.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

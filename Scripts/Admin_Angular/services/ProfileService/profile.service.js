@@ -4,7 +4,7 @@
     var app = angular.module("adminApp");
 
     //profile factory / service
-    function profileFactoryController($http, toastr) {
+    function profileFactoryController($http, toastr, $state) {
 
         //service singleton
         var profileFactory = {};
@@ -69,6 +69,7 @@
 
 
 
+
         //returns profile social links
         profileFactory.GetSocialLinks = function() {
             return socialLinks;
@@ -77,7 +78,7 @@
         //retrieves profile social links
         profileFactory.RefreshSocialLinks = function() {
 
-            $http.get("/api/socials")
+            return $http.get("/api/socials")
                 .then(function(success) {
 
                     //set social links array
@@ -90,11 +91,24 @@
 
         }
 
+        //update profile social link info
+        profileFactory.UpdateSocialLink = function(link) {
+            $http.put("/api/socials",link)
+                .then(function(success) {
+                    toastr.success(success.data, "Success");
+                    $state.go($state.current, {}, { reload: true });
+                    },
+                    function(err) {
+                        console.log(err);
+                        toastr.error(err.data,"Error")
+                    });
+        }
+
         //return singleton
         return profileFactory;
     }
 
-    profileFactoryController.$inject = ["$http", "toastr"];
+    profileFactoryController.$inject = ["$http", "toastr","$state"];
 
     //register factory
     app.factory("ProfileService", profileFactoryController);

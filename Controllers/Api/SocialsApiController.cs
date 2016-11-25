@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using NivesBrelihPhotography.DbContexts;
 using NivesBrelihPhotography.HelperClasses.DatabaseCommunication;
+using NivesBrelihPhotography.Models.AboutModels.ViewModels.Admin_ViewModels;
 
 namespace NivesBrelihPhotography.Controllers.Api
 {
@@ -27,6 +28,23 @@ namespace NivesBrelihPhotography.Controllers.Api
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
+        }
+
+        [HttpPut]
+        //update selected social link
+        public async Task<HttpResponseMessage> UpdateSocials(AdminAboutProfileLinkUpdate socialLink)
+        {
+            //try to update social link
+            try
+            {
+                await ProfileDatabase.UpdateSocialLink(socialLink,_db);
+                return Request.CreateResponse(HttpStatusCode.OK, "Social link information successfully updated.");
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+            
         }
 
         protected override void Dispose(bool disposing)

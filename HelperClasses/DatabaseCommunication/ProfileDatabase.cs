@@ -16,6 +16,14 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
 {
     public class ProfileDatabase
     {
+        //gets profile information
+
+        public static async Task<Profile> GetProfile(NbpContext db)
+        {
+            var profile = await db.Profile.FirstOrDefaultAsync();
+            return profile;
+        }
+
         //edits profile information
         public static async Task EditProfile(AdminAboutProfileInformation profile, MultipartFileData file, NbpContext db)
         {
@@ -65,12 +73,32 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
 
         }
 
+        //gets all social links
         public static async Task<ICollection<ProfileLink>> GetSocialLinks(NbpContext db)
         {
             
             var query = await db.ProfileLinks.ToListAsync();
 
             return query;
+        }
+
+        //update selected social link
+        public static async Task UpdateSocialLink(AdminAboutProfileLinkUpdate socialLink,NbpContext db)
+        {
+            //get selected social link db model
+            var socialDb = await db.ProfileLinks.FindAsync(socialLink.ProfileLinkId);
+
+
+            //change properties
+            socialDb.LinkDescription = socialLink.LinkDescription;
+            socialDb.LinkUrl = socialLink.LinkUrl;
+            socialDb.ShownOnProfile = socialLink.ShownOnProfile;
+
+            //set entity state
+            db.Entry(socialDb).State = EntityState.Modified;
+
+            //save changes async
+            await db.SaveChangesAsync();
         }
 
     }

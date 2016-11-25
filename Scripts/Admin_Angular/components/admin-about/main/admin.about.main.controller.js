@@ -20,7 +20,7 @@
                 body:"Personal information section, where you can change your personal information display"
             },
             {
-                state:"about-socials",
+                state:"about-social-links",
                 title: "Social Links",
                 body: "Social links section, where you can set social link URLs and select which one to display on page"
             },

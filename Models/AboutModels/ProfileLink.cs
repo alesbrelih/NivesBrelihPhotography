@@ -30,5 +30,7 @@ namespace NivesBrelihPhotography.Models.AboutModels
         [Required]
         [StringLength(100)]
         public string LinkDescription { get; set; }
+
+        public bool ShownOnProfile { get; set; }
     }
 }
