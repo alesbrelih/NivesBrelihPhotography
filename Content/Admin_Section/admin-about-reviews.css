@@ -1,0 +1,75 @@
+﻿    /*ADMIN ABOUT REVIEW section stylES START*/
+
+
+    /*action "button " to start adding new review styles*/
+     #modify-review > #review-action {
+         font-size: 1.5em;
+         padding: 50px 50px 20px 50px;
+     }
+
+     /*pointer on hover cursor*/
+    #modify-review > #review-action i {
+        cursor: pointer;
+    }
+
+    /*extra margin form last form button action*/
+    #modify-review .form-review-actions button:last-child {
+        margin: 0 5px;
+    }
+
+    /*pagination styles*/
+    #modify-review .review-pagination {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /*extra space for pagination numbers*/
+    #modify-review .review-pagination span {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    /*cursor pointer form table headers - so its visible they can be ordered*/ 
+    #modify-review th {
+        cursor: pointer;
+    }
+    /*underline on hover form table headers*/
+    #modify-review th:hover {
+        text-decoration: underline;
+    }
+
+    /*action buttons for every review inside reviews table styles*/
+    #modify-review .admin-reviews .review-actions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /*extra margin for better visibility*/
+    #modify-review .admin-reviews .review-actions button:last-child {
+        margin-left: 5px;
+    }
+
+    /*responsivness*/
+    @media(max-width: 500px) {
+
+        /* relocate add new review button*/
+        #modify-review > #review-action {
+            text-align: right;
+            padding: 20px 20px 10px 20px;
+        }
+
+        /*review actions inside review table display column when display is small*/
+        #modify-review .admin-reviews .review-actions {
+            flex-direction: column;
+        }
+        #modify-review .admin-reviews .review-actions button {
+            margin: 5px 0px;
+        }
+        #modify-review .admin-reviews .review-actions button:last-child {
+            margin-left: 0px;
+        }
+    }
+
+    /*ADMIN ABOUT REVIEW section stylES END*/

@@ -1,5 +1,5 @@
-﻿(function(angular) {
-    
+﻿(function (angular) {
+
     //search for angular module
     var app = angular.module("adminApp");
 
@@ -30,7 +30,7 @@
                     resolve: {
                         //resolves photo from id in url param
                         photo: [
-                            "$stateParams", "PhotosService", function($stateParams, PhotosService) {
+                            "$stateParams", "PhotosService", function ($stateParams, PhotosService) {
                                 return PhotosService.GetUserForEdit($stateParams.id);
                             }
                         ]
@@ -60,8 +60,13 @@
                 .state("about-social-links", {
                     url: "/about/social-links",
                     template: "<admin-about-social-links></admin-about-social-links>"
+                })
+                // --- ADMIN REVIEWS SECTION ---- //
+                .state("about-reviews", {
+                    url: "/about/reviews",
+                    template: "<admin-about-reviews></admin-about-reviews>"
                 });
-                
+
 
             $urlRouterProvider.otherwise("/");
         }

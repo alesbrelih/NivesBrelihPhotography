@@ -130,6 +130,48 @@
                     });
         }
 
+        //update review
+        profileFactory.UpdateReview = function(review) {
+            $http.put("/api/reviews", review)
+                .then(function (success) {
+                    toastr.success("Review successfully updated.", "Success");
+                    $state.go("about-reviews",{},{reload:true}); //reload page to see new reviews
+                },
+                    function(err) {
+                        toastr.error(err.data, "Error");
+                    });
+        }
+
+        //create review
+        profileFactory.CreateReview = function(review) {
+            $http.post("/api/reviews", review)
+                .then(function(success) {
+                    toastr.success("Review added successfuly.", "Success");
+                    reviews.push(success.data);
+                },
+                    function(err) {
+                        toastr.error(err.data, "Error");
+                    });
+        }
+
+        //delete review
+        profileFactory.DeleteReview = function(review) {
+            $http.delete("/api/reviews", { params: { id: review.PhotoShootReviewId } })
+                .then(function (success) {
+
+                    //show toastr
+                    toastr.success("Review successfully deleted.", "Success");
+
+                    //remove review from current reviews
+                    var reviewIndex = reviews.indexOf(review);
+                    reviews.splice(reviewIndex, 1);
+                },
+                    function (err) {
+                        //catch err 
+                        toastr.error(err.data, "Error");
+                    });
+        }
+
         //return singleton
         return profileFactory;
     }

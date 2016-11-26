@@ -123,7 +123,8 @@ namespace NivesBrelihPhotography
                 "~/Content/Admin_Section/admin-categories-angular.css",
                 "~/Content/Admin_Section/admin-about-main.css",
                 "~/Content/Admin_Section/admin-about-personal.css",
-                "~/Content/Admin_Section/admin-about-social-links.css"
+                "~/Content/Admin_Section/admin-about-social-links.css",
+                "~/Content/Admin_Section/admin-about-reviews.css"
                 ));
 
 

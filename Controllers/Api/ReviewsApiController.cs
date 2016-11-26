@@ -13,7 +13,7 @@ using NivesBrelihPhotography.Models.AboutModels.ViewModels.Admin_ViewModels;
 
 namespace NivesBrelihPhotography.Controllers.Api
 {
-    public class ReviewsApiController : ApiController
+    public class ReviewsController : ApiController
     {
         private NbpContext _db = new NbpContext();
 
