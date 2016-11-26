@@ -17,6 +17,8 @@
 
         var reviews = null;
 
+        var references = null;
+
 
 
         // ---- publics ---- //
@@ -170,6 +172,45 @@
                         //catch err 
                         toastr.error(err.data, "Error");
                     });
+        }
+
+
+        // ---- REFERENCES ---- //
+
+        //gets private variable which contains references
+        profileFactory.GetReferences = function() {
+            return references;
+        }
+
+        //refreshes references from db and returns promise
+        profileFactory.RefreshReferences = function() {
+            return $http.get("/api/references")
+                .then(function(success) {
+                    references = success.data;
+                }, function(err) {
+                    console.log(err);
+                });
+        }
+
+        //deletes reference from db
+        profileFactory.DeleteReference = function(reference) {
+            $http.delete("/api/references", {
+                    params: {
+                        id: reference.Id
+                    }
+            }).then(function () {
+
+                    //show toastr
+                    toastr.success("Reference successfully deleted.", "Success");
+
+                    //remove deleted reference from references array
+                    var referenceIndex = references.indexOf(reference);
+                    references.splice(referenceIndex, 1);
+                })
+                .catch(function (err) {
+                    //show toastr with err
+                toastr.error(err.data, "Error");
+            });
         }
 
         //return singleton

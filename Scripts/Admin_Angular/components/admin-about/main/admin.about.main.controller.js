@@ -28,6 +28,11 @@
                 state:"about-references",
                 title: "References",
                 body: "Reference section, where you can add,modify or delete references"
+            },
+            {
+                state:"about-reviews",
+                title: "Reviews",
+                body: "Reviews section, where you can add,modify or delete reviews"
             }
         ];
 

@@ -162,5 +162,36 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
 
         }
 
+
+        // --- REFERENCES -- //
+
+        //get references
+        public static async Task<ICollection<AdminAboutReferencesListItem>> GetReferences(NbpContext db)
+        {
+            //gets references from db
+            var query = await db.References.Select(x => new AdminAboutReferencesListItem()
+            {
+                Id = x.ReferenceId,
+                Title = x.ReferenceTitle,
+                Description = x.ReferenceDescription
+
+            }).ToListAsync();
+
+            //return query
+            return query;
+
+        }
+
+        //delete reference
+        public static async Task DeleteReference(int id, NbpContext db)
+        {
+            // get reference from db
+            var referenceDb = await db.References.FindAsync(id);
+
+            db.Entry(referenceDb).State = EntityState.Deleted;
+
+            await db.SaveChangesAsync();
+
+        }
     }
 }

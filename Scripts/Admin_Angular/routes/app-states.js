@@ -65,6 +65,11 @@
                 .state("about-reviews", {
                     url: "/about/reviews",
                     template: "<admin-about-reviews></admin-about-reviews>"
+                })
+                // -- ADMIN REFERENCES SECTION --- //
+                .state("about-references", {
+                    url:"/about/references",
+                    template:"<admin-about-references></admin-about-references>"
                 });
 
 
