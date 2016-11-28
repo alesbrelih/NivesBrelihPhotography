@@ -193,5 +193,113 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
             await db.SaveChangesAsync();
 
         }
+
+        //add reference
+        public static async Task AddReference(AdminAboutReferenceModify reference, NbpContext db)
+        {
+            //new reference db model
+            var referenceDb = new Reference()
+            {
+                ReferenceTitle = reference.Title,
+                ReferenceDescription = reference.Description
+            };
+
+            //if reference contains reference photos
+            if (reference.ReferencePhotos.Any())
+            {
+                referenceDb.Photos = new List<ReferencePhoto>();
+
+                //set reference phtos
+                foreach (var refPhoto in reference.ReferencePhotos)
+                {
+                    int photoId;
+                    bool result = int.TryParse(refPhoto, out photoId); //try to convert string to valid int
+                    if (result && (photoId > 0))
+                    {
+                        referenceDb.Photos.Add(new ReferencePhoto()
+                        {
+                            PhotoId = photoId,
+                            Reference = referenceDb
+
+                        });
+                    }
+
+                }
+            }
+
+            
+
+            //add new reference to db
+            db.References.Add(referenceDb);
+
+            //await save changes
+            await db.SaveChangesAsync();
+
+
+
+        }
+
+        //edit reference
+        public static async Task EditReference(AdminAboutReferenceModify reference, NbpContext db)
+        {
+            //get reference from db
+            var referenceDb = await db.References.FindAsync(reference.Id);
+            if (referenceDb == null)
+            {
+                throw new Exception("Reference could not be found in database.");
+            }
+
+            //set data
+            referenceDb.ReferenceTitle = reference.Title;
+            referenceDb.ReferenceDescription = reference.Description;
+
+            //set photos
+            //get previous photos 
+            var previousPhotos = referenceDb.Photos.Select(x => x.PhotoId.ToString());
+
+            //delete those which were removed
+            foreach (var refPhoto in referenceDb.Photos)
+            {
+                if (!reference.ReferencePhotos.Contains(refPhoto.PhotoId.ToString()))
+                {
+                    db.Entry(refPhoto).State = EntityState.Deleted;
+                }
+            }
+
+            //add new
+            reference.ReferencePhotos.Where(x=>!previousPhotos.Contains(x)).ToList().ForEach(x=>referenceDb.Photos.Add(new ReferencePhoto()
+            {
+                PhotoId = int.Parse(x),
+                ReferenceId = referenceDb.ReferenceId
+            }));
+
+            await db.SaveChangesAsync();
+
+
+        }
+
+        //get single reference
+        public static async Task<AdminAboutReferenceModify> GetReference(int id, NbpContext db)
+        {
+            //get reference in db
+            var referenceDb = await db.References.FindAsync(id);
+
+            //set reference view model
+            var viewModelReference = new AdminAboutReferenceModify()
+            {
+                Id = referenceDb.ReferenceId,
+                Title = referenceDb.ReferenceTitle,
+                Description = referenceDb.ReferenceDescription
+            };
+
+            //add ids of all reference photos
+            foreach (var refPhoto in referenceDb.Photos)
+            {
+                viewModelReference.ReferencePhotos.Add(refPhoto.PhotoId.ToString());
+            }
+
+
+            return viewModelReference;
+        }
     }
 }

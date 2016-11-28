@@ -91,7 +91,7 @@
     }
 
     //inject for uglification
-    adminEditComponentController.$inject = ["PhotosService", "$rootScope", "CategoriesService", "AlbumsService", "$q","$state"];
+    adminEditComponentController.$inject = ["PhotosService", "$rootScope", "CategoriesService", "AlbumsService", "$q"];
 
     //register component
     app.component("adminPhotosEdit", {

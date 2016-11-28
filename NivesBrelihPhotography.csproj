@@ -288,6 +288,7 @@
     <Compile Include="Models\AboutModels\ViewModels\AboutIndexViewModel.cs" />
     <Compile Include="Models\AboutModels\ViewModels\Admin ViewModels\AdminAboutProfileInformation.cs" />
     <Compile Include="Models\AboutModels\ViewModels\Admin ViewModels\AdminAboutProfileLinkUpdate.cs" />
+    <Compile Include="Models\AboutModels\ViewModels\Admin ViewModels\AdminAboutReferenceModify.cs" />
     <Compile Include="Models\AboutModels\ViewModels\Admin ViewModels\AdminAboutReferencesListItem.cs" />
     <Compile Include="Models\AboutModels\ViewModels\Admin ViewModels\AdminPhotoShootReviewCreate.cs" />
     <Compile Include="Models\AboutModels\ViewModels\PhotoShotReviewView.cs" />
@@ -370,12 +371,15 @@
     <Content Include="Content\About_Section\about-reviews.css" />
     <Content Include="Content\Admin_Section\admin-about-main.css" />
     <Content Include="Content\Admin_Section\admin-about-personal.css" />
+    <Content Include="Content\Admin_Section\admin-about-references-add.css" />
+    <Content Include="Content\Admin_Section\admin-about-references-edit.css" />
     <Content Include="Content\Admin_Section\admin-about-references.css" />
     <Content Include="Content\Admin_Section\admin-about-reviews.css" />
     <Content Include="Content\Admin_Section\admin-about-social-links.css" />
     <Content Include="Content\Admin_Section\admin-categories-angular.css" />
     <Content Include="Content\Admin_Section\admin-photos-angular.css" />
     <Content Include="Content\Admin_Section\admin-index.css" />
+    <Content Include="Content\Admin_Section\Angular_Directives\elements\ab-ul-photos-checkable.css" />
     <Content Include="Content\AlbumPhotos_Section\album-photos-from-blog.css" />
     <Content Include="Content\AlbumPhotos_Section\album-photos.css" />
     <Content Include="Content\angular-toastr.css" />
@@ -428,7 +432,9 @@
     <Content Include="Scripts\Admin_Angular\app.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-about\main\admin.about.main.controller.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-about\personal\admin.about.personal.component.js" />
+    <Content Include="Scripts\Admin_Angular\components\admin-about\references\add\admin.about.references.add.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-about\references\admin.about.references.component.js" />
+    <Content Include="Scripts\Admin_Angular\components\admin-about\references\edit\admin.about.references.edit.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-about\reviews\admin.about.reviews.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-about\social-links\admin.about.social.links.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-categories\admin.categories.component.js" />
@@ -436,6 +442,7 @@
     <Content Include="Scripts\Admin_Angular\components\admin-photos\admin.photos.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-photos\edit\admin.photos.edit.component.js" />
     <Content Include="Scripts\Admin_Angular\components\modal-view\modal.view.component.js" />
+    <Content Include="Scripts\Admin_Angular\directives\elements\ab-photo-ul-checkable.directive.js" />
     <Content Include="Scripts\Admin_Angular\filters\ng_repeat\startswith.filter.js" />
     <Content Include="Scripts\Admin_Angular\services\AlbumsService\albums.service.js" />
     <Content Include="Scripts\Admin_Angular\services\app.services.js" />
@@ -444,7 +451,9 @@
     <Content Include="Scripts\Admin_Angular\services\ProfileService\profile.service.js" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-about\main\admin.about.main.controller.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-about\personal\admin.about.personal.controller.html" />
+    <Content Include="Scripts\Admin_Angular\templates\components\admin-about\references\add\admin.about.references.add.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-about\references\admin.about.references.component.html" />
+    <Content Include="Scripts\Admin_Angular\templates\components\admin-about\references\edit\admin.about.references.edit.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-about\reviews\admin.about.reviews.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-about\social-links\admin.about.social.links.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-categories\admin.categories.component.html" />
@@ -454,6 +463,7 @@
     <Content Include="Scripts\Admin_Angular\templates\components\admin-view\admin.view.component.html" />
     <Content Include="Scripts\Admin_Angular\routes\app-states.js" />
     <Content Include="Scripts\Admin_Angular\templates\components\modal-view\modal.view.component.html" />
+    <Content Include="Scripts\Admin_Angular\templates\directives\elements\ab-photo-ul-checkable.directive.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-mocks.js" />

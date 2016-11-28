@@ -52,6 +52,10 @@ namespace NivesBrelihPhotography.Controllers.Api
                 }
                 catch (Exception err)
                 {
+                    if (err.Message == "end")
+                    {
+                        return ResponseMessage(Request.CreateResponse(HttpStatusCode.NoContent,"No more photos"));
+                    }
                     return ResponseMessage(Request.CreateResponse(HttpStatusCode.BadRequest, err.Message));
                 }
             }
@@ -122,11 +126,11 @@ namespace NivesBrelihPhotography.Controllers.Api
                         else if (key == "PhotoCategories")
                         {
                             var splittedValues = val.Split(',');
-                            foreach(string category in splittedValues)
+                            foreach (string category in splittedValues)
                             {
                                 requestBody.PhotoCategories.Add(category);
                             }
-                            
+
                         }
                         else if (key == "PhotoTitle")
                         {
@@ -149,23 +153,20 @@ namespace NivesBrelihPhotography.Controllers.Api
                 //add photo to db and save to server
                 var result = PhotosDatabase.AddNewPhotoToDatabase(requestBody, photoFile, _db);
 
-                //check if it was added successfully
-                if (result == DbResults.PhotoDb.Success)
-                {
-                    //response with OK - 200
-                    return Request.CreateResponse(HttpStatusCode.OK, DbResults.PhotoDb.Success.ToString());
-                }
 
-                //img wasnt added, return error msg
-                return Request.CreateResponse(HttpStatusCode.BadRequest, result.ToString());
+                //response with OK - 200
+                return Request.CreateResponse(HttpStatusCode.OK, result);
             }
-            catch (System.Exception e)
+
+
+
+            catch (System.Exception ex)
             {
 
                 //catch any other error
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
-       
+
         }
 
         [System.Web.Http.HttpPut]

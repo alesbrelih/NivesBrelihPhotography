@@ -1,0 +1,33 @@
+﻿    /*ADMIN ABOUT REFERENCE EDIT SECTION START*/
+
+    /*Back link when adding new photo wrapper styles*/
+    #reference-edit .add-photo .back-link {
+        margin-top: 20px;
+        padding-left: 40px;
+    }
+        /*Back link when adding new photo styles*/
+        #reference-edit .add-photo .back-link span {
+            font-size: 1.1em;
+            font-weight: bolder;
+            cursor: pointer;
+        }
+
+    /*button to open new photo element styles*/
+    #reference-edit .edit-reference #add-photo-btn {
+        margin-top: 10px;
+    }
+
+
+    /* reference photos wrapper*/
+    #reference-edit #search-ref-photos {
+        border: none;
+        border-radius: 0px;
+        border-bottom: 1px solid #ccc;
+        outline: none;
+        box-shadow: none;
+        width: 200px;
+        margin-left: 20px;
+    }
+
+    
+    /*ADMIN ABOUT REFERENCE EDIT SECTION END*/

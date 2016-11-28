@@ -1,0 +1,55 @@
+﻿
+
+<div id="reference-edit">
+
+    <br />
+    <div class="edit-reference" ng-if="!vm.addPhoto">
+
+        <h3>Edit Reference</h3>
+        <hr />
+        <form class="form-horizontal" novalidate ng-submit="vm.EditReference()">
+            <div class="form-group">
+                <label for="inputTitle" class="col-sm-2 control-label">Title</label>
+                <div class="col-sm-10">
+                    <input type="text" ng-model="vm.CurrentReference.Title" class="form-control" id="inputTitle" placeholder="Title">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputDescription" class="col-sm-2 control-label">Description</label>
+                <div class="col-sm-10">
+                    <textarea id="inputDescription" ng-model="vm.CurrentReference.Description" class="form-control" placeholder="Reference description here..." rows="4"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Photos</label>
+                <div class="col-sm-10">
+                    <input type="text" id="search-ref-photos" class="form-control" ng-model="vm.searchText" placeholder="Search photos" />
+                    <button class="btn btn-info glyphicon glyphicon-plus col-sm-offset-3" id="add-photo-btn" ng-click="vm.addPhoto = true"></button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputDescription" class="col-sm-2 control-label"></label>
+                <div class="col-sm-10">
+                    <ab-photo-ul-checkable ng-model="vm.CurrentReference.ReferencePhotos" photos="vm.Photos" search="vm.searchText"></ab-photo-ul-checkable>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-success glyphicon glyphicon-pencil"></button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+
+
+    <div class="add-photo" ng-if="vm.addPhoto">
+        <div class="row back-link">
+            <span ng-click="vm.addPhoto=false" class="text-primary"> Back </span>
+        </div>
+        <admin-photos-add></admin-photos-add>
+    </div>
+</div>
+

@@ -30,7 +30,7 @@
                     resolve: {
                         //resolves photo from id in url param
                         photo: [
-                            "$stateParams", "PhotosService", function ($stateParams, PhotosService) {
+                            "$stateParams", "PhotosService", function($stateParams, PhotosService) {
                                 return PhotosService.GetUserForEdit($stateParams.id);
                             }
                         ]
@@ -68,8 +68,25 @@
                 })
                 // -- ADMIN REFERENCES SECTION --- //
                 .state("about-references", {
-                    url:"/about/references",
-                    template:"<admin-about-references></admin-about-references>"
+                    url: "/about/references",
+                    template: "<admin-about-references></admin-about-references>"
+                })
+                .state("about-references-add", {
+                    url: "/about/references/add",
+                    template: "<admin-about-references-add></admin-about-references-add>"
+                })
+                //admin references edit from id in url
+                .state("about-references-edit", {
+                    url: "/about/references/edit/:id",
+                    template: "<admin-about-reference-edit edit-reference='$resolve.editReference'></admin-about-reference-edit>",
+                    resolve: {
+                        editReference: [
+                            "$stateParams", "ProfileService", function($stateParams, ProfileService) {
+                                console.log($stateParams.id);
+                                return ProfileService.GetSingleReference($stateParams.id);
+                            }
+                        ]
+                    }
                 });
 
 

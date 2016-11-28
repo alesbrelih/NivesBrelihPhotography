@@ -40,9 +40,8 @@
 
         }
 
-
         //gets photos list from api
-        photosFactory.GetPhotos = function (pageSize,cb) {
+        photosFactory.GetPhotos = function (pageSize,cb,finishCb) {
 
             //reset paging and photo aray
 
@@ -56,26 +55,43 @@
 
             //recursive function
             function getPhotosFromApi(page) {
+
                 $http.get("/api/photos", { params: { "page": page, "pagesize":pageSize } }).then(function (success) {
 
-                    //add each returned item to list
-                    success.data.forEach(function(el) {
-                        _photos.push(el);
-                    });
                     
-                    //increase page
-                    page = ++page;
 
-                    //if cb exists call it
-                    cb();
+                    if (success.status === 200) {
+                        //add each returned item to list
+                        success.data.forEach(function(el) {
+                            _photos.push(el);
+                        });
 
-                    //recursive call untill end of list
+                        //increase page
+                        page = ++page;
 
-                    getPhotosFromApi(page);
+                        //if cb exists call it
+                        if (cb) {
+                            cb();
+                        }
+                        
+
+                        //recursive call untill end of list
+
+                        getPhotosFromApi(page);
+                    }
+                    else if (success.status === 204) {
+
+                        //when no more data, check for finish cb
+                        if (finishCb) {
+                            finishCb();
+                        }
+                    }
+
+                    
 
 
                 }, function (err) {
-                    console.log(_photos);
+    
                     //no more items or err connecting to db
                     console.log(err);
                 });
@@ -140,8 +156,20 @@
             })
                 .then(function(success) {
 
-                    toastr.success("Photo successfully uploaded.","Success");
-                    $state.go("photos");
+                    toastr.success("Photo successfully uploaded.", "Success");
+
+                    //change state only if current photo-add
+                    if ($state.current.name === "photos-add") {
+                        $state.go("photos");
+                    } else {
+                        //add phto to db
+                        _photos.push(success.data);
+                    }
+                    
+
+                    //reset photo container
+                    photo = null;
+
                 },
                     
                     function(err) {

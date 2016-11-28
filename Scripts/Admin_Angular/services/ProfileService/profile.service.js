@@ -4,7 +4,7 @@
     var app = angular.module("adminApp");
 
     //profile factory / service
-    function profileFactoryController($http, toastr, $state) {
+    function profileFactoryController($http, toastr, $state,PhotosService,$q) {
 
         //service singleton
         var profileFactory = {};
@@ -213,11 +213,81 @@
             });
         }
 
+        //get photos for reference page
+        profileFactory.PhotosForReferencePage = function (pageSize) {
+
+            var deferred = $q.defer();
+
+
+            //get photos list
+            PhotosService.GetPhotos(pageSize, null, function () {
+
+
+                //no photos
+                if (PhotosService.Photos.length == 0) {
+                    deferred.reject();
+                }
+
+                ////get photos with less info for reference page
+                //var photos = PhotosService.Photos.map(function(item) {
+                //    return {
+                //        id: item.PhotoId,
+                //        title: item.PhotoTitle,
+                //        url: item.PhotoUrl
+
+                //    };
+                    
+                //});
+
+                //resolve with photos
+                deferred.resolve({ photos: PhotosService.Photos });
+
+
+            });
+            return deferred.promise;
+        }
+
+        //create reference
+        profileFactory.CreateReference = function(reference) {
+            $http.post("/api/references", reference)
+                .then(function(success) {
+                    toastr.success("Reference saved successfully.");
+                    if ($state.current.name === "about-references-add") {
+                        $state.go("about-references");
+                    }
+
+                },
+                    function(err) {
+                        toastr.error(err.data, "Error");
+                    });
+        }
+
+        //getsinglereference
+        profileFactory.GetSingleReference = function (id) {
+            return $http.get("/api/references/" + id);
+        }
+
+        //edit reference
+        profileFactory.EditReference = function(reference) {
+            $http.put("/api/references", reference)
+                .then(function () {
+                    //success
+                    toastr.success("Reference successfully changed.", "Success");
+                    if ($state.current.name === "about-references-edit") {
+                        $state.go("about-references");
+                    }
+                },
+                    function (err) {
+                        //catch err
+                        toastr.Error(err.data, "Error");
+                    });
+        }
+
         //return singleton
         return profileFactory;
     }
 
-    profileFactoryController.$inject = ["$http", "toastr","$state"];
+    profileFactoryController.$inject = ["$http", "toastr","$state","PhotosService","$q"];
 
     //register factory
     app.factory("ProfileService", profileFactoryController);

@@ -39,7 +39,7 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
 
                 if (!photos.Any())
                 {
-                    throw new Exception("No more photos");
+                    throw new Exception("end");
                 }
 
                 return photos;
@@ -50,116 +50,10 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
                 throw new Exception(err.Message);
             }
 
-            //switch (orderBy)
-            //{
-
-            //    case 1:
-            //        if (ascending)
-            //        {
-            //            return _db.Photos.OrderBy(x => x.PhotoTitle).Skip(page*pagesize).Take(pagesize).Select(x => new AdminPhotoIndexVm()
-            //            {
-            //                PhotoTitle = x.PhotoTitle,
-            //                Album = x.PhotoAlbum.AlbumName,
-            //                OnPortfolio = x.IsOnFrontPage,
-            //                PhotoId = x.PhotoId,
-            //                PhotoUrl = x.PhotoUrl,
-            //                Uploaded = x.Uploaded
-            //            }).ToList();
-            //        }
-            //        else
-            //        {
-            //            return _db.Photos.OrderByDescending(x => x.PhotoTitle).Skip(page * pagesize).Take(pagesize).Select(x => new AdminPhotoIndexVm()
-            //            {
-            //                PhotoTitle = x.PhotoTitle,
-            //                Album = x.PhotoAlbum.AlbumName,
-            //                OnPortfolio = x.IsOnFrontPage,
-            //                PhotoId = x.PhotoId,
-            //                PhotoUrl = x.PhotoUrl,
-            //                Uploaded = x.Uploaded
-            //            }).ToList();
-            //        }
-            //    case 2:
-            //        if (ascending)
-            //        {
-            //            return _db.Photos.OrderBy(x => x.PhotoAlbum.AlbumName).Skip(page * pagesize).Take(pagesize).Select(x => new AdminPhotoIndexVm()
-            //            {
-            //                PhotoTitle = x.PhotoTitle,
-            //                Album = x.PhotoAlbum.AlbumName,
-            //                OnPortfolio = x.IsOnFrontPage,
-            //                PhotoId = x.PhotoId,
-            //                PhotoUrl = x.PhotoUrl,
-            //                Uploaded = x.Uploaded
-            //            }).ToList();
-            //        }
-            //        else
-            //        {
-            //            return _db.Photos.OrderByDescending(x => x.PhotoAlbum.AlbumName).Skip(page * pagesize).Take(pagesize).Select(x => new AdminPhotoIndexVm()
-            //            {
-            //                PhotoTitle = x.PhotoTitle,
-            //                Album = x.PhotoAlbum.AlbumName,
-            //                OnPortfolio = x.IsOnFrontPage,
-            //                PhotoId = x.PhotoId,
-            //                PhotoUrl = x.PhotoUrl,
-            //                Uploaded = x.Uploaded
-            //            }).ToList();
-            //        }
-            //    case 3:
-            //        if (ascending)
-            //        {
-            //            return _db.Photos.OrderBy(x => x.IsOnFrontPage).Skip(page * pagesize).Take(pagesize).Select(x => new AdminPhotoIndexVm()
-            //            {
-            //                PhotoTitle = x.PhotoTitle,
-            //                Album = x.PhotoAlbum.AlbumName,
-            //                OnPortfolio = x.IsOnFrontPage,
-            //                PhotoId = x.PhotoId,
-            //                PhotoUrl = x.PhotoUrl,
-            //                Uploaded = x.Uploaded
-            //            }).ToList();
-            //        }
-            //        else
-            //        {
-            //            return _db.Photos.OrderByDescending(x => x.IsOnFrontPage).Skip(page * pagesize).Take(pagesize).Select(x => new AdminPhotoIndexVm()
-            //            {
-            //                PhotoTitle = x.PhotoTitle,
-            //                Album = x.PhotoAlbum.AlbumName,
-            //                OnPortfolio = x.IsOnFrontPage,
-            //                PhotoId = x.PhotoId,
-            //                PhotoUrl = x.PhotoUrl,
-            //                Uploaded = x.Uploaded
-            //            }).ToList();
-            //        }
-            //    case 4:
-            //        if (ascending)
-            //        {
-            //            return _db.Photos.OrderBy(x => x.Uploaded).Skip(page * pagesize).Take(pagesize).Select(x => new AdminPhotoIndexVm()
-            //            {
-            //                PhotoTitle = x.PhotoTitle,
-            //                Album = x.PhotoAlbum.AlbumName,
-            //                OnPortfolio = x.IsOnFrontPage,
-            //                PhotoId = x.PhotoId,
-            //                PhotoUrl = x.PhotoUrl,
-            //                Uploaded = x.Uploaded
-            //            }).ToList();
-            //        }
-            //        else
-            //        {
-            //            return _db.Photos.OrderByDescending(x => x.Uploaded).Skip(page * pagesize).Take(pagesize).Select(x => new AdminPhotoIndexVm()
-            //            {
-            //                PhotoTitle = x.PhotoTitle,
-            //                Album = x.PhotoAlbum.AlbumName,
-            //                OnPortfolio = x.IsOnFrontPage,
-            //                PhotoId = x.PhotoId,
-            //                PhotoUrl = x.PhotoUrl,
-            //                Uploaded = x.Uploaded
-            //            }).ToList();
-            //        }
-
-            //}
-            //return new List<AdminPhotoIndexVm>();
         }
 
         //adds adminphotocreate vm to db and converts it before
-        public static DbResults.PhotoDb AddNewPhotoToDatabase(AdminPhotoCreateVm photoCreateVm,MultipartFileData file,NbpContext _db)
+        public static AdminPhotoIndexVm AddNewPhotoToDatabase(AdminPhotoCreateVm photoCreateVm,MultipartFileData file,NbpContext _db)
         {
 
 
@@ -195,7 +89,7 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
             //check if img with same name exists in DB
             if (CheckIfPathAlreadyExist(photo.PhotoUrl,_db))
             {
-                return DbResults.PhotoDb.NameAlreadyExist;
+                throw new Exception("Photo with the same path already exists");
             }
 
             try
@@ -229,18 +123,37 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
                     }
                     catch(Exception ex)
                     {
-                        return DbResults.PhotoDb.ErrorSettingAlbumCoverPhoto;
+                        throw new Exception("Error setting photo as album photo.");
                     }
                     
                 }
 
-                return DbResults.PhotoDb.Success;
+
+                //returns photo view model to be added to list
+                var returnPhoto = new AdminPhotoIndexVm()
+                {
+                    PhotoTitle = photo.PhotoTitle,
+                    OnPortfolio = photo.IsOnFrontPage,
+                    PhotoId = photo.PhotoId,
+                    PhotoUrl = photo.PhotoUrl,
+                    Uploaded = photo.Uploaded
+                };
+                
+                //add album name if not null
+                if (photo.PhotoAlbumId != null)
+                {
+                    var albumDb = _db.PhotoAlbums.Find(photo.PhotoAlbumId);
+                    returnPhoto.Album = albumDb.AlbumName;
+                }
+
+                //return name
+                return returnPhoto;
 
             }
             catch (Exception ex)
             {
 
-                return DbResults.PhotoDb.OtherFailure;
+                throw new Exception(ex.Message);
             }
 
 

@@ -1,0 +1,59 @@
+﻿
+/* ANGULAR DIRECTIVE AB-UL-PHOTOS-CHECKABLE STYLES START*/
+
+/*main ul container styles, some same as bootstrap to keep same theme*/
+#ul-photos-directive {
+        max-width: 300px;
+        width: 100%;
+        list-style-type: none;
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        max-height: 400px;
+        overflow: auto;
+
+    }
+
+/*each photo container*/
+    #ul-photos-directive .photo-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding-bottom: 30px;
+        
+    }
+
+    /* bottom border for each li except last*/
+     #ul-photos-directive li:not(:last-child) {
+         border-bottom: 1px solid #ccc;
+     }
+
+     /*photo title styles*/
+    #ul-photos-directive .photo-title {
+        padding: 10px;
+        flex-wrap: wrap;
+        font-size: 1.1em;
+    }
+
+    /*photo body with img and checkbox styles*/
+    #ul-photos-directive .photo-body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /*img resizes*/
+    #ul-photos-directive .photo-img {
+        flex: 1;
+    }
+    /*img responsive to container*/
+    #ul-photos-directive .photo-img img {
+        max-width: 100%;
+    }
+    /*checkbox padding*/
+    #ul-photos-directive .photo-check {
+        padding: 10px;
+    }
+
+    /* ANGULAR DIRECTIVE AB-UL-PHOTOS-CHECKABLE STYLES END*/

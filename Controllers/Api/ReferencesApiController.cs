@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using NivesBrelihPhotography.DbContexts;
 using NivesBrelihPhotography.HelperClasses.DatabaseCommunication;
+using NivesBrelihPhotography.Models.AboutModels.ViewModels.Admin_ViewModels;
 
 namespace NivesBrelihPhotography.Controllers.Api
 {
@@ -27,6 +28,59 @@ namespace NivesBrelihPhotography.Controllers.Api
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
+        }
+
+        //get single reference
+        public async Task<HttpResponseMessage> GetSingleReference([FromUri]int id)
+        {
+            try
+            {
+                var referenceDb = await ProfileDatabase.GetReference(id, _db);
+                return Request.CreateResponse(HttpStatusCode.OK, referenceDb);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        //create reference
+        [HttpPost]
+        public async Task<HttpResponseMessage> AddReference(AdminAboutReferenceModify reference)
+        {
+            try
+            {
+                //try to create the reference
+                await ProfileDatabase.AddReference(reference, _db);
+                return Request.CreateResponse(HttpStatusCode.OK, "Success saving new reference.");
+            }
+            catch (Exception ex)
+            {
+                //err catch
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+            
+        }
+
+        //edit reference
+        [HttpPut]
+        public async Task<HttpResponseMessage> EditReference(AdminAboutReferenceModify reference)
+        {
+            //check if it has reference id
+            if (reference.Id == null)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "No reference id provided");
+            }
+            try
+            {
+                await ProfileDatabase.EditReference(reference, _db);
+                return Request.CreateResponse(HttpStatusCode.OK, "Reference successfully edited.");
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+
         }
 
         //delete reference with given id

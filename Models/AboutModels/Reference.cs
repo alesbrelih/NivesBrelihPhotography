@@ -23,5 +23,7 @@ namespace NivesBrelihPhotography.Models.AboutModels
 
         //all photos
         public virtual ICollection<ReferencePhoto> Photos { get; set; }
+
+
     }
 }

@@ -1,0 +1,21 @@
+﻿<ul id="ul-photos-directive">
+    <li ng-repeat="photo in photos | orderBy:'checked' | filter:search ">
+        <div class="photo-container" data-id="{{photo.PhotoId}}">
+            <div class="photo-title">
+                {{photo.PhotoTitle}}
+            </div>
+            <div class="photo-body">
+                <div class="photo-img">
+                    <img ng-src="{{photo.PhotoUrl}}" alt="">
+                </div>
+                <div class="photo-check">
+                    <label>
+                        <input type="checkbox" ng-model="photo.checked" ng-checked="CheckIfSelected(photo)">
+                    </label>
+                </div>
+            </div>
+            
+        </div>
+    </li>
+
+</ul>
