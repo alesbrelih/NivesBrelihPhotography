@@ -1,7 +1,5 @@
 ﻿
-<h3>Admin</h3>
-<hr />
-<div class="row">
+<!--<div class="row">
     <div class="col-xs-12 col-md-6 col-lg-4 admin-controller-selector" ui-sref="photos">
         <span class="admin-selector-text">
             Photos
@@ -29,4 +27,17 @@
     </div>
 
 
+</div>-->
+<div id="about-main">
+    <div class="main-wrapper">
+
+        <h3>Admin</h3>
+        <hr>
+        <div class="list-group">
+            <a ui-sref="{{section.state}}" ng-repeat="section in vm.adminSections" class="list-group-item">
+                <h4 class="list-group-item-heading">{{section.title}}</h4>
+                <p class="list-group-item-text">{{section.body}}</p>
+            </a>
+        </div>
+    </div>
 </div>

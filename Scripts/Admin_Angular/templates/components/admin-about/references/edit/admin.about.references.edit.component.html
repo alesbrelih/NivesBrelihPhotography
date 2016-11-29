@@ -2,11 +2,13 @@
 
 <div id="reference-edit">
 
-    <br />
     <div class="edit-reference" ng-if="!vm.addPhoto">
-
+        <p class="back-anchor">
+            <a ui-sref="about-references">Back</a>
+        </p>
         <h3>Edit Reference</h3>
-        <hr />
+        <hr/>
+        
         <form class="form-horizontal" novalidate ng-submit="vm.EditReference()">
             <div class="form-group">
                 <label for="inputTitle" class="col-sm-2 control-label">Title</label>

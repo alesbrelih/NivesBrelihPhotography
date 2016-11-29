@@ -21,6 +21,11 @@
 
     }
 
+    /*bug hack, some blog h4 was only one 261 for some weird reason, which destroyed layout*/
+    #about-main .main-wrapper .list-group h4 {
+        min-width: 268px;
+    }
+
     /*pointer cursor for sections*/
     #about-main .main-wrapper .list-group .list-group-item {
         cursor: pointer;

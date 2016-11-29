@@ -2,6 +2,13 @@
     padding-left: 15px;
     padding-right: 15px;
 }
+p.back-anchor {
+        text-align: center;
+        margin: 40px 0 20px 0;
+}
+p.no-bot-margin {
+    margin-bottom: 0px;
+}
 
 
 
