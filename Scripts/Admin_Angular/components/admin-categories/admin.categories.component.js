@@ -11,7 +11,7 @@
         var vm = this;
         vm.pageSize = 5;
         vm.currentPage = 0;
-        vm.selected = {};
+        vm.selected = null;
 
         //gets all categories
         CategoriesService.GetCategories(true)
@@ -25,18 +25,22 @@
 
         // ----- PUBLIC METHODS ------- //
 
+        //creates new object for new stuff to be inserted to
+        vm.selectForAdd = function() {
+            vm.selected = {
+                CategoryId: null,
+                CategoryName: ""
+            }
+        }
+
         //creates "copy" of selected item in vm.selected
         vm.selectForEdit = function(category) {
-            vm.selected.CategoryId = category.CategoryId;
-            vm.selected.CategoryName = category.CategoryName;
-
-            console.log(vm.selected);
+            vm.selected = category;
         }
 
         //resets selected
         vm.resetSelected = function() {
-            vm.selected.CategoryId = null;
-            vm.selected.CategoryName = "";
+            vm.selected = null;
         }
 
 
@@ -113,7 +117,10 @@
 
         //create category
         vm.CreateCategory = function() {
-            CategoriesService.CreateCategory(vm.newCategory);
+            CategoriesService.CreateCategory(vm.selected, false,function() {
+                vm.resetSelected();
+            });
+
         }
 
 

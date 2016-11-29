@@ -37,7 +37,7 @@
         };
 
         //creates new category
-        categoriesFactory.CreateCategory = function(category,promise) {
+        categoriesFactory.CreateCategory = function(category,promise,cb) {
            var requestPromise =  $http.post("/api/categories", category)
                 .then(function (success) {
                     //add category to categories list
@@ -46,7 +46,10 @@
                     //show toastr that category was successfully added
                     toastr.success("Category successfuly created.", "Success");
 
-                    
+                    //if cb exist call cb after
+                    if (cb) {
+                        cb();
+                    }
                     
                 }, function (err) {
                     //err 

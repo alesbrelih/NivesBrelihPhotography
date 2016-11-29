@@ -46,7 +46,11 @@ namespace NivesBrelihPhotography.Controllers.Api
             }
             catch(Exception ex)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
+                if (ex.Message == "Category with the same name already exists")
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
+                }
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
 
             

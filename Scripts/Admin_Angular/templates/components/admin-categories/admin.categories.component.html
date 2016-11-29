@@ -1,6 +1,23 @@
 ﻿<h3>Categories</h3>
 <hr />
 <div id="category-admin-index">
+
+    <p>
+        <i ng-if="vm.selected == null || vm.selected.CategoryId != null" class="glyphicon glyphicon-plus text-primary new-category-btn" ng-click="vm.selectForAdd()"></i>
+    </p>
+
+    <div class="new-category-wrapper" ng-if="vm.selected && vm.selected.CategoryId == null">
+        <h4 class="list-group-item-heading">
+            Create category
+        </h4>
+        <div class="new-category">
+            <input class="form-control" type="text" ng-model="vm.selected.CategoryName">
+            <button class="btn btn-info glyphicon glyphicon-check" ng-click="vm.CreateCategory()"></button>
+            <button class="btn btn-danger glyphicon glyphicon-remove" ng-click="vm.resetSelected()"></button>
+        </div>
+
+    </div>
+    <hr ng-if="vm.selected && vm.selected.CategoryId == null" />
     <ul>
         <li ng-repeat="category in vm.Categories | startsWith:vm.currentPage*vm.pageSize | limitTo:vm.pageSize">
             <div class="list-group">
@@ -22,8 +39,9 @@
         </li>
     </ul>
     <div class="category-admin-pagination">
-        <button class="btn btn-info" ng-disabled="vm.currentPage == 0" ng-click="vm.previousPage()">Previous</button>
+        <button class="btn btn-info glyphicon glyphicon-chevron-left" ng-disabled="vm.currentPage == 0" ng-click="vm.previousPage()"></button>
         <span>{{vm.currentPage}} / {{vm.allPages}}</span>
-        <button class="btn btn-info" ng-click="vm.nextPage()" ng-disabled="vm.currentPage == vm.allPages">Previous</button>
+        <button class="btn btn-info glyphicon glyphicon-chevron-right" ng-click="vm.nextPage()" ng-disabled="vm.currentPage == vm.allPages"></button>
     </div>
 </div>
+

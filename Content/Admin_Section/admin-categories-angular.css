@@ -56,4 +56,46 @@
         padding: 0 10px;
     }
 
+    /*styles for add category btn*/
+     #category-admin-index p {
+         padding-left: 50px;
+         padding-bottom: 20px;
+     }
+    #category-admin-index .new-category-btn {
+        font-size: 1.4em;
+        cursor: pointer;
+    }
+
+    /* styles for new category wrapper/content*/
+    #category-admin-index .new-category-wrapper {
+        max-width: 350px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 10px 15px;
+        margin-left: 40px;
+        margin-bottom: 20px;
+    }
+    #category-admin-index .new-category {
+        display: flex;
+        padding: 10px;
+        align-items: center;
+    }
+    #category-admin-index .new-category input {
+        margin-right: 15px;
+    }
+    #category-admin-index .new-category button {
+        margin:0px 5px;
+    }
+
+
+    /*no extra padding when on smaller screens*/
+    @media(max-width: 550px) {
+        #category-admin-index ul {
+            padding-left: 0px;
+        }
+        #category-admin-index .new-category-wrapper {
+            margin-left: 0px;
+        }
+    }
+
 /*STYLES FOR ANGULAR CATEGORIES ADMIN section START*/
