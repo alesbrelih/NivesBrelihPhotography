@@ -1,14 +1,5 @@
 ﻿/*ADMIN ABOUT REFERENCES MAIN STYLES START*/
 
-    /*link for new reference creation style*/
-     #references-view .new-reference{
-         text-align: right;
-         font-size: 1.5em;
-         padding: 20px 50px 10px 0px;
-     }
-    #references-view .new-reference i {
-        cursor: pointer;
-    }
 
 
     /*styles for reference action inside table*/

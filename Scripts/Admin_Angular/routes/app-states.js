@@ -71,6 +71,7 @@
                     url: "/about/references",
                     template: "<admin-about-references></admin-about-references>"
                 })
+                //reference add
                 .state("about-references-add", {
                     url: "/about/references/add",
                     template: "<admin-about-references-add></admin-about-references-add>"
@@ -87,6 +88,12 @@
                             }
                         ]
                     }
+                })
+
+                // ---- ADMIN ALBUMS SECTION ---- //
+                .state("albums", {
+                    url: "/albums",
+                    template: "<admin-albums></admin-albums>"
                 });
 
 

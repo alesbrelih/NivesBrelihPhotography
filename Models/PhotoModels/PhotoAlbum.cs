@@ -22,6 +22,7 @@ namespace NivesBrelihPhotography.Models.PhotoModels
 
         public string AlbumDescription { get; set; } //album description
 
+
         public virtual ICollection<Photo> AlbumPhotos { get; set; }  //all album photos
     }
 }

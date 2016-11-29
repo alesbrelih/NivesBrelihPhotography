@@ -8,6 +8,8 @@
     function modalWindowController() {
 
         var vm = this;
+        vm.type = vm.resolve.type;
+        vm.entry = vm.resolve.entry;
 
         // function to set all texts
         function setTexts(type) {
@@ -41,6 +43,10 @@
         //texts on modal if not set (resolve.type incorrect // failsave)
         vm.titleText = "Title";
         vm.bodyText = "Body";
+
+
+        vm.checked = false;
+
         vm.acceptText = "Accepted";
         vm.rejectText = "Cancel";
 
@@ -49,8 +55,15 @@
         
 
         //control modal accept/reject
-        vm.confirmModal = function() {
-            vm.modalInstance.close("Accepted");
+        vm.confirmModal = function () {
+            if (vm.entry == "album" && vm.type == "delete") {
+                //return if he want to delete photos aswell
+                vm.modalInstance.close(vm.checked);
+
+            } else {
+                vm.modalInstance.close();
+            }
+            
         };
         vm.declineModal = function() {
             vm.modalInstance.dismiss("Dismissed");

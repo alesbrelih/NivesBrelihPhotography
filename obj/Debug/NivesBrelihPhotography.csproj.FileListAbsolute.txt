@@ -174,3 +174,4 @@ C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPho
 C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotography.Migrations.NbpContextMigrations.deletedisalbumcoveronphototable.resources
 C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotography.Properties.Resources.resources
 C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotography.Migrations.NbpContextMigrations.Addedshownonpagebooltosociallinkstable.resources
+C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotography.Migrations.NbpContextMigrations.AlbumIdinAlbumCoverisnullable.resources

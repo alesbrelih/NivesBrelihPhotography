@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ namespace NivesBrelihPhotography.Models.PhotoModels
 {
     public class AlbumCover
     {
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
@@ -17,7 +19,8 @@ namespace NivesBrelihPhotography.Models.PhotoModels
         public virtual Photo Photo { get; set; }
 
         [ForeignKey("Album")]
-        public int? AlbumId { get; set; }
+        public int AlbumId { get; set; }
         public virtual PhotoAlbum Album { get; set; }
+
     }
 }

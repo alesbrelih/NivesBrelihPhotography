@@ -1,17 +1,7 @@
 ﻿    /*ADMIN ABOUT REVIEW section stylES START*/
 
 
-    /*action "button " to start adding new review styles*/
-     #modify-review > #review-action {
-         font-size: 1.5em;
-         padding: 20px 50px 10px 0px;
-         text-align: right;
-     }
-
-     /*pointer on hover cursor*/
-    #modify-review > #review-action i {
-        cursor: pointer;
-    }
+   
 
     /*extra margin form last form button action*/
     #modify-review .form-review-actions button:last-child {

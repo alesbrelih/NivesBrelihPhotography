@@ -29,7 +29,7 @@
             {
                 state: "categories",
                 title: "Categories",
-                body: "Add, modify and delete existing photos"
+                body: "Add, modify and delete existing categories."
             },
             {
                 state: "about-main",

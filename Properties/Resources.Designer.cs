@@ -61,7 +61,7 @@ namespace NivesBrelihPhotography.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to /Images/Photos/nivesBrelihPhoto.jpg.
+        ///   Looks up a localized string similar to /Images/Photos/PhotoNotAvailable.jpg.
         /// </summary>
         public static string NoAlbumCoverPhoto {
             get {
