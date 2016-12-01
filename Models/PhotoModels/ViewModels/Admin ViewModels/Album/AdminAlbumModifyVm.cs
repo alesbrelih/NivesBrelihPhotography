@@ -16,9 +16,10 @@ namespace NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels.
 
         public string Description { get; set; }
 
-        public string CoverPhotoId { get; set; }
+        public int? CoverPhoto { get; set; }
 
         public List<string> Photos { get; set; }
+
 
         //empty constructor
         public AdminAlbumModifyVm()

@@ -128,7 +128,9 @@ namespace NivesBrelihPhotography
                 "~/Content/Admin_Section/admin-about-references.css",
                 "~/Content/Admin_Section/admin-about-references-add.css",
                 "~/Content/Admin_Section/admin-about-references-edit.css",
-                "~/Content/Admin_Section/Angular_Directives/elements/ab-ul-photos-checkable.css"
+                "~/Content/Admin_Section/Angular_Directives/elements/ab-ul-photos-checkable.css",
+                "~/Content/Admin_Section/Angular_Directives/elements/ab-photo-select.css",
+                "~/Content/Admin_Section/admin-albums.css"
                 ));
 
 

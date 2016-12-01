@@ -84,6 +84,7 @@ namespace NivesBrelihPhotography.Controllers.Api
             }
             try
             {
+                //try to create album
                 var albumDb = await AlbumsDatabase.CreateAlbumAsync(album, _db);
                 return Request.CreateResponse(HttpStatusCode.OK, albumDb);
             }

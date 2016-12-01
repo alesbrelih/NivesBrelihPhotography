@@ -23,8 +23,11 @@
             console.log(vm.allPages);
         });
 
+        //delete selected album from db
         vm.DeleteAlbum = function(album) {
 
+
+            //modal to accept deletition of model
             var modal = $uibModal.open({
                 component: "abModalView",
                 size: "md",

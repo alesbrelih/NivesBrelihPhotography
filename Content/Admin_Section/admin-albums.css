@@ -1,0 +1,39 @@
+﻿
+    /* ADMIN ALBUMS MAIN STYLE START */
+
+    /*img container styles*/
+     #albums-view .table-photo-container {
+         max-width: 200px;
+
+     }
+     /*responsive img*/
+    #albums-view .table-photo-container img {
+        max-width: 100%;
+    }
+
+    /*albums actions wrapper and buttons styles*/
+    #albums-view .albums-actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #albums-view .albums-actions button {
+        margin: 0 5px;
+    }
+    #albums-view .pages span {
+        padding-left: 20px;
+        padding-right: 20px;
+
+    }
+
+    /*responsivness*/
+    @media(max-width: 550px) {
+         #albums-view .albums-actions {
+             flex-direction: column;
+         }
+         #albums-view .albums-actions button {
+             margin: 5px 0px;
+        }
+    }
+
+    /* ADMIN ALBUMS MAIN STYLE END */

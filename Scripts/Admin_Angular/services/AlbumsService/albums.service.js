@@ -15,11 +15,8 @@
         var albums = [];
 
 
-
         //---- properties ----- //
         albumsFactory.Albums = albums;
-
-
 
         // ---- methods ---- //
 
@@ -52,7 +49,7 @@
         };
 
         //get single album and returns promise for resolve edit
-        albumsFactory.GetAlbums = function(id) {
+        albumsFactory.GetAlbum = function(id) {
             return $http.get("/api/albums", {
                 params: {
                     "id": id

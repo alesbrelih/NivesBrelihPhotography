@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using NivesBrelihPhotography.DbContexts;
 using NivesBrelihPhotography.Models.PhotoModels;
 using NivesBrelihPhotography.Models.PhotoModels.ViewModels;
+using NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels;
 using NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels.Album;
 using WebGrease.Css.Extensions;
 
@@ -22,7 +23,7 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
         public static async Task<ICollection<AdminAlbumIndexVm>> ReturnAlbumsForSelectList(NbpContext _db)
         {
             //selectlist items from db
-            var albums = new List<AdminAlbumIndexVm>() {};
+            var albums = new List<AdminAlbumIndexVm>() { };
 
             //get albums
             await _db.PhotoAlbums.OrderBy(x => x.AlbumName).ForEachAsync(x =>
@@ -78,7 +79,8 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
 
             //get cover photo id
             var coverPhoto = await db.AlbumCovers.SingleOrDefaultAsync(x => x.AlbumId == albumDb.PhotoAlbumId);
-            albumVm.CoverPhotoId = coverPhoto.Photo == null ? "" : coverPhoto.PhotoId.ToString();
+            albumVm.CoverPhoto = coverPhoto.Photo == null ? null : coverPhoto.PhotoId;
+            
 
             //return album vm 
             return albumVm;
@@ -140,12 +142,11 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
             await db.SaveChangesAsync();
 
             // 2. create album cover entry
-            int photoCoverId = -1; //parsing string - prevent injection
-            int.TryParse(album.AlbumCover, out photoCoverId);
+            
 
             //get photo from db/ valid id will return photo, if not valid it will be null which is fine because photoid is
             //nullable for albumcover in db
-            var photoCoverDb = await db.Photos.FindAsync(photoCoverId);
+            var photoCoverDb = await db.Photos.FindAsync(album.AlbumCover);
 
             //set album cover
             var albumCover = new AlbumCover()
@@ -159,12 +160,12 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
             foreach (var photo in album.Photos)
             {
                 //try to convert number to in (prevent injection)
-                int number;
-                bool result = int.TryParse(photo, out number);
+                int photoId;
+                bool result = int.TryParse(photo, out photoId);
                 if (result)
                 {
                     //if it is a number get photo and set album id to selected one
-                    var photoDb = await db.Photos.FindAsync(photo);
+                    var photoDb = await db.Photos.FindAsync(photoId);
                     photoDb.PhotoAlbumId = albumDb.PhotoAlbumId;
                     db.Entry(photoDb).State = EntityState.Modified;
                 }
@@ -211,35 +212,29 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
             // 1. modify static data
             albumDb.AlbumName = album.Name;
             albumDb.AlbumDescription = album.Description;
-            
+
             // 2. set cover photo
             //check if album.cover is not null or empty //because album has to have cover photo when editing it
-            if (!string.IsNullOrEmpty(album.CoverPhotoId))
+            if (album.CoverPhoto != null)
             {
-                int photoId;
-                //check if cover photo id is actually an integer
-                if (int.TryParse(album.CoverPhotoId, out photoId))
+
+
+                var coverPhotoDb = await db.Photos.FindAsync(album.CoverPhoto);
+                //check if int is a valid photo id key
+                if (coverPhotoDb != null)
                 {
+                    var albumCoverEntry =
+                        await db.AlbumCovers.SingleOrDefaultAsync(x => x.AlbumId == albumDb.PhotoAlbumId);
+                    albumCoverEntry.Photo = coverPhotoDb;
+                    db.Entry(albumCoverEntry).State = EntityState.Modified;
 
-                    var coverPhotoDb = await db.Photos.FindAsync(photoId);
-                    //check if int is a valid photo id key
-                    if (coverPhotoDb != null)
-                    {
-                        var albumCoverEntry =
-                            await db.AlbumCovers.SingleOrDefaultAsync(x => x.AlbumId == albumDb.PhotoAlbumId);
-                        albumCoverEntry.Photo = coverPhotoDb;
-                        db.Entry(albumCoverEntry).State = EntityState.Modified;
-
-                    }
-                    else
-                    {
-                        throw new Exception("Selected cover photo is invalid");
-                    }
                 }
                 else
                 {
                     throw new Exception("Selected cover photo is invalid");
                 }
+
+
 
             }
             else
@@ -265,7 +260,7 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
                         photoDb.PhotoAlbumId = albumDb.PhotoAlbumId;
                         db.Entry(photoDb).State = EntityState.Modified;
                     }
-                    
+
                 }
             }
 
@@ -282,7 +277,7 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
                         photoDb.PhotoAlbumId = null;
                         db.Entry(photoDb).State = EntityState.Modified;
                     }
-                    
+
                 }
             }
 

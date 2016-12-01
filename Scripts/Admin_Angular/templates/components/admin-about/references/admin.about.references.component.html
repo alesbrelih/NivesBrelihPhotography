@@ -1,15 +1,11 @@
 ﻿<div id="references-view">
-
-
     <p class="back-anchor">
         <a ui-sref="about-main">Back</a>
     </p>
     <div class="row new-item">
         <i ui-sref="about-references-add" class="glyphicon glyphicon-plus text-primary"></i>
     </div>
-
     <table class="table">
-
         <thead>
         <tr>
             <th class="text-primary" ng-click="vm.changeOrder('Title')">Title</th>
@@ -31,8 +27,6 @@
             </td>
         </tr>
         </tbody>
-
-
     </table>
     <div ng-if="vm.allPages>1" class="references-pagination">
         <button class="glyphicon glyphicon-chevron-left btn btn-info" ng-disabled="vm.currentPage == 1" ng-click="vm.currentPage = vm.currentPage-1"></button>

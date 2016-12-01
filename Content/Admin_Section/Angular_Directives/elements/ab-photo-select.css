@@ -1,0 +1,141 @@
+﻿ 
+/* CUSTOM ANGULAR DIRECTIVE STYLES START*/
+
+    /*wrapper for complete container*/
+     ab-photo-select .photo-select-wrapper {
+         width: 280px;
+         position: relative;
+         margin-bottom: 40px;
+         
+     }
+
+     /* utilties for directive (search / btn to expand photo selection) */
+    ab-photo-select .photo-select-wrapper .photo-select-utilities {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    /* align right helper class */
+    ab-photo-select .photo-select-wrapper .photo-select-utilities.align-right {
+        justify-content: flex-end;
+        margin-left: 0px;
+    }
+
+    /*input text styles*/
+    ab-photo-select .photo-select-wrapper .photo-select-utilities input {
+        border: none;
+        border-bottom: 1px solid #ccc;
+        box-shadow: none;
+        outline: none;
+        padding: 10px 20px;
+        width: 100px;
+        flex: 1;
+        
+    }
+
+    /*extra padding for btn size*/
+    ab-photo-select .photo-select-wrapper .photo-select-utilities button {
+        padding-left: 30px;
+        padding-right: 30px;
+        margin-left: 30px;
+    }
+
+    /*selected img wrapper*/
+    ab-photo-select .photo-select-wrapper .selected-img-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 200px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    /*selected img - responsive*/
+    ab-photo-select .photo-select-wrapper .selected-img-wrapper img {
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 2px;
+    }
+
+    /*all photos wapper */
+    ab-photo-select .photo-select-wrapper .all-photos-wrapper {
+        background: white;
+
+        /*absolute so it acts like select*/
+        position: absolute;
+
+        /*sizng*/
+        max-height: 400px;       
+        top: 300px;
+        left: 0px;
+        width: 280px;
+
+        z-index: 10;
+        overflow: auto;
+        padding: 20px;
+        list-style-type: none;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    /*wrapper li styles*/
+    ab-photo-select .photo-select-wrapper .all-photos-wrapper li {
+        height: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    /*bottom border for every li except last*/
+    ab-photo-select .photo-select-wrapper .all-photos-wrapper li:not(:last-child) {
+        border-bottom: 1px solid #ddd;
+    }
+
+    /*less top padding for first element in list*/
+    ab-photo-select .photo-select-wrapper .all-photos-wrapper li:first-child {
+        padding-top: 0px;
+    }
+
+    /*element in list on hover effect*/
+    ab-photo-select .photo-select-wrapper .all-photos-wrapper li:hover {
+        background: #ddd;
+    }
+
+    /*photo title and img wrapper*/
+    ab-photo-select .photo-select-wrapper .all-photos-wrapper li .photo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+     
+    /*font style for photo titles*/
+    ab-photo-select .photo-select-wrapper .all-photos-wrapper li .photo-container .title {
+        font-size: 1.02em;
+        font-weight: bold;
+        text-align: center;
+        width: 100px;
+        flex-wrap: wrap;
+        padding: 10px 10px 10px 0px;
+    }
+
+    /*wrapper for img*/
+    ab-photo-select .photo-select-wrapper .all-photos-wrapper li .photo-container .img-wrapper {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /*responsive img inside wrapper*/
+    ab-photo-select .photo-select-wrapper .all-photos-wrapper li .photo-container .img-wrapper img {
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 2px;
+    }
+
+/* CUSTOM ANGULAR DIRECTIVE STYLES END*/

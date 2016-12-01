@@ -83,7 +83,6 @@
                     resolve: {
                         editReference: [
                             "$stateParams", "ProfileService", function($stateParams, ProfileService) {
-                                console.log($stateParams.id);
                                 return ProfileService.GetSingleReference($stateParams.id);
                             }
                         ]
@@ -94,9 +93,23 @@
                 .state("albums", {
                     url: "/albums",
                     template: "<admin-albums></admin-albums>"
+                })
+                // -- ADMIN ALBUM ADD SECTION --- //
+                .state("albums-add", {
+                    url: "/albums/add",
+                    template: "<admin-albums-add></admin-albums-add>"
+                })
+                //-- ADMIN ALBUM EDIT SECTION --- //
+                .state("albums-edit", {
+                    url: "/albums/edit/:id",
+                    template: "<admin-albums-edit album='$resolve.album'></admin-albums-edit>",
+                    resolve: {
+                        album: ["AlbumsService", "$stateParams", function (AlbumsService, $stateParams) {
+                            //return promise with selected album from params id
+                            return AlbumsService.GetAlbum($stateParams.id);
+                        }]
+                    }
                 });
-
-
             $urlRouterProvider.otherwise("/");
         }
     ]);

@@ -3,7 +3,7 @@
 
 /*main ul container styles, some same as bootstrap to keep same theme*/
 #ul-photos-directive {
-        max-width: 300px;
+        max-width: 280px;
         width: 100%;
         list-style-type: none;
         padding: 8px 12px;

@@ -1,14 +1,10 @@
-﻿
-
-<div id="reference-edit">
-
+﻿<div id="reference-edit">
     <div class="edit-reference" ng-if="!vm.addPhoto">
         <p class="back-anchor">
-            <a ui-sref="about-references">Back</a>
+            <a ui-sref="albums">Back</a>
         </p>
         <h3>Edit Reference</h3>
-        <hr/>
-        
+        <hr/>    
         <form class="form-horizontal" novalidate ng-submit="vm.EditReference()">
             <div class="form-group">
                 <label for="inputTitle" class="col-sm-2 control-label">Title</label>
@@ -34,7 +30,6 @@
                 <div class="col-sm-10">
                     <ab-photo-ul-checkable ng-model="vm.CurrentReference.ReferencePhotos" photos="vm.Photos" search="vm.searchText"></ab-photo-ul-checkable>
                 </div>
-
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
@@ -42,11 +37,7 @@
                 </div>
             </div>
         </form>
-
     </div>
-
-
-
     <div class="add-photo" ng-if="vm.addPhoto">
         <div class="row back-link">
             <span ng-click="vm.addPhoto=false" class="text-primary"> Back </span>
