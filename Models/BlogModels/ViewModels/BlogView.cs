@@ -64,8 +64,5 @@ namespace NivesBrelihPhotography.Models.BlogModels.ViewModels
 
         public ICollection<BlogCategory> Categories { get; set; }
 
-
-
-
     }
 }

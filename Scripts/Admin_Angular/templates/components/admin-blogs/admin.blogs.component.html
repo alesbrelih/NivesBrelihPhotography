@@ -1,0 +1,66 @@
+﻿<div id="blogs-view">
+    <p class="back-anchor">
+        <a ui-sref="view">Back</a>
+    </p>
+    <div class="row new-item">
+        <i ui-sref="blogs-add" class="glyphicon glyphicon-plus text-primary"></i>
+    </div>
+    <table class="table">
+
+        <thead>
+        <tr>
+            <th class="text-primary text-center" ng-click="vm.changeOrder('Title')">Title</th>
+            <th class="text-primary hidden-xs hidden-sm" ng-click="vm.changeOrder('Description')">Description</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="blog in vm.Blogs | startsWith:(vm.currentPage-1)*vm.pageSize | limitTo:vm.pageSize">
+            <td class="text-center">
+                {{blog.Title}}
+            </td>
+            <td class="hidden-xs hidden-sm text-center-td">
+                {{blog.Description | limitTo: 200}}{{blog.Description.length > 200 ? '...' : ''}}
+            </td>
+            <td class="text-center-td">
+                <div class="blogs-actions">
+                    <button class="glyphicon glyphicon-pencil btn btn-info" ui-sref="blogs-edit({'id':{{blog.Id}}})"></button>
+                    <button class="glyphicon glyphicon-remove btn btn-danger" ng-click="vm.DeleteBlog(blog)"></button>
+                </div>
+                
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div ng-if="vm.allPages && vm.allPages>1" class="text-center pages">
+        <button class="glyphicon glyphicon-chevron-left btn btn-info" ng-disabled="vm.currentPage == 1" ng-click="vm.currentPage = vm.currentPage-1"></button>
+        <span>{{vm.currentPage}} / {{vm.allPages}}</span>
+        <button class="glyphicon glyphicon-chevron-right btn btn-info" ng-disabled="vm.currentPage == vm.allPages" ng-click="vm.currentPage = vm.currentPage+1"></button>
+    </div>
+</div>
+<style>
+    #blogs-view table .text-center,#blogs-view table .text-center-td {
+        vertical-align: middle;
+    }
+     #blogs-view .pages span{
+         padding-left: 20px;
+         padding-right: 20px;
+     }
+    #blogs-view table .blogs-actions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #blogs-view table .blogs-actions button {
+        margin-left: 5px;
+    }
+    @media(max-width: 550px) {
+        #blogs-view table .blogs-actions {
+            flex-direction: column;
+        }
+        #blogs-view table .blogs-actions button {
+            margin-left: 0px;
+            margin-top: 5px;
+        }
+    }
+</style>

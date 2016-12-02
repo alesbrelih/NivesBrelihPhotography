@@ -104,12 +104,21 @@
                     url: "/albums/edit/:id",
                     template: "<admin-albums-edit album='$resolve.album'></admin-albums-edit>",
                     resolve: {
-                        album: ["AlbumsService", "$stateParams", function (AlbumsService, $stateParams) {
-                            //return promise with selected album from params id
-                            return AlbumsService.GetAlbum($stateParams.id);
-                        }]
+                        album: [
+                            "AlbumsService", "$stateParams", function(AlbumsService, $stateParams) {
+                                //return promise with selected album from params id
+                                return AlbumsService.GetAlbum($stateParams.id);
+                            }
+                        ]
                     }
+                })
+
+                // --- ADMIN BLOGS SECTION ---- //
+                .state("blogs", {
+                    url: "/blogs",
+                    template: "<admin-blogs></admin-blogs>"
                 });
+            
             $urlRouterProvider.otherwise("/");
         }
     ]);

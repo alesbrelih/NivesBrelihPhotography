@@ -184,6 +184,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\Api\AlbumsApiController.cs" />
+    <Compile Include="Controllers\Api\BlogsApiController.cs" />
     <Compile Include="Controllers\Api\CategoriesApiController.cs" />
     <Compile Include="Controllers\Api\ProfileApiController.cs" />
     <Compile Include="Controllers\Api\ReferencesApiController.cs" />
@@ -204,6 +205,7 @@
     </Compile>
     <Compile Include="HelperClasses\CultureHelper.cs" />
     <Compile Include="HelperClasses\DatabaseCommunication\AlbumsDatabase.cs" />
+    <Compile Include="HelperClasses\DatabaseCommunication\BlogsDatabase.cs" />
     <Compile Include="HelperClasses\DatabaseCommunication\CategoriesDatabase.cs" />
     <Compile Include="HelperClasses\DatabaseCommunication\PhotosDatabase.cs" />
     <Compile Include="HelperClasses\DatabaseCommunication\ProfileDatabase.cs" />
@@ -304,6 +306,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BlogModels\Blog.cs" />
     <Compile Include="Models\BlogModels\BlogCategory.cs" />
+    <Compile Include="Models\BlogModels\ViewModels\Admin ViewModels\AdminBlogsIndexVm.cs" />
     <Compile Include="Models\BlogModels\ViewModels\BlogView.cs" />
     <Compile Include="Models\BlogModels\ViewModels\Detail\BlogDetailsView.cs" />
     <Compile Include="Models\BlogModels\ViewModels\Index\BlogIndexView.cs" />
@@ -449,6 +452,7 @@
     <Content Include="Scripts\Admin_Angular\components\admin-albums\add\admin.albums.add.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-albums\admin.albums.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-albums\edit\admin.albums.edit.component.js" />
+    <Content Include="Scripts\Admin_Angular\components\admin-blogs\admin.blogs.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-categories\admin.categories.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-photos\add\admin.photos.add.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-photos\admin.photos.component.js" />
@@ -459,6 +463,7 @@
     <Content Include="Scripts\Admin_Angular\filters\ng_repeat\startswith.filter.js" />
     <Content Include="Scripts\Admin_Angular\services\AlbumsService\albums.service.js" />
     <Content Include="Scripts\Admin_Angular\services\app.services.js" />
+    <Content Include="Scripts\Admin_Angular\services\BlogsService\blogs.service.js" />
     <Content Include="Scripts\Admin_Angular\services\CategoriesService\categories.service.js" />
     <Content Include="Scripts\Admin_Angular\services\PhotosService\photos.service.js" />
     <Content Include="Scripts\Admin_Angular\services\ProfileService\profile.service.js" />
@@ -472,6 +477,7 @@
     <Content Include="Scripts\Admin_Angular\templates\components\admin-albums\add\admin.albums.add.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-albums\admin.albums.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-albums\edit\admin.albums.edit.component.html" />
+    <Content Include="Scripts\Admin_Angular\templates\components\admin-blogs\admin.blogs.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-categories\admin.categories.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-photos\add\admin.photos.add.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-photos\admin.photos.component.html" />
@@ -617,6 +623,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\Admin_Angular\components\admin-blogs\add\" />
+    <Folder Include="Scripts\Admin_Angular\components\admin-blogs\edit\" />
+    <Folder Include="Scripts\Admin_Angular\templates\components\admin-blogs\add\" />
+    <Folder Include="Scripts\Admin_Angular\templates\components\admin-blogs\edit\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Language\" />
   </ItemGroup>
