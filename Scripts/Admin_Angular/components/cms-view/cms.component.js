@@ -26,7 +26,7 @@
 
 
         // set photos list reference
-        CmsService.SetPhotos(vm.photos);
+        //CmsService.SetPhotos(vm.photos);
 
 
         //displayed html
@@ -37,62 +37,62 @@
 
         vm.utilities = [
             {
-                classes: "btn btn-primary",
+                classes: "btn btn-info",
                 text: "new line",
                 type: "line"
             },
             {
-                classes: "btn btn-primary",
+                classes: "btn btn-info",
                 text: "new paragraph",
                 type: "paragraph"
             },
             {
-                classes: "btn btn-primary",
+                classes: "btn btn-info",
                 text: "bold",
                 type: "strong"
             },
             {
-                classes: "btn btn-primary",
+                classes: "btn btn-info",
                 text: "italic",
                 type: "italic"
             },
             {
-                classes: "btn btn-primary",
+                classes: "btn btn-info",
                 text: "H1",
                 type: "heading-1"
             },
             {
-                classes: "btn btn-primary",
+                classes: "btn btn-info",
                 text: "H2",
                 type: "heading-2"
             },
             {
-                classes: "btn btn-primary",
+                classes: "btn btn-info",
                 text: "H3",
                 type: "heading-3"
             },
             {
-                classes: "btn btn-primary",
+                classes: "btn btn-info",
                 text: "h - line",
                 type: "horizontal-line"
             },
             {
-                classes: "btn btn-primary",
+                classes: "btn btn-info",
                 text: "photo",
                 type: "insert-photo"
             },
             {
-                classes: "btn btn-primary",
+                classes: "btn btn-info",
                 text: "row",
                 type: "row"
             },
             {
-                classes: "btn btn-primary",
+                classes: "btn btn-info",
                 text: "1/2 column",
                 type: "half-column"
             },
             {
-                classes: "btn btn-primary",
+                classes: "btn btn-info",
                 text: "1/3 column",
                 type: "third-column"
             },
@@ -137,7 +137,7 @@
     app.component("abCms", {
         controller: cmsComponentController,
         controllerAs: "vm",
-        template: "/Scripts/Admin_Angular/templates/components/cms-view/cms.component.html",
+        templateUrl: "/Scripts/Admin_Angular/templates/components/cms-view/cms.component.html",
         bindings: {
             photos:"="
         }

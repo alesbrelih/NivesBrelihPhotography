@@ -117,6 +117,23 @@
                 .state("blogs", {
                     url: "/blogs",
                     template: "<admin-blogs></admin-blogs>"
+                })
+                // --- ADMIN BLOGS ADD SECTION --- //
+                .state("blogs-add", {
+                    url: "/blogs/add",
+                    template: "<admin-blogs-add></admin-blogs-add>"
+                })
+                // ---- ADMIN BLOGS EDIT SECTION --- //
+                .state("blogs-edit", {
+                    url: "/blogs/edit/:id",
+                    template: "<admin-blogs-edit blogdb='$resolve.blog'></admin-blogs-edit>",
+                    resolve: {
+                        blog: [
+                            "BlogsService", "$stateParams", function(BlogsService, $stateParams) {
+                                return BlogsService.GetBlog($stateParams.id);
+                            }
+                        ]
+                    }
                 });
             
             $urlRouterProvider.otherwise("/");

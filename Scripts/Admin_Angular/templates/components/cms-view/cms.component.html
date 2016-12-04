@@ -6,7 +6,7 @@
         <textarea ab-selected-text="vm.props.selected" ng-model="vm.props.content" rows="20"></textarea>
     </div>
     <div class="cms-preview-action-bar text-right">
-        <button class="btn btn-primary glyphicon glyphicon-eye-open" ng-click="vm.showPreview = !vm.showPreview"></button>
+        <button class="btn btn-info glyphicon glyphicon-eye-open" ng-click="vm.showPreview = !vm.showPreview"></button>
     </div>
 
 </div>
@@ -17,15 +17,15 @@
 </div>
 <div class="photo-insert-select-wrapper" ng-if="vm.selectPhoto">
     <div class="photo-insert-select">
-        <div class="back-anchor text-center text-primary">
-            <a href="" ng-click="vm.selectPhoto = false">Back</a>
+        <div class="back-anchor text-center text-info">
+            <i ng-click="vm.selectPhoto = false">Back</i>
         </div>
         <div class="main-body">
             <div class="external-link">
                 <p> External link</p>
-                <form novalidate ng-submit="vm.addPhoto(vm.externalPhoto)">
-                    <input type="text" placeholder="Insert photo url here" class="form-control" ng-model="vm.externalPhoto"> <button type="submit" class="btn btn-primary glyphicon glyphicon-plus "></button>
-                </form>
+                <div class="external-link-form">
+                    <input type="text" placeholder="Insert photo url here" required class="form-control" ng-model="vm.externalPhoto"> <button type="button" class="btn btn-info glyphicon glyphicon-plus " ng-click="vm.addPhoto(vm.externalPhoto)"></button>
+                </div>
             </div>
             <hr>
             <div class="database-photos">
@@ -41,7 +41,7 @@
                                 <img ng-src="{{photo.PhotoUrl}}" alt="">
                             </div>
                             <div class="action-btn">
-                                <button class="btn btn-primary glyphicon glyphicon-plus" ng-click="vm.addPhoto(photo.PhotoUrl)"></button>
+                                <button class="btn btn-info glyphicon glyphicon-plus" ng-click="vm.addPhoto(photo.PhotoUrl)"></button>
                             </div>
                         </div>
                     </li>

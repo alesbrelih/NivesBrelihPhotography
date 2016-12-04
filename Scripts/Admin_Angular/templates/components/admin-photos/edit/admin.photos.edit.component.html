@@ -22,7 +22,7 @@
                 <div class="col-lg-10">
                     <select class="form-control" id="album" ng-model="vm.Photo.AlbumId" ng-change="vm.disableAlbumCoverSelectIfNeeded">
                         <option value="-1"> / </option>
-                        <option ng-repeat="album in vm.Albums" value="{{album.AlbumId}}">{{album.AlbumName}}</option>
+                        <option ng-repeat="album in vm.Albums" value="{{album.Id}}">{{album.Name}}</option>
                     </select>
                     <label for="isAlbumCover" class="control-label"> <input type="checkbox" id="isAlbumCover" ng-change="" ng-disabled="vm.Photo.AlbumId == -1" ng-model="vm.Photo.IsAlbumCover" /> Album Cover</label>
                 </div>

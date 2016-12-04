@@ -5,7 +5,7 @@
     var services = angular.module("adminApp.services");
 
     //blogs factory
-    function blogsFactoryController($http, toastr) {
+    function blogsFactoryController($http, toastr,$state) {
 
         //register returned factory
         var blogsFactory = {};
@@ -21,6 +21,14 @@
             return blogs;
         }
 
+        //get blog function
+        blogsFactory.GetBlog = function(id) {
+            return $http("/api/blogs/",{params: {
+                "id":id
+            }});
+
+        }
+
         //refresh blogs promise
         blogsFactory.RefreshBlogs = function () {
             return $http.get("/api/blogs")
@@ -32,7 +40,6 @@
                     console.log(err);
                 });
         }
-
 
         //delete blog function
         blogsFactory.DeleteBlog = function (blog) {
@@ -53,12 +60,56 @@
                 });
         }
 
+        //creates blog funciton
+        blogsFactory.CreateBlog = function (blog) {
+            //creates blog using api
+            $http.post("/api/blogs", blog)
+                .then(function (success) {
+                    //success
+
+                    //add blog to blogs list
+                    blogs.push(success.data);
+
+                    //notify about success
+                    toastr.success("Blog successfully created.", "Success");
+
+                    //change state if needed
+                    if ($state.current.name == "blogs-add") {
+                        $state.go("blogs");
+                    }
+                }, function (err) {
+                    //catch err
+                    console.log(err);
+                    toastr.error(err.data, "Error");
+                });
+        }
+
+        //edits blog
+        blogsFactory.EditBlog = function(blog) {
+            //call api
+            $http.put("/api/blogs", blog)
+                .then(function() {
+                    //success
+
+                    //notify user
+                    toastr.success("Blog successfully edited.", "Success");
+
+                    //change state if needed
+                    if ($state.current.name == "blogs-edit") {
+                        $state.go("blogs");
+                    }
+                }, function(err) {
+                    //catch err
+                    console.log(err);
+                    toastr.error(err.data, "Error");
+                });
+        }
 
         return blogsFactory;
     }
 
     //inject needed services
-    blogsFactoryController.$inject = ["$http", "toastr"];
+    blogsFactoryController.$inject = ["$http", "toastr","$state"];
 
 
     //register blogs factory/service

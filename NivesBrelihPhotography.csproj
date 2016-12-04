@@ -315,6 +315,7 @@
     <Compile Include="Models\BlogModels\Blog.cs" />
     <Compile Include="Models\BlogModels\BlogCategory.cs" />
     <Compile Include="Models\BlogModels\ViewModels\Admin ViewModels\AdminBlogsIndexVm.cs" />
+    <Compile Include="Models\BlogModels\ViewModels\Admin ViewModels\AdminBlogsModify.cs" />
     <Compile Include="Models\BlogModels\ViewModels\BlogView.cs" />
     <Compile Include="Models\BlogModels\ViewModels\Detail\BlogDetailsView.cs" />
     <Compile Include="Models\BlogModels\ViewModels\Index\BlogIndexView.cs" />
@@ -491,7 +492,9 @@
     <Content Include="Scripts\Admin_Angular\templates\components\admin-albums\add\admin.albums.add.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-albums\admin.albums.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-albums\edit\admin.albums.edit.component.html" />
+    <Content Include="Scripts\Admin_Angular\templates\components\admin-blogs\add\admin.blogs.add.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-blogs\admin.blogs.component.html" />
+    <Content Include="Scripts\Admin_Angular\templates\components\admin-blogs\edit\admin.blogs.edit.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-categories\admin.categories.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-photos\add\admin.photos.add.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-photos\admin.photos.component.html" />
@@ -638,8 +641,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\Admin_Angular\templates\components\admin-blogs\add\" />
-    <Folder Include="Scripts\Admin_Angular\templates\components\admin-blogs\edit\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Language\" />
   </ItemGroup>

@@ -47,6 +47,9 @@
 
             //paging
             var _page = 0;
+            if (!pageSize) {
+                pageSize = 10;
+            }
 
             //array
             while (_photos.length !== 0) {

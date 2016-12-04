@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using NivesBrelihPhotography.DbContexts;
 using NivesBrelihPhotography.HelperClasses.DatabaseCommunication;
+using NivesBrelihPhotography.Models.BlogModels.ViewModels.Admin_ViewModels;
 
 namespace NivesBrelihPhotography.Controllers.Api
 {
@@ -31,6 +33,76 @@ namespace NivesBrelihPhotography.Controllers.Api
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
             
+        }
+
+        [HttpGet]
+        //get single blog
+        public async Task<HttpResponseMessage> GetBlogAsync(int? id)
+        {
+            if (id == null)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "No blog id was provided");
+            }
+            try
+            {
+                var blog = await BlogsDatabase.GetBlogAsync((int) id, _db);
+                return Request.CreateResponse(HttpStatusCode.OK, blog);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpPost]
+        //creates blog
+        public async Task<HttpResponseMessage> CreateBlogAsync([FromBody] AdminBlogsModify blog)
+        {
+            if (blog == null)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "No blog data was given.");
+            }
+            try
+            {
+                var blogVm = await BlogsDatabase.CreateBlogAsync(blog, _db);
+                return Request.CreateResponse(HttpStatusCode.OK, blogVm);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+
+        [HttpPut]
+        //edits blog
+        public async Task<HttpResponseMessage> EditBlogAsync([FromBody] AdminBlogsModify blog)
+        {
+            if (blog == null)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "No data blog data was given");
+            }
+            try
+            {
+                await BlogsDatabase.EditBlogAsync(blog, _db);
+                return Request.CreateResponse(HttpStatusCode.OK, "Blog successfully edited");
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message == "Blog with such Id does not exist.")
+                {
+                    Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
+                }
+                if (ex.Message == "Invalid album Id.")
+                {
+                    Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
+                }
+                if (ex.Message == "Invalid category id.")
+                {
+                    Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
+                }
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
         }
 
         [HttpDelete]

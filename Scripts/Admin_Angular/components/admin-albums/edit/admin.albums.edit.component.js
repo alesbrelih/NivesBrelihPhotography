@@ -22,8 +22,6 @@
                 vm.Album = album;
                 vm.Photos = photos;
 
-                    console.log(vm.Album);
-
                 },
             function(err) {
                 console.log(err);

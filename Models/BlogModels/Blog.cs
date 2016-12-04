@@ -52,5 +52,11 @@ namespace NivesBrelihPhotography.Models.BlogModels
         //virual blogcategory list
 
         public virtual ICollection<BlogCategory> Categories { get; set; }
+
+
+        public Blog()
+        {
+            Categories = new List<BlogCategory>();
+        }
     }
 }

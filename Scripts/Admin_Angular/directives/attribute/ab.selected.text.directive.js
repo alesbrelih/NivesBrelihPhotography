@@ -4,7 +4,7 @@
     //main app ref
     var app = angular.module("adminApp");
 
-    function selectedTextDirectiveController() {
+    function selectedTextDirectiveController(CmsService) {
         
         // link function
         function linkFnc(scope, el) {
@@ -99,6 +99,8 @@
             }
         };
     }
+
+    selectedTextDirectiveController.$inject = ["CmsService"];
 
     //register directive
     app.directive("abSelectedText", selectedTextDirectiveController);

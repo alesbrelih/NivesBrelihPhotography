@@ -1,0 +1,70 @@
+﻿<div id="blogs-add-wrapper">
+
+    <p class="back-anchor">
+        <a ui-sref="blogs">Back</a>
+    </p>
+    <h3>New Blog</h3>
+    <div class="form-wrapper">
+
+        <form name="addBlogForm" class="form-horizontal" novalidate ng-submit="vm.CreateBlog()">
+            <div class="form-group">
+                <label for="inputTitle" class="col-md-2 control-label">Title</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="inputTitle" required ng-model="vm.Blog.Title" placeholder="Blog Title">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputDescription" class="col-md-2 control-label">Description</label>
+                <div class="col-md-10">
+                    <textarea required id="inputDescription" class="form-control" ng-model="vm.Blog.Description" placeholder="Blog description here ..." rows="4"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2 control-label">
+                    Cover
+                </div>
+                <div class="col-md-10">
+                    <ab-photo-select required ng-model="vm.Blog.CoverPhoto" photos="vm.photos"></ab-photo-select>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label for="categories" class="col-md-2 control-label"> Categories </label>
+                <div class="col-md-10">
+                    <select multiple="" required class="form-control" ng-model="vm.Blog.Categories" id="categories">
+                        <option ng-repeat="category in vm.categories" value="{{category.CategoryId}}">{{category.CategoryName}}</option>
+                    </select>
+                    <label id="new-category" ng-click="vm.newCategoryForm = true" ng-hide="vm.newCategoryForm == true" class="control-label">New Category</label>
+
+                    <div class="new-category-wrapper" ng-show="vm.newCategoryForm">
+                        <input type="text" ng-model="vm.Category.CategoryName" class="form-control" placeholder="Category Name">
+                        <i class="glyphicon glyphicon-plus" ng-click="vm.CreateCategory()"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="album" class="col-md-2 control-label">Album</label>
+                <div class="col-md-10">
+                    <select class="form-control" id="album" ng-model="vm.Blog.AlbumId">
+                        <option value="-1"> / </option>
+                        <option ng-repeat="album in vm.albums" value="{{album.Id}}">{{album.Name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="content" class="col-md-2 control-label">Content</label>
+                <div class="col-md-10">
+                    <ab-cms id="content" photos="vm.photos"></ab-cms>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button ng-disabled="addBlogForm.$invalid" type="submit" class="btn btn-default">Create</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+</div>
