@@ -56,6 +56,10 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -64,6 +68,10 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -452,12 +460,15 @@
     <Content Include="Scripts\Admin_Angular\components\admin-albums\add\admin.albums.add.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-albums\admin.albums.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-albums\edit\admin.albums.edit.component.js" />
+    <Content Include="Scripts\Admin_Angular\components\admin-blogs\add\admin.blogs.add.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-blogs\admin.blogs.component.js" />
+    <Content Include="Scripts\Admin_Angular\components\admin-blogs\edit\admin.blogs.edit.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-categories\admin.categories.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-photos\add\admin.photos.add.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-photos\admin.photos.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-photos\edit\admin.photos.edit.component.js" />
     <Content Include="Scripts\Admin_Angular\components\modal-view\modal.view.component.js" />
+    <Content Include="Scripts\Admin_Angular\directives\attribute\ab.selected.text.directive.js" />
     <Content Include="Scripts\Admin_Angular\directives\elements\ab-photo-select.directive.js" />
     <Content Include="Scripts\Admin_Angular\directives\elements\ab-photo-ul-checkable.directive.js" />
     <Content Include="Scripts\Admin_Angular\filters\ng_repeat\startswith.filter.js" />
@@ -465,6 +476,7 @@
     <Content Include="Scripts\Admin_Angular\services\app.services.js" />
     <Content Include="Scripts\Admin_Angular\services\BlogsService\blogs.service.js" />
     <Content Include="Scripts\Admin_Angular\services\CategoriesService\categories.service.js" />
+    <Content Include="Scripts\Admin_Angular\services\CmsService\cms.service.js" />
     <Content Include="Scripts\Admin_Angular\services\PhotosService\photos.service.js" />
     <Content Include="Scripts\Admin_Angular\services\ProfileService\profile.service.js" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-about\main\admin.about.main.controller.html" />
@@ -623,8 +635,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\Admin_Angular\components\admin-blogs\add\" />
-    <Folder Include="Scripts\Admin_Angular\components\admin-blogs\edit\" />
     <Folder Include="Scripts\Admin_Angular\templates\components\admin-blogs\add\" />
     <Folder Include="Scripts\Admin_Angular\templates\components\admin-blogs\edit\" />
     <Folder Include="Views\Base\" />

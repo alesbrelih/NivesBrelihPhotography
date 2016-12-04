@@ -42,7 +42,7 @@
 
             //if confirmation is accepted
             modal.result.then(function () {
-                console.log("DELETED NOOO!O!O!OO!O!O");
+
                 //delete blog using blog service
                 BlogsService.DeleteBlog(blog);
             });
