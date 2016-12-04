@@ -56,6 +56,7 @@
 
         return blogsFactory;
     }
+
     //inject needed services
     blogsFactoryController.$inject = ["$http", "toastr"];
 

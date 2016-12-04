@@ -1,0 +1,52 @@
+﻿<div class="cms-tool">
+    <div class="cms-utilities">
+        <button ng-repeat="utility in vm.utilities" ng-click="vm.addElement(utility.type)" ng-class="utility.classes">{{utility.text}}</button>
+    </div>
+    <div class="cms-body">
+        <textarea ab-selected-text="vm.props.selected" ng-model="vm.props.content" rows="20"></textarea>
+    </div>
+    <div class="cms-preview-action-bar text-right">
+        <button class="btn btn-primary glyphicon glyphicon-eye-open" ng-click="vm.showPreview = !vm.showPreview"></button>
+    </div>
+
+</div>
+<div class="cms-preview" ng-if="vm.showPreview">
+    <div class="html-content" ng-bind-html="vm.safe">
+
+    </div>
+</div>
+<div class="photo-insert-select-wrapper" ng-if="vm.selectPhoto">
+    <div class="photo-insert-select">
+        <div class="back-anchor text-center text-primary">
+            <a href="" ng-click="vm.selectPhoto = false">Back</a>
+        </div>
+        <div class="main-body">
+            <div class="external-link">
+                <p> External link</p>
+                <form novalidate ng-submit="vm.addPhoto(vm.externalPhoto)">
+                    <input type="text" placeholder="Insert photo url here" class="form-control" ng-model="vm.externalPhoto"> <button type="submit" class="btn btn-primary glyphicon glyphicon-plus "></button>
+                </form>
+            </div>
+            <hr>
+            <div class="database-photos">
+                <p> Database photos </p>
+                <p class="search-wrapper"><input placeholder="Search database photos" type="text" ng-model="vm.searchPhoto"></p>
+                <ul>
+                    <li ng-repeat="photo in vm.photos | filter:vm.searchPhoto">
+                        <div class="photo-container">
+                            <div class="title">
+                                {{photo.PhotoTitle}}
+                            </div>
+                            <div class="body">
+                                <img ng-src="{{photo.PhotoUrl}}" alt="">
+                            </div>
+                            <div class="action-btn">
+                                <button class="btn btn-primary glyphicon glyphicon-plus" ng-click="vm.addPhoto(photo.PhotoUrl)"></button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

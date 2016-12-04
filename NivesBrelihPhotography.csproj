@@ -395,6 +395,7 @@
     <Content Include="Content\Admin_Section\admin-about-reviews.css" />
     <Content Include="Content\Admin_Section\admin-about-social-links.css" />
     <Content Include="Content\Admin_Section\admin-categories-angular.css" />
+    <Content Include="Content\Admin_Section\admin-cms.css" />
     <Content Include="Content\Admin_Section\admin-photos-angular.css" />
     <Content Include="Content\Admin_Section\admin-index.css" />
     <Content Include="Content\Admin_Section\admin-albums.css" />
@@ -467,6 +468,7 @@
     <Content Include="Scripts\Admin_Angular\components\admin-photos\add\admin.photos.add.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-photos\admin.photos.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-photos\edit\admin.photos.edit.component.js" />
+    <Content Include="Scripts\Admin_Angular\components\cms-view\cms.component.js" />
     <Content Include="Scripts\Admin_Angular\components\modal-view\modal.view.component.js" />
     <Content Include="Scripts\Admin_Angular\directives\attribute\ab.selected.text.directive.js" />
     <Content Include="Scripts\Admin_Angular\directives\elements\ab-photo-select.directive.js" />
@@ -496,6 +498,7 @@
     <Content Include="Scripts\Admin_Angular\templates\components\admin-photos\edit\admin.photos.edit.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-view\admin.view.component.html" />
     <Content Include="Scripts\Admin_Angular\routes\app-states.js" />
+    <Content Include="Scripts\Admin_Angular\templates\components\cms-view\cms.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\modal-view\modal.view.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\directives\elements\ab-photo-select.directive.html" />
     <Content Include="Scripts\Admin_Angular\templates\directives\elements\ab-photo-ul-checkable.directive.html" />
