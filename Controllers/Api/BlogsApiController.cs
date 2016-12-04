@@ -14,7 +14,7 @@ namespace NivesBrelihPhotography.Controllers.Api
 {
     public class BlogsController : ApiController
     {
-
+        //connection to db
         private NbpContext _db = new NbpContext();
 
         [HttpGet]

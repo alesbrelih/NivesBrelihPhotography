@@ -1,12 +1,12 @@
 ﻿<div class="cms-tool">
     <div class="cms-utilities">
-        <button ng-repeat="utility in vm.utilities" ng-click="vm.addElement(utility.type)" ng-class="utility.classes">{{utility.text}}</button>
+        <button type="button" ng-repeat="utility in vm.utilities" ng-click="vm.addElement(utility.type)" ng-class="utility.classes">{{utility.text}}</button>
     </div>
     <div class="cms-body">
         <textarea ab-selected-text="vm.props.selected" ng-model="vm.props.content" rows="20"></textarea>
     </div>
     <div class="cms-preview-action-bar text-right">
-        <button class="btn btn-info glyphicon glyphicon-eye-open" ng-click="vm.showPreview = !vm.showPreview"></button>
+        <button type="button" class="btn btn-info glyphicon glyphicon-eye-open" ng-click="vm.showPreview = !vm.showPreview"></button>
     </div>
 
 </div>

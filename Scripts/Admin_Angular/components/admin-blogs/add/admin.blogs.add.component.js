@@ -5,13 +5,13 @@
     var app = angular.module("adminApp");
 
     //add component controller
-    function addBlogComponentController(BlogsService, PhotosService, AlbumsService, CategoriesService, CmsService) {
+    function addBlogComponentController(BlogsService, PhotosService, AlbumsService, CategoriesService, CmsService,$uibModal) {
 
         //current scope
         var vm = this;
 
         //blog prop
-        vm.Blog = {};
+        vm.Blog = null;
 
         //set catgories
         vm.categories = CategoriesService.Categories;
@@ -25,25 +25,18 @@
         vm.photos = PhotosService.Photos;
         PhotosService.GetPhotos();
 
-
-        vm.test = function() {
-            console.log(vm.categories, vm.albums, vm.photos);
-        }
-
         // --- ACTIONS --- //
 
-        //create blog
+        //creates blog function
         vm.CreateBlog = function() {
-            var content = CmsService.GetContent();
-            vm.Blog.content = content;
-            console.log(vm.Blog);
-
+            BlogsService.CreateBlog(vm.Blog);
         }
+
 
     }
 
     //inject needed services
-    addBlogComponentController.$inject = ["BlogsService","PhotosService","AlbumsService","CategoriesService", "CmsService"];
+    addBlogComponentController.$inject = ["BlogsService","PhotosService","AlbumsService","CategoriesService", "CmsService","$uibModal"];
     
     //register component
     app.component("adminBlogsAdd", {

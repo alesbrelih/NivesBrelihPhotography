@@ -28,9 +28,7 @@
 
         getData();
 
-        vm.test = function() {
-            console.log(vm.categories, vm.photos, vm.albums, vm.Blog);
-        }
+        vm.C
 
 
     }

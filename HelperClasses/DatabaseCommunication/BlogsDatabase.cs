@@ -43,7 +43,7 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
             var blogVm = new AdminBlogsModify()
             {
                 Id = blogDb.BlogId,
-                CoverPhoto = blogDb.CoverPhoto.PhotoId,
+                CoverPhoto = blogDb.CoverPhotoId,
                 AlbumId = blogDb.AlbumId?.ToString() ?? "-1",
                 Content = blogDb.Content,
                 Description = blogDb.BlogDescription,
@@ -197,19 +197,7 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
             blogDb.Content = blog.Content;
             blogDb.CoverPhotoId = blog.CoverPhoto;
             blogDb.BlogDate = DateTime.Now;
-            
-            //set categories
-            foreach (var category in blog.Categories)
-            {
-                int number;
-                if (int.TryParse(category, out number))
-                {
-                    blogDb.Categories.Add(new BlogCategory()
-                    {
-                        CategoryId = number
-                    });
-                }
-            }
+
 
             //set album if it was selected
             if (blog.Album)
@@ -224,6 +212,24 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
                 else
                 {
                     blogDb.AlbumLink = false;
+                }
+            }
+
+            
+
+            //await db change to get blog id
+            //await db.SaveChangesAsync();
+
+            //set categories
+            foreach (var category in blog.Categories)
+            {
+                int number;
+                if (int.TryParse(category, out number))
+                {
+                    blogDb.Categories.Add(new BlogCategory()
+                    {
+                        CategoryId = number
+                    });
                 }
             }
 

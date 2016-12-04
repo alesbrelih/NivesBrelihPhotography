@@ -26,26 +26,10 @@
         });
 
         // --- METHODS --- //
-        vm.DeleteBlog = function(blog) {
-            var modal = $uibModal.open({
-                component: "abModalView",
-                size: "sm",
-                resolve: {
-                    type: function () {
-                        return "delete";
-                    },
-                    entry: function () {
-                        return "blog";
-                    }
-                }
-            });
-
-            //if confirmation is accepted
-            modal.result.then(function () {
-
-                //delete blog using blog service
-                BlogsService.DeleteBlog(blog);
-            });
+        vm.DeleteBlog = function (blog) {
+            //delete blog using blog service
+            BlogsService.DeleteBlog(blog);
+            
         }
 
 
