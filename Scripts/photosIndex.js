@@ -60,7 +60,11 @@ $(function () {
             //changing html to json so masonry appended can be called on
             var jqueryHtml = jQuery(html);
             //addin masonry to new photos
-            $("#photos").append(jqueryHtml).masonry('appended', jqueryHtml);
+            var photoContainer = $("#photos");
+            photoContainer.append(jqueryHtml);
+            photoContainer.imagesLoaded(function() {
+                photoContainer.masonry('appended', jqueryHtml);
+            });
             pageNm++;
         });
     }

@@ -1,0 +1,34 @@
+﻿
+/* ADMIN BLOGS STYLES START*/
+
+#blogs-view table .text-center, #blogs-view table .text-center-td {
+    vertical-align: middle;
+}
+
+#blogs-view .pages span {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#blogs-view table .blogs-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    #blogs-view table .blogs-actions button {
+        margin-left: 5px;
+    }
+
+@media(max-width: 550px) {
+    #blogs-view table .blogs-actions {
+        flex-direction: column;
+    }
+
+        #blogs-view table .blogs-actions button {
+            margin-left: 0px;
+            margin-top: 5px;
+        }
+}
+
+/* ADMIN BLOGS STYLES END*/
