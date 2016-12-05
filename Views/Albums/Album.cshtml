@@ -1,0 +1,43 @@
+﻿@using System.Activities.Statements
+@using System.Diagnostics.Eventing.Reader
+@model NivesBrelihPhotography.Models.PhotoModels.ViewModels.AlbumAndPhotosView
+@{
+    ViewBag.Title = "Album Photos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render("~/Content/album-photos-from-blog-styles")
+<br/>
+
+<div id="content-container">
+
+    <div class="selected-album-description" data-album-id="@Model.AlbumDescription.AlbumId">
+        <h3> @Model.AlbumDescription.AlbumName </h3>
+        <div class="selected-album-date">
+
+            @Model.AlbumDescription.AlbumDate
+
+        </div>
+        <div class="row">
+            <div class="col-md-8 selected-album-text">
+                @Model.AlbumDescription.AlbumText
+                <hr>
+            </div>
+        </div>
+    </div>
+    <div id="photos" class="masonry-layout" data-photo-type="photos">
+        <div class="grid-sizer col-xs-12 col-sm-6 col-md-4"></div>
+        @foreach (var photo in Model.AlbumPhotos)
+        {
+            <div class="masonry-image img-container col-xs-12 col-sm-6 col-md-4">
+                <img src="@photo.PhotoUrl" class="img-responsive" />
+                <div class="img-description">
+                    <span>@photo.PhotoTitle</span>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+@section Scripts{
+    @Scripts.Render("~/bundles/album-photos-from-blog-scripts")
+
+}

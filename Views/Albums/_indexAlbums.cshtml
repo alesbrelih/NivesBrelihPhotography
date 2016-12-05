@@ -1,0 +1,25 @@
+﻿@using System.Collections
+@model IEnumerable<NivesBrelihPhotography.Models.PhotoModels.ViewModels.PhotoAlbumView>
+
+
+<div id="photos" class="masonry-layout" data-photo-type="albums">
+
+    
+
+    @*sizer for masonry layout*@
+    <div class="grid-sizer col-xs-12 col-sm-6 col-md-4"></div>
+
+    @foreach (var album in Model)
+    {
+        <div class="masonry-image img-container col-xs-12 col-sm-6 col-md-4">
+            <a href="@Url.Action("Album", new {albumId = album.PhotoAlbumId})">
+                <img alt="@album.AlbumName" src="@album.AlbumPhotoUrl" class="img-responsive" data-album-id="@album.PhotoAlbumId" />
+                <div class="album-background">
+                    <span class="album-name">@album.AlbumName<span class="album-date">@album.ReturnAlbum()</span></span>
+                </div>
+            </a>
+                
+        </div>
+
+    }
+</div>
