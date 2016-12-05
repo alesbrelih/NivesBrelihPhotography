@@ -77,7 +77,11 @@ $(function () {
                 var jqueryHtml = $($html);
 
                 //append to photos and run masonry
-                $("#photos").append(jqueryHtml).masonry("appended", jqueryHtml);
+                var photoContainer = $("#photos");
+                photoContainer.append(jqueryHtml);
+                photoContainer.imagesLoaded(function() {
+                    photoContainer.masonry("appended", jqueryHtml);
+                });
 
                 //increase page number
                 pageNm++;
@@ -114,7 +118,11 @@ $(function () {
                 //changing html to json so masonry appended can be called on
                 var jqueryHtml = jQuery(html);
                 //addin masonry to new photos
-                $("#photos").append(jqueryHtml).masonry('appended', jqueryHtml);
+                var photoContainer = $("#photos");
+                photoContainer.append(jqueryHtml);
+                photoContainer.imagesLoaded(function() {
+                    photoContainer.masonry('appended', jqueryHtml);
+                });
                 pageNm++;
             });
         }
@@ -174,13 +182,17 @@ $(function () {
                 });
                 $html += "</div>";
                 var jqueryHtml = $($html);
-                $("#content-container").append(jqueryHtml);
-                SetMasonry();
-                $("#content-container").fadeIn("slow");
+                var container = $("#content-container").append(jqueryHtml);
+                container.imagesLoaded(function() {
+                    SetMasonry();
+                    $("#content-container").fadeIn("slow");
 
-                //reset load pictures because we are on new album photos
-                pageNm = 0;
-                scrollEnd = false;
+                    //reset load pictures because we are on new album photos
+                    pageNm = 0;
+                    scrollEnd = false;
+                });
+
+
             });
         } else {//if album photos zoom picture
          
@@ -210,20 +222,24 @@ $(function () {
         $.get("/Photos/Albums",{pageNumber:0}, function (data) {
 
             //insert partial view into #content-container
-            $("#content-container").html(data);
+            var container = $("#content-container").html(data);
 
-            //set masonry on images
-            SetMasonry();
+            //wait for pics to load
+            container.imagesLoaded(function() {
+                //set masonry on images
+                SetMasonry();
 
-            //fade in content container with masonry images
-            $("#content-container").fadeIn("slow");
+                //fade in content container with masonry images
+                $("#content-container").fadeIn("slow");
 
-            //slide up back to albums on this page
-            //$("#back-to").slideToggle();
+                //slide up back to albums on this page
+                //$("#back-to").slideToggle();
 
-            //reset pagenum and photos end because we are back on albums section
-            pageNm = 0;
-            scrollEnd = false;
+                //reset pagenum and photos end because we are back on albums section
+                pageNm = 0;
+                scrollEnd = false;
+            });
+
         });
     });
 
