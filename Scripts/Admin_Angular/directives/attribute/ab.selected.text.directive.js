@@ -52,39 +52,13 @@
 
             //watch when new element was appended to text area and change selection
             scope.$watch("CmsService.elementsAdded", function () {
-
-                //focus textarea
+                
+                //focus element
                 el[0].focus();
 
-                //if nothing was selected
-                //move cursor at end when addign element
-                if (scope.CmsService.selected.start == 0 && scope.CmsService.selected.end == 0) {
-                    el[0].selectionStart = el[0].value.length;
-                    el[0].selectionEnd = el[0].value.length;
-                }
-                    //bigger selection
-                else if (scope.CmsService.selected.start != scope.CmsService.selected.end) {
-
-                    var newStart = scope.CmsService.selected.start;
-                    // +3 because of new line signs
-                    var newEnd = scope.CmsService.selected.end + scope.CmsService.lastElement.length + 3;
-
-                    //text area selection
-                    el[0].selectionStart = newStart;
-                    el[0].selectionEnd = newEnd;
-
-                    //Set cms service props
-                    scope.CmsService.selected.start = newStart;
-                    scope.CmsService.selected.end = newEnd;
-
-
-                }
-                else {
-                    //start and end index are same
-
-                    el[0].selectionStart = scope.CmsService.selected.start;
-                    el[0].selectionEnd = scope.CmsService.selected.end;
-                }
+                //set new selection
+                el[0].selectionStart = scope.CmsService.selected.start;
+                el[0].selectionEnd = scope.CmsService.selected.end;
 
             });
 

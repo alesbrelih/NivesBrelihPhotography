@@ -14,28 +14,39 @@
         var props = null;
 
         // private function that inserts substring to a string
-        function insert(element){
+        function insert(element) {
 
-            //private helper functions to insert elements (start mark and end mark)
-            function insertElement(open,close){
+            //private helper functions
+            function insertElement(open, close) {
 
-                //if no start or end then append element at end
-                if(props.selected.start == 0 && props.selected.end==0){
-                    props.content = props.content + "\n"+open+close+"\n";
-                }
-                //if start and end are same then put it at that location
-                else if(props.selected.start == props.selected.end){
-                    props.content = props.content.substring(0,props.selected.end)+"\n"+open+close+"\n"+props.content.substring(props.selected.end,props.content.length);
-                }
-                else{
-                    //if different then put it  around selection
-                    props.content = props.content.substring(0,props.selected.end)+"\n"+close+"\n"+props.content.substring(props.selected.end,props.content.length);
-                    props.content = props.content.substring(0,props.selected.start)+"\n"+open+"\n"+props.content.substring(props.selected.start,props.content.length);
+                if (props.content.length === 0 || (props.selected.start === props.content.length && props.selected.end === props.content.length)) {
+                    props.content = props.content + open + close;
+
+                    //set selected index at end of content
+                    var contentLength = props.content.length;
+                    props.selected.start = contentLength;
+                    props.selected.end = contentLength;
 
                 }
+                else if (props.selected.start == props.selected.end) {
+                    props.content = props.content.substring(0, props.selected.end) + open + close + props.content.substring(props.selected.end, props.content.length);
 
-                //tracking changes for selected text directive so it selects appended element
-                props.lastElement=open+close;
+                    //set new index
+                    var newIndex = props.selected.start + open.length;
+
+                    props.selected.start = newIndex;
+                    props.selected.end = newIndex;
+
+                }
+                else {
+                    //props.content = props.content.substring(0,props.selected.end)+close+props.content.substring(props.selected.end,props.content.length);
+                    props.content = props.content.substring(0, props.selected.start) + open + close + props.content.substring(props.selected.end, props.content.length);
+
+                    var selectionEnd = props.selected.start + (open.length + close.length);
+                    props.selected.end = selectionEnd;
+
+                }
+                props.lastElement = open + close;
                 props.elementsAdded++;
 
             }
@@ -43,64 +54,114 @@
             //inserts element with no closing tag
             function insertSingle(el) {
 
-                //if start and end are 0 then append at end
-                if(props.selected.start == 0 && props.selected.end==0){
-                    props.content = props.content + "\n"+el+ "\n";
+
+                if (props.content.length === 0 || (props.selected.start === props.content.length && props.selected.end === props.content.length)) {
+                    props.content = props.content + el;
+
+                    console.log(props.content);
+
+                    //set selected index at end of content
+                    var contentLength = props.content.length;
+                    props.selected.start = contentLength;
+                    props.selected.end = contentLength;
                 }
-                else{
-                    //else put it at start location of selection
-                    props.content = props.content.substring(0,props.selected.start)+"\n"+el+"\n"+props.content.substring(props.selected.start,props.content.length);
+                else {
+
+                    props.content = props.content.substring(0, props.selected.start) + el + props.content.substring(props.selected.end, props.content.length);
+
+                    var newIndex = props.selected.start + el.length;
+                    props.selected.start = newIndex;
+                    props.selected.end = newIndex;
 
                 }
-
-                //tracking changes for selected text directive so it selects appended element
                 props.lastElement = el;
                 props.elementsAdded++;
-
                 //TODO: INSERT TOASTR TO SAY THAT IT WILL BE INSERTED AT START
             }
 
-            //inserts container
-            function insertContainer(type){
+            //inserts font styling
+            function insertStyle(open, close) {
 
-                switch (type){
+
+
+                //insert at end
+                if (props.content.length === 0 || (props.selected.start === props.content.length && props.selected.end === props.content.length)) {
+                    props.content = props.content + open + close;
+
+                    //set selected index at end of content
+                    var contentLength = props.content.length;
+                    props.selected.start = contentLength;
+                    props.selected.end = contentLength;
+                }
+                else if (props.selected.start == props.selected.end) {
+                    props.content = props.content.substring(0, props.selected.end) + open + close + props.content.substring(props.selected.end, props.content.length);
+
+                    //set new index
+                    var newIndex = props.selected.start + open.length;
+                    props.selected.start = newIndex;
+                    props.selected.end = newIndex;
+                }
+                else {
+                    props.content = props.content.substring(0, props.selected.end) + close + props.content.substring(props.selected.end, props.content.length);
+                    props.content = props.content.substring(0, props.selected.start) + open + props.content.substring(props.selected.start, props.content.length);
+
+                    //start stays same
+                    var selectionEnd = props.selected.end + (open.length + close.length);
+                    props.selected.end = selectionEnd;
+
+                }
+
+                //set change
+                props.lastElement = open + close;
+                props.elementsAdded++;
+
+            }
+
+            //inserts container
+            function insertContainer(type) {
+
+                switch (type) {
                     case "row":
-                        insertElement("<div class='row'>","</div>");
+                        insertElement("<div class='row'>", "</div>");
                         break;
                     case "half-column":
-                        insertElement("<div class='col-md-6'>","</div>");
+                        insertElement("<div class='col-md-6'>", "</div>");
                         break;
                     case "third-column":
-                        insertElement("<div class='col-md-4'>","</div>");
+                        insertElement("<div class='col-md-4'>", "</div>");
+                        break;
+                    case "paragraph":
+                        insertElement("<p>", "</p>");
                         break;
                 }
+
             }
 
             //switch function to insert element depending on stuff
-            switch(element){
+            switch (element) {
                 case "line":
                     insertSingle("<br>");
                     break;
                 case "paragraph":
-                    insertElement("<p>","</p>");
+                    insertContainer("paragraph");
                     break;
                 case "strong":
-                    insertElement("<strong>","</strong>");
+                    insertStyle("<strong>", "</strong>");
                     break;
                 case "italic":
-                    insertElement("<i>","</i>");
+                    insertStyle("<i>", "</i>");
                     break;
                 case "horizontal-line":
                     insertSingle("<hr>");
                     break;
                 case "heading-1":
-                    insertElement("<h1>","</h1>");
+                    insertStyle("<h1>", "</h1>");
                     break;
                 case "heading-2":
-                    insertElement("<h2>","</h2>");
+                    insertStyle("<h2>", "</h2>");
                     break;
                 case "heading-3":
-                    insertElement("<h3>","</h3>");
+                    insertStyle("<h3>", "</h3>");
                     break;
                 case "row":
                     insertContainer("row");
@@ -118,27 +179,43 @@
         }
 
         //inserts photo
-        function insertPhoto(imgUrl){
-            if(imgUrl){ //url needs to exist
+        function insertPhoto(imgUrl) {
+            if (imgUrl) { //url needs to exist
 
-                var photo = "<img class='img-responsive' src='"+imgUrl+"'></img>"; //photo markup
-                
-                //if start and end == 0 then append at end
-                if(props.selected.start == 0 && props.selected.end==0){
-                    props.content = props.content +"\n"+ photo+"\n";
+                var photo = "<img class='img-responsive' src='" + imgUrl + "'></img>";
+
+                if (props.content.length === 0 || (props.selected.start === props.content.length && props.selected.end === props.content.length)) {
+                    props.content = props.content + photo;
+
+                    //set selected index at end of content
+                    var contentLength = props.content.length;
+                    props.selected.start = contentLength;
+                    props.selected.end = contentLength;
+
                 }
-                else{
+                else if (props.selected.start == props.selected.end) {
+                    props.content = props.content.substring(0, props.selected.end) + photo + props.content.substring(props.selected.end, props.content.length);
 
-                //else put at start of selection
-                    props.content = props.content.substring(0,props.selected.start)+"\n"+photo+"\n"+props.content.substring(props.selected.start,props.content.length);
+                    //set new index
+                    var newIndex = props.selected.start + photo.length;
+
+                    props.selected.start = newIndex;
+                    props.selected.end = newIndex;
 
                 }
+                else {
+                    //props.content = props.content.substring(0,props.selected.end)+close+props.content.substring(props.selected.end,props.content.length);
+                    props.content = props.content.substring(0, props.selected.start) + photo + props.content.substring(props.selected.end, props.content.length);
 
-                //track changes
-                props.lastElement = photo;
+                    var selectionEnd = props.selected.start + (photo.length);
+                    props.selected.end = selectionEnd;
+
+                }
+                props.lastElement = open + close;
                 props.elementsAdded++;
             }
         }
+
 
 
 
