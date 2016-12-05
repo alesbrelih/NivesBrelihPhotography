@@ -21,18 +21,38 @@
                 vm.photos = PhotosService.Photos;
                 vm.categories = CategoriesService.Categories;
                 vm.albums = AlbumsService.Albums;
-                vm.Blog = success[3];
+                vm.Blog = success[3].data;
+                CmsService.EditContent(vm.Blog.Content);
             });
         }
 
-
+        console.log(vm);
+        //get all data needed
         getData();
 
-        vm.C
+        // --- ACTIONS --- //
+
+        //edit blog action
+        vm.EditBlog = function () {
+            if (vm.Blog) {
+                BlogsService.EditBlog(vm.Blog);
+            }
+            
+        }
 
 
     }
     //inject needed services
-    editBlogController.$inject = ["BlogsService","PhotosService","CategoriesService","AlbumsService", "CmsService","$q"];
+    editBlogController.$inject = ["BlogsService", "PhotosService", "CategoriesService", "AlbumsService", "CmsService", "$q"];
+
+    //register component to app
+    app.component("adminBlogsEdit", {
+        controller: editBlogController,
+        controllerAs: "vm",
+        templateUrl: "/Scripts/Admin_Angular/templates/components/admin-blogs/edit/admin.blogs.edit.component.html",
+        bindings: {
+            blogdb:"="
+        }
+    });
 
 })(window.angular);

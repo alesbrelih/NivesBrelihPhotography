@@ -128,11 +128,10 @@
                     url: "/blogs/edit/:id",
                     template: "<admin-blogs-edit blogdb='$resolve.blog'></admin-blogs-edit>",
                     resolve: {
-                        blog: [
-                            "BlogsService", "$stateParams", function(BlogsService, $stateParams) {
-                                return BlogsService.GetBlog($stateParams.id);
-                            }
-                        ]
+                        blog: ["BlogsService","$stateParams",function(BlogsService,$stateParams) {
+                        return BlogsService.GetBlog($stateParams.id);
+                    }]
+                        
                     }
                 });
             

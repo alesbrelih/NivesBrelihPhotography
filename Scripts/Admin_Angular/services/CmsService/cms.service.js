@@ -149,6 +149,11 @@
             props = contentVar;
         };
 
+        //edit content var
+        cmsFactory.EditContent = function(text) {
+            props.content = text;
+        };
+
         //gets cmstool service props (needed in abselectedtext directive)
         cmsFactory.GetProps = function () {
             return props;

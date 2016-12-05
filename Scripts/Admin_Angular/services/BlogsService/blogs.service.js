@@ -23,9 +23,11 @@
 
         //get blog function
         blogsFactory.GetBlog = function(id) {
-            return $http("/api/blogs/",{params: {
-                "id":id
-            }});
+            return $http.get("/api/blogs/", {
+                params: {
+                    "id": id
+                }
+            });
 
         }
 
@@ -90,8 +92,6 @@
             //set content
             blog.content = CmsService.GetContent();
 
-            console.log(blog);
-
             //modal to confirm
             var modal = $uibModal.open({
                 component: "abModalView",
@@ -137,24 +137,46 @@
         }
 
         //edits blog
-        blogsFactory.EditBlog = function(blog) {
-            //call api
-            $http.put("/api/blogs", blog)
-                .then(function() {
-                    //success
+        blogsFactory.EditBlog = function (blog) {
+            //set content
+            blog.content = CmsService.GetContent();
 
-                    //notify user
-                    toastr.success("Blog successfully edited.", "Success");
-
-                    //change state if needed
-                    if ($state.current.name == "blogs-edit") {
-                        $state.go("blogs");
+            //modal to confirm
+            var modal = $uibModal.open({
+                component: "abModalView",
+                size: "sm",
+                resolve: {
+                    type: function () {
+                        return "edit";
+                    },
+                    entry: function () {
+                        return "blog";
                     }
-                }, function(err) {
-                    //catch err
-                    console.log(err);
-                    toastr.error(err.data, "Error");
-                });
+                }
+            });
+
+            //user confirmed
+            modal.result.then(function() {
+                //call api
+                $http.put("/api/blogs", blog)
+                    .then(function() {
+                        //success
+
+                        //notify user
+                        toastr.success("Blog successfully edited.", "Success");
+
+                        //change state if needed
+                        if ($state.current.name == "blogs-edit") {
+                            $state.go("blogs");
+                        }
+                    }, function(err) {
+                        //catch err
+                        console.log(err);
+                        toastr.error(err.data, "Error");
+                    });
+            });
+
+
         }
 
         return blogsFactory;

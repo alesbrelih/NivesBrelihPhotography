@@ -12,6 +12,7 @@
 
         // --- PROPERTIES --- //
 
+
         vm.props = {
             content: "",
             selected: null,
@@ -23,7 +24,6 @@
 
         //set / reset content for cms service
         CmsService.SetContent(vm.props);
-
 
         // set photos list reference
         //CmsService.SetPhotos(vm.photos);
@@ -139,7 +139,8 @@
         controllerAs: "vm",
         templateUrl: "/Scripts/Admin_Angular/templates/components/cms-view/cms.component.html",
         bindings: {
-            photos:"="
+            photos:"=",
+            content:"="
         }
     });
 
