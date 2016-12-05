@@ -2,10 +2,13 @@
 
 
 <div class="row modify-photo-container">
+    <p class="back-anchor">
+        <a ui-sref="photos">Back</a>
+    </p>
 
     <!--PICTURE PREVIEW-->
     <div class="photo-preview-container">
-        <img ng-src="{{vm.Photo.PhotoUrl}}" alt="Photo preview" />
+        <img ng-src="{{vm.Photo.PhotoUrl}}" alt="Photo preview"/>
     </div>
 
     <form name="editPhotoForm" class="form-horizontal" novalidate ng-submit="vm.EditPhoto()">
@@ -24,7 +27,7 @@
                         <option value="-1"> / </option>
                         <option ng-repeat="album in vm.Albums" value="{{album.Id}}">{{album.Name}}</option>
                     </select>
-                    <label for="isAlbumCover" class="control-label"> <input type="checkbox" id="isAlbumCover" ng-change="" ng-disabled="vm.Photo.AlbumId == -1" ng-model="vm.Photo.IsAlbumCover" /> Album Cover</label>
+                    <label for="isAlbumCover" class="control-label"> <input type="checkbox" id="isAlbumCover" ng-change="" ng-disabled="vm.Photo.AlbumId == -1" ng-model="vm.Photo.IsAlbumCover"/> Album Cover</label>
                 </div>
             </div>
             <div class="form-group">
@@ -52,7 +55,7 @@
             <div class="form-group">
                 <label class="col-lg-2 control-label">Portfolio</label>
                 <div class="col-lg-10">
-                    <label class="control-label"><input ng-model="vm.Photo.IsOnPortfolio" ng-disabled="addPhotoForm.photoUpload.$invalid" type="checkbox" /></label>
+                    <label class="control-label"><input ng-model="vm.Photo.IsOnPortfolio" ng-disabled="addPhotoForm.photoUpload.$invalid" type="checkbox"/></label>
 
                 </div>
             </div>

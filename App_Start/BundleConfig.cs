@@ -131,7 +131,8 @@ namespace NivesBrelihPhotography
                 "~/Content/Admin_Section/Angular_Directives/elements/ab-ul-photos-checkable.css",
                 "~/Content/Admin_Section/Angular_Directives/elements/ab-photo-select.css",
                 "~/Content/Admin_Section/admin-albums.css",
-                "~/Content/Admin_Section/admin-cms.css"
+                "~/Content/Admin_Section/admin-cms.css",
+                "~/Content/Admin_Section/admin-blogs.css"
                 ));
 
 

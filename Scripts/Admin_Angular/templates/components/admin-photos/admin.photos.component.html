@@ -1,9 +1,12 @@
 ﻿<br />
 
 <div class="row" id="admin-photos-index">
+    <p class="back-anchor">
+        <a ui-sref="view">Back</a>
+    </p>
 
     <p class="new-item">
-        <i ui-sref="photos-add" class="glyphicon glyphicon-plus"></i>
+        <i ui-sref="photos-add" class="glyphicon glyphicon-plus text-primary"></i>
     </p>
 
     <div class="search-bar">
@@ -11,7 +14,7 @@
         <input type="text" ng-model="vm.searchText" placeholder="Search"/>
 
     </div>
-    <br />
+    <br/>
     <table class="table">
 
         <thead>

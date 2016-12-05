@@ -2,11 +2,14 @@
 
 
 <div class="row modify-photo-container">
+    <p class="back-anchor">
+        <a ui-sref="photos">Back</a>
+    </p>
 
     <!--PICTURE PREVIEW-->
     <div class="photo-preview-container">
         <img ng-show="addPhotoForm.photoUpload.$valid" ng-src="{{vm.previewPhoto}}" alt="Photo preview"/>
-        <img ng-show="addPhotoForm.photoUpload.$invalid" src="/Images/Photos/PhotoNotAvailable.jpg" alt="" />
+        <img ng-show="addPhotoForm.photoUpload.$invalid" src="/Images/Photos/PhotoNotAvailable.jpg" alt=""/>
     </div>
 
     <form name="addPhotoForm" class="form-horizontal" novalidate ng-submit="vm.UploadPhoto()">
@@ -14,7 +17,7 @@
             <div class="form-group">
                 <label for="inputPhoto" class="col-lg-2 control-label">Photo</label>
                 <div class="col-lg-10 browse-photo">
-                    <label for="inputPhoto" ><i class="glyphicon glyphicon-file btn btn-info"></i></label>
+                    <label for="inputPhoto"><i class="glyphicon glyphicon-file btn btn-info"></i></label>
                     <input type="file" class="form-control" id="inputPhoto" name="photoUpload" required ng-model="vm.Photo.PhotoFile" ab-photo-input preview-img="vm.previewPhoto" placeholder="Email">
                 </div>
             </div>
@@ -31,7 +34,7 @@
                         <option value="-1"> / </option>
                         <option ng-repeat="album in vm.Albums" value="{{album.Id}}">{{album.Name}}</option>
                     </select>
-                    <label for="isAlbumCover" class="control-label" > <input type="checkbox" id="isAlbumCover"  ng-change="" ng-disabled="vm.Photo.AlbumId == -1" ng-model="vm.Photo.IsAlbumCover" /> Album Cover</label>
+                    <label for="isAlbumCover" class="control-label"> <input type="checkbox" id="isAlbumCover" ng-change="" ng-disabled="vm.Photo.AlbumId == -1" ng-model="vm.Photo.IsAlbumCover"/> Album Cover</label>
                 </div>
             </div>
             <div class="form-group">
@@ -51,16 +54,16 @@
 
                 </div>
 
-                
-               
+
+
 
 
             </div>
-            <div class="form-group" >
+            <div class="form-group">
                 <label class="col-lg-2 control-label">Portfolio</label>
                 <div class="col-lg-10">
-                    <label class="control-label"><input ng-model="vm.Photo.IsOnPortfolio" ng-disabled="addPhotoForm.photoUpload.$invalid" type="checkbox" /></label>
-                    
+                    <label class="control-label"><input ng-model="vm.Photo.IsOnPortfolio" ng-disabled="addPhotoForm.photoUpload.$invalid" type="checkbox"/></label>
+
                 </div>
             </div>
             <div class="form-group">
