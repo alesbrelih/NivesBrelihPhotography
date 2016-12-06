@@ -4,7 +4,7 @@
     var $ = jQuery;
 
     $(function () {
-        var $albumId = $(".selected-album-description").attr("data-album-id");
+        var $albumId = $(".album-view-description").attr("data-album-id");
 
         var pageControl = {
             pageNumber: 0,

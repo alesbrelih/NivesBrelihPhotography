@@ -168,7 +168,6 @@ C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPho
 C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\bin\System.Net.Http.Formatting.xml
 C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\bin\System.Web.Http.xml
 C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\bin\System.Web.Http.WebHost.xml
-C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotography.csprojResolveAssemblyReference.cache
 C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotography.Migrations.NbpContextMigrations.addedalbumcovertable.resources
 C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotography.Migrations.NbpContextMigrations.addedalbumcovertable2.resources
 C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotography.Migrations.NbpContextMigrations.deletedisalbumcoveronphototable.resources
@@ -176,4 +175,4 @@ C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPho
 C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotography.Migrations.NbpContextMigrations.Addedshownonpagebooltosociallinkstable.resources
 C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotography.Migrations.NbpContextMigrations.AlbumIdinAlbumCoverisnullable.resources
 C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\bin\System.Web.Cors.dll
-C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\bin\System.Web.Http.Cors.xml
+C:\Users\Ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotography.csprojResolveAssemblyReference.cache

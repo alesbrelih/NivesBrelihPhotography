@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace NivesBrelihPhotography.Models.PhotoModels.ViewModels
@@ -25,7 +27,10 @@ namespace NivesBrelihPhotography.Models.PhotoModels.ViewModels
         {
             AlbumId = id;
             AlbumName = name;
-            AlbumDate = date.ToShortDateString();
+
+            //current short date format
+            DateTimeFormatInfo currentDateFormat = Thread.CurrentThread.CurrentCulture.DateTimeFormat;
+            AlbumDate = date.ToString(currentDateFormat.ShortDatePattern);
         }
     }
 
@@ -36,11 +41,13 @@ namespace NivesBrelihPhotography.Models.PhotoModels.ViewModels
 
 
         public string AlbumText { get; set; }  //album text
+        public string AlbumCover { get; set; }  //cover photo for album
 
-        public AlbumView(int id,string name, DateTime date, string text):base(id,name, date)
+        public AlbumView(int id,string name, DateTime date, string text,string albumCover):base(id,name, date)
         {
             
             AlbumText = text;
+            AlbumCover = albumCover;
         }
 
     }

@@ -6,25 +6,36 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @Styles.Render("~/Content/album-photos-from-blog-styles")
-<br/>
 
-<div id="content-container">
+<div id="content-container" class="album-view-wrapper">
 
-    <div class="selected-album-description" data-album-id="@Model.AlbumDescription.AlbumId">
-        <h3> @Model.AlbumDescription.AlbumName </h3>
-        <div class="selected-album-date">
-
-            @Model.AlbumDescription.AlbumDate
-
-        </div>
-        <div class="row">
-            <div class="col-md-8 selected-album-text">
-                @Model.AlbumDescription.AlbumText
-                <hr>
+    <div class="album-view-description" data-album-id="@Model.AlbumDescription.AlbumId" style="background: url(@Model.AlbumDescription.AlbumCover); background-size: cover;">
+        <div class="description-wrapper">
+            <div class="text-wrapper">
+                <div class="title">
+                    @*<h4>@Model.AlbumDescription.AlbumName</h4>*@
+                    <h3>@Model.AlbumDescription.AlbumName</h3>
+                </div>
+                <div class="date">
+                    @Model.AlbumDescription.AlbumDate
+                </div>
+                <div class="description hidden-xs hidden-sm">
+                    <p>@Model.AlbumDescription.AlbumText</p>
+                </div>
             </div>
+
+
         </div>
     </div>
-    <div id="photos" class="masonry-layout" data-photo-type="photos">
+    @*visible on smaller sscreens instead of big cover photo*@
+    <div class="album-view-description-small-screen">
+        <br />
+        <h3>@Model.AlbumDescription.AlbumName</h3>
+        <p class="date">@Model.AlbumDescription.AlbumDate</p>
+        <p class="description">@Model.AlbumDescription.AlbumText</p>
+        <hr />
+    </div>
+    <div id="photos" class="masonry-layout album-body" data-photo-type="photos">
         <div class="grid-sizer col-xs-12 col-sm-6 col-md-4"></div>
         @foreach (var photo in Model.AlbumPhotos)
         {
@@ -32,8 +43,8 @@
                 <img src="@photo.PhotoUrl" class="img-responsive" />
                 <div class="img-description">
                     <span>@photo.PhotoTitle</span>
+                </div>
             </div>
-        </div>
         }
     </div>
 </div>

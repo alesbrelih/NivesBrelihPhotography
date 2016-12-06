@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -56,6 +57,7 @@ namespace NivesBrelihPhotography.Controllers
 
         }
 
+        // GET: Single album
         public ActionResult Album(int? albumId = null, int pageNumber = 0)
         {
             if (Request.IsAjaxRequest())
@@ -76,6 +78,11 @@ namespace NivesBrelihPhotography.Controllers
             {
 
                 var selectedAlbum = db.PhotoAlbums.First(x => x.PhotoAlbumId == albumId);  //selected album
+                var coverPhoto = db.AlbumCovers.First(x => x.AlbumId == albumId).Photo;  //album cover photo
+
+                //case no cover photo set
+                var coverPhotoUrl = coverPhoto == null ? Properties.Resources.NoAlbumCoverPhoto : coverPhoto.PhotoUrl;
+
 
                 //if album couldn't be found from id, redirect to index page
                 if (selectedAlbum == null)
@@ -92,7 +99,7 @@ namespace NivesBrelihPhotography.Controllers
 
                 //viewmodel with album description and album photos
                 var albumDesc = new AlbumView(selectedAlbum.PhotoAlbumId, selectedAlbum.AlbumName, selectedAlbum.AlbumDate,
-                    selectedAlbum.AlbumDescription);
+                    selectedAlbum.AlbumDescription,coverPhotoUrl);
 
                 //return normal view
 

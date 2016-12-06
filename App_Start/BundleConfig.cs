@@ -77,7 +77,7 @@ namespace NivesBrelihPhotography
             //album photos reindirected from blogs
             bundles.Add(new StyleBundle("~/Content/album-photos-from-blog-styles").Include(
                 "~/Content/ImgDescriptions_Styles/photo-cover-descriptions.css",
-                "~/Content/AlbumPhotos_Section/album-photos-from-blog.css",
+                "~/Content/AlbumPhotos_Section/album-photos.css",
                 "~/Content/EnlargePhoto_Lib_Styles/enlarge-photo-styles.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/album-photos-from-blog-scripts").Include(

@@ -404,7 +404,6 @@
     <Content Include="Content\Admin_Section\admin-albums.css" />
     <Content Include="Content\Admin_Section\Angular_Directives\elements\ab-photo-select.css" />
     <Content Include="Content\Admin_Section\Angular_Directives\elements\ab-ul-photos-checkable.css" />
-    <Content Include="Content\AlbumPhotos_Section\album-photos-from-blog.css" />
     <Content Include="Content\AlbumPhotos_Section\album-photos.css" />
     <Content Include="Content\angular-toastr.css" />
     <Content Include="Content\angular-toastr.min.css" />

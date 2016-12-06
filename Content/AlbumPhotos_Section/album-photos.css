@@ -1,53 +1,112 @@
 ﻿
-/*hide back to albums until we move to photos group*/
-#back-to {
+/*SELECTED ALBUM TEXTS - START*/
+
+
+
+/* WHOLE ALBUM PAGE STYLES */
+.album-view-wrapper .album-view-description {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%; /*limit to 100% screen width*/
+    box-sizing: border-box !important;
+    z-index: 10000; /*positioned over navbar*/
+    border-bottom: 1px solid #ccc;
+}
+
+    /*DESCRIPTION WRAPPER ON LEFT WHOLE CONTAINER*/
+    .album-view-wrapper .album-view-description .description-wrapper {
+        height: 100%;
+        width: 30%;
+        background-color: white;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        border-right: 2px solid #ccc;
+        border-bottom: none;
+    }
+        /*CONTAINER FOR TEXT*/
+        .album-view-wrapper .album-view-description .description-wrapper .text-wrapper {
+            width: 80%;
+            height: 90%;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+        }
+
+            /*TITLE STYLES*/
+            .album-view-wrapper .album-view-description .description-wrapper .text-wrapper .title {
+                /*margin-bottom: 20px;*/
+            }
+            /*DATE STYLES*/
+            .album-view-wrapper .album-view-description .description-wrapper .text-wrapper .date {
+                margin-top: 10px;
+                margin-bottom: 30px;
+                font-style: italic;
+            }
+
+            /*DESCRIPTION STYLES*/
+            .album-view-wrapper .album-view-description .description-wrapper .text-wrapper .description {
+                text-align: center;
+                overflow-y: auto; /*scroll overflow*/
+            }
+
+
+/* ALBUM DESCRIPTION FOR SMALLER SCREENS*/
+.album-view-wrapper .album-view-description-small-screen {
     display: none;
-    margin-left: -10px;
+    padding: 10px;
 }
-/*button to move back to albums*/
-#back-to h4 {
-    color: #eee;
-}
-#back-to h4:hover {
-    color: black;
-    cursor: pointer;
-}
-#back-to span {
-    vertical-align: middle;
-}
-    /*SELECTED ALBUM TEXTS - START*/
-
-    .selected-album-description {
-        display: block;
-        width: 100%
-    }
-
-    .selected-album-description > h3 {
-        margin-top: 2%;
-        font-size: 20px;
-        text-transform: capitalize;
-    }
-    .selected-album-description>.selected-album-date {
-        margin-top: 2%;
-        font-size: 18px;
-        color: gray;
+    /* ALBUM DESCRIPTION FOR SMALLER SCREENS - date styles*/
+    .album-view-wrapper .album-view-description-small-screen p.date {
+        padding-top: 10px;
+        padding-left: 10px;
         font-style: italic;
     }
-        .selected-album-description  .selected-album-text {
-            margin-top: 2%;
-            margin-bottom: 2%;
+    /* ALBUM DESCRIPTION FOR SMALLER SCREENS - DESCRIPTION STYLES*/
+    .album-view-wrapper .album-view-description-small-screen p.description {
+        padding-top: 20px;
+        text-align: center;
+    }
 
-            font-size: 16px;
-            text-align: left;
-            -ms-word-wrap: break-word;
-            word-wrap: break-word;
-            color: black;
-        }
 
-        .selected-album-description > .selected-album-text::first-letter {
+/*MAIN CONTENT*/
+.album-view-wrapper .album-body {
+    margin-top: 100vh; /*MARGIN FOR WHEN THE 100VH COVER PHOTO IS VISIBLE*/
+    min-height: 100vh;
+}
 
-            font-size: 24px;
+@media(max-width: 650px) and (orientation: portrait) {
+    .album-view-wrapper .album-view-description {
+        display: none;
+    }
 
-        }
+    .album-view-wrapper .album-view-description-small-screen {
+        display: block;
+    }
 
-    /*SELECTED ALBUM TEXTS - END*/
+    .album-view-wrapper .album-body {
+        margin-top: 0px;
+    }
+}
+/*SELECTED ALBUM TEXTS - END*/
