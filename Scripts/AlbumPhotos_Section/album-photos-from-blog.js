@@ -39,10 +39,16 @@
                 //changing html to json so masonry appended can be called on
                 var jqueryHtml = jQuery($html);
 
+                //hide before append to body
+                jqueryHtml.hide();
+
                 //addin masonry to new photos
                 var container = $("#photos");
                 container.append(jqueryHtml);
                 container.imagesLoaded(function () {
+
+                    //show before masonry append
+                    jqueryHtml.show();
                     container.masonry('appended', jqueryHtml);
                     pageControl.pageNumber++;
                 });
