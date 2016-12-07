@@ -60,7 +60,7 @@ namespace NivesBrelihPhotography.Controllers
             _categoryId = null;
 
             //displayed categories
-            ViewBag.Categories = db.Categories.ToList();
+            ViewBag.Categories = await db.Categories.ToListAsync();
 
             //get photos
             var photos = await db.Photos.OrderBy(x => x.Uploaded).Take(10).ToListAsync();
