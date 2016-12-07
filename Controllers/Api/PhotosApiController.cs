@@ -166,6 +166,16 @@ namespace NivesBrelihPhotography.Controllers.Api
                 //catch any other error
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
+            finally
+            {
+                //check if provider and delete temp multipart data
+                if (provider?.FileData[0] != null)
+                {
+                    //delete temp file
+                    var toString = provider.FileData[0].LocalFileName;
+                    System.IO.File.Delete(toString);
+                }
+            }
 
         }
 

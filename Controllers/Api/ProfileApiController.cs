@@ -97,17 +97,19 @@ namespace NivesBrelihPhotography.Controllers.Api
 
 
                 #region getProfileImg
+
                 //check if only 1 file was appended
                 if (provider.FileData.Count > 1)
                 {
                     throw new Exception("Multiple photos were uploaded");
                 }
-                else if(provider.FileData.Count == 1) //if file was updated
+                else if (provider.FileData.Count == 1) //if file was updated
                 {
                     //save file reference
                     photoFile = provider.FileData[0];
                 }
-                #endregion  
+
+                #endregion
 
                 //update profile in db
                 await ProfileDatabase.EditProfile(requestBody, photoFile, _db);
@@ -123,7 +125,16 @@ namespace NivesBrelihPhotography.Controllers.Api
                 //catch any other error
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e.Message);
             }
-
+            finally
+            {
+                //check if provider and delete temp multipart data
+                if (provider?.FileData[0] != null)
+                {
+                    //delete temp file
+                    var toString = provider.FileData[0].LocalFileName;
+                    System.IO.File.Delete(toString);
+                }
+            }
         }
 
         protected override void Dispose(bool disposing)
