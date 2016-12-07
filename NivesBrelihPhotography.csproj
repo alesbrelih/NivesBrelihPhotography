@@ -565,6 +565,7 @@
     <Content Include="Scripts\EnlargePhoto_Lib\enlarge-photo-scripts.js" />
     <Content Include="Scripts\imagesloaded.pkgd.min.js" />
     <Content Include="Scripts\ImgDescription_Scripts\cover-descriptions-scripts.js" />
+    <Content Include="Scripts\Nicescroll\jquery.nicescroll.min.js" />
     <Content Include="Scripts\photosIndex.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

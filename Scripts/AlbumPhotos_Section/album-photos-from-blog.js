@@ -4,6 +4,10 @@
     var $ = jQuery;
 
     $(function () {
+
+        //set up nicescroll
+        $(".album-view-description .description-wrapper .text-wrapper .description").niceScroll();
+
         var $albumId = $(".album-view-description").attr("data-album-id");
 
         var pageControl = {

@@ -60,6 +60,13 @@ namespace NivesBrelihPhotography.Controllers
         // GET: Single album
         public ActionResult Album(int? albumId = null, int pageNumber = 0)
         {
+            //if no album id provided redirect to index
+            if (albumId == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            //ajax request
             if (Request.IsAjaxRequest())
             {
                 var albumPhotos =

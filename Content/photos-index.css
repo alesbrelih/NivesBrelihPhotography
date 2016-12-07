@@ -30,6 +30,10 @@
          border: 1px groove darkgray;
          border-radius: 4px;
          z-index: 1000;
+
+         /*limit size*/
+         max-height: 50vh;
+         overflow-y: auto;
      }
 
      /*category navigation links*/

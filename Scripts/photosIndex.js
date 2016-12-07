@@ -21,6 +21,9 @@ function SetMasonry() {
 
 $(function () {
 
+    //set scroll for category navigation
+        $("#category-navigation").niceScroll();
+
     //function that sets masonry on photos
     
 

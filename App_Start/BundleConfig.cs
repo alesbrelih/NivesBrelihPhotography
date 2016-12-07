@@ -136,6 +136,9 @@ namespace NivesBrelihPhotography
                 ));
 
 
+            bundles.Add(new ScriptBundle("~/bundles/nicescroll").Include(
+                "~/Scripts/Nicescroll/jquery.nicescroll.min.js"
+                ));
 
 
             // ------ ANGULAR BASE BUNDLES ------- //
