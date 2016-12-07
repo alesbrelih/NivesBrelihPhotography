@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using NivesBrelihPhotography.DbContexts;
@@ -24,7 +25,7 @@ namespace NivesBrelihPhotography.Controllers
         /// </summary>
         /// <param name="categoryId">Category Id to browse from</param>
         /// <returns></returns>
-        public ActionResult Index(int? categoryId = null)
+        public async Task<ActionResult> Index(int? categoryId = null)
         {
             #region indexPhotoList
             if (Request.IsAjaxRequest())
@@ -38,7 +39,7 @@ namespace NivesBrelihPhotography.Controllers
 
                     //list of photos matching current category
                     List<Photo> categoryPhotos =
-                        db.PhotoCategories.Where(x => x.CategoryId.Equals((int)categoryId)).Select(x => x.Photo).Take(10).ToList();
+                        await db.PhotoCategories.Where(x => x.CategoryId.Equals((int)categoryId)).Select(x => x.Photo).Take(10).ToListAsync();
 
                     //if ajax request for category then return partial view
                     return PartialView("_indexPhotos", categoryPhotos);
@@ -49,7 +50,9 @@ namespace NivesBrelihPhotography.Controllers
 
                 ViewBag.CurrentCategory = null; //current category
 
-                return PartialView("_indexPhotos", db.Photos.OrderBy(x => x.Uploaded).Take(10).ToList());
+                var moreCategoryPhotos = await db.Photos.OrderBy(x => x.Uploaded).Take(10).ToListAsync();
+
+                return PartialView("_indexPhotos", moreCategoryPhotos);
 
             }
 
@@ -59,15 +62,18 @@ namespace NivesBrelihPhotography.Controllers
             //displayed categories
             ViewBag.Categories = db.Categories.ToList();
 
+            //get photos
+            var photos = await db.Photos.OrderBy(x => x.Uploaded).Take(10).ToListAsync();
+
             //returns pictures ordered by date
-            return View(db.Photos.OrderBy(x => x.Uploaded).Take(10).ToList());
+            return View(photos);
             #endregion
 
 
         }
 
         //JSON more Index results
-        public JsonResult LoadPhotos(int pageNumber = 0)
+        public async Task<JsonResult> LoadPhotos(int pageNumber = 0)
         {
             //return list of photos, 
             //if there are no photos it will send empy aray as json and then in JS it will stop processing
@@ -81,16 +87,16 @@ namespace NivesBrelihPhotography.Controllers
             if (_categoryId != null)
             {
                 returnList =
-                   db.PhotoCategories.Where(x => x.CategoryId.Equals((int)_categoryId))
+                   await db.PhotoCategories.Where(x => x.CategoryId.Equals((int)_categoryId))
                        .Select(x => new PhotoView() { PhotoTitle = x.Photo.PhotoTitle, PhotoUrl = x.Photo.PhotoUrl })
                        .Skip(skipNumber)
-                       .Take(10).ToList();
+                       .Take(10).ToListAsync();
             }
 
             //user wants to see all photos
             else
             {
-                returnList = db.Photos.OrderBy(x => x.Uploaded).Select(x => new PhotoView() { PhotoUrl = x.PhotoUrl, PhotoTitle = x.PhotoTitle }).Skip(skipNumber).Take(10).ToList();
+                returnList = await db.Photos.OrderBy(x => x.Uploaded).Select(x => new PhotoView() { PhotoUrl = x.PhotoUrl, PhotoTitle = x.PhotoTitle }).Skip(skipNumber).Take(10).ToListAsync();
             }
             return Json(returnList, JsonRequestBehavior.AllowGet);
         }

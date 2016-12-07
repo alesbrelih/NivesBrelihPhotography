@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using NivesBrelihPhotography.DbContexts;
@@ -14,10 +16,10 @@ namespace NivesBrelihPhotography.Controllers
     {
         private NbpContext _db = new NbpContext();
         // GET: About
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
             //only one profile in db
-            var profileDb = _db.Profile.FirstOrDefault();
+            var profileDb = await _db.Profile.FirstOrDefaultAsync();
             var profileVm = new ProfileView(); //default profile vm for error catch if profile db empty
 
             //if profile db not empty change values
@@ -36,7 +38,7 @@ namespace NivesBrelihPhotography.Controllers
 
             //social links list VM
             var socialLinks =
-                _db.ProfileLinks.Where(x=>x.ShownOnProfile).Select(
+                await _db.ProfileLinks.Where(x=>x.ShownOnProfile).Select(
                     x =>
                         new ProfileLinkView()
                         {
@@ -44,11 +46,11 @@ namespace NivesBrelihPhotography.Controllers
                             Description = x.LinkDescription,
                             IconLink = x.LinkImgUrl,
                             Link = x.LinkUrl
-                        }).ToList();
+                        }).ToListAsync();
 
             //reference list VM
             var referenceList =
-                _db.References.OrderByDescending(x => x.ReferenceId)
+                await _db.References.OrderByDescending(x => x.ReferenceId)
                     .Select(
                         x =>
                             new ReferenceView()
@@ -56,15 +58,16 @@ namespace NivesBrelihPhotography.Controllers
                                 ReferenceId = x.ReferenceId,
                                 Title = x.ReferenceTitle
                             })
-                    .ToList();
+                    .ToListAsync();
 
             //photoshot reviews list (view model)
-            var photoShootReviewsList = _db.PhotoShootReviews.OrderByDescending(x => x.PhotoShootReviewId).Take(6).Select(x => new PhotoShotReviewView
+            var photoShootReviewsList = await _db.PhotoShootReviews
+                .OrderByDescending(x => x.PhotoShootReviewId).Take(6).Select(x => new PhotoShotReviewView
             {
                 PhotoShotReviewId = x.PhotoShootReviewId,
                 ReviewerName = x.ReviewerName,
                 Review = x.Review
-            }).ToList();
+            }).ToListAsync();
 
             //about index VM
             var aboutIndexVm = new AboutIndexViewModel()
@@ -79,22 +82,36 @@ namespace NivesBrelihPhotography.Controllers
 
 
         // GET: References
-        public ActionResult Reference(int? referenceId = null, int pageNumber = 0)
+        public async Task<ActionResult> Reference(int? referenceId = null, int pageNumber = 0)
         {
+
+            //no reference id was provided -> redirect to index
+            if (referenceId == null)
+            {
+                return RedirectToAction("Index");
+            }
+
             //if ajax request for more reference photos
             if (Request.IsAjaxRequest())
             {
                 var morePhotosQuery =
-                    _db.ReferencePhotos.Where(x => x.ReferenceId == referenceId)
+                    await _db.ReferencePhotos.Where(x => x.ReferenceId == referenceId)
                         .OrderBy(x => x.PhotoId)
                         .Skip(pageNumber * 10)
                         .Take(10)
                         .Select(x => new PhotoView() { PhotoTitle = x.Photo.PhotoTitle, PhotoUrl = x.Photo.PhotoUrl })
-                        .ToList();
+                        .ToListAsync();
                 return Json(morePhotosQuery, JsonRequestBehavior.AllowGet);
             }
 
-            var referenceDb = _db.References.Find(referenceId);
+            //get reference
+            var referenceDb = await _db.References.FindAsync(referenceId);
+
+            //if no ref found in db go to index
+            if (referenceDb == null)
+            {
+                return RedirectToAction("Index");
+            }
 
             var referenceDetailsVm = new ReferenceDetailsView(referenceDb);
             //referenceDetailsVm.ReferencePhotos = referencesPhotosVm;
@@ -104,10 +121,10 @@ namespace NivesBrelihPhotography.Controllers
 
 
         // GET: Reviews
-        public ActionResult Reviews()
+        public async Task<ActionResult> Reviews()
         {
             //all reviews
-            var reviewsVm = _db.PhotoShootReviews.OrderByDescending(x => x.PhotoShootReviewId).Select(x => new PhotoShotReviewView() { PhotoShotReviewId = x.PhotoShootReviewId, ReviewerName = x.ReviewerName, Review = x.Review }).ToList();
+            var reviewsVm = await _db.PhotoShootReviews.OrderByDescending(x => x.PhotoShootReviewId).Select(x => new PhotoShotReviewView() { PhotoShotReviewId = x.PhotoShootReviewId, ReviewerName = x.ReviewerName, Review = x.Review }).ToListAsync();
 
             return View(reviewsVm);
         }
