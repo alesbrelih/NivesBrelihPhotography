@@ -45,10 +45,10 @@ namespace NivesBrelihPhotography.Controllers
                 }
                 else  //its continuation of blogs
                 {
-
-
-                    var query = _db.BlogCategories.Where(x => x.CategoryId == categoryId)
-                        .OrderBy(x => x.Blog.BlogDate).Skip(pageNumber * _numberOfBlogs)
+                    if (categoryId != -1) //category was selected on previous page
+                    {
+                        var query = _db.BlogCategories.Where(x => x.CategoryId == categoryId)
+                            .OrderBy(x => x.Blog.BlogDate).Skip(pageNumber*_numberOfBlogs)
                             .Take(_numberOfBlogs)
                             .Select(x => new BlogIndexView() //creates viewmodel with needed data
                             {
@@ -61,9 +61,30 @@ namespace NivesBrelihPhotography.Controllers
                             }).ToList();
 
 
-                    ViewBag.PageNumber = pageNumber;  //page number
+                        ViewBag.PageNumber = pageNumber; //page number
 
-                    return PartialView("_blogsListIndex", query); //list of blogs
+                        return PartialView("_blogsListIndex", query); //list of blogs
+                    }
+                    else //category wasnt selected
+                    {
+                        //query blogs
+                        var query = _db.Blogs.OrderBy(x => x.BlogDate).Skip(pageNumber*_numberOfBlogs)
+                            .Take(_numberOfBlogs).Select(x => new BlogIndexView()
+                            {
+                                BlogId = x.BlogId,
+                                BlogDate = x.BlogDate,
+                                BlogTitle = x.BlogTitle,
+                                Description = x.BlogDescription,
+                                BlogCoverPhoto = x.CoverPhoto.PhotoUrl,
+                                Categories = x.Categories.ToList()
+                            }).ToList();
+
+                        ViewBag.PageNumber = pageNumber; //page number
+
+                        return PartialView("_blogsListIndex", query); //list of blogs
+                    }
+
+                    
 
                 }
             }
