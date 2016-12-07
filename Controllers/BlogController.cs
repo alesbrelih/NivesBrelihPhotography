@@ -105,17 +105,29 @@ namespace NivesBrelihPhotography.Controllers
             //finds blog with blogId as PK
             var blog = _db.Blogs.Find(blogId);
 
+            if (blog == null) //no blog was found
+            {
+                return RedirectToAction("Index");
+            }
+
             var viewModel = new BlogDetailsView(blog);  //viewmodel blog for details page
 
             //if link to album exists, need to retrieve album data to show it
             if (viewModel.AlbumLink)
             {
                 var photoAlbumQuery = _db.Photos.FirstOrDefault(x => x.PhotoAlbumId == blog.AlbumId);
-
-                viewModel.Album.AlbumPhotoUrl = photoAlbumQuery.PhotoUrl;
-                viewModel.Album.AlbumName = photoAlbumQuery.PhotoAlbum.AlbumName;
-                viewModel.Album.AlbumDate = photoAlbumQuery.PhotoAlbum.AlbumDate;
-                viewModel.Album.PhotoAlbumId = photoAlbumQuery.PhotoAlbum.PhotoAlbumId;
+                if (photoAlbumQuery != null)
+                {
+                    viewModel.Album.AlbumPhotoUrl = photoAlbumQuery.PhotoUrl;
+                    viewModel.Album.AlbumName = photoAlbumQuery.PhotoAlbum.AlbumName;
+                    viewModel.Album.AlbumDate = photoAlbumQuery.PhotoAlbum.AlbumDate;
+                    viewModel.Album.PhotoAlbumId = photoAlbumQuery.PhotoAlbum.PhotoAlbumId;
+                }
+                else
+                {
+                    viewModel.AlbumLink = false; // no album with that id, so return albumlink back to false
+                }
+                
             }
 
             return View(viewModel); //returns Blog/Details View

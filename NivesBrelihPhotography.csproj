@@ -201,10 +201,8 @@
     <Compile Include="Controllers\Api\SocialsApiController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PhotoAdminController.cs" />
     <Compile Include="Controllers\Api\PhotosApiController.cs" />
     <Compile Include="Controllers\PhotosController.cs" />
     <Compile Include="DbContexts\NbpContext.cs" />

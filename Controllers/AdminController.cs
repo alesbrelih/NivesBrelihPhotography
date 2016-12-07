@@ -14,5 +14,11 @@ namespace NivesBrelihPhotography.Controllers
         {
             return View();
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+        }
     }
+    
 }
