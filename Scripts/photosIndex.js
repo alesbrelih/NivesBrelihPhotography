@@ -1,9 +1,4 @@
-﻿/* PREVENT GLOBAL SCOPING*/
-(function(jQuery) {
-
-    var $ = jQuery;
-
-    function SetMasonry() {
+﻿function SetMasonryPhotosIndex() {
         $($("#photos").imagesLoaded(function () {
             $('.masonry-layout').masonry({
                 // options
@@ -19,6 +14,12 @@
         });
 
     }
+/* PREVENT GLOBAL SCOPING*/
+(function(jQuery) {
+
+    
+    var $ = jQuery;
+
 
     //DOM on READY function
     ///////////////////////
@@ -39,7 +40,7 @@
         var photosEnd = false;
 
         //masonry initialize
-        SetMasonry();
+        SetMasonryPhotosIndex();
 
         //enable photo enlargement on click
         EnablePhotoZoom("#photo-container", ".masonry-image");

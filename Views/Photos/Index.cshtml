@@ -17,7 +17,7 @@
                 @*category for all can be hardcoded*@
                 @*calling masonry on updated targets with OnSuccess*@
                 <li>
-                    @Ajax.ActionLink("All", "Index", null, new AjaxOptions() {InsertionMode = InsertionMode.ReplaceWith, UpdateTargetId = "photos", OnSuccess = "SetMasonry()"}, new {@class = "h5"})
+                    @Ajax.ActionLink("All", "Index", null, new AjaxOptions() {InsertionMode = InsertionMode.ReplaceWith, UpdateTargetId = "photos", OnSuccess = "SetMasonryPhotosIndex()"}, new {@class = "h5"})
                 </li>
 
                 @*dynamical display of all categories*@
@@ -25,7 +25,7 @@
                     foreach (Category category in ViewBag.Categories)
                     {
                         <li role="presentation">
-                            @Ajax.ActionLink(category.CategoryTitle, "Index", new {categoryId = category.CategoryId}, new AjaxOptions() {InsertionMode = InsertionMode.ReplaceWith, UpdateTargetId = "photos", OnSuccess = "SetMasonry()"}, new {@class = "h5"})
+                            @Ajax.ActionLink(category.CategoryTitle, "Index", new {categoryId = category.CategoryId}, new AjaxOptions() {InsertionMode = InsertionMode.ReplaceWith, UpdateTargetId = "photos", OnSuccess = "SetMasonryPhotosIndex()" }, new {@class = "h5"})
                         </li>
                     }
                 }
