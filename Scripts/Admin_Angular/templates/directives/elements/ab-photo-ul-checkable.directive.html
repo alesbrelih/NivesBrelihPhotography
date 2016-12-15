@@ -1,5 +1,5 @@
 ﻿<ul id="ul-photos-directive">
-    <li ng-repeat="photo in photos | orderBy:'checked' | filter:search ">
+    <li ng-repeat="photo in photos | orderBy:'-checked' | filter:search ">
         <div class="photo-container" data-id="{{photo.PhotoId}}">
             <div class="photo-title">
                 {{photo.PhotoTitle}}
@@ -10,7 +10,7 @@
                 </div>
                 <div class="photo-check">
                     <label>
-                        <input type="checkbox" ng-model="photo.checked" ng-checked="CheckIfSelected(photo)">
+                        <input type="checkbox" ng-change="SetModelValue(photo)" ng-model="photo.checked" ng-init="CheckIfSelected(photo)">
                     </label>
                 </div>
             </div>

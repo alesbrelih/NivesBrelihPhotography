@@ -1,6 +1,6 @@
 ﻿// --- ul photos checkable for reference about admin ---- //
 
-(function(angular, $) {
+(function (angular, $) {
 
 
     //reference to main app / module
@@ -11,46 +11,43 @@
         //link function
         function linkFnc(scope, el, attr, ngModel) {
 
-            scope.CheckIfSelected = function (photo) {
-                if (ngModel.$viewValue.indexOf(photo.PhotoId.toString()) != -1) {
-                    photo.checked = true;
-                    return true;
-                }
-                
-            }
-
             //no ng model
             if (ngModel === null) {
                 console.log("Please set ng-model.");
                 return;
             }
 
-            //delegate change event
-            el.on("change", "input[type='checkbox']", function(e) {
-                //get photo id
-                var parent = $(this).closest(".photo-container");
-                var id = $(parent).attr("data-id");
+            //checks if selected on init
+            scope.CheckIfSelected = function (photo) {
+                if (ngModel.$modelValue.indexOf(photo.PhotoId.toString()) != -1) {
+                    photo.checked = true;
+                    return true;
+                } else {
+                    photo.checked = false;
+                }
 
-                //check state (true/false)
-                var state = $(this).is(":checked");
+            }
 
-                //if checked
-                if (state) {
-                    //and value isnt in ng-model already, insert id
-                    if (ngModel.$modelValue.indexOf(id) === -1) {
-                        ngModel.$modelValue.push(id);
+            
+            //sets view model on change
+            scope.SetModelValue = function (photo) {
+                var photoId = photo.PhotoId.toString();
+                if (photo.checked) {
+                    if (ngModel.$modelValue.indexOf(photoId) === -1) {
+                        ngModel.$modelValue.push(photoId);
                     }
                 } else {
-
                     //checkbox unchecked
-                    var idIndex = ngModel.$modelValue.indexOf(id);
+                    var idIndex = ngModel.$modelValue.indexOf(photoId);
 
                     //if id was checked before (exists in array)
                     if (idIndex !== -1) {
                         ngModel.$modelValue.splice(idIndex, 1);
-                    }
+                    } 
                 }
-            });
+            }
+
+          
         }
 
 
