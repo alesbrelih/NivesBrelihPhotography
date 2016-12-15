@@ -20,6 +20,40 @@
         margin-left: 5px;
     }
 
+/*new category styles on blogs add*/
+
+/*new category label (opens input to create category)*/
+    #blogs-add-wrapper #new-category {
+         color: #eb6864;
+         cursor: pointer;
+     }
+    #blogs-add-wrapper #new-category:hover {
+        text-decoration: underline;
+    }
+
+    /*wrapper form new category input fields*/
+    #blogs-add-wrapper .new-category-wrapper {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        
+    }
+    #blogs-add-wrapper .new-category-wrapper i {
+        color:#eb6864;
+        font-size: 1.5em;
+        margin-left: 20px;
+        cursor: pointer;
+    }
+
+    /*over flow auto for blog content body and preview*/
+    #blogs-add-wrapper .cms-body textarea {
+        overflow-y: auto;
+    }
+    #blogs-add-wrapper .cms-preview .html-content {
+        overflow-y: auto;
+    }
+
+
 @media(max-width: 550px) {
     #blogs-view table .blogs-actions {
         flex-direction: column;
