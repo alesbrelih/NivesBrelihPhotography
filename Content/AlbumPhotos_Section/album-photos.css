@@ -14,6 +14,8 @@
     box-sizing: border-box !important;
     z-index: 10000; /*positioned over navbar*/
     border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: stretch;
 }
 
     /*DESCRIPTION WRAPPER ON LEFT WHOLE CONTAINER*/
@@ -35,6 +37,10 @@
         border-right: 2px solid #ccc;
         border-bottom: none;
     }
+    .album-view-wrapper .album-view-description .background-img {
+        flex: 1;
+    }
+
         /*CONTAINER FOR TEXT*/
         .album-view-wrapper .album-view-description .description-wrapper .text-wrapper {
             width: 80%;
