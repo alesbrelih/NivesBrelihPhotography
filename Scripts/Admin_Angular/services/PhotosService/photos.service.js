@@ -143,13 +143,17 @@
 
         }
         
-        //adds new photo to DB
-        photosFactory.UploadPhoto = function (photo) {
+        //adds new photo to DB - status is status of add photo controller => uploading/error/idle/success
+        photosFactory.UploadPhoto = function (photo,status) {
 
             //create form data for multitype form upload
             var multiForm = new FormData();
             for (var prop in photo) {
                 multiForm.append(prop, photo[prop]);
+            }
+            //set status to loading
+            if (status) {
+                status.upload = "uploading";
             }
             
             //request for api with photo content appended - set it multitype form
@@ -172,11 +176,23 @@
 
                     //reset photo container
                     photo = null;
+                    
+                    //set current page status
+                    if (status) {
+                        status.upload = "successful";
+                    }
+                    
 
                 },
                     
                     function(err) {
                         console.log(err);
+
+                        //set page status
+                        if (status) {
+                            status.upload = "error";
+                        }
+                        
                         toastr.error(err.data,"Error");
                     });
         }

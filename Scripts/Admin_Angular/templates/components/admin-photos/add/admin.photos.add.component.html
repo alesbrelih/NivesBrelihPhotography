@@ -1,7 +1,7 @@
 ﻿<br />
 
 
-<div class="row modify-photo-container">
+<div class="row modify-photo-container" ng-if="vm.status.upload != 'uploading'">
     <p class="back-anchor">
         <a ui-sref="photos">Back</a>
     </p>
@@ -74,5 +74,14 @@
         </fieldset>
     </form>
 
+</div>
+<!--status bar for when uploading-->
+<div class="loader-wrapper" ng-if="vm.status.upload == 'uploading'">
+    <div class="loader">
+
+    </div>
+    <div class="loader-text">
+        Please Wait
+    </div>
 </div>
 

@@ -11,6 +11,11 @@
         //current scope
         var vm = this;
 
+        // status
+        vm.status = {
+            upload: "idle"
+        };
+
         // get all albums
         AlbumsService.GetAlbums();
 
@@ -73,14 +78,14 @@
                     });
                     modalAlbumCover.result.then(function (success) {
                         //both modals accepted
-                        PhotosService.UploadPhoto(vm.Photo);
+                        PhotosService.UploadPhoto(vm.Photo,vm.status);
                     }, function(err) {
                         console.log(err);
                     });
                 } else {
 
                     //wasnt album cover and first modal was accepted
-                    PhotosService.UploadPhoto(vm.Photo);
+                    PhotosService.UploadPhoto(vm.Photo,vm.status);
                 }
             });
 

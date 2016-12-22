@@ -19,6 +19,78 @@ p.no-bot-margin {
     cursor: pointer;
 }
 
+/* LOADER WRAPPER */
+.loader-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 80vh;
+  box-sizing: border-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: 'Raleway', sans-serif; }
+
+/*LOADER STYLES*/
+  .loader-wrapper .loader {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: lighten #efefef;
+    position: relative;
+    box-sizing: border-box; }
+
+  /*ACTUAL SPINNERS*/
+    .loader-wrapper .loader:after, .loader-wrapper .loader:before {
+      content: "";
+      width: 100%;
+      display: block;
+      height: 100%;
+      border-radius: 50%;
+      position: absolute;
+      background-color: transparent;
+      border: 4px solid transparent;
+      border-bottom-color: #eb6864;
+      box-sizing: border-box;
+      z-index: 1000;
+      -webkit-animation: spin 2000ms ease-in-out infinite;
+              animation: spin 2000ms ease-in-out infinite; }
+    /*COLORS FOR BOTH SPINNERS*/
+    .loader-wrapper .loader:after {
+      border-top-color: #404040; }
+    .loader-wrapper .loader:before {
+      border-bottom-color: #eb6864; }
+
+    /*TEXT STYLES*/
+  .loader-wrapper .loader-text {
+    padding: 20px;
+    color: #404040;
+    font-style: italic; }
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
+
 
 
 .admin-controller-selector {
