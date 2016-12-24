@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -168,13 +169,22 @@ namespace NivesBrelihPhotography.Controllers.Api
             }
             finally
             {
-                //check if provider and delete temp multipart data
-                if (provider?.FileData[0] != null)
+                //Delete all temp files that start with bodypart
+
+                string[] files = Directory.GetFiles(System.Web.HttpContext.Current.Server.MapPath("~/App_Data"));
+
+                foreach(var file in files)
                 {
-                    //delete temp file
-                    var toString = provider.FileData[0].LocalFileName;
-                    System.IO.File.Delete(toString);
+                    
+                    if (file.Contains("BodyPart"))
+                    {
+                        File.Delete(file);
+                    }
+                    
                 }
+
+                //System.IO.File.Delete(toString);
+                
             }
 
         }
