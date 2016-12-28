@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Common.EntitySql;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -96,8 +97,6 @@ namespace NivesBrelihPhotography.Controllers.Api
             //multiform reader
             var provider = new MultipartFormDataStreamProvider(root);
 
-            //object that will hold photo file
-            MultipartFileData photoFile = null;
 
             //try
             try
@@ -106,50 +105,8 @@ namespace NivesBrelihPhotography.Controllers.Api
                 //read file
                 await Request.Content.ReadAsMultipartAsync(provider);
 
-                // Show all the key-value pairs.
-                foreach (var key in provider.FormData.AllKeys)
-                {
-                    //set object values
-                    foreach (var val in provider.FormData.GetValues(key))
-                    {
-                        if (key == "AlbumId")
-                        {
-                            requestBody.AlbumId = int.Parse(val);
-                        }
-                        else if (key == "IsOnPortfolio")
-                        {
-                            requestBody.IsOnPortfolio = bool.Parse(val);
-                        }
-                        else if (key == "IsAlbumCover")
-                        {
-                            requestBody.IsAlbumCover = bool.Parse(val);
-                        }
-                        else if (key == "PhotoCategories")
-                        {
-                            var splittedValues = val.Split(',');
-                            foreach (string category in splittedValues)
-                            {
-                                requestBody.PhotoCategories.Add(category);
-                            }
-
-                        }
-                        else if (key == "PhotoTitle")
-                        {
-                            requestBody.PhotoTitle = val;
-                        }
-                    }
-                }
-
-                //check if only 1 file was appended
-                if (provider.FileData.Count != 1)
-                {
-                    throw new Exception("Multiple photos were uploaded");
-                }
-                else
-                {
-                    //save file reference
-                    photoFile = provider.FileData[0];
-                }
+                //set multipart content data and get uploaded file
+                MultipartFileData photoFile = getMultipartContent(requestBody,provider);          
 
                 //add photo to db and save to server
                 var result = PhotosDatabase.AddNewPhotoToDatabase(requestBody, photoFile, _db);
@@ -167,25 +124,7 @@ namespace NivesBrelihPhotography.Controllers.Api
                 //catch any other error
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
-            finally
-            {
-                //Delete all temp files that start with bodypart
 
-                string[] files = Directory.GetFiles(System.Web.HttpContext.Current.Server.MapPath("~/App_Data"));
-
-                foreach(var file in files)
-                {
-                    
-                    if (file.Contains("BodyPart"))
-                    {
-                        File.Delete(file);
-                    }
-                    
-                }
-
-                //System.IO.File.Delete(toString);
-                
-            }
 
         }
 
@@ -206,6 +145,56 @@ namespace NivesBrelihPhotography.Controllers.Api
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
             }
             
+        }
+
+        //get data from multipart content 
+        private MultipartFileData getMultipartContent(AdminPhotoCreateVm photoData,
+            MultipartFormDataStreamProvider provider)
+        {
+            // Show all the key-value pairs.
+            foreach (var key in provider.FormData.AllKeys)
+            {
+                //set object values
+                foreach (var val in provider.FormData.GetValues(key))
+                {
+                    if (key == "AlbumId")
+                    {
+                        photoData.AlbumId = int.Parse(val);
+                    }
+                    else if (key == "IsOnPortfolio")
+                    {
+                        photoData.IsOnPortfolio = bool.Parse(val);
+                    }
+                    else if (key == "IsAlbumCover")
+                    {
+                        photoData.IsAlbumCover = bool.Parse(val);
+                    }
+                    else if (key == "PhotoCategories")
+                    {
+                        var splittedValues = val.Split(',');
+                        foreach (string category in splittedValues)
+                        {
+                            photoData.PhotoCategories.Add(category);
+                        }
+
+                    }
+                    else if (key == "PhotoTitle")
+                    {
+                        photoData.PhotoTitle = val;
+                    }
+                }
+            }
+
+            //check if only 1 file was appended
+            if (provider.FileData.Count != 1)
+            {
+                throw new Exception("Multiple photos were uploaded");
+            }
+            else
+            {
+                //save file reference
+                return provider.FileData[0];
+            }
         }
 
         protected override void Dispose(bool disposing)

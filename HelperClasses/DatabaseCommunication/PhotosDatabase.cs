@@ -89,6 +89,10 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
             //check if img with same name exists in DB
             if (CheckIfPathAlreadyExist(photo.PhotoUrl,_db))
             {
+                //Delete uploaded file bodypart
+                File.Delete(file.LocalFileName);
+
+                //throw exception
                 throw new Exception("Photo with the same path already exists");
             }
 
@@ -106,7 +110,7 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
                 #endregion
 
                 //move file from temp folder to main folder, ovveride if needed
-                File.Copy(file.LocalFileName, imagePath,true);
+                File.Move(file.LocalFileName, imagePath);
 
                 //save changes in db
                 _db.SaveChanges();
@@ -170,28 +174,23 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
                 //photo wasnt found
                 throw new Exception("Photo couldn't be found in database. Already deleted?");
             }
-            else
+
+            //image was found, so try to delete it
+            try
             {
-                //image was found, so try to delete it
-                try
-                {
-                    //Set entry state to deleted
-                    _db.Entry(photo).State = EntityState.Deleted;
+                //Set entry state to deleted
+                _db.Entry(photo).State = EntityState.Deleted;
 
-                    //save changes to db
-                    _db.SaveChanges();
-
-                }
-
-                //error modifying db
-                catch (Exception e)
-                {
-                    throw new Exception(e.Message);
-                }
+                //save changes to db
+                _db.SaveChanges();
 
             }
 
-           
+            //error modifying db
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }     
         }
 
         //returns single photo edit
