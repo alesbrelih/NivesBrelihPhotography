@@ -201,6 +201,7 @@
     <Compile Include="Controllers\Api\SocialsApiController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Api\PhotosApiController.cs" />
@@ -291,6 +292,10 @@
     <Compile Include="Migrations\NbpContextMigrations\201611291354560_AlbumId in AlbumCover is nullable.cs" />
     <Compile Include="Migrations\NbpContextMigrations\201611291354560_AlbumId in AlbumCover is nullable.Designer.cs">
       <DependentUpon>201611291354560_AlbumId in AlbumCover is nullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\NbpContextMigrations\201701021920023_Added homecarousel flag on photo model.cs" />
+    <Compile Include="Migrations\NbpContextMigrations\201701021920023_Added homecarousel flag on photo model.Designer.cs">
+      <DependentUpon>201701021920023_Added homecarousel flag on photo model.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\NbpContextMigrations\Configuration.cs" />
     <Compile Include="Models\AboutModels\PhotoShootReview.cs" />
@@ -699,6 +704,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\NbpContextMigrations\201611291354560_AlbumId in AlbumCover is nullable.resx">
       <DependentUpon>201611291354560_AlbumId in AlbumCover is nullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\NbpContextMigrations\201701021920023_Added homecarousel flag on photo model.resx">
+      <DependentUpon>201701021920023_Added homecarousel flag on photo model.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -34,6 +34,9 @@ namespace NivesBrelihPhotography.Models.PhotoModels
         //Added 10.6.2016
         public bool IsOnFrontPage { get; set; }  //if it will be displayed on front page NOT REQUIRED
 
+        //if on home carousel
+        public bool HomeCarousel { get; set; }
+
         [ForeignKey("PhotoAlbumId")]
         public virtual PhotoAlbum PhotoAlbum { get; set; }  //album picture is in NOT REQUIRED
         public int? PhotoAlbumId { get; set; }
