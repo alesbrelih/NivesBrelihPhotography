@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using NivesBrelihPhotography.DbContexts;
+using NivesBrelihPhotography.Models.PhotoModels.ViewModels;
 
 namespace NivesBrelihPhotography.Controllers
 {
@@ -16,8 +17,14 @@ namespace NivesBrelihPhotography.Controllers
         public ActionResult Index()
         {
             //get photos
+            var query = _db.Photos.Where(x => x.HomeCarousel).Select(x=>new PhotoView()
+            {
+                PhotoUrl = x.PhotoUrl,
+                PhotoTitle = x.PhotoTitle
+            }).ToList();
 
-            return View();
+            //return view
+            return View(query);
         }
 
         //dispose method

@@ -121,7 +121,7 @@
     <value>O Meni</value>
   </data>
   <data name="Albums" xml:space="preserve">
-    <value>Albumi</value>
+    <value>Projekti</value>
   </data>
   <data name="Blog" xml:space="preserve">
     <value>Blog</value>
@@ -133,7 +133,7 @@
     <value>Jezik</value>
   </data>
   <data name="Photos" xml:space="preserve">
-    <value>Fotografije</value>
+    <value>Portfolio</value>
   </data>
   <data name="Slovenian" xml:space="preserve">
     <value>Slovensko</value>

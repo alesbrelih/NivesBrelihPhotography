@@ -639,6 +639,7 @@
     <Content Include="Views\PhotoAdmin\_photoAdminAddCategories.cshtml" />
     <Content Include="Views\PhotoAdmin\Remove.cshtml" />
     <Content Include="Views\PhotoAdmin\Details.cshtml" />
+    <Content Include="Views\Home\Index_No_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

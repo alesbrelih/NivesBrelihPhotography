@@ -70,7 +70,7 @@ namespace NivesBrelihPhotography.Resources.Layout {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Albums.
+        ///   Looks up a localized string similar to Projects.
         /// </summary>
         public static string Albums {
             get {
@@ -106,7 +106,7 @@ namespace NivesBrelihPhotography.Resources.Layout {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Photos.
+        ///   Looks up a localized string similar to Potrfolio.
         /// </summary>
         public static string Photos {
             get {

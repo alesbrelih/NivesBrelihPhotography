@@ -7,12 +7,15 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+
 using NivesBrelihPhotography.DbContexts;
 using NivesBrelihPhotography.Models.PhotoModels;
 using NivesBrelihPhotography.Models.PhotoModels.ViewModels;
 
+
 namespace NivesBrelihPhotography.Controllers
 {
+    [RoutePrefix("Portfolio")]
     public class PhotosController : BaseController
     {
         private NbpContext db = new NbpContext();
@@ -25,6 +28,7 @@ namespace NivesBrelihPhotography.Controllers
         /// </summary>
         /// <param name="categoryId">Category Id to browse from</param>
         /// <returns></returns>
+        [Route]
         public async Task<ActionResult> Index(int? categoryId = null)
         {
             #region indexPhotoList

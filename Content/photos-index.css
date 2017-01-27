@@ -22,7 +22,8 @@
          position: fixed; 
 
          /*location*/
-         bottom: 55px;
+         bottom: 100px;
+         right: 100px;
 
          /*visual changes to div*/
          padding: 0;
@@ -55,16 +56,25 @@
         position: fixed;
 
         /*size*/
-        height: 40px;
-        width: 45px;
+        /*height: 40px;
+        width: 45px;*/
+
+        padding: 25px 30px;
+        
+        
+        font-size: 1.2em;
+
+        /*location to right*/
+        right: 100px;
 
         /*location*/
-        bottom: 15px;
+        bottom: 40px;
         z-index: 1000;
         
         /*visual changes*/
         background-color: white;
         color: darkgray;
+        border-color: darkgray;
     }
 
     /*category button on hover visual changes*/
@@ -87,6 +97,22 @@
     -o-transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+}
+
+/*responsivness for navigation button / list*/
+@media(max-width: 800px) {
+    
+    #category-button {
+        right: 60px;
+    }
+    #category-navigation {
+
+        left: 30px;
+        right: 30px;
+
+        width: auto !important;
+    }
+
 }
 
 

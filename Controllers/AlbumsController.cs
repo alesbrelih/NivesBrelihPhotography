@@ -9,13 +9,16 @@ using NivesBrelihPhotography.DbContexts;
 using NivesBrelihPhotography.Models.PhotoModels.ViewModels;
 
 namespace NivesBrelihPhotography.Controllers
-{
+{   
+
+    [RoutePrefix("Projects")]
     public class AlbumsController : BaseController
     {
 
         private NbpContext db = new NbpContext();
 
         // GET: Albums
+        [Route]
         public async Task<ActionResult> Index(int pageNumber = 0)
         {
             //ajax request
@@ -59,10 +62,11 @@ namespace NivesBrelihPhotography.Controllers
         }
 
         // GET: Single album
-        public async Task<ActionResult> Album(int? albumId = null, int pageNumber = 0)
+        [Route("Project/{id=null}/{pageNumber=0}")]
+        public async Task<ActionResult> Album(int? id = null, int pageNumber = 0)
         {
             //if no album id provided redirect to index
-            if (albumId == null)
+            if (id == null)
             {
                 return RedirectToAction("Index");
             }
@@ -71,7 +75,7 @@ namespace NivesBrelihPhotography.Controllers
             if (Request.IsAjaxRequest())
             {
                 var albumPhotos =
-                    await db.Photos.Where(x => x.PhotoAlbumId == albumId).OrderBy(x => x.Uploaded)
+                    await db.Photos.Where(x => x.PhotoAlbumId == id).OrderBy(x => x.Uploaded)
                         .Skip(10 * pageNumber)
                         .Take(10)
                         .Select(x => new PhotoView()
@@ -85,7 +89,7 @@ namespace NivesBrelihPhotography.Controllers
 
             {
 
-                var selectedAlbum = await db.PhotoAlbums.FirstAsync(x => x.PhotoAlbumId == albumId);  //selected album
+                var selectedAlbum = await db.PhotoAlbums.FirstAsync(x => x.PhotoAlbumId == id);  //selected album
 
                 //if no album was found in db, go to index
                 if (selectedAlbum == null)
@@ -94,7 +98,7 @@ namespace NivesBrelihPhotography.Controllers
                 }
 
                 //get cover photo
-                var coverPhoto = db.AlbumCovers.First(x => x.AlbumId == albumId).Photo;  //album cover photo
+                var coverPhoto = db.AlbumCovers.First(x => x.AlbumId == id).Photo;  //album cover photo
 
                 //case no cover photo set
                 var coverPhotoUrl = coverPhoto == null ? Properties.Resources.NoAlbumCoverPhoto : coverPhoto.PhotoUrl;
@@ -103,7 +107,7 @@ namespace NivesBrelihPhotography.Controllers
 
                 //album photos
                 var albumPhotos =
-                    await db.Photos.Where(x => x.PhotoAlbumId == albumId).OrderBy(x => x.Uploaded)
+                    await db.Photos.Where(x => x.PhotoAlbumId == id).OrderBy(x => x.Uploaded)
                         .Take(10)
                         .Select(x => new PhotoView() { PhotoTitle = x.PhotoTitle, PhotoUrl = x.PhotoUrl })
                         .ToListAsync();

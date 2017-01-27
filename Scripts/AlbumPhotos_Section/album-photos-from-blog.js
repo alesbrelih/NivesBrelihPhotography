@@ -17,7 +17,7 @@
         //load more photos
         function loadContent() {
 
-            $.get("/Albums/Album", { albumId: $albumId, pageNumber: pageControl.pageNumber + 1 }, function (data) {
+            $.get("/Projects/Project/"+$albumId+"/"+pageControl.pageNumber, function (data) {
 
                 if (jQuery.isEmptyObject(data)) {
 

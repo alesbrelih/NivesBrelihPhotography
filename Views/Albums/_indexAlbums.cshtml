@@ -12,7 +12,7 @@
     @foreach (var album in Model)
     {
         <div class="masonry-image img-container col-xs-12 col-sm-6 col-md-4">
-            <a href="@Url.Action("Album", new {albumId = album.PhotoAlbumId})">
+            <a href="@Url.Action("Project","Projects", new {id = album.PhotoAlbumId})">
                 <img alt="@album.AlbumName" src="@album.AlbumPhotoUrl" class="img-responsive" data-album-id="@album.PhotoAlbumId" />
                 <div class="album-background">
                     <span class="album-name">@album.AlbumName<span class="album-date">@album.ReturnAlbum()</span></span>
