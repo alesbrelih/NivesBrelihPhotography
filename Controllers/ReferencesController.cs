@@ -12,13 +12,13 @@ namespace NivesBrelihPhotography.Controllers
     public class ReferencesController : BaseController
     {
         //db
-        private NbpContext db = new NbpContext();
+        private NbpContext _db = new NbpContext();
 
         // GET: References
         public async Task<ActionResult> Index()
         {
             //get all reference photos
-            var referencePhotos = await db.ReferencePhotos.OrderBy(x => x.ReferenceId).ToListAsync();
+            var referencePhotos = await _db.ReferencePhotos.OrderBy(x => x.ReferenceId).ToListAsync();
 
             //return view with data
             return View(referencePhotos);
@@ -27,10 +27,10 @@ namespace NivesBrelihPhotography.Controllers
         //dispose method
         protected override void Dispose(bool disposing)
         {
-            if (db != null)
+            if (_db != null)
             {
-                db.Dispose();
-                db = null;
+                _db.Dispose();
+                _db = null;
             }
             base.Dispose(disposing);
         }

@@ -1,4 +1,6 @@
-﻿.references-wrapper {
+﻿
+/*references wrapper styles */
+.references-wrapper {
     position: absolute;
     top: 90px;
     bottom: 40px;
@@ -6,7 +8,8 @@
     right: 0px;
     overflow: hidden;
 }
-
+    
+    /* left anchor*/
     .references-wrapper .left-anchor-container {
         position: fixed;
         width: 100px;
@@ -16,6 +19,7 @@
         transform: translateY(-50%);
     }
 
+    /* right anchor*/
     .references-wrapper .right-anchor-container {
         position: fixed;
         right: 0px;
@@ -25,6 +29,7 @@
         transform: translateY(-50%);
     }
 
+/*anchor span container*/
 .anchor-wrapper {
     position: relative;
     width: 100%;
@@ -32,23 +37,26 @@
     cursor: pointer;
     color: white;
 }
-
+    
+/*right*/
     .anchor-wrapper.right {
         border-top-left-radius: 5px;
         border-bottom-left-radius: 5px;
     }
-
+    /*left*/
     .anchor-wrapper.left {
         border-top-right-radius: 5px;
         border-bottom-right-radius: 5px;
     }
 
+    /*hover*/
     .anchor-wrapper:hover {
         color: black;
         background-color: white;
         background-color: rgba(255, 255, 255, 0.4);
     }
 
+    /*glyphicon*/
     .anchor-wrapper .glyphicon {
         position: absolute;
         top: 50%;
@@ -57,6 +65,7 @@
         font-size: 2em;
     }
 
+/* references content*/
 .references-wrapper .references-content {
     position: absolute;
     width: 100%;

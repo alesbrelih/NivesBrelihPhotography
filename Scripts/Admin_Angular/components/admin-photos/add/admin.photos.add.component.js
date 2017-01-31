@@ -37,6 +37,7 @@
         vm.Photo = {
             PhotoTitle: "",
             IsOnPortfolio: false,
+            HomeCarousel: false,
             AlbumId: -1,
             IsAlbumCover: false,
             PhotoFile: null,

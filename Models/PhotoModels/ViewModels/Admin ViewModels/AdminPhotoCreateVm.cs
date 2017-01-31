@@ -30,6 +30,8 @@ namespace NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels
 
         public List<string> PhotoCategories { get; set; }
 
+        public bool HomeCarousel { get; set; }
+
 
         public AdminPhotoCreateVm()
         {

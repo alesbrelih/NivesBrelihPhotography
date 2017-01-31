@@ -34,7 +34,8 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
                     OnPortfolio = x.IsOnFrontPage,
                     PhotoId = x.PhotoId,
                     PhotoUrl = x.PhotoUrl,
-                    Uploaded = x.Uploaded
+                    Uploaded = x.Uploaded,
+                    HomeCarousel = x.HomeCarousel
                 }).ToList();
 
                 if (!photos.Any())
@@ -140,7 +141,8 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
                     OnPortfolio = photo.IsOnFrontPage,
                     PhotoId = photo.PhotoId,
                     PhotoUrl = photo.PhotoUrl,
-                    Uploaded = photo.Uploaded
+                    Uploaded = photo.Uploaded,
+                    HomeCarousel = photo.HomeCarousel
                 };
                 
                 //add album name if not null
@@ -282,7 +284,8 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
 
             photoDb.IsOnFrontPage = photo.IsOnPortfolio;
 
-
+            //handle home carousel change
+            photoDb.HomeCarousel = photo.HomeCarousel;
 
             ///////////////////////////////////////////
             // -------- handle categories ---------- //
@@ -314,31 +317,6 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
             // ------ SAVE CHANGES TO DB ----- //
             await db.SaveChangesAsync();
             return true;
-        }
-
-        //initialize db
-        public static bool InitializeDb(NbpContext db)
-        {
-            //try opening connection to db
-            try
-            {
-                db = new NbpContext();
-                return true;
-            }
-            catch (Exception) //return false else
-            {
-                return false;
-            }
-        }
-
-        //dispose db
-        public static void DisposeDb(NbpContext db)
-        {
-            if (db != null) //close and dispose db
-            {
-                db.Dispose();
-                db = null;
-            }
         }
     }
 }

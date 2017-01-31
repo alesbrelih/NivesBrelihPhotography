@@ -182,6 +182,10 @@ namespace NivesBrelihPhotography.Controllers.Api
                     {
                         photoData.PhotoTitle = val;
                     }
+                    else if (key == "HomeCarousel")
+                    {
+                        photoData.HomeCarousel = bool.Parse(val);
+                    }
                 }
             }
 

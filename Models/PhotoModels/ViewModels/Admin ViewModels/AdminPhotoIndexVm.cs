@@ -17,6 +17,8 @@ namespace NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels
         
         public DateTime Uploaded { get; set; }
 
+        public bool HomeCarousel { get; set; }
+
         public string UploadedString => Uploaded.ToShortDateString();
     }
 }

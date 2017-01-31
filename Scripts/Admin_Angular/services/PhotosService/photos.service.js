@@ -12,7 +12,6 @@
         var currentPhoto = null;
 
 
-
         //returned singleton
         var photosFactory = {};
 
@@ -30,8 +29,6 @@
 
         photosFactory.RemovePhoto = function (photo) {
             //calls api to delete selected photo
-            console.log("PHOTO SERVICE: ");
-            console.log(photo);
             var promise = $http.delete("/api/photos", {
                 params: { "id": photo.PhotoId }
             });
