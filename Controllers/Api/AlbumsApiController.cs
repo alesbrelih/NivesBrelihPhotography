@@ -11,6 +11,7 @@ using NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels.Albu
 
 namespace NivesBrelihPhotography.Controllers.Api
 {
+    [RoutePrefix("Albums")]
     public class AlbumsController : ApiController
     {
         private NbpContext _db = new NbpContext();

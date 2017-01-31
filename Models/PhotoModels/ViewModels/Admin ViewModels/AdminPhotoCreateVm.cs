@@ -49,7 +49,8 @@ namespace NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels
                     IsOnFrontPage = this.IsOnPortfolio,
                     Categories = new List<PhotoCategory>(),
                     Uploaded = DateTime.Now,
-                    PhotoUrl = this.PhotoUrl
+                    PhotoUrl = this.PhotoUrl,
+                    HomeCarousel = this.HomeCarousel
 
 
                 };
