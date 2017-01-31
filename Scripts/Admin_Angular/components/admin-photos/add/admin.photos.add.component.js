@@ -77,16 +77,18 @@
                             }
                         }
                     });
-                    modalAlbumCover.result.then(function (success) {
+                    modalAlbumCover.result.then(function () {
                         //both modals accepted
-                        PhotosService.UploadPhoto(vm.Photo,vm.status);
+                        PhotosService.UploadPhoto(vm.Photo, vm.status, vm.cbFunction);
+                       
                     }, function(err) {
                         console.log(err);
                     });
                 } else {
 
                     //wasnt album cover and first modal was accepted
-                    PhotosService.UploadPhoto(vm.Photo,vm.status);
+                    PhotosService.UploadPhoto(vm.Photo, vm.status,vm.cbFunction);
+
                 }
             });
 
@@ -121,7 +123,11 @@
     app.component("adminPhotosAdd", {
         controller: photosAdminAddController,
         controllerAs: "vm",
-        templateUrl: "/Scripts/Admin_Angular/templates/components/admin-photos/add/admin.photos.add.component.html"
+        templateUrl: "/Scripts/Admin_Angular/templates/components/admin-photos/add/admin.photos.add.component.html",
+        bindings: {
+            callback:"<", //if callback exists bool
+            cbFunction:"&" //callback function
+        }
     });
 
 })(window.angular);

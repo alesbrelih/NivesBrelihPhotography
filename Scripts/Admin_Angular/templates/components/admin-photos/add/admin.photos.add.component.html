@@ -2,7 +2,7 @@
 
 
 <div class="row modify-photo-container" ng-if="vm.status.upload != 'uploading'">
-    <p class="back-anchor">
+    <p ng-show="!vm.callback" class="back-anchor">
         <a ui-sref="photos">Back</a>
     </p>
 

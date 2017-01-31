@@ -27,26 +27,28 @@
             </div>
         </div>
     </div>
-    <div class="col-xs-12 col-md-6 col-lg-4 masonry-content">
-        <div id="social-links-container"class="about-content-container">
+    @*display only there are social links to display*@
+    @if (Model.SocialLinks.Count > 0)
+    {
+        <div class="col-xs-12 col-md-6 col-lg-4 masonry-content">
+            <div id="social-links-container" class="about-content-container">
 
-            <div class="container-title">
-                @NivesBrelihPhotography.Resources.About.AboutText.SocialLinks
-            </div>
-            <div class="container-body">
-                <div class="row">
-                    <ul>
-                        @foreach (var link in Model.SocialLinks)
-                        {
-                            <li><img src="@link.IconLink"/><span class="social-link-description hidden-xs">@link.Description</span></li>
-                        }
-                    </ul>
+                <div class="container-title">
+                    @NivesBrelihPhotography.Resources.About.AboutText.SocialLinks
+                </div>
+                <div class="container-body">
+                    <div class="row">
+                        <ul>
+                            @foreach (var link in Model.SocialLinks)
+                            {
+                                <li><img src="@link.IconLink" /><span class="social-link-description hidden-xs">@link.Description</span></li>
+                            }
+                        </ul>
+                    </div>
                 </div>
             </div>
-
         </div>
-
-    </div>
+    }
     <div class="col-xs-12 col-md-6 col-lg-4  masonry-content">
         <div id="contact-container" class="about-content-container">
             <div class="container-title">
@@ -62,44 +64,31 @@
         </div>
     </div>
 
-    @*<div class="col-xs-12 col-md-6 col-lg-4  masonry-content">
-        <div id="references-container" class="about-content-container">
-
-            <div class="container-title">
-                @NivesBrelihPhotography.Resources.About.AboutText.References
-            </div>
-            <div class="container-body">
-                <ul>
-                    @foreach (var reference in Model.References)
-                    {
-                        <li><a href="@Url.Action("Reference", new {referenceId = reference.ReferenceId})">@reference.Title</a></li>
-                    }
-                </ul>
-            </div>
-
-        </div>
-
-    </div>*@
-    <div class="col-xs-12 col-md-6 col-lg-4  masonry-content">
-        <div id="reviews-container" class="about-content-container">
-            <div class="container-title">
-                @NivesBrelihPhotography.Resources.About.AboutText.Reviews
-            </div>
-            <div class="container-body">
-
-                <ul>
-                    @foreach (var review in Model.PhotoShootReviews)
-                    {
-                        <li><span class="reviewer-name">@review.ReviewerName: </span>@review.ReviewIndexPage</li>
-                    }
-                </ul>
-                <div class="show-more-reviews">
-                    <a href="@Url.Action("Reviews")">@NivesBrelihPhotography.Resources.About.AboutText.ShowMore</a>
+    @*display only if there are existing reviews*@
+    @if (Model.PhotoShootReviews.Count > 0)
+    {
+        <div class="col-xs-12 col-md-6 col-lg-4  masonry-content">
+            <div id="reviews-container" class="about-content-container">
+                <div class="container-title">
+                    @NivesBrelihPhotography.Resources.About.AboutText.Reviews
                 </div>
-                <div class="clearfix"></div>
+                <div class="container-body">
+
+                    <ul>
+                        @foreach (var review in Model.PhotoShootReviews)
+                        {
+                            <li><span class="reviewer-name">@review.ReviewerName: </span>@review.ReviewIndexPage</li>
+                        }
+                    </ul>
+                    <div class="show-more-reviews">
+                        <a href="@Url.Action("Reviews")">@NivesBrelihPhotography.Resources.About.AboutText.ShowMore</a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
             </div>
         </div>
-    </div>
+    }
+   
    
     
 

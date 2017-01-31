@@ -141,7 +141,7 @@
         }
         
         //adds new photo to DB - status is status of add photo controller => uploading/error/idle/success
-        photosFactory.UploadPhoto = function (photo,status) {
+        photosFactory.UploadPhoto = function (photo,status,callback) {
 
             //create form data for multitype form upload
             var multiForm = new FormData();
@@ -173,6 +173,10 @@
 
                     //reset photo container
                     photo = null;
+
+                    if (callback) {
+                        callback();
+                    }
                     
                     //set current page status
                     if (status) {

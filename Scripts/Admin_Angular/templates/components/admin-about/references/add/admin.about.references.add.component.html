@@ -48,10 +48,7 @@
 
 
     <div class="add-photo" ng-if="vm.addPhoto">
-        <div class="row back-link">
-            <span ng-click="vm.addPhoto=false" class="text-primary"> Back </span>
-        </div>
-        <admin-photos-add ></admin-photos-add>
+        <admin-photos-add callback="true" cb-function="vm.CloseAddPhoto()"></admin-photos-add>
     </div>
 </div>
 

@@ -31,9 +31,10 @@
             ProfileService.CreateReference(vm.Reference);
         }
 
-        vm.test = function() {
-            console.log(vm.Reference);
-        }
+        vm.CloseAddPhoto = function() {
+            vm.addPhoto = false;
+            console.log(vm.addPhoto);
+        };
 
     }
     //inject needed services
