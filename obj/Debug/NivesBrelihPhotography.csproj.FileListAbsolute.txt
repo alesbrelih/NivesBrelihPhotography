@@ -281,3 +281,5 @@ D:\users\ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPho
 D:\users\ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\sl-SI\NivesBrelihPhotography.resources.dll
 D:\users\ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotography.dll
 D:\users\ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotography.pdb
+D:\users\ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotography.Migrations.NbpContextMigrations.Added_Showcase_option_flag_to_photos.resources
+D:\users\ales\Desktop\desktop\NB_WP\2.Code\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotography.Migrations.NbpContextMigrations.Removed_Showcase_option_flag_to_photos.resources

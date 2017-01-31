@@ -48,18 +48,6 @@ namespace NivesBrelihPhotography.Controllers
                             Link = x.LinkUrl
                         }).ToListAsync();
 
-            //reference list VM
-            var referenceList =
-                await _db.References.OrderByDescending(x => x.ReferenceId)
-                    .Select(
-                        x =>
-                            new ReferenceView()
-                            {
-                                ReferenceId = x.ReferenceId,
-                                Title = x.ReferenceTitle
-                            })
-                    .ToListAsync();
-
             //photoshot reviews list (view model)
             var photoShootReviewsList = await _db.PhotoShootReviews
                 .OrderByDescending(x => x.PhotoShootReviewId).Take(6).Select(x => new PhotoShotReviewView
@@ -73,52 +61,11 @@ namespace NivesBrelihPhotography.Controllers
             var aboutIndexVm = new AboutIndexViewModel()
             {
                 Profile = profileVm,
-                References = referenceList,
                 SocialLinks = socialLinks,
                 PhotoShootReviews = photoShootReviewsList
             };
             return View(aboutIndexVm);
         }
-
-
-        // GET: References
-        public async Task<ActionResult> Reference(int? referenceId = null, int pageNumber = 0)
-        {
-
-            //no reference id was provided -> redirect to index
-            if (referenceId == null)
-            {
-                return RedirectToAction("Index");
-            }
-
-            //if ajax request for more reference photos
-            if (Request.IsAjaxRequest())
-            {
-                var morePhotosQuery =
-                    await _db.ReferencePhotos.Where(x => x.ReferenceId == referenceId)
-                        .OrderBy(x => x.PhotoId)
-                        .Skip(pageNumber * 10)
-                        .Take(10)
-                        .Select(x => new PhotoView() { PhotoTitle = x.Photo.PhotoTitle, PhotoUrl = x.Photo.PhotoUrl })
-                        .ToListAsync();
-                return Json(morePhotosQuery, JsonRequestBehavior.AllowGet);
-            }
-
-            //get reference
-            var referenceDb = await _db.References.FindAsync(referenceId);
-
-            //if no ref found in db go to index
-            if (referenceDb == null)
-            {
-                return RedirectToAction("Index");
-            }
-
-            var referenceDetailsVm = new ReferenceDetailsView(referenceDb);
-            //referenceDetailsVm.ReferencePhotos = referencesPhotosVm;
-
-            return View(referenceDetailsVm);
-        }
-
 
         // GET: Reviews
         public async Task<ActionResult> Reviews()

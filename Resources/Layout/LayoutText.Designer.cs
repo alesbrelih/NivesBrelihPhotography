@@ -115,6 +115,15 @@ namespace NivesBrelihPhotography.Resources.Layout {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to References.
+        /// </summary>
+        public static string References {
+            get {
+                return ResourceManager.GetString("References", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Slovenian.
         /// </summary>
         public static string Slovenian {

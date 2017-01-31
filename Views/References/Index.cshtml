@@ -1,0 +1,37 @@
+﻿@model ICollection<NivesBrelihPhotography.Models.AboutModels.ReferencePhoto>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="references-wrapper">
+    <div class="references-content">
+        <div class="left-anchor-container">
+            <div id="left-arrow" class="anchor-wrapper left">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </div>
+        </div>
+
+        @foreach (var photo in Model)
+        {
+            <img class="reference-photo-carousel" src="@photo.Photo.PhotoUrl"/>
+        }
+
+        <div class="right-anchor-container">
+            <div id="right-arrow" class="anchor-wrapper right">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+
+    @Scripts.Render("~/bundles/references-index-scripts");
+
+}
+@section CustomStyles
+{
+    @Styles.Render("~/Content/references-index-styles")
+}
+

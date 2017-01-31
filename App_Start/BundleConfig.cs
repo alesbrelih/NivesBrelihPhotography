@@ -140,6 +140,18 @@ namespace NivesBrelihPhotography
                 "~/Scripts/Nicescroll/jquery.nicescroll.min.js"
                 ));
 
+            // references controller bundles
+
+            //scripts
+            bundles.Add(new ScriptBundle("~/bundles/references-index-scripts").Include(
+                "~/Scripts/References_Section/references-index.js"
+                ));
+
+            // styles
+            bundles.Add(new StyleBundle("~/Content/references-index-styles").Include(
+                "~/Content/References_Styles/references-index.css"
+                ));
+
 
             // ------ ANGULAR BASE BUNDLES ------- //
 

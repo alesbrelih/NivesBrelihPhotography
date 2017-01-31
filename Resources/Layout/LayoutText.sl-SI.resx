@@ -135,6 +135,9 @@
   <data name="Photos" xml:space="preserve">
     <value>Portfolio</value>
   </data>
+  <data name="References" xml:space="preserve">
+    <value>Reference</value>
+  </data>
   <data name="Slovenian" xml:space="preserve">
     <value>Slovensko</value>
   </data>

@@ -206,6 +206,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Api\PhotosApiController.cs" />
     <Compile Include="Controllers\PhotosController.cs" />
+    <Compile Include="Controllers\ReferencesController.cs" />
     <Compile Include="DbContexts\NbpContext.cs" />
     <Compile Include="Enums\DbResults.cs" />
     <Compile Include="Global.asax.cs">
@@ -296,6 +297,14 @@
     <Compile Include="Migrations\NbpContextMigrations\201701021920023_Added homecarousel flag on photo model.cs" />
     <Compile Include="Migrations\NbpContextMigrations\201701021920023_Added homecarousel flag on photo model.Designer.cs">
       <DependentUpon>201701021920023_Added homecarousel flag on photo model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\NbpContextMigrations\201701271857538_Added_Showcase_option_flag_to_photos.cs" />
+    <Compile Include="Migrations\NbpContextMigrations\201701271857538_Added_Showcase_option_flag_to_photos.Designer.cs">
+      <DependentUpon>201701271857538_Added_Showcase_option_flag_to_photos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\NbpContextMigrations\201701271902561_Removed_Showcase_option_flag_to_photos.cs" />
+    <Compile Include="Migrations\NbpContextMigrations\201701271902561_Removed_Showcase_option_flag_to_photos.Designer.cs">
+      <DependentUpon>201701271902561_Removed_Showcase_option_flag_to_photos.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\NbpContextMigrations\Configuration.cs" />
     <Compile Include="Models\AboutModels\PhotoShootReview.cs" />
@@ -422,6 +431,7 @@
     <Content Include="Content\ImgDescriptions_Styles\cover-descriptions-containers.css" />
     <Content Include="Content\ImgDescriptions_Styles\photo-cover-descriptions.css" />
     <Content Include="Content\photos-index.css" />
+    <Content Include="Content\References_Styles\references-index.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\Custom Fonts\Raleway\OFL.txt" />
@@ -581,6 +591,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\masonry.pkgd.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\References_Section\references-index.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -640,6 +651,7 @@
     <Content Include="Views\PhotoAdmin\Remove.cshtml" />
     <Content Include="Views\PhotoAdmin\Details.cshtml" />
     <Content Include="Views\Home\Index_No_Layout.cshtml" />
+    <Content Include="Views\References\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -708,6 +720,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\NbpContextMigrations\201701021920023_Added homecarousel flag on photo model.resx">
       <DependentUpon>201701021920023_Added homecarousel flag on photo model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\NbpContextMigrations\201701271857538_Added_Showcase_option_flag_to_photos.resx">
+      <DependentUpon>201701271857538_Added_Showcase_option_flag_to_photos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\NbpContextMigrations\201701271902561_Removed_Showcase_option_flag_to_photos.resx">
+      <DependentUpon>201701271902561_Removed_Showcase_option_flag_to_photos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

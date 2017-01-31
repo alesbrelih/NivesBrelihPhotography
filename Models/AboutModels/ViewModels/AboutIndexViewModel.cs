@@ -13,7 +13,7 @@ namespace NivesBrelihPhotography.Models.AboutModels.ViewModels
 
         public ICollection<ProfileLinkView> SocialLinks { get; set; }
 
-        public ICollection<ReferenceView> References { get; set; }
+        //public ICollection<ReferenceView> References { get; set; }
 
         public ICollection<PhotoShotReviewView> PhotoShootReviews { get; set; } 
 

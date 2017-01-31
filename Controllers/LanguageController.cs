@@ -52,25 +52,16 @@ namespace NivesBrelihPhotography.Controllers
             //set cookie in response
             Response.SetCookie(cookie);
 
-            
+
 
             //if request happened from a page
-            var returnPage = Request.UrlReferrer;
-            if (returnPage != null)
+            //var returnPage = Request.UrlReferrer.LocalPath;
+            if (Request.UrlReferrer != null)
             {
-                //get action and controller names from url refferer
-                var controllerName = GetReferrerControlerName(returnPage.ToString());
-                var actionName = GetReferrerActionName(returnPage.ToString());
-
-                //get route values from url refferer
-                var routeValues = GetReffererRouteValues(returnPage.ToString());
-                
-                //returns to correct action
-                return RedirectToAction(actionName, controllerName, routeValues);
+                return Redirect(Request.UrlReferrer.LocalPath);
             }
-
-            //request was manually requested with link
-            return RedirectToAction("Index", "Photos");
+            return RedirectToAction("Index", "Portfolio");
+           
         }
 
 
@@ -105,9 +96,16 @@ namespace NivesBrelihPhotography.Controllers
             var routeData = RouteTable.Routes.GetRouteData(new HttpContextWrapper(httpContext));
 
             var values = routeData.Values;
-            string actionName = values["action"].ToString();
+            if (values["action"] != null)
+            {
+                string actionName = values["action"].ToString();
+                return actionName;
+            }
 
-            return actionName;
+            return "Index";
+            
+            
+       
         }
 
         //gets refferer route values

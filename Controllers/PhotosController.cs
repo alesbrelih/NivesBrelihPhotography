@@ -20,7 +20,7 @@ namespace NivesBrelihPhotography.Controllers
     {
         private NbpContext db = new NbpContext();
         //current category
-        private int? _categoryId = null;
+        private static int? _categoryId;
 
         // GET: Photos
         /// <summary>
@@ -32,6 +32,7 @@ namespace NivesBrelihPhotography.Controllers
         public async Task<ActionResult> Index(int? categoryId = null)
         {
             #region indexPhotoList
+
             if (Request.IsAjaxRequest())
             {
                 if (!categoryId.Equals(null))
@@ -43,13 +44,18 @@ namespace NivesBrelihPhotography.Controllers
 
                     //list of photos matching current category
                     List<Photo> categoryPhotos =
-                        await db.PhotoCategories.Where(x => x.CategoryId.Equals((int)categoryId)).Select(x => x.Photo).Take(10).ToListAsync();
+                        await
+                            db.PhotoCategories.Where(x => x.CategoryId.Equals((int) categoryId))
+                                .Select(x => x.Photo)
+                                .Take(10)
+                                .ToListAsync();
 
                     //if ajax request for category then return partial view
                     return PartialView("_indexPhotos", categoryPhotos);
 
                 }
 
+                
                 _categoryId = null; //reset currently selected category to all
 
                 ViewBag.CurrentCategory = null; //current category
@@ -57,6 +63,8 @@ namespace NivesBrelihPhotography.Controllers
                 var moreCategoryPhotos = await db.Photos.OrderBy(x => x.Uploaded).Take(10).ToListAsync();
 
                 return PartialView("_indexPhotos", moreCategoryPhotos);
+                
+                
 
             }
 
@@ -71,6 +79,8 @@ namespace NivesBrelihPhotography.Controllers
 
             //returns pictures ordered by date
             return View(photos);
+            
+            
             #endregion
 
 
@@ -116,7 +126,6 @@ namespace NivesBrelihPhotography.Controllers
                     db.Dispose();
                     db = null;
                 }
-                _categoryId = null;
 
             }
             base.Dispose(disposing);

@@ -1,0 +1,73 @@
+﻿.references-wrapper {
+    position: absolute;
+    top: 90px;
+    bottom: 40px;
+    left: 0px;
+    right: 0px;
+    overflow: hidden;
+}
+
+    .references-wrapper .left-anchor-container {
+        position: fixed;
+        width: 100px;
+        height: 200px;
+        left: 0px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .references-wrapper .right-anchor-container {
+        position: fixed;
+        right: 0px;
+        width: 100px;
+        height: 200px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+.anchor-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    color: white;
+}
+
+    .anchor-wrapper.right {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+
+    .anchor-wrapper.left {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    .anchor-wrapper:hover {
+        color: black;
+        background-color: white;
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .anchor-wrapper .glyphicon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2em;
+    }
+
+.references-wrapper .references-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .references-wrapper .references-content .reference-photo-carousel {
+        max-height: 100%;
+        display: inline-block;
+    }
