@@ -26,6 +26,28 @@
 
     }
 
+
+    /*SEARCH PHOTOS AND ADD NEW PHOTO BUTTON STYLES*/
+
+    /*button to open new photo element styles*/
+    #albums-add-wrapper #add-photo-btn {
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+    }
+
+
+    /* reference photos wrapper*/
+    #albums-add-wrapper #search-photos {
+        border: none;
+        border-radius: 0px;
+        border-bottom: 1px solid #ccc;
+        outline: none;
+        box-shadow: none;
+        width: 200px;
+        margin-left :20px;
+    }
+
     /*responsivness*/
     @media(max-width: 550px) {
          #albums-view .albums-actions {

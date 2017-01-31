@@ -36,6 +36,11 @@
             AlbumsService.EditAlbum(vm.Album);
         }
 
+        //cb function for when adding photo
+        vm.CloseAddPhoto = function() {
+            vm.addPhoto = false;
+        }
+
 
     }
 

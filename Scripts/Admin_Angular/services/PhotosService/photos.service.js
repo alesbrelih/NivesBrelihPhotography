@@ -174,6 +174,7 @@
                     //reset photo container
                     photo = null;
 
+                    //cb if needed
                     if (callback) {
                         callback();
                     }
@@ -194,7 +195,12 @@
                             status.upload = "error";
                         }
                         
-                        toastr.error(err.data,"Error");
+                        toastr.error(err.data, "Error");
+
+                        //cb if needed
+                        if (callback) {
+                            callback();
+                        }
                     });
         }
 

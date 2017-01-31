@@ -1,4 +1,5 @@
-﻿<div id="albums-add-wrapper">
+﻿<!--display main not adding a new photo-->
+<div id="albums-add-wrapper" ng-if="!vm.addPhoto">
 
     <p class="back-anchor">
         <a ui-sref="albums">Back</a>
@@ -31,7 +32,8 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">Photos</label>
                 <div class="col-sm-10">
-                    <input type="text" id="search-ref-photos" class="form-control" ng-model="vm.searchText" placeholder="Search photos" />
+                    <input type="text" id="search-photos" class="form-control" ng-model="vm.searchText" placeholder="Search photos" />
+                    <button type="button" class="btn btn-info glyphicon glyphicon-plus col-sm-offset-3" id="add-photo-btn" ng-click="vm.addPhoto = true"></button>
                     <br />
                     <ab-photo-ul-checkable ng-model="vm.Album.Photos" photos="vm.Photos" search="vm.searchText"></ab-photo-ul-checkable>
                 </div>
@@ -45,4 +47,9 @@
 
     </div>
 
+</div>
+
+<!--component for adding photo-->
+<div class="add-photo" ng-if="vm.addPhoto == true">
+    <admin-photos-add callback="true" cb-function="vm.CloseAddPhoto()"></admin-photos-add>
 </div>

@@ -49,6 +49,11 @@
             
         }
 
+        //cb function for when adding photo, to close add photo component
+        vm.CloseAddPhoto = function() {
+            vm.addPhoto = false;
+        }
+
 
     }
 
