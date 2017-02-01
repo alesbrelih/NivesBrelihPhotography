@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using NivesBrelihPhotography.DbContexts;
@@ -14,14 +16,20 @@ namespace NivesBrelihPhotography.Controllers
         private NbpContext _db = new NbpContext();
 
         // GET: Home
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
             //get photos
-            var query = _db.Photos.Where(x => x.HomeCarousel).Select(x=>new PhotoView()
+            var query = await _db.Photos.Where(x => x.HomeCarousel).Select(x=>new PhotoView()
             {
                 PhotoUrl = x.PhotoUrl,
                 PhotoTitle = x.PhotoTitle
-            }).ToList();
+            }).ToListAsync();
+
+            //no photos were added to home carousel yet
+            if (query.Count == 0)
+            {
+                return RedirectToAction("Index","Photos");
+            }
 
             //return view
             return View(query);
