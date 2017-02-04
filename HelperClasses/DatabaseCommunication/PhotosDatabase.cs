@@ -259,7 +259,16 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
 
                 }
 
-                photoDb.PhotoAlbumId = int.Parse(photo.AlbumId); //change album id
+                //no album selected
+                if (photo.AlbumId == "-1" || photo.AlbumId == "0")
+                {
+                    photoDb.PhotoAlbumId = null;
+                }
+                else
+                {
+                    photoDb.PhotoAlbumId = int.Parse(photo.AlbumId); //change album id
+                }
+               
             }
             else
             {
