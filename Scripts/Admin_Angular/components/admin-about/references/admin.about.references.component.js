@@ -21,8 +21,6 @@
         ProfileService.RefreshReferences()
             .then(function() {
                 vm.References = ProfileService.GetReferences();
-                console.log(vm.References);
-                console.log(vm.pageSize);
                 vm.allPages = Math.ceil(vm.References.length / vm.pageSize);
             })
             .catch(function(err) {

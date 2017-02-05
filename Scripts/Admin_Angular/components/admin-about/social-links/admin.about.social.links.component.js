@@ -14,7 +14,6 @@
         ProfileService.RefreshSocialLinks()
             .then(function() {
                 vm.SocialLinks = ProfileService.GetSocialLinks();
-                console.log(vm.SocialLinks);
             })
             .catch(function(err) {
             console.log(err);

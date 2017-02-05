@@ -92,9 +92,6 @@
         // next page
         vm.nextPage = function() {
             vm.currentPage += 1;
-            console.log(_photos);
-            console.log(vm.currentPage * vm.pageSize);
-            console.log(vm.Photos);
         }
 
         // -- photo actions -- //

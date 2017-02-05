@@ -121,7 +121,6 @@
 
         // saves changes for edited photo in db
         photosFactory.EditPhoto = function(photo) {
-            console.log(photo);
             $http.put("/api/photos", photo)
                 .then(function() {
 

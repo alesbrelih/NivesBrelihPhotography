@@ -33,7 +33,7 @@
         </tr>
         </tbody>
     </table>
-    <div ng-if="vm.allPages && vm.allPages>1" class="text-center pages">
+    <div ng-if="vm.allPages && vm.allPages>0" class="text-center pages">
         <button class="glyphicon glyphicon-chevron-left btn btn-info" ng-disabled="vm.currentPage == 1" ng-click="vm.currentPage = vm.currentPage-1"></button>
         <span>{{vm.currentPage}} / {{vm.allPages}}</span>
         <button class="glyphicon glyphicon-chevron-right btn btn-info" ng-disabled="vm.currentPage == vm.allPages" ng-click="vm.currentPage = vm.currentPage+1"></button>

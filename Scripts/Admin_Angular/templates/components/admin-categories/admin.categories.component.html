@@ -41,7 +41,7 @@
             </div>
         </li>
     </ul>
-    <div class="category-admin-pagination">
+    <div class="category-admin-pagination" ng-if="vm.allPages && vm.allPages > 0">
         <button class="btn btn-info glyphicon glyphicon-chevron-left" ng-disabled="vm.currentPage == 0" ng-click="vm.previousPage()"></button>
         <span>{{vm.currentPage}} / {{vm.allPages}}</span>
         <button class="btn btn-info glyphicon glyphicon-chevron-right" ng-click="vm.nextPage()" ng-disabled="vm.currentPage == vm.allPages"></button>

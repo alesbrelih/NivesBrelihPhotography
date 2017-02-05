@@ -33,7 +33,6 @@
 
         vm.CloseAddPhoto = function() {
             vm.addPhoto = false;
-            console.log(vm.addPhoto);
         };
 
     }

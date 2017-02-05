@@ -26,7 +26,6 @@
             });
         }
 
-        console.log(vm);
         //get all data needed
         getData();
 

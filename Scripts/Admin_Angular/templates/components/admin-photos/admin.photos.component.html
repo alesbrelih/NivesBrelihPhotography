@@ -60,7 +60,7 @@
 
 
     </table>
-    <div class="admin-photos-pagination">
+    <div class="admin-photos-pagination" ng-if="vm.allPages && vm.allPages > 0">
         <button class="btn btn-info" ng-click="vm.previousPage()" ng-disabled="vm.currentPage == 1"> Previous </button>
         <span>{{vm.currentPage}} / {{vm.allPages}}</span>
         <button class="btn btn-info" ng-click="vm.nextPage()" ng-disabled="vm.currentPage == vm.allPages"> Next </button>

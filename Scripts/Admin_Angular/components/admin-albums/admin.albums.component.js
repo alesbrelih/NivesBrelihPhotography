@@ -19,8 +19,6 @@
             //sets vm to albums list
             vm.Albums = AlbumsService.Albums;
             vm.allPages = Math.ceil(vm.Albums.length / vm.pageSize);
-            console.log(vm.Albums);
-            console.log(vm.allPages);
         });
 
         //delete selected album from db

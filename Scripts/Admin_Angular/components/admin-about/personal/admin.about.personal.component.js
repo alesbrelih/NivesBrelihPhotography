@@ -14,7 +14,6 @@
         ProfileService.RefreshProfile()
             .then(function() {
                 vm.Profile = ProfileService.GetProfile();
-            console.log(vm.Profile);
                 if (vm.Profile.ProfilePicture) {
                     vm.previewPhoto = vm.Profile.ProfilePicture;
                 }

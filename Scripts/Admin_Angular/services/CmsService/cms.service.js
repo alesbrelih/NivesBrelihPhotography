@@ -58,7 +58,6 @@
                 if (props.content.length === 0 || (props.selected.start === props.content.length && props.selected.end === props.content.length)) {
                     props.content = props.content + el;
 
-                    console.log(props.content);
 
                     //set selected index at end of content
                     var contentLength = props.content.length;

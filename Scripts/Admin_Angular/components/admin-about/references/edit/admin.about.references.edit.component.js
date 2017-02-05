@@ -13,7 +13,6 @@
             $q.all([promisePhotos, vm.editReference]).then(function (success) {
                 
                 vm.CurrentReference = success[1].data;
-                console.log(vm.CurrentReference);
                 vm.Photos = success[0].photos;
 
 

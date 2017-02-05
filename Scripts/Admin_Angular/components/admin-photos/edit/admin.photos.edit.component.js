@@ -78,7 +78,6 @@
                 // current photo
                 vm.Photo = PhotosService.GetCurrentPhoto();
 
-            console.log("promise done");
         }).catch(function(err) {
             
         });

@@ -126,7 +126,8 @@
         templateUrl: "/Scripts/Admin_Angular/templates/components/admin-photos/add/admin.photos.add.component.html",
         bindings: {
             callback:"<", //if callback exists bool
-            cbFunction:"&" //callback function
+            cbFunction:"&",
+            parentForm:"@"//callback function
         }
     });
 

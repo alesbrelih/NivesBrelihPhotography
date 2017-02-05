@@ -17,7 +17,12 @@
         categoriesFactory.Categories = categories;
         
         // --- methods --- //
-        categoriesFactory.GetCategories = function(returnPromise) {
+        categoriesFactory.GetCategories = function (returnPromise) {
+
+            //clear categories before adding new
+            while (categories.length > 0) {
+                categories.pop();
+            }
 
             var promise = $http.get("/api/categories")
                 .then(function (success) {
