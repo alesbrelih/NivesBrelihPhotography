@@ -74,13 +74,16 @@
     }
 
 /*styles for every li icon*/
-li > img {
-    /*space between icon and text*/
-    margin-right: 20px;
+ li img {
+    
     /*height and width because of svg*/
     height: 32px;
     width: 32px;
 }
+ #social-links-container li img {
+     /*space between icon and text*/
+    margin-right: 20px;
+ }
 
 
 /*default container styles  -END*/

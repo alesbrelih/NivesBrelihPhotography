@@ -41,7 +41,7 @@
                         <ul>
                             @foreach (var link in Model.SocialLinks)
                             {
-                                <li><img src="@link.IconLink" /><span class="social-link-description hidden-xs">@link.Description</span></li>
+                                <li><a href="@link.Link"><img src="@link.IconLink" /><span class="social-link-description hidden-xs">@link.Description</span></a></li>
                             }
                         </ul>
                     </div>
@@ -57,8 +57,14 @@
             <div class="container-body">
 
                 <ul>
-                    <li><img src="~/Images/Social_Media_Icons/Svg/envelope.svg"/>@Model.Profile.ContactEmail</li>
-                    <li><img src="~/Images/Social_Media_Icons/Svg/phone-call.svg"/> @Model.Profile.ContactPhone</li>
+                    <li>
+                        
+                        <script type="text/javascript">
+
+                            document.write("<a href='mailto:@Model.Profile.ContactEmail'> <img src='/Images/Social_Media_Icons/Svg/envelope.svg' /></a>")
+
+                        </script>
+                    </li>
                 </ul>
             </div>
         </div>

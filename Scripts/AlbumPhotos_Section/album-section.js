@@ -3,7 +3,7 @@
 
     $(function () {
         var $ = jQuery;
-        var pageNm = 0; //starting page number
+        var pageNm = 1; //starting page number
         var scrollEnd = false;
 
 
@@ -26,7 +26,7 @@
 
         function loadContent() {
             //get new albums on controller with next pageNumber
-            $.get("/Albums", { pageNumber: pageNm + 1 }, function (data) {
+            $.get("/Projects/"+pageNm, function (data) {
 
                 //check if it didnt return anything (end of photos/albums)
                 if (jQuery.isEmptyObject(data)) {
@@ -42,7 +42,7 @@
 
                     //create proper html markings for each of the new albums
                     var $row = "<div class='masonry-image img-container col-xs-12 col-sm-6 col-md-4'>" +
-                        "<a href='/Albums/Album?albumId=" + item.PhotoAlbumId + "'>" +
+                        "<a href='/Projects/Project/" + item.PhotoAlbumId + "'>" +
                             "<img alt='" + item.AlbumName + "' src='" + item.AlbumPhotoUrl + "' class='img-responsive' data-album-id='" + item.PhotoAlbumId + "'/>" +
                             "<div class='album-background'>" +
                             "<span class='album-name'>" + item.AlbumName + "<span class='album-date'>" + item.AlbumDateMonthAsString + "</span></span>" +

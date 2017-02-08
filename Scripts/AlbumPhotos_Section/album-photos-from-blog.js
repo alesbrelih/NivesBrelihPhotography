@@ -11,7 +11,7 @@
         var $albumId = $(".album-view-description").attr("data-album-id");
 
         var pageControl = {
-            pageNumber: 0,
+            pageNumber: 1,
             endScroll: false
         }
         //load more photos
@@ -76,6 +76,24 @@
 
         //on scroll
         $(window).scroll(function () {
+
+            var arrow = $(".background-img>div.glyphicon");
+            if ($(window).scrollTop() == 0) {
+                
+                if ($(arrow).hasClass("hide")) {
+                    $(arrow).fadeIn(200);
+                    $(arrow).removeClass("hide");
+                }
+               
+
+            }
+            if ($(window).scrollTop() != 0) {
+                if (!$(arrow).hasClass("hide")) {
+                    $(arrow).fadeOut(250);
+                    $(arrow).addClass("hide");
+
+                }
+            }
 
             if (!pageControl.endScroll) {
                 if ($(window).scrollTop() + $(window).height() == $(document).height()) {  //check for new albums/photos once we reach bottom

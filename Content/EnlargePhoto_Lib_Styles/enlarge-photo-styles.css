@@ -14,7 +14,7 @@
     /*padding margin 0, overwrites defaults*/
     padding: 0;
     margin: 0;
-    z-index: 1050; /*z-index to show it above everything*/
+    z-index: 20000; /*z-index to show it above everything*/
 }
 
 /*photo and photo title container*/

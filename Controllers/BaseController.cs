@@ -14,29 +14,34 @@ namespace NivesBrelihPhotography.Controllers
         // GET: Base
         protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)
         {
-            string cultureName = "";
+            // TEMPORARY FIX - REMOVING MULTILANG - 8.2.2017
 
-            //find cookie
-            var cookie = Request.Cookies["_culture"];
+            //string cultureName = "";
 
-            //get value from cookie
-            if (cookie != null && cookie.Value!=null)
-            {
-                cultureName = cookie.Value;
-            }
-            else
-            {
-                //if no cookie value get default culture from browser
-                cultureName = Request.UserLanguages != null && Request.UserLanguages.Length>0
-                    ? Request.UserLanguages[0]
-                    : null;
-            }
+            ////find cookie
+            //var cookie = Request.Cookies["_culture"];
 
-            //Use helper for safety and avoid all catches defined in helepr (null string, empty string, not matching culture)
-            cultureName = HelperClasses.CultureHelper.GetCultureName(cultureName);
+            ////get value from cookie
+            //if (cookie != null && cookie.Value!=null)
+            //{
+            //    cultureName = cookie.Value;
+            //}
+            //else
+            //{
+            //    //if no cookie value get default culture from browser
+            //    cultureName = Request.UserLanguages != null && Request.UserLanguages.Length>0
+            //        ? Request.UserLanguages[0]
+            //        : null;
+            //}
 
-            //set culture
-            Thread.CurrentThread.CurrentCulture = new CultureInfo(cultureName);
+            ////Use helper for safety and avoid all catches defined in helepr (null string, empty string, not matching culture)
+            //cultureName = HelperClasses.CultureHelper.GetCultureName(cultureName);
+
+            ////set culture
+            //Thread.CurrentThread.CurrentCulture = new CultureInfo(cultureName);
+            //Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
+
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("sl-SI");
             Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
 
             return base.BeginExecuteCore(callback, state);

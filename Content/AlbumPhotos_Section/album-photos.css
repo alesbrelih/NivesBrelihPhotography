@@ -11,6 +11,8 @@
     width: 100vw;
     height: 100vh;
     max-width: 100%; /*limit to 100% screen width*/
+    -moz-box-sizing: border-box !important;
+    -webkit-box-sizing: border-box !important;
     box-sizing: border-box !important;
     z-index: 10000; /*positioned over navbar*/
     border-bottom: 1px solid #ccc;
@@ -37,45 +39,68 @@
         border-right: 2px solid #ccc;
         border-bottom: none;
     }
-    .album-view-wrapper .album-view-description .background-img {
-        flex: 1;
-    }
 
-        /*CONTAINER FOR TEXT*/
-        .album-view-wrapper .album-view-description .description-wrapper .text-wrapper {
-            width: 80%;
-            height: 90%;
-            display: -webkit-box;
-            display: -ms-flexbox;
+    /*bg img*/
+    .album-view-wrapper .album-view-description .background-img {
+        -ms-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        position: relative;
+    }
+        /*bottom arrow styles*/
+        .album-view-wrapper .album-view-description .background-img div.glyphicon {
+            position: absolute;
             display: flex;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
             justify-content: center;
-            -webkit-box-orient: vertical;
-            -webkit-box-direction: normal;
-            -ms-flex-direction: column;
-            flex-direction: column;
+            align-items: center;
+            font-size: 2.5em;
+            width: 50px;
+            height: 50px;
+            left: calc(28.57% - 25px);
+            top: calc(100% - 100px);
+            bottom: 5px;
+            color: white;
+            color: rgba(255, 255, 255, 0.85);
+
         }
 
-            /*TITLE STYLES*/
-            .album-view-wrapper .album-view-description .description-wrapper .text-wrapper .title {
-                /*margin-bottom: 20px;*/
-            }
-            /*DATE STYLES*/
-            .album-view-wrapper .album-view-description .description-wrapper .text-wrapper .date {
-                margin-top: 10px;
-                margin-bottom: 30px;
-                font-style: italic;
-            }
 
-            /*DESCRIPTION STYLES*/
-            .album-view-wrapper .album-view-description .description-wrapper .text-wrapper .description {
-                text-align: center;
-                overflow-y: auto; /*scroll overflow*/
-            }
+    /*CONTAINER FOR TEXT*/
+    .album-view-wrapper .album-view-description .description-wrapper .text-wrapper {
+        width: 80%;
+        height: 90%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+    }
+
+        /*TITLE STYLES*/
+        .album-view-wrapper .album-view-description .description-wrapper .text-wrapper .title {
+            /*margin-bottom: 20px;*/
+        }
+        /*DATE STYLES*/
+        .album-view-wrapper .album-view-description .description-wrapper .text-wrapper .date {
+            margin-top: 10px;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        /*DESCRIPTION STYLES*/
+        .album-view-wrapper .album-view-description .description-wrapper .text-wrapper .description {
+            text-align: center;
+            overflow-y: auto; /*scroll overflow*/
+        }
 
 
 /* ALBUM DESCRIPTION FOR SMALLER SCREENS*/

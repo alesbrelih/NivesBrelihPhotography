@@ -18,7 +18,7 @@ namespace NivesBrelihPhotography.Controllers
         private NbpContext db = new NbpContext();
 
         // GET: Albums
-        [Route]
+        [Route("{pageNumber=0}")]
         public async Task<ActionResult> Index(int pageNumber = 0)
         {
             //ajax request
