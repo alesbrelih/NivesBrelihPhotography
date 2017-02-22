@@ -78,8 +78,9 @@ namespace NivesBrelihPhotography.Controllers
                     await db.Photos.Where(x => x.PhotoAlbumId == id).OrderBy(x => x.Uploaded)
                         .Skip(10 * pageNumber)
                         .Take(10)
-                        .Select(x => new PhotoView()
+                        .Select(x => new PhotoViewWithAlbumId()
                         {
+                            AlbumId = id,
                             PhotoUrl = x.PhotoUrl,
                             PhotoTitle = x.PhotoTitle
                         }).ToListAsync();

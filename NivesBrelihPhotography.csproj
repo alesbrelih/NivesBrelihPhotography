@@ -287,6 +287,7 @@
     <Compile Include="Models\PhotoModels\ViewModels\AlbumView.cs" />
     <Compile Include="Models\PhotoModels\ViewModels\PhotoAlbumView.cs" />
     <Compile Include="Models\PhotoModels\ViewModels\PhotoView.cs" />
+    <Compile Include="Models\PhotoModels\ViewModels\PhotoViewWithAlbumId.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -364,6 +365,7 @@
     <Content Include="Content\ImgDescriptions_Styles\album-cover-descriptions.css" />
     <Content Include="Content\ImgDescriptions_Styles\cover-descriptions-containers.css" />
     <Content Include="Content\ImgDescriptions_Styles\photo-cover-descriptions.css" />
+    <Content Include="Content\Lightbox\lightbox.css" />
     <Content Include="Content\photos-index.css" />
     <Content Include="Content\References_Styles\references-index.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
@@ -514,6 +516,8 @@
     <Content Include="Scripts\EnlargePhoto_Lib\enlarge-photo-scripts.js" />
     <Content Include="Scripts\imagesloaded.pkgd.min.js" />
     <Content Include="Scripts\ImgDescription_Scripts\cover-descriptions-scripts.js" />
+    <Content Include="Scripts\Lightbox\lightbox-plus-jquery.js" />
+    <Content Include="Scripts\Lightbox\lightbox.js" />
     <Content Include="Scripts\Nicescroll\jquery.nicescroll.min.js" />
     <Content Include="Scripts\photosIndex.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -593,6 +597,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\Lightbox\" />
     <Folder Include="Images\Photos\MID\" />
     <Folder Include="Images\Photos\MIN\" />
     <Folder Include="Images\Photos\ORG\" />
