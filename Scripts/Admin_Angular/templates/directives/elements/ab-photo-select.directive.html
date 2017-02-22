@@ -1,7 +1,7 @@
 ﻿<div class="photo-select-wrapper  text-right">
 
     <div class="selected-img-wrapper" data-all="{{photos.length}}">
-        <img ng-if="selected != null" ng-src="{{selected.PhotoUrl}}" alt="Selected Photo">
+        <img ng-if="selected != null" ng-src="/Images/Photos/MIN/{{selected.PhotoUrl}}" alt="Selected Photo">
         <img ng-if="selected == null" src="http://www.uwplatt.edu/files/styles/high_resolution/public/image_fields/directory_image/PhotoNotAvailable_124.jpg" alt="">
     </div>
     <div class="photo-select-utilities" ng-class="{'align-right':showPhotos == false}">
@@ -15,7 +15,7 @@
                     {{photo.PhotoTitle}}
                 </div>
                 <div class="img-wrapper">
-                    <img ng-src="{{photo.PhotoUrl}}" alt="Photo">
+                    <img ng-src="/Images/Photos/MIN/{{photo.PhotoUrl}}" ng-class="[{'portrait':photo.Orientation=='P'},{'landscape':photo.Orientation=='L'}]" alt="Photo">
                 </div>
             </div>
         </li>

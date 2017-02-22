@@ -27,7 +27,7 @@
 
 
         </div>
-        <div class="background-img" style="background: url(@Model.AlbumDescription.AlbumCover); background-size: cover; background-position: center;">
+        <div class="background-img" style="background: url('/Images/Photos/ORG/@Model.AlbumDescription.AlbumCover'); background-size: cover; background-position: center;">
             <div class="glyphicon glyphicon-menu-down"></div>
         </div>
     </div>
@@ -44,10 +44,12 @@
         @foreach (var photo in Model.AlbumPhotos)
         {
             <div class="masonry-image img-container col-xs-12 col-sm-6 col-md-4">
-                <img src="@photo.PhotoUrl" class="img-responsive" />
-                <div class="img-description">
-                    <span>@photo.PhotoTitle</span>
-                </div>
+                <a href="~/Images/Photos/MID/@photo.PhotoUrl" data-lightbox="@Model.AlbumDescription.AlbumId">
+                    <img src="/Images/Photos/MIN/@photo.PhotoUrl" class="img-responsive" />
+                    <div class="img-description">
+                        <span>@photo.PhotoTitle</span>
+                    </div>
+                </a>
             </div>
         }
     </div>

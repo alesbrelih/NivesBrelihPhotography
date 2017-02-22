@@ -17,7 +17,7 @@
                 <div class="blog-img-container col-xs-12 col-sm-12 col-md-6">
                     @*img*@
 
-                    <img class="img-responsive blog-img-border" src="@Model[i].BlogCoverPhoto" />
+                    <img class="img-responsive blog-img-border" src="/Images/Photos/MIN/@Model[i].BlogCoverPhoto" />
                     <div class="blog-description-above visible-xs visible-sm">
                         <span class="blog-name">@Model[i].BlogTitle<span class="blog-date">@Model[i].BlogDateMonthAsString</span></span>
                     </div>
@@ -82,7 +82,7 @@
             <a href="@Url.Action("ViewBlog",new {blogId=Model[i].BlogId})">
 
                 <div class="blog-img-container col-sm-12 col-md-6">
-                    <img class="img-responsive blog-img-border" src="@Model[i].BlogCoverPhoto" />
+                    <img class="img-responsive blog-img-border" src="/Images/Photos/MIN/@Model[i].BlogCoverPhoto" />
                     <div class="blog-description-above visible-xs visible-sm">
                         <span class="blog-name">@Model[i].BlogTitle<span class="blog-date">@Model[i].BlogDateMonthAsString</span></span>
                     </div>

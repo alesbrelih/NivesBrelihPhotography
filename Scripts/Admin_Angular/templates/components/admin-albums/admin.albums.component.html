@@ -18,7 +18,7 @@
         <tbody>
         <tr ng-repeat="album in vm.Albums | startsWith:vm.pageSize*(vm.currentPage-1) | limitTo:vm.pageSize">
             <td class="table-photo-container">
-                <img ng-src="{{album.AlbumCoverUrl}}" alt="" />
+                <img ng-src="/Images/Photos/MIN/{{album.AlbumCoverUrl}}" alt="" />
             </td>
             <td class="text-center">
                 {{album.Name}}

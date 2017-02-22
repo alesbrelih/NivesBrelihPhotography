@@ -10,7 +10,9 @@ namespace NivesBrelihPhotography
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/jquery.unobtrusive-ajax.js"));
+                        "~/Scripts/jquery.unobtrusive-ajax.js",
+                        "~/Scripts/Lightbox/lightbox.js"
+                        ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -22,11 +24,14 @@ namespace NivesBrelihPhotography
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js"
+                      ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/Lightbox/lightbox.css"));
+
 
             bundles.Add(new ScriptBundle("~/bundles/page-index-scripts").Include(
                 "~/Scripts/imagesloaded.pkgd.min.js",
@@ -152,10 +157,22 @@ namespace NivesBrelihPhotography
                 "~/Content/References_Styles/references-index.css"
                 ));
 
+            // home welcome carousel bundles
+            
+            //scripts
+            bundles.Add(new ScriptBundle("~/bundles/welcome-carousel-scripts").Include(
+                    "~/Scripts/WelcomeCarousel_Scripts/welcome-carousel.js"
+                ));
+
+            //styles
+            bundles.Add(new StyleBundle("~/Content/welcome-carousel-styles").Include(
+                    "~/Content/WelcomeCarousel_Styles/welcome-carousel.css"
+                ));
+
 
             // ------ ANGULAR BASE BUNDLES ------- //
 
-            
+
             //dependencies
             bundles.Add(new ScriptBundle("~/bundles/angular-dependencies").Include(
                 "~/Scripts/angular.js",

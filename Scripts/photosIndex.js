@@ -43,7 +43,7 @@
         SetMasonryPhotosIndex();
 
         //enable photo enlargement on click
-        EnablePhotoZoom("#photo-container", ".masonry-image");
+        //EnablePhotoZoom("#photo-container", ".masonry-image");
 
         //function to dynamically load json pictures 
         function loadPictures() {
@@ -60,8 +60,10 @@
                 var html = "";
                 $.each(data, function(i, item) {
                     var row = '<div class="masonry-image img-container col-xs-12 col-sm-6 col-md-4">' +
-                        '<img src="' + item.PhotoUrl + '" class="img-responsive"/>' +
-                        '<div class="img-description"><span>' + item.PhotoTitle + '</span></div>' +
+                        '<a href="/Images/Photos/MID/'+item.photoUrl+'" data-lightbox="'+item.photoUrl+'">'+
+                            '<img src="/Images/Photos/MIN/' + item.PhotoUrl + '" data-href="/Images/Photos/MID/'+item.PhotoUrl+'" class="img-responsive"/>' +
+                            '<div class="img-description"><span>' + item.PhotoTitle + '</span></div>' +
+                        '</a>'+
                         '</div>';
                     html += row;
                 });
