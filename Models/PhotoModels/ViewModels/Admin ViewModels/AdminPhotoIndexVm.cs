@@ -14,6 +14,8 @@ namespace NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels
 
         public bool HomeCarousel { get; set; }
 
+        public string Orientation { get; set; }
+
         public string UploadedString => Uploaded.ToShortDateString();
     }
 }

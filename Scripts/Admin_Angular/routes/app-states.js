@@ -21,7 +21,7 @@
                 .state("photos-add", {
                     //add
                     url: "/photos/add",
-                    template: "<admin-photos-add></admin-photos-add>"
+                    template: "<admin-photos-add parent-form='redirect'></admin-photos-add>"
                 })
                 .state("photos-edit", {
                     //edit

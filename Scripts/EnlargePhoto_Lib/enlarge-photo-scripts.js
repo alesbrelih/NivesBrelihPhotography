@@ -68,10 +68,11 @@ function EnablePhotoZoom(photoContainer, photoSelector) {
     //click on image triggers event to open enlarged image
     $(photoContainer).on("click", photoSelector, function () {
 
+
         //photo link of clicked photo
-        var $photoLink = $(this).find("img").attr("src");
+        var $photoLink = $(this).find("img").attr("data-href");
         if (!$photoLink || $photoLink.length == 0) {  //photoselector is photo itself
-            $photoLink = $(this).attr("src");
+            $photoLink = $(this).attr("data-href");
         }
 
         //photo description of clicked photo
@@ -98,6 +99,23 @@ function EnablePhotoZoom(photoContainer, photoSelector) {
 
         //fades the photo enlarge out
         $("#photo-enlarge").fadeOut();
+
+    });
+    //Delegate function so it works on dynamically added elements
+    $(photoContainer).on("click", "#photo-enlarge", function () {
+
+        //add scrollbars to body
+        $("body").removeClass("overflow-hidden");
+
+        //fades the photo enlarge out
+        $("#photo-enlarge").fadeOut();
+
+    });
+    $(photoContainer).on("click", "img", function (ev) {
+
+        ev.preventDefault();
+        console.log("img clicked");
+        ev.stopPropagation();
 
     });
 

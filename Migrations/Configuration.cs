@@ -1,3 +1,7 @@
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using NivesBrelihPhotography.Models;
+
 namespace NivesBrelihPhotography.Migrations
 {
     using System;
@@ -15,18 +19,13 @@ namespace NivesBrelihPhotography.Migrations
 
         protected override void Seed(NivesBrelihPhotography.Models.ApplicationDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            if (!(context.Users.Any(u => u.UserName == "krneki07@gmail.com")))
+            {
+                var userStore = new UserStore<ApplicationUser>(context);
+                var userManager = new UserManager<ApplicationUser>(userStore);
+                var userToInsert = new ApplicationUser { UserName = "krneki07@gmail.com", PhoneNumber = "0797697898" };
+                userManager.Create(userToInsert, "E7x0j225..");
+            }
         }
     }
 }

@@ -16,6 +16,7 @@
             upload: "idle"
         };
 
+
         // get all albums
         AlbumsService.GetAlbums();
 

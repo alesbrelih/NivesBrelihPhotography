@@ -152,10 +152,22 @@ namespace NivesBrelihPhotography
                 "~/Content/References_Styles/references-index.css"
                 ));
 
+            // home welcome carousel bundles
+            
+            //scripts
+            bundles.Add(new ScriptBundle("~/bundles/welcome-carousel-scripts").Include(
+                    "~/Scripts/WelcomeCarousel_Scripts/welcome-carousel.js"
+                ));
+
+            //styles
+            bundles.Add(new StyleBundle("~/Content/welcome-carousel-styles").Include(
+                    "~/Content/WelcomeCarousel_Styles/welcome-carousel.css"
+                ));
+
 
             // ------ ANGULAR BASE BUNDLES ------- //
 
-            
+
             //dependencies
             bundles.Add(new ScriptBundle("~/bundles/angular-dependencies").Include(
                 "~/Scripts/angular.js",

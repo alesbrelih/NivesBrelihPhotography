@@ -6,6 +6,7 @@
     display: none; /*Hidden at first*/
     position: fixed; /*Shows above other content*/
     background-color: white; /*Background*/
+    background-color: rgba(255,255,255,0.9); /*Background*/
     /*size - takes full screen*/
     top: 0;
     left: 0;
@@ -32,11 +33,16 @@
         max-width: 100%; /*doesnt escape container*/
         max-height: 100%; /*doesnt escape container*/
         border: 1px solid #eee;
+        pointer-events: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 
     /*photo  title*/
     #photo > span {
-        display: block;
+        display: none;
         padding-top: 10px;
         padding-left: 10px;
         padding-right: 10px;
@@ -44,6 +50,7 @@
         width: 80%; /*Width of title container*/
         margin: auto;
         font-weight: bold;
+        background-color: white;
     }
 
     /*CLose photo enlargement button*/

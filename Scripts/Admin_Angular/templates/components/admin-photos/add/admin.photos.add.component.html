@@ -27,7 +27,7 @@
                     <input type="text" ng-model="vm.Photo.PhotoTitle" required ng-disabled="addPhotoForm.photoUpload.$invalid" class="form-control" id="inputTitle" placeholder="Photo Title">
                 </div>
             </div>
-            <div class="form-group" ng-if="!vm.parentFrom == 'album'">
+            <div class="form-group" ng-if="vm.parentForm != 'album'">
                 <label for="album" class="col-lg-2 control-label">Album</label>
                 <div class="col-lg-10">
                     <select class="form-control" id="album" ng-model="vm.Photo.AlbumId" ng-disabled="addPhotoForm.photoUpload.$invalid" ng-change="vm.disableAlbumCoverSelectIfNeeded">

@@ -60,6 +60,7 @@
         border-radius: 2px;
     }
 
+
     /*all photos wapper */
     ab-photo-select .photo-select-wrapper .all-photos-wrapper {
         background: white;
@@ -129,13 +130,23 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
     }
 
     /*responsive img inside wrapper*/
     ab-photo-select .photo-select-wrapper .all-photos-wrapper li .photo-container .img-wrapper img {
-        max-width: 100%;
-        max-height: 100%;
+        
         border-radius: 2px;
+    }
+
+    /*limitation for portrait and landscape*/
+    ab-photo-select .photo-select-wrapper .all-photos-wrapper li .photo-container .img-wrapper img.landscape {
+        max-width: 100%;
+        height: auto;
+    }
+    ab-photo-select .photo-select-wrapper .all-photos-wrapper li .photo-container .img-wrapper img.portrait {
+        max-height: 150px;
+        width: auto;
     }
 
 /* CUSTOM ANGULAR DIRECTIVE STYLES END*/

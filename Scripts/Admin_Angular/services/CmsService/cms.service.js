@@ -181,7 +181,7 @@
         function insertPhoto(imgUrl) {
             if (imgUrl) { //url needs to exist
 
-                var photo = "<img class='img-responsive' src='" + imgUrl + "'></img>";
+                var photo = "<img class='img-responsive' src='/Images/Photos/MIN/" + imgUrl + "' data-href='/Images/Photos/MID/" + imgUrl + "'></img>";
 
                 if (props.content.length === 0 || (props.selected.start === props.content.length && props.selected.end === props.content.length)) {
                     props.content = props.content + photo;

@@ -31,7 +31,7 @@
         <tbody class="admin-photos">
         <tr ng-repeat="photo in vm.Photos | limitTo:vm.pageSize">
             <td class="photo-preview">
-                <img class="img-responsive" ng-src="{{photo.PhotoUrl}}"/>
+                <img class="img-responsive" ng-src="/Images/Photos/MIN/{{photo.PhotoUrl}}"/>
             </td>
             <td>
                 {{photo.PhotoTitle}}

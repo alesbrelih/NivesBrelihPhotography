@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.Entity;
+using System.Drawing;
 using System.EnterpriseServices;
 using System.IO;
 using System.Linq;
@@ -11,6 +12,7 @@ using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using ImageResizerLibrary;
 using NivesBrelihPhotography.DbContexts;
 using NivesBrelihPhotography.Enums;
 using NivesBrelihPhotography.Models.PhotoModels;
@@ -35,7 +37,8 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
                     PhotoId = x.PhotoId,
                     PhotoUrl = x.PhotoUrl,
                     Uploaded = x.Uploaded,
-                    HomeCarousel = x.HomeCarousel
+                    HomeCarousel = x.HomeCarousel,
+                    Orientation = x.Orientation
                 }).ToList();
 
                 if (!photos.Any())
@@ -79,10 +82,10 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
             }
 
             //set filepath to where file will be saved
-            var imagePath = Path.Combine(HttpContext.Current.Server.MapPath("~/Images/Photos"), fileName);
+            var directoryPath = HttpContext.Current.Server.MapPath("~/Images/Photos");
 
             //dynamic path in db
-            photoCreateVm.PhotoUrl = "/Images/Photos/" + fileName;
+            photoCreateVm.PhotoUrl = fileName;
 
             //convert to db model
             var photo = photoCreateVm.CovertToDbModel();
@@ -96,7 +99,7 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
                 //throw exception
                 throw new Exception("Photo with the same path already exists");
             }
-
+            photo.Orientation = ImageResizer.GetOrientation(file.LocalFileName); //get photo orientation     
             try
             {
 
@@ -111,7 +114,15 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
                 #endregion
 
                 //move file from temp folder to main folder, ovveride if needed
-                File.Move(file.LocalFileName, imagePath);
+                //File.Move(file.LocalFileName, imagePath);
+                using (var imgSizer = new ImageResizer(file.LocalFileName))
+                {
+                    imgSizer.Resize();
+                    imgSizer.SaveImages(directoryPath, fileName);
+                }
+                
+
+                File.Delete(file.LocalFileName);
 
                 //save changes in db
                 _db.SaveChanges();

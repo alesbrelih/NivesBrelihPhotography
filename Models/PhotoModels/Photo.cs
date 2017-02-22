@@ -37,6 +37,10 @@ namespace NivesBrelihPhotography.Models.PhotoModels
         //if on home carousel
         public bool HomeCarousel { get; set; }
 
+        //photo orientation
+        [MaxLength(1)]
+        public string Orientation { get; set; }
+
         [ForeignKey("PhotoAlbumId")]
         public virtual PhotoAlbum PhotoAlbum { get; set; }  //album picture is in NOT REQUIRED
         public int? PhotoAlbumId { get; set; }
