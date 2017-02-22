@@ -19,11 +19,18 @@ namespace NivesBrelihPhotography.Migrations
 
         protected override void Seed(NivesBrelihPhotography.Models.ApplicationDbContext context)
         {
+            if (!(context.Users.Any(u => u.UserName == "nivesbrelih@gmail.com")))
+            {
+                var userStore = new UserStore<ApplicationUser>(context);
+                var userManager = new UserManager<ApplicationUser>(userStore);
+                var userToInsert = new ApplicationUser { UserName = "nivesbrelih@gmail.com", PhoneNumber = "041621928" };
+                userManager.Create(userToInsert, "to$XA0X86s");
+            }
             if (!(context.Users.Any(u => u.UserName == "krneki07@gmail.com")))
             {
                 var userStore = new UserStore<ApplicationUser>(context);
                 var userManager = new UserManager<ApplicationUser>(userStore);
-                var userToInsert = new ApplicationUser { UserName = "krneki07@gmail.com", PhoneNumber = "0797697898" };
+                var userToInsert = new ApplicationUser { UserName = "krneki07@gmail.com", PhoneNumber = "041621928" };
                 userManager.Create(userToInsert, "E7x0j225..");
             }
         }
