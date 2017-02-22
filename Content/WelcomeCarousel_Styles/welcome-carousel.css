@@ -10,6 +10,7 @@
         fill: #323232 !important;
     }
 
+
 .continue > a {
     position: fixed;
     display: flex;
@@ -30,10 +31,19 @@
     transition: 150ms all ease-in-out;
 }
 
+
+.enter-page-title {
+    display: none;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
     .continue > a:hover {
         color: black !important;
         background-color: white;
         text-decoration: none;
+        padding-bottom: 15px;
     }
 
         .continue > a:hover path {
