@@ -371,11 +371,11 @@
     <Content Include="Images\Lightbox\loading.gif" />
     <Content Include="Images\Lightbox\next.png" />
     <Content Include="Images\Lightbox\prev.png" />
+    <Content Include="Images\Photos\MID\include.txt" />
+    <Content Include="Images\Photos\MIN\include.txt" />
     <Content Include="Images\Photos\nivesBrelihPhoto.jpg" />
+    <Content Include="Images\Photos\ORG\include.txt" />
     <Content Include="Images\Photos\PhotoNotAvailable.jpg" />
-    <Content Include="Images\Photos\Thumbnail_Test\nbPic1.jpg" />
-    <Content Include="Images\Photos\Thumbnail_Test\nbPic2.jpg" />
-    <Content Include="Images\Photos\Thumbnail_Test\nbPic3.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -478,10 +478,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Images\Photos\Thumbnail_Test\nbPic4.jpg" />
-    <Content Include="Images\Photos\Thumbnail_Test\nbPic5.jpg" />
-    <Content Include="Images\Photos\Thumbnail_Test\nbPic6.jpg" />
-    <Content Include="Images\Photos\Thumbnail_Test\nbPic7.jpg" />
     <Content Include="Images\Profile_Img\profile_pic.jpg" />
     <Content Include="Images\Social_Media_Icons\facebook-logo.png" />
     <Content Include="Images\Social_Media_Icons\linkedin-logo.png" />
@@ -591,11 +587,9 @@
     <Content Include="Views\Home\Index_No_Layout.cshtml" />
     <Content Include="Views\References\Index.cshtml" />
     <Content Include="Views\Shared\_LogoWithText.cshtml" />
+    <Content Include="Views\Shared\_Logo.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\Photos\MID\" />
-    <Folder Include="Images\Photos\MIN\" />
-    <Folder Include="Images\Photos\ORG\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Language\" />
   </ItemGroup>
