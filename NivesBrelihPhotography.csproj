@@ -228,6 +228,7 @@
     <Compile Include="HelperClasses\DatabaseCommunication\CategoriesDatabase.cs" />
     <Compile Include="HelperClasses\DatabaseCommunication\PhotosDatabase.cs" />
     <Compile Include="HelperClasses\DatabaseCommunication\ProfileDatabase.cs" />
+    <Compile Include="HelperClasses\FileManipulate.cs" />
     <Compile Include="HelperClasses\HelperMethods.cs" />
     <Compile Include="HelperClasses\HttpPostedFileBaseExtensions.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -529,6 +530,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\WelcomeCarousel_Scripts\welcome-carousel.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Temp\temp.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -12,6 +12,7 @@ using System.Web.Http.Results;
 using System.Web.Mvc;
 using NivesBrelihPhotography.DbContexts;
 using NivesBrelihPhotography.Enums;
+using NivesBrelihPhotography.HelperClasses;
 using NivesBrelihPhotography.HelperClasses.DatabaseCommunication;
 using NivesBrelihPhotography.Models.PhotoModels.ViewModels;
 using NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels;
@@ -70,7 +71,9 @@ namespace NivesBrelihPhotography.Controllers.Api
         {
             //try to delete photo
             try
-            {
+            {   
+                
+
                 PhotosDatabase.DeletePhotoFromDatabase(id, _db);
 
                 return ResponseMessage(Request.CreateResponse(HttpStatusCode.OK, "Photo deleted"));
@@ -92,7 +95,7 @@ namespace NivesBrelihPhotography.Controllers.Api
             var requestBody = new AdminPhotoCreateVm();
 
             //root temp folder for multiform data
-            string root = System.Web.HttpContext.Current.Server.MapPath("~/App_Data");
+            string root = System.Web.HttpContext.Current.Server.MapPath("~/Temp");
 
             //multiform reader
             var provider = new MultipartFormDataStreamProvider(root);

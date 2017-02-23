@@ -343,8 +343,6 @@ E:\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotograph
 E:\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotography.pdb
 E:\NivesBrelihPhotography\NivesBrelihPhotography\bin\ImageResizerLibrary.dll
 E:\NivesBrelihPhotography\NivesBrelihPhotography\bin\ImageResizerLibrary.pdb
-E:\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotography.Migrations.Init.resources
-E:\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotography.Migrations.NbpContextMigrations.Init.resources
 E:\NivesBrelihPhotography\NivesBrelihPhotography\bin\Microsoft.Web.Helpers.dll
 E:\NivesBrelihPhotography\NivesBrelihPhotography\bin\WebMatrix.Data.dll
 E:\NivesBrelihPhotography\NivesBrelihPhotography\bin\WebMatrix.WebData.dll

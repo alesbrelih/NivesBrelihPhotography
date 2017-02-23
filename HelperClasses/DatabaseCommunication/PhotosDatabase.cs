@@ -19,6 +19,7 @@ using NivesBrelihPhotography.Models.PhotoModels;
 using NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels;
 using ListExtensions = WebGrease.Css.Extensions.ListExtensions;
 
+
 namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
 {
     public class PhotosDatabase
@@ -193,6 +194,9 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
             {
                 //Set entry state to deleted
                 _db.Entry(photo).State = EntityState.Deleted;
+                
+                //delete file from server?
+                FileManipulate.DeletePhoto(HttpContext.Current.Server.MapPath("~/Images/Photos"), photo.PhotoUrl);
 
                 //save changes to db
                 _db.SaveChanges();
