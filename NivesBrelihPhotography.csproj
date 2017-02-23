@@ -480,7 +480,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Images\Profile_Img\profile_pic.jpg" />
     <Content Include="Images\Social_Media_Icons\facebook-logo.png" />
     <Content Include="Images\Social_Media_Icons\linkedin-logo.png" />
     <Content Include="Images\Social_Media_Icons\pinterest-logo.png" />
@@ -594,6 +593,7 @@
     <Content Include="Views\Shared\_Logo.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Images\Profile_Img\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Language\" />
   </ItemGroup>
