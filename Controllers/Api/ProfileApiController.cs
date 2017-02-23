@@ -42,7 +42,7 @@ namespace NivesBrelihPhotography.Controllers.Api
             var requestBody = new AdminAboutProfileInformation();
 
             //root temp folder for multiform data
-            string root = System.Web.HttpContext.Current.Server.MapPath("~/App_Data");
+            string root = System.Web.HttpContext.Current.Server.MapPath("~/Temp");
 
             //multiform reader
             var provider = new MultipartFormDataStreamProvider(root);

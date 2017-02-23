@@ -11,6 +11,8 @@ using NivesBrelihPhotography.DbContexts;
 using NivesBrelihPhotography.Models.AboutModels;
 using NivesBrelihPhotography.Models.AboutModels.ViewModels.Admin_ViewModels;
 using System.Collections;
+using System.Drawing;
+using ImageResizerLibrary;
 
 namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
 {
@@ -57,13 +59,29 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
                 }
 
                 //set filepath to where file will be saved
-                var imagePath = Path.Combine(HttpContext.Current.Server.MapPath("~/Images/Photos"), fileName);
+                var directory = HttpContext.Current.Server.MapPath("~/Images");
+                //var imagePath = Path.Combine(HttpContext.Current.Server.MapPath("~/Images/Photos"), fileName);
+
+                //current photo
+                string currentPhotoPath = HttpContext.Current.Server.MapPath(profileDb.ProfilePicture);
+
+                //try to delete previous if exist
+                if (File.Exists(currentPhotoPath))
+                {
+                    File.Delete(currentPhotoPath);
+                }
+
+                //save new photo
+                using (var newPhoto = new ImageResizer(file.LocalFileName))
+                {
+                    newPhoto.Resize();
+                    newPhoto.SaveProfileImage(directory,fileName);
+                }
+                
 
                 //dynamic path in db
-                profileDb.ProfilePicture = "/Images/Photos/" + fileName;
+                profileDb.ProfilePicture = "/Images/Profile/" + fileName;
 
-                //move file from temp folder to main folder, ovveride if needed
-                File.Copy(file.LocalFileName, imagePath, true);
             }
 
             //set entity state to modified
