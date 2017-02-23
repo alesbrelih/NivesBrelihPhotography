@@ -400,6 +400,7 @@
     <Content Include="fonts\Custom Fonts\Jura\Jura-Regular.otf" />
     <Content Include="fonts\Custom Fonts\jane_austen\JaneAusU.ttf" />
     <Content Include="Images\Profile\include.txt" />
+    <Content Include="Images\Profile_Img\nives.jpg" />
     <Content Include="nbpIcon.ico" />
     <Content Include="Scripts\Admin_Angular\app.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-about\main\admin.about.main.controller.js" />
@@ -474,7 +475,7 @@
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\Admin_Angular\components\admin-view\admin.view.component.js" />
     <Content Include="Scripts\Admin_Angular\directives\attribute\ab.photo.input.js" />
-    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
+    <None Include="Properties\PublishProfiles\nivesbrelihphotography.si - Web Deploy %286%29.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -531,13 +532,16 @@
     <Content Include="Scripts\WelcomeCarousel_Scripts\welcome-carousel.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Temp\temp.txt" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -593,7 +597,6 @@
     <Content Include="Views\Shared\_Logo.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\Profile_Img\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Language\" />
   </ItemGroup>
@@ -635,6 +638,9 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>nbpIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

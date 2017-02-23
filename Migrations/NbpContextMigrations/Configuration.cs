@@ -17,7 +17,7 @@ namespace NivesBrelihPhotography.Migrations.NbpContextMigrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             MigrationsDirectory = @"Migrations\NbpContextMigrations";
         }
 
@@ -356,7 +356,7 @@ namespace NivesBrelihPhotography.Migrations.NbpContextMigrations
                                         "I like to capture spontaneous moments in combination with good light." +
                                         "I enjoy taking photos of newborn babies, children, couples, weddings, nature, animales & landscapes, ...";
 
-            context.Profile.AddOrUpdate(new Profile() { ProfileId = 1, Name = "Nives", Lastname = "Brelih", About = profileAbout,ProfilePicture = "/Images/Profile_Img/profile_pic.jpg",ContactEmail = "nivesbrelih@gmail.com",ContactPhone = "+38641212438"});
+            context.Profile.AddOrUpdate(new Profile() { ProfileId = 1, Name = "Nives", Lastname = "Brelih", About = profileAbout,ProfilePicture = "/Images/Profile_Img/nives.jpg",ContactEmail = "nivesbrelih@gmail.com",ContactPhone = "+38641212438"});
 
             //profileLink
             const string twitter = "https://twitter.com/_NBPhotography";
