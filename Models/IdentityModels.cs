@@ -24,7 +24,7 @@ namespace NivesBrelihPhotography.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("NbpConnection", throwIfV1Schema: false)
+            : base("hostingEu", throwIfV1Schema: false)
         {
         }
 

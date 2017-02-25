@@ -14,7 +14,7 @@ namespace NivesBrelihPhotography.DbContexts
 {
     public class NbpContext:DbContext
     {
-        public NbpContext():base("NbpConnection")
+        public NbpContext():base("hostingEu")
         {
             //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<NbpContext>());
             //Database.SetInitializer<NbpContext>(new DropCreateDatabaseAlways<NbpContext>());

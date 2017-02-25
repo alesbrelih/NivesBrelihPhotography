@@ -45,7 +45,8 @@ namespace NivesBrelihPhotography.Controllers
                     //list of photos matching current category
                     List<Photo> categoryPhotos =
                         await
-                            db.PhotoCategories.Where(x => x.CategoryId.Equals((int) categoryId))
+                            db.PhotoCategories.Where(x => x.CategoryId.Equals((int) categoryId) 
+                                && x.Photo.IsOnFrontPage)
                                 .Select(x => x.Photo)
                                 .Take(10)
                                 .ToListAsync();
@@ -60,7 +61,7 @@ namespace NivesBrelihPhotography.Controllers
 
                 ViewBag.CurrentCategory = null; //current category
 
-                var moreCategoryPhotos = await db.Photos.OrderBy(x => x.Uploaded).Take(10).ToListAsync();
+                var moreCategoryPhotos = await db.Photos.Where(x => x.IsOnFrontPage).OrderBy(x => x.Uploaded).Take(10).ToListAsync();
 
                 return PartialView("_indexPhotos", moreCategoryPhotos);
                 
@@ -75,7 +76,7 @@ namespace NivesBrelihPhotography.Controllers
             ViewBag.Categories = await db.Categories.ToListAsync();
 
             //get photos
-            var photos = await db.Photos.OrderBy(x => x.Uploaded).Take(10).ToListAsync();
+            var photos = await db.Photos.Where(x=>x.IsOnFrontPage).OrderBy(x => x.Uploaded).Take(10).ToListAsync();
 
             //returns pictures ordered by date
             return View(photos);
@@ -101,7 +102,8 @@ namespace NivesBrelihPhotography.Controllers
             if (_categoryId != null)
             {
                 returnList =
-                   await db.PhotoCategories.Where(x => x.CategoryId.Equals((int)_categoryId))
+                   await db.PhotoCategories.Where(x => x.CategoryId.Equals((int)_categoryId) &&
+                    x.Photo.IsOnFrontPage)
                        .Select(x => new PhotoView() { PhotoTitle = x.Photo.PhotoTitle, PhotoUrl = x.Photo.PhotoUrl })
                        .Skip(skipNumber)
                        .Take(10).ToListAsync();
@@ -110,7 +112,7 @@ namespace NivesBrelihPhotography.Controllers
             //user wants to see all photos
             else
             {
-                returnList = await db.Photos.OrderBy(x => x.Uploaded).Select(x => new PhotoView() { PhotoUrl = x.PhotoUrl, PhotoTitle = x.PhotoTitle }).Skip(skipNumber).Take(10).ToListAsync();
+                returnList = await db.Photos.Where(x=>x.IsOnFrontPage).OrderBy(x => x.Uploaded).Select(x => new PhotoView() { PhotoUrl = x.PhotoUrl, PhotoTitle = x.PhotoTitle }).Skip(skipNumber).Take(10).ToListAsync();
             }
             return Json(returnList, JsonRequestBehavior.AllowGet);
         }
