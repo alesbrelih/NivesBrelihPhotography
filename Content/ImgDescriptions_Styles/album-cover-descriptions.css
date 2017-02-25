@@ -7,11 +7,18 @@
     border: 1px solid white;
     /*curson change when hovering image containers*/
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.img-container .img-wrapper {
+    position: relative;
+    display: inline-block;
+}
 
 /*adding inline border hack*/
-.img-container:before {
+.img-container .img-wrapper:before {
     content: "";
     position: absolute;
     top: 0;
