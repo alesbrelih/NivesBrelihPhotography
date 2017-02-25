@@ -88,6 +88,7 @@
         /*TITLE STYLES*/
         .album-view-wrapper .album-view-description .description-wrapper .text-wrapper .title {
             /*margin-bottom: 20px;*/
+            text-align: center;
         }
         /*DATE STYLES*/
         .album-view-wrapper .album-view-description .description-wrapper .text-wrapper .date {

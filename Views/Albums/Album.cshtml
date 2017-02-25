@@ -1,5 +1,6 @@
 ﻿@using System.Activities.Statements
 @using System.Diagnostics.Eventing.Reader
+@using Microsoft.Ajax.Utilities
 @model NivesBrelihPhotography.Models.PhotoModels.ViewModels.AlbumAndPhotosView
 @{
     ViewBag.Title = "Project";
@@ -19,9 +20,13 @@
                 <div class="date">
                     @Model.AlbumDescription.AlbumDate
                 </div>
-                <div class="description hidden-xs hidden-sm">
-                    <p>@Model.AlbumDescription.AlbumText</p>
-                </div>
+                @if (@Model.AlbumDescription.AlbumText != null && @Model.AlbumDescription.AlbumText != "/")
+                {
+                    <div class="description hidden-xs hidden-sm">
+                        <p>@Model.AlbumDescription.AlbumText</p>
+                    </div>
+                }
+                
             </div>
 
 
@@ -36,7 +41,10 @@
         <br />
         <h3>@Model.AlbumDescription.AlbumName</h3>
         <p class="date">@Model.AlbumDescription.AlbumDate</p>
-        <p class="description">@Model.AlbumDescription.AlbumText</p>
+        @if (@Model.AlbumDescription.AlbumText != null && @Model.AlbumDescription.AlbumText != "/")
+        {
+            <p class="description">@Model.AlbumDescription.AlbumText</p>
+        }
         <hr />
     </div>
     <div id="photos" class="masonry-layout album-body" data-photo-type="photos">
