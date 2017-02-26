@@ -232,6 +232,10 @@
     <Compile Include="HelperClasses\HelperMethods.cs" />
     <Compile Include="HelperClasses\HttpPostedFileBaseExtensions.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\NbpContextMigrations\201702261619355_Adding category to album, adding lead photo to reference model.cs" />
+    <Compile Include="Migrations\NbpContextMigrations\201702261619355_Adding category to album, adding lead photo to reference model.Designer.cs">
+      <DependentUpon>201702261619355_Adding category to album, adding lead photo to reference model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\NbpContextMigrations\Configuration.cs" />
     <Compile Include="Models\AboutModels\PhotoShootReview.cs" />
     <Compile Include="Models\AboutModels\Profile.cs" />
@@ -614,6 +618,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\NbpContextMigrations\201702261619355_Adding category to album, adding lead photo to reference model.resx">
+      <DependentUpon>201702261619355_Adding category to album, adding lead photo to reference model.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
