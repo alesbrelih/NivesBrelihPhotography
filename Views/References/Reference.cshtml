@@ -1,0 +1,40 @@
+﻿@model NivesBrelihPhotography.Models.AboutModels.ViewModels.ReferenceDetailsView
+@{
+    ViewBag.Title = "Reference";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="references-wrapper">
+    <div class="references-content">
+        <div class="left-anchor-container">
+            <div id="left-arrow" class="anchor-wrapper left">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </div>
+        </div>
+
+        @foreach (var photo in Model.ReferencePhotos)
+        {
+            <img class="reference-photo-carousel" src="/Images/Photos/MID/@photo.Photo.PhotoUrl" />
+        }
+
+        <div class="right-anchor-container">
+            <div id="right-arrow" class="anchor-wrapper right">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+
+    @Scripts.Render("~/bundles/references-reference-scripts");
+
+}
+@section CustomStyles
+{
+    @Styles.Render("~/Content/references-reference-styles")
+}
+
+
+
+

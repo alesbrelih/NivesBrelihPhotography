@@ -148,12 +148,12 @@ namespace NivesBrelihPhotography
             // references controller bundles
 
             //scripts
-            bundles.Add(new ScriptBundle("~/bundles/references-index-scripts").Include(
+            bundles.Add(new ScriptBundle("~/bundles/references-reference-scripts").Include(
                 "~/Scripts/References_Section/references-index.js"
                 ));
 
             // styles
-            bundles.Add(new StyleBundle("~/Content/references-index-styles").Include(
+            bundles.Add(new StyleBundle("~/Content/references-reference-styles").Include(
                 "~/Content/References_Styles/references-index.css"
                 ));
 

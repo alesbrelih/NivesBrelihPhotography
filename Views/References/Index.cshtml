@@ -1,37 +1,36 @@
-﻿@model ICollection<NivesBrelihPhotography.Models.AboutModels.ReferencePhoto>
+﻿@model ICollection<NivesBrelihPhotography.Models.AboutModels.ViewModels.ReferenceView>
 @{
     ViewBag.Title = "References";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<br />
 
-<div class="references-wrapper">
-    <div class="references-content">
-        <div class="left-anchor-container">
-            <div id="left-arrow" class="anchor-wrapper left">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-            </div>
+@foreach (var reference in @Model)
+{
+    <div class="reference-group">
+        <div class="reference-photo-index">
+            <img class="img-responsive" src="/Images/Photos/MID/@reference.LeadPhoto.PhotoUrl" alt="@reference.LeadPhoto.PhotoTitle" />
         </div>
-
-        @foreach (var photo in Model)
-        {
-            <img class="reference-photo-carousel" src="/Images/Photos/MID/@photo.Photo.PhotoUrl"/>
-        }
-
-        <div class="right-anchor-container">
-            <div id="right-arrow" class="anchor-wrapper right">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-            </div>
+        <div class="reference-text-index">
+            <p>@reference.Title</p>
         </div>
     </div>
-</div>
-@section scripts
-{
-
-    @Scripts.Render("~/bundles/references-index-scripts");
-
-}
-@section CustomStyles
-{
-    @Styles.Render("~/Content/references-index-styles")
 }
 
+<style>
+    
+    .reference-group {
+        display: table;
+        height: 300px;
+        border: 1px solid #eee;
+        border-radius: 4px;
+    }
+    .reference-group .reference-photo-index {
+        display: table-cell;
+    }
+    .reference-group .reference-text-index {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+</style>

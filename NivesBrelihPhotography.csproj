@@ -607,6 +607,7 @@
     <Content Include="Views\References\Index.cshtml" />
     <Content Include="Views\Shared\_LogoWithText.cshtml" />
     <Content Include="Views\Shared\_Logo.cshtml" />
+    <Content Include="Views\References\Reference.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Base\" />
