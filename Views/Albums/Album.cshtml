@@ -40,7 +40,7 @@
     <div class="album-view-description-small-screen">
         <br />
         <h3>@Model.AlbumDescription.AlbumName</h3>
-        <p class="date">@Model.AlbumDescription.AlbumDate</p>
+        @*<p class="date">@Model.AlbumDescription.AlbumDate</p>*@
         @if (@Model.AlbumDescription.AlbumText != null && @Model.AlbumDescription.AlbumText != "/")
         {
             <p class="description">@Model.AlbumDescription.AlbumText</p>
@@ -54,7 +54,7 @@
             <div class="masonry-image img-container col-xs-12 col-sm-6 col-md-4">
                 <div class="img-wrapper">
                     <a href="~/Images/Photos/MID/@photo.PhotoUrl" data-lightbox="@Model.AlbumDescription.AlbumId">
-                        <img src="/Images/Photos/MIN/@photo.PhotoUrl" class="img-responsive"/>
+                        <img alt="@photo.PhotoTitle" src="/Images/Photos/MIN/@photo.PhotoUrl" class="img-responsive"/>
                         <div class="img-description">
                             <span>@photo.PhotoTitle</span>
                         </div>

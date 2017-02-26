@@ -113,6 +113,7 @@
 .album-view-wrapper .album-view-description-small-screen {
     display: none;
     padding: 10px;
+    text-align: center;
 }
     /* ALBUM DESCRIPTION FOR SMALLER SCREENS - date styles*/
     .album-view-wrapper .album-view-description-small-screen p.date {

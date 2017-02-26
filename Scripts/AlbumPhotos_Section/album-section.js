@@ -40,13 +40,15 @@
 
                 $.each(data, function (index, item) {
 
+
                     //create proper html markings for each of the new albums
                     var $row = "<div class='masonry-image img-container col-xs-12 col-sm-6 col-md-4'>" +
                         '<div class="img-wrapper">'+
                             "<a href='/Projects/Project/" + item.PhotoAlbumId + "'>" +
                                 "<img alt='" + item.AlbumName + "' src='/Images/Photos/MIN/" + item.AlbumPhotoUrl + "' class='img-responsive' data-album-id='" + item.PhotoAlbumId + "'/>" +
                                 "<div class='album-background'>" +
-                                "<span class='album-name'>" + item.AlbumName + "<span class='album-date'>" + item.AlbumDateMonthAsString + "</span></span>" +
+                                //"<span class='album-name'>" + item.AlbumName + "<span class='album-date'>" + item.AlbumDateMonthAsString + "</span></span>" +
+                                "<span class='album-name'>" + item.AlbumName + "</span></span>" +
                                 "</div>" +
                             "</a>"+
                         '</div>'+

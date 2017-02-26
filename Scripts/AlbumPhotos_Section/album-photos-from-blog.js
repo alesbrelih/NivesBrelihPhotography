@@ -32,7 +32,7 @@
                     var row = '<div class="masonry-image img-container col-xs-12 col-sm-6 col-md-4">' +
                         '<div class="img-wrapper">'+
                             '<a href="/Images/Photos/MID/'+item.PhotoUrl+'" data-lightbox="'+item.AlbumId+'">'+
-                                '<img src="/Images/Photos/MIN/' + item.PhotoUrl + '" data-href="/Images/Photos/MID/'+item.PhotoUrl+'" class="img-responsive"/>' +
+                                '<img alt="'+item.PhotoTitle+'" src="/Images/Photos/MIN/' + item.PhotoUrl + '" class="img-responsive"/>' +
                                 '<div class="img-description"><span>' + item.PhotoTitle + '</span></div>' +
                             '</a>'+
                         '</div>'+
