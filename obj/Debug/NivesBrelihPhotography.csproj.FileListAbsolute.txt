@@ -348,3 +348,4 @@ E:\NivesBrelihPhotography\NivesBrelihPhotography\bin\WebMatrix.Data.dll
 E:\NivesBrelihPhotography\NivesBrelihPhotography\bin\WebMatrix.WebData.dll
 E:\NivesBrelihPhotography\NivesBrelihPhotography\bin\WebMatrix.WebData.xml
 E:\NivesBrelihPhotography\NivesBrelihPhotography\bin\WebMatrix.Data.xml
+E:\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotography.Migrations.NbpContextMigrations.Addingcategorytoalbumaddingleadphototoreferencemodel.resources

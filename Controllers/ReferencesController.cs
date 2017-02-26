@@ -8,6 +8,7 @@ using System.Web.Http.Results;
 using System.Web.Mvc;
 using NivesBrelihPhotography.DbContexts;
 using NivesBrelihPhotography.Models.AboutModels.ViewModels;
+using NivesBrelihPhotography.Models.PhotoModels.ViewModels;
 
 namespace NivesBrelihPhotography.Controllers
 {
@@ -20,10 +21,21 @@ namespace NivesBrelihPhotography.Controllers
         public async Task<ActionResult> Index()
         {
             //get all reference photos
-            var referencePhotos = await _db.ReferencePhotos.OrderBy(x => x.ReferenceId).ToListAsync();
+            var references = await _db.References.OrderBy(x => x.ReferenceId)
+                .Select(x=> new ReferenceView()
+                {
+                    ReferenceId = x.ReferenceId,
+                    Title = x.ReferenceTitle,
+                    LeadPhoto = new PhotoView()
+                    {
+                        PhotoTitle = x.LeadPhoto.PhotoTitle,
+                        PhotoUrl = x.LeadPhoto.PhotoUrl
+                    }
+                })
+                .ToListAsync();
 
             //return view with data
-            return View(referencePhotos);
+            return View(references);
         }
 
         //GET: single reference detailed information
