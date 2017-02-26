@@ -2,15 +2,14 @@
 (function ($) {
 
     $(document).ready(function () {
-
+        
         //get references content wrapper
         var refferencesWrapper = $(".references-wrapper");
 
         //if scroll size not big enough
-        if (refferencesWrapper[0].scrollWidth === refferencesWrapper[0].offsetWidth) {
+        if (refferencesWrapper[0].scrollWidth == refferencesWrapper[0].offsetWidth) {
             $("div[class$='-anchor-container'").hide();
         } else {
-
             //currently scrolling flag
             var scrolling = false;
 
