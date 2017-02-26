@@ -364,6 +364,8 @@
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="Content\WelcomeCarousel_Styles\welcome-carousel.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\Custom Fonts\Kaushan_Script\OFL.txt" />
+    <Content Include="fonts\Custom Fonts\Quicksand\OFL.txt" />
     <Content Include="fonts\Custom Fonts\Raleway\OFL.txt" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -475,6 +477,11 @@
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\Admin_Angular\components\admin-view\admin.view.component.js" />
     <Content Include="Scripts\Admin_Angular\directives\attribute\ab.photo.input.js" />
+    <Content Include="fonts\Custom Fonts\Kaushan_Script\KaushanScript-Regular.ttf" />
+    <Content Include="fonts\Custom Fonts\Quicksand\Quicksand-Bold.ttf" />
+    <Content Include="fonts\Custom Fonts\Quicksand\Quicksand-Light.ttf" />
+    <Content Include="fonts\Custom Fonts\Quicksand\Quicksand-Medium.ttf" />
+    <Content Include="fonts\Custom Fonts\Quicksand\Quicksand-Regular.ttf" />
     <None Include="Properties\PublishProfiles\nivesbrelihphotography.si - Web Deploy %286%29.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>

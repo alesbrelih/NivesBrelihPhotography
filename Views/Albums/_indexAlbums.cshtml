@@ -4,7 +4,7 @@
 
 <div id="photos" class="masonry-layout" data-photo-type="albums">
 
-    
+
 
     @*sizer for masonry layout*@
     <div class="grid-sizer col-xs-12 col-sm-6 col-md-4"></div>
@@ -14,9 +14,10 @@
         <div class="masonry-image img-container col-xs-12 col-sm-6 col-md-4">
             <div class="img-wrapper">
                 <a href="@Url.Action("Project", "Projects", new {id = album.PhotoAlbumId})">
-                    <img alt="@album.AlbumName" src="/Images/Photos/MIN/@album.AlbumPhotoUrl" class="img-responsive" data-album-id="@album.PhotoAlbumId"/>
+                    <img alt="@album.AlbumName" src="/Images/Photos/MIN/@album.AlbumPhotoUrl" class="img-responsive" data-album-id="@album.PhotoAlbumId" />
                     <div class="album-background">
-                        <span class="album-name">@album.AlbumName<span class="album-date">@album.ReturnAlbum()</span></span>
+                        @*<span class="album-name">@album.AlbumName<span class="album-date">@album.ReturnAlbum()</span></span>*@
+                        <span class="album-name">@album.AlbumName</span>
                     </div>
                 </a>
 

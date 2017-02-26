@@ -43,6 +43,19 @@
     font-family: 'Raleway-Bold';
     src: url('../fonts/Custom Fonts/Raleway/Raleway-Bold.ttf') format('truetype');
 }
+
+@font-face {
+    font-family: 'Kaushan Script';
+    src: url('/fonts/Custom Fonts/Kaushan_Script/KaushanScript-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Quicksand';
+    src: url('/fonts/Custom Fonts/Quicksand/Quicksand-Regular.ttf') format('truetype');
+    src: url('/fonts/Custom Fonts/Quicksand/Quicksand-Medium.ttf') format('truetype');
+    src: url('/fonts/Custom Fonts/Quicksand/Quicksand-Bold.ttf') format('truetype');
+    src: url('/fonts/Custom Fonts/Quicksand/Quicksand-Light.ttf') format('truetype');
+}
+
 /*CUSTOM FONTS IMPORTING - END*/
 
 /*CUSTOM STYLES IN PAGE - START*/
@@ -62,9 +75,17 @@ body {
 }
 
 .navbar {
-    font-family: "Jura-Regular","News Cycle", "Arial Narrow Bold";
+    /*font-family: "Jura-Regular","News Cycle", "Arial Narrow Bold";*/
+    font-family: 'Kaushan Script', cursive;
     font-weight: normal;
+    
 
+}
+.navbar-default .navbar-nav > li > a{
+    color: #333 !important;
+}
+.navbar-default { /*no bottom border on navbar*/
+    border: none !important;
 }
 
 .navbar-brand {
@@ -74,7 +95,8 @@ body {
 }
 
 h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
-    font-family: "Jura-Regular","News Cycle", "Arial Narrow Bold",sans-serif !important;
+    /*font-family: "Jura-Regular","News Cycle", "Arial Narrow Bold",sans-serif !important;*/
+    font-family: 'Kaushan Script', cursive;
 }
 
 #language-selector li{
@@ -101,6 +123,21 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
 }
 .navbar-header > a.logo-container svg {
     height: 100%;
+}
+.navbar-header > a.logo-container path{
+    fill: #333333;
+}
+.navbar-header > a:hover {
+    background-color: white !important;
+    
+}
+.navbar-header > a:hover path {
+    fill: black;
+}
+
+ul.nav li a:hover {
+    background-color: white !important;
+    text-decoration: underline !important;
 }
 
 

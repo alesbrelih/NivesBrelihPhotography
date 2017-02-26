@@ -28,25 +28,25 @@ namespace NivesBrelihPhotography.Models.PhotoModels.ViewModels
                 switch (AlbumDate.Month)
                 {
                     case 1:
-                        return "January " + AlbumDate.Year;
+                        return "Januar " + AlbumDate.Year;
                     case 2:
-                        return "February " + AlbumDate.Year;
+                        return "Februar " + AlbumDate.Year;
                     case 3:
-                        return "March " + AlbumDate.Year;
+                        return "Marec " + AlbumDate.Year;
                     case 4:
                         return "April " + AlbumDate.Year;
                     case 5:
-                        return "May " + AlbumDate.Year;
+                        return "Maj " + AlbumDate.Year;
                     case 6:
-                        return "June " + AlbumDate.Year;
+                        return "Junij " + AlbumDate.Year;
                     case 7:
-                        return "July " + AlbumDate.Year;
+                        return "Julij " + AlbumDate.Year;
                     case 8:
-                        return "August " + AlbumDate.Year;
+                        return "Avgust " + AlbumDate.Year;
                     case 9:
                         return "September " + AlbumDate.Year;
                     case 10:
-                        return "October " + AlbumDate.Year;
+                        return "Oktober " + AlbumDate.Year;
                     case 11:
                         return "November " + AlbumDate.Year;
                     case 12:

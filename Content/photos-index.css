@@ -41,8 +41,13 @@
         margin-bottom: 0 !important;
         padding-top: 15px;
         padding-bottom: 15px;
-        color: black !important;
+        color: #333 !important;
         font-weight: normal !important;
+        /*font-family: 'Quicksand', "Times New Roman", Times, serif;*/
+    }
+    #category-navigation a:hover {
+        text-decoration: none !important;
+        background-color: #eeeeee !important;
     }
 
     /*category button*/

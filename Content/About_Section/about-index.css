@@ -27,6 +27,7 @@
     padding-bottom: 30px;
     /*margin bottom*/
     margin-bottom: 30px !important;
+    letter-spacing: -0.01em;
 }
 
     /*default container title - top center of border*/
@@ -37,7 +38,7 @@
         /*making larger container sicnce its inline*/
         padding: 10px;
         /*text color and size*/
-        color: black;
+        color: #333;
         font-size: 1.1em;
         /*round border*/
         border-radius: 2px;
@@ -47,6 +48,7 @@
         top: 0;
         left: 50%;
         transform: translate(-50%, -50%);
+        font-family: 'Kaushan Script', cursive;
     }
     /*every ul inside should have 0 list style and default padding*/
     .about-content-container ul {
@@ -57,6 +59,8 @@
 /*default body container styles*/
 .container-body {
     text-align: center;
+    font-family: 'Quicksand', "Times New Roman", Times, serif;
+    color: #555;
 }
     /*default ul style - when normalize used*/
     .container-body ul {
@@ -90,11 +94,16 @@
 
 
 /*PROFILE SECTION - START*/
+#profile-container {
+    padding-left: 20px;
+    padding-right: 20px;
+}
 
 /*profile description*/
 .profile-about {
     /*extra margin on top*/
     margin-top: 20px;
+    
 }
 
 /*style for img inside profile container (self picture)*/

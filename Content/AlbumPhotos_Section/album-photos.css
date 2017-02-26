@@ -89,12 +89,17 @@
         .album-view-wrapper .album-view-description .description-wrapper .text-wrapper .title {
             /*margin-bottom: 20px;*/
             text-align: center;
+            
+        }
+        .album-view-wrapper .album-view-description .description-wrapper .text-wrapper .title h3 {
+            font-family: 'Kaushan Script', cursive !important;
         }
         /*DATE STYLES*/
         .album-view-wrapper .album-view-description .description-wrapper .text-wrapper .date {
             margin-top: 10px;
             margin-bottom: 30px;
             font-style: italic;
+            font-family: 'Kaushan Script', cursive !important;
         }
 
         /*DESCRIPTION STYLES*/

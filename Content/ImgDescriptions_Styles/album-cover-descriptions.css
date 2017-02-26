@@ -54,6 +54,7 @@
 
     /*text color*/
     color: whitesmoke;
+    font-family: 'Kaushan Script', cursive;
 
     /*positioned botom side, 25% height*/
     left: 0;
@@ -130,4 +131,6 @@
     /*top margin for space between album name and album date*/
     margin-top: 5%;
    /*font-style: italic;*/
+    font-family: 'Quicksand';
+    font-weight: bold;
 }
