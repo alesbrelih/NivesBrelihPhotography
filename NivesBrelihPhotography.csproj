@@ -403,6 +403,7 @@
     <Content Include="fonts\Custom Fonts\jane_austen\JaneAusU.ttf" />
     <Content Include="Images\Profile\include.txt" />
     <Content Include="Images\Profile_Img\nives.jpg" />
+    <Content Include="Images\RichPreview\link_photo.jpg" />
     <Content Include="nbpIcon.ico" />
     <Content Include="Scripts\Admin_Angular\app.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-about\main\admin.about.main.controller.js" />

@@ -13,8 +13,6 @@
             //currently scrolling flag
             var scrolling = false;
 
-
-
             //move view function
             //move forward argument is bool that indicates +x instead of -x
             function moveReferencesView(moveForward) {
