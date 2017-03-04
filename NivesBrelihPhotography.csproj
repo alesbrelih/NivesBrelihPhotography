@@ -51,6 +51,14 @@
       <HintPath>..\packages\Microsoft.AspNet.WebHelpers.3.2.3\lib\net45\Microsoft.Web.Helpers.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -363,8 +371,12 @@
     <Content Include="Content\ImgDescriptions_Styles\cover-descriptions-containers.css" />
     <Content Include="Content\ImgDescriptions_Styles\photo-cover-descriptions.css" />
     <Content Include="Content\Lightbox\lightbox.css" />
+    <Content Include="Content\OwlCarousel\owl.carousel.css" />
+    <Content Include="Content\OwlCarousel\owl.theme.default.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\photos-index.css" />
     <Content Include="Content\References_Styles\references-index.css" />
+    <Content Include="Content\References_Styles\references-reference.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="Content\WelcomeCarousel_Styles\welcome-carousel.css" />
     <Content Include="favicon.ico" />
@@ -378,6 +390,8 @@
     <Content Include="Images\Lightbox\loading.gif" />
     <Content Include="Images\Lightbox\next.png" />
     <Content Include="Images\Lightbox\prev.png" />
+    <Content Include="Images\OwlCarousel\ajax-loader.gif" />
+    <Content Include="Images\OwlCarousel\owl.video.play.png" />
     <Content Include="Images\Photos\MID\include.txt" />
     <Content Include="Images\Photos\MIN\include.txt" />
     <Content Include="Images\Photos\nivesBrelihPhoto.jpg" />
@@ -526,6 +540,7 @@
     <Content Include="Scripts\Lightbox\lightbox-plus-jquery.js" />
     <Content Include="Scripts\Lightbox\lightbox.js" />
     <Content Include="Scripts\Nicescroll\jquery.nicescroll.min.js" />
+    <Content Include="Scripts\OwlCarousel\owl.carousel.js" />
     <Content Include="Scripts\photosIndex.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -539,6 +554,7 @@
     <Content Include="Scripts\masonry.pkgd.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\References_Section\references-index.js" />
+    <Content Include="Scripts\References_Section\references-reference.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\WelcomeCarousel_Scripts\welcome-carousel.js" />

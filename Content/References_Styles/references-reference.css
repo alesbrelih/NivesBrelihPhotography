@@ -1,0 +1,29 @@
+﻿.reference-wrapper {
+        margin-top: 20px;
+    }
+    .reference-header {
+        margin-bottom: 20px;
+    }
+    .reference-header p {
+        margin-top: 20px;
+        font-family: 'Quicksand';
+    }
+    h4 {
+        font-weight: 300;
+        color: #333;
+        text-align: center;
+    }
+    .owl-carousel .owl-item img {
+        max-width: 100%;
+    }
+    .owl-carousel .owl-item img.portrait {
+        max-height: 700px;
+        display: block;
+        width: auto !important;
+        margin: 0 auto;
+    }
+    .owl-carousel .owl-item img.landscape {
+        max-width: 100%;
+        display: block;
+        margin: 0 auto;
+    }

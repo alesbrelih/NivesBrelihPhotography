@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using NivesBrelihPhotography.DbContexts;
 using NivesBrelihPhotography.Models.AboutModels.ViewModels;
 using NivesBrelihPhotography.Models.PhotoModels.ViewModels;
+using PagedList;
 
 namespace NivesBrelihPhotography.Controllers
 {
@@ -18,7 +19,7 @@ namespace NivesBrelihPhotography.Controllers
         private NbpContext _db = new NbpContext();
 
         // GET: References
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(int? page, int pageSize = 5)
         {
             //get all reference photos
             var references = await _db.References.OrderBy(x => x.ReferenceId)
@@ -34,8 +35,10 @@ namespace NivesBrelihPhotography.Controllers
                 })
                 .ToListAsync();
 
+            int pageNumber = (page ?? 1);
+
             //return view with data
-            return View(references);
+            return View(references.ToPagedList(pageNumber,pageSize));
         }
 
         //GET: single reference detailed information

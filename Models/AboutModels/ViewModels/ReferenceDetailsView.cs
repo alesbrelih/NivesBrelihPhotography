@@ -27,7 +27,7 @@ namespace NivesBrelihPhotography.Models.AboutModels.ViewModels
             Description = referenceDb.ReferenceDescription;
             foreach (var photoRef in referenceDb.Photos.OrderBy(x=>x.PhotoId).Take(10))
             {
-                ReferencePhotos.Add(new PhotoView() {PhotoTitle = photoRef.Photo.PhotoTitle,PhotoUrl = photoRef.Photo.PhotoUrl});
+                ReferencePhotos.Add(new PhotoView() {PhotoTitle = photoRef.Photo.PhotoTitle,PhotoUrl = photoRef.Photo.PhotoUrl, Orientation = photoRef.Photo.Orientation});
             }
         }
 
