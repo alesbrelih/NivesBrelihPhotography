@@ -222,6 +222,8 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
                 ReferenceDescription = reference.Description
             };
 
+            referenceDb.LeadPhotoId = reference.LeadPhotoId;
+
             //if reference contains reference photos
             if (reference.ReferencePhotos.Any())
             {
@@ -271,6 +273,9 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
             referenceDb.ReferenceTitle = reference.Title;
             referenceDb.ReferenceDescription = reference.Description;
 
+            //set lead photo
+            referenceDb.LeadPhotoId = reference.LeadPhotoId;
+
             //set photos
             //get previous photos 
             var previousPhotos = referenceDb.Photos.Select(x => x.PhotoId.ToString());
@@ -307,6 +312,7 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
             {
                 Id = referenceDb.ReferenceId,
                 Title = referenceDb.ReferenceTitle,
+                LeadPhotoId = referenceDb.LeadPhotoId,
                 Description = referenceDb.ReferenceDescription
             };
 
