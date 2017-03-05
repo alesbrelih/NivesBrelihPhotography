@@ -60,6 +60,9 @@ namespace NivesBrelihPhotography.DbContexts
         //photoshoot reviews
         public DbSet<PhotoShootReview> PhotoShootReviews { get; set; }
 
+        //working with table
+        public DbSet<WorkingWith> WorkingWiths { get; set; }
+
         #endregion
 
         #region onModelCreatig

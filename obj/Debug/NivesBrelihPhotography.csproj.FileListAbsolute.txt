@@ -353,3 +353,5 @@ E:\NivesBrelihPhotography\NivesBrelihPhotography\bin\PagedList.dll
 E:\NivesBrelihPhotography\NivesBrelihPhotography\bin\PagedList.Mvc.dll
 E:\NivesBrelihPhotography\NivesBrelihPhotography\bin\PagedList.xml
 E:\NivesBrelihPhotography\NivesBrelihPhotography\bin\PagedList.Mvc.xml
+E:\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotography.Migrations.NbpContextMigrations.Addedworkingwithtable.resources
+E:\NivesBrelihPhotography\NivesBrelihPhotography\obj\Debug\NivesBrelihPhotography.Migrations.NbpContextMigrations.AddedImportancetoworkingwithtable.resources

@@ -217,6 +217,7 @@
     <Compile Include="Controllers\Api\ReferencesApiController.cs" />
     <Compile Include="Controllers\Api\ReviewsApiController.cs" />
     <Compile Include="Controllers\Api\SocialsApiController.cs" />
+    <Compile Include="Controllers\Api\WorkingWithApiController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -236,6 +237,7 @@
     <Compile Include="HelperClasses\DatabaseCommunication\CategoriesDatabase.cs" />
     <Compile Include="HelperClasses\DatabaseCommunication\PhotosDatabase.cs" />
     <Compile Include="HelperClasses\DatabaseCommunication\ProfileDatabase.cs" />
+    <Compile Include="HelperClasses\DatabaseCommunication\WorkingWithDatabase.cs" />
     <Compile Include="HelperClasses\FileManipulate.cs" />
     <Compile Include="HelperClasses\HelperMethods.cs" />
     <Compile Include="HelperClasses\HttpPostedFileBaseExtensions.cs" />
@@ -243,6 +245,14 @@
     <Compile Include="Migrations\NbpContextMigrations\201702261619355_Adding category to album, adding lead photo to reference model.cs" />
     <Compile Include="Migrations\NbpContextMigrations\201702261619355_Adding category to album, adding lead photo to reference model.Designer.cs">
       <DependentUpon>201702261619355_Adding category to album, adding lead photo to reference model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\NbpContextMigrations\201703050812433_Added working with table.cs" />
+    <Compile Include="Migrations\NbpContextMigrations\201703050812433_Added working with table.Designer.cs">
+      <DependentUpon>201703050812433_Added working with table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\NbpContextMigrations\201703050817363_Added Importance to working with table.cs" />
+    <Compile Include="Migrations\NbpContextMigrations\201703050817363_Added Importance to working with table.Designer.cs">
+      <DependentUpon>201703050817363_Added Importance to working with table.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\NbpContextMigrations\Configuration.cs" />
     <Compile Include="Models\AboutModels\PhotoShootReview.cs" />
@@ -255,6 +265,7 @@
     <Compile Include="Models\AboutModels\ViewModels\Admin ViewModels\AdminAboutProfileLinkUpdate.cs" />
     <Compile Include="Models\AboutModels\ViewModels\Admin ViewModels\AdminAboutReferenceModify.cs" />
     <Compile Include="Models\AboutModels\ViewModels\Admin ViewModels\AdminAboutReferencesListItem.cs" />
+    <Compile Include="Models\AboutModels\ViewModels\Admin ViewModels\AdminAboutWorkingWithModify.cs" />
     <Compile Include="Models\AboutModels\ViewModels\Admin ViewModels\AdminPhotoShootReviewCreate.cs" />
     <Compile Include="Models\AboutModels\ViewModels\PhotoShotReviewView.cs" />
     <Compile Include="Models\AboutModels\ViewModels\ProfileLinkView.cs" />
@@ -262,6 +273,7 @@
     <Compile Include="Models\AboutModels\ViewModels\ReferenceDetailsView.cs" />
     <Compile Include="Models\AboutModels\ViewModels\ReferencePhotoView.cs" />
     <Compile Include="Models\AboutModels\ViewModels\ReferenceView.cs" />
+    <Compile Include="Models\AboutModels\WorkingWith.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BlogModels\Blog.cs" />
     <Compile Include="Models\BlogModels\BlogCategory.cs" />
@@ -422,6 +434,7 @@
     <Content Include="Images\Profile\include.txt" />
     <Content Include="Images\Profile_Img\nives.jpg" />
     <Content Include="Images\RichPreview\link_photo.jpg" />
+    <Content Include="Images\WorkingWith\include.txt" />
     <Content Include="nbpIcon.ico" />
     <Content Include="Scripts\Admin_Angular\app.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-about\main\admin.about.main.controller.js" />
@@ -637,6 +650,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\NbpContextMigrations\201702261619355_Adding category to album, adding lead photo to reference model.resx">
       <DependentUpon>201702261619355_Adding category to album, adding lead photo to reference model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\NbpContextMigrations\201703050812433_Added working with table.resx">
+      <DependentUpon>201703050812433_Added working with table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\NbpContextMigrations\201703050817363_Added Importance to working with table.resx">
+      <DependentUpon>201703050817363_Added Importance to working with table.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

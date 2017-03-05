@@ -131,5 +131,14 @@ namespace NivesBrelihPhotography.Resources.Layout {
                 return ResourceManager.GetString("Slovenian", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Working With.
+        /// </summary>
+        public static string WorkingWith {
+            get {
+                return ResourceManager.GetString("WorkingWith", resourceCulture);
+            }
+        }
     }
 }
