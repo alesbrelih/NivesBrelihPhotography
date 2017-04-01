@@ -12,6 +12,7 @@ namespace NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels.
 
         public string Name { get; set; }
         public string Description { get; set; }
+        public int? CategoryId { get; set; }
         public DateTime Date { get; set; }
         public int AlbumCover { get; set; }
         public List<string> Photos { get; set; }

@@ -33,7 +33,7 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
                     Id = x.PhotoAlbumId,
                     Name = x.AlbumName,
                     Description = x.AlbumDescription,
-                    Date = x.AlbumDate,
+                    Date = x.AlbumDate
                 });
 
             });
@@ -69,6 +69,7 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
                 Id = albumDb.PhotoAlbumId,
                 Name = albumDb.AlbumName,
                 Description = albumDb.AlbumDescription,
+                CategoryId = albumDb.CategoryId
             };
 
             // get album photos ids
@@ -133,7 +134,8 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
             {
                 AlbumDate = DateTime.Now,
                 AlbumName = album.Name,
-                AlbumDescription = album.Description
+                AlbumDescription = album.Description,
+                CategoryId = album.CategoryId
             };
 
             //save db model so we get id
@@ -212,6 +214,7 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
             // 1. modify static data
             albumDb.AlbumName = album.Name;
             albumDb.AlbumDescription = album.Description;
+            albumDb.CategoryId = album.CategoryId;
 
             // 2. set cover photo
             //check if album.cover is not null or empty //because album has to have cover photo when editing it

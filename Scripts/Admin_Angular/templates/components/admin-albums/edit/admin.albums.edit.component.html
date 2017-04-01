@@ -21,6 +21,23 @@
                 </div>
             </div>
             <div class="form-group">
+                <label for="categories" class="col-sm-2 control-label"> Category </label>
+                <div class="col-sm-10">
+                    <select class="form-control" ng-model="vm.Album.CategoryId" id="categories">
+                        <option ng-repeat="category in vm.Categories" value="{{category.CategoryId}}">{{category.CategoryName}}</option>
+                    </select>
+
+
+                    <label id="new-category" ng-click="vm.newCategoryForm = true" ng-hide="vm.newCategoryForm == true" class="control-label">New Category</label>
+
+                    <div class="new-category-wrapper" ng-show="vm.newCategoryForm">
+                        <input type="text" ng-model="vm.Category.CategoryName" class="form-control" placeholder="Category Name">
+                        <i class="glyphicon glyphicon-plus" ng-click="vm.CreateCategory()"></i>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group">
                 <div class="col-sm-2 control-label">
                     Cover
                 </div>

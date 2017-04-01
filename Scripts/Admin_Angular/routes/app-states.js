@@ -122,7 +122,12 @@
                 // -- ADMIN ALBUM ADD SECTION --- //
                 .state("albums-add", {
                     url: "/albums/add",
-                    template: "<admin-albums-add></admin-albums-add>"
+                    template: "<admin-albums-add></admin-albums-add>",
+                    resolve: {
+                        categories:['CategoriesService',function(CategoriesService) {
+                            return CategoriesService.GetCategories();
+                        }]
+                    }
                 })
                 //-- ADMIN ALBUM EDIT SECTION --- //
                 .state("albums-edit", {
@@ -133,6 +138,11 @@
                             "AlbumsService", "$stateParams", function(AlbumsService, $stateParams) {
                                 //return promise with selected album from params id
                                 return AlbumsService.GetAlbum($stateParams.id);
+                            }
+                        ],
+                        categories: [
+                            "CategoriesService",function(CategoriesService) {
+                                return CategoriesService.GetCategories();
                             }
                         ]
                     }

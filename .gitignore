@@ -53,14 +53,4 @@ bin
 App_Data
 obj
 /Images/Photos
-/Temp/BodyPart_f8400e38-c408-4f32-b008-e22db97e5eeb
-/Temp/BodyPart_e4ff7b5f-1598-4656-84c8-f59815b9e5c6
-/Temp/BodyPart_ccc108c9-056e-4900-8df6-40873e30836a
-/Temp/BodyPart_b60f433a-ed8d-427d-8b0b-01a493795bd7
-/Temp/BodyPart_8bba85ab-891e-44f1-bfc2-92f1cccbea90
-/Temp/BodyPart_8a4ced0f-3cb6-40c4-8be8-059a928cf79e
-/Temp/BodyPart_6f700b21-6643-4732-8a77-644c55047a2b
-/Temp/BodyPart_6cbf783d-f562-4dff-985b-fb2523de3bf7
-/Temp/BodyPart_56ac5572-7fb3-4ebe-96a5-1dffe080728e
-/Temp/BodyPart_529dac9a-5c4a-44dc-8ec5-865ad23966b7
-/Temp/BodyPart_101b698d-90ee-4c69-9fc7-9b604ceef719
+/Temp/BodyPart_*
