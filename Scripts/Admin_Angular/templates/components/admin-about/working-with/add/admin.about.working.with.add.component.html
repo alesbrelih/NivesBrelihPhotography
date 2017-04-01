@@ -1,0 +1,76 @@
+﻿<<br />
+
+
+<div class="row modify-photo-container" ng-if="vm.status.upload != 'uploading'">
+    <p ng-show="!vm.callback" class="back-anchor">
+        <a ui-sref="about-working-with">Back</a>
+    </p>
+
+    <!--PICTURE PREVIEW-->
+    <div class="photo-preview-container">
+        <img ng-show="addPhotoForm.photoUpload.$valid" ng-src="{{vm.previewPhoto}}" alt="Photo preview"/>
+        <img ng-show="addPhotoForm.photoUpload.$invalid" src="/Images/Photos/PhotoNotAvailable.jpg" alt=""/>
+    </div>
+
+    <form name="addPhotoForm" class="form-horizontal" novalidate ng-submit="vm.AddWorkingWith()">
+        <fieldset>
+            <div class="form-group">
+                <label for="inputPhoto" class="col-lg-2 control-label">Photo</label>
+                <div class="col-lg-10 browse-photo">
+                    <label for="inputPhoto"><i class="glyphicon glyphicon-file btn btn-info"></i></label>
+                    <input type="file" class="form-control" id="inputPhoto" name="photoUpload" required ng-model="vm.WorkingWith.Photo" ab-photo-input preview-img="vm.previewPhoto">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputTitle" class="col-lg-2 control-label">Title</label>
+                <div class="col-lg-10">
+                    <input type="text" ng-model="vm.WorkingWith.Title" required class="form-control" id="inputTitle" placeholder="Title">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputDescription" class="col-lg-2 control-label">Title</label>
+                <div class="col-lg-10">
+                    <textarea ng-model="vm.WorkingWith.Description" class="form-control" id="inputDescription" placeholder="Description"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputLink" class="col-lg-2 control-label">Link</label>
+                <div class="col-lg-10">
+                    <input type="text" ng-model="vm.WorkingWith.Link" required class="form-control" id="inputLink" placeholder="Link">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputLinkText" class="col-lg-2 control-label">Link Text</label>
+                <div class="col-lg-10">
+                    <input type="text" ng-model="vm.WorkingWith.LinkText" required class="form-control" id="inputLinkText" placeholder="Link Text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="importance" class="col-lg-2 control-label"> Importance </label>
+                <div class="col-lg-10">
+                    <select required class="form-control" ng-model="vm.WorkingWith.Importance" id="importance">
+                        <option ng-repeat="current in vm.ImportanceRange" value="{{current}}">{{current}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-4">
+                    <button type="submit" ng-disabled="addPhotoForm.$invalid" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+
+</div>
+
+<!--status bar for when uploading-->
+<div class="loader-wrapper" ng-if="vm.status.upload == 'uploading'">
+    <div class="loader">
+
+    </div>
+    <div class="loader-text">
+        Please Wait
+    </div>
+</div>
+

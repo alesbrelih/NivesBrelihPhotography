@@ -88,7 +88,32 @@
                         ]
                     }
                 })
-
+                // -- ADMIN WORKINGWITH SECTION --- //
+                .state("about-working-with", {
+                    url: "/about/working-with",
+                    template: "<admin-about-working-with></admin-about-working-with>",
+                    resolve: {
+                        list:["WorkingWithService",function(WorkingWithService) {
+                            return WorkingWithService.Refresh();
+                        }]
+                    }
+                })
+                .state("about-working-with-add", {
+                    url: "/about/working-with-add",
+                    template: "<admin-about-working-with-add></admin-about-working-with-add>"
+                })
+                .state("about-working-with-edit", {
+                    url: "/about/working-with-edit/:id",
+                    template: "<admin-about-working-with-edit item='$resolve.workingWith'></admin-about-working-with-edit>",
+                    resolve: {
+                        workingWith: [
+                            "$stateParams", "WorkingWithService", function ($stateParams, WorkingWithService) {
+                                return WorkingWithService.Get($stateParams.id);
+                            }
+                        ]
+                    }
+                    
+                })
                 // ---- ADMIN ALBUMS SECTION ---- //
                 .state("albums", {
                     url: "/albums",

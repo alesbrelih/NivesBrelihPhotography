@@ -1,0 +1,44 @@
+﻿<br />
+
+<div class="row" id="admin-photos-index">
+    <p class="back-anchor">
+        <a ui-sref="about-main">Back</a>
+    </p>
+
+    <p class="new-item">
+        <i ui-sref="about-working-with-add" class="glyphicon glyphicon-plus text-primary"></i>
+    </p>
+
+    <br />
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Link</th>
+                <th>Link Text</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="admin-photos">
+            <tr ng-repeat="workingWith in vm.workingWithList">
+                <td>
+                    {{workingWith.Title}}
+                </td>
+                <td>
+                    {{workingWith.Link}}
+                </td>
+                <td>
+                    {{workingWith.LinkText}}
+                </td>
+
+                <td class="action-btns">
+                    <button type="button" class="btn btn-warning" ui-sref="about-working-with-edit({'id':workingWith.WorkingWithId})">Edit</button>
+                    <button type="button" class="btn btn-danger" ng-click="vm.deleteWorkingWith(workingWith)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+

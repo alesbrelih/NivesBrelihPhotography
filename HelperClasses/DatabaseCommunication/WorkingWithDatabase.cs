@@ -26,6 +26,43 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
             var workingWiths = await db.WorkingWiths.ToListAsync();
             return workingWiths;
         }
+
+        /// <summary>
+        /// Get single working with
+        /// </summary>
+        /// <param name="id"> id </param>
+        /// <param name="db"> dbcontext </param>
+        /// <returns></returns>
+        public static async Task<AdminAboutWorkingWithModify> GetSingle(int? id, NbpContext db)
+        {
+            var workingWithDb = await db.WorkingWiths.FindAsync(id);
+
+            if (workingWithDb == null)
+            {
+                throw new Exception("Such id was not found in DB");
+            }
+
+            var workingWithVm = new AdminAboutWorkingWithModify()
+            {
+                Id = workingWithDb.WorkingWithId,
+                Title = workingWithDb.Title,
+                Description = workingWithDb.Description,
+                Importance =  workingWithDb.Importance,
+                Link = workingWithDb.Link,
+                LinkText = workingWithDb.LinkText,
+                PhotoUrl = workingWithDb.PhotoUrl
+            };
+
+            return workingWithVm;
+
+
+        }
+
+        //public static async Task<AdminAboutWorkingWithModify> GetSingle(int id, NbpContext db)
+        //{
+        //    //var workingWith = 
+        //}
+
         /// <summary>
         /// Add new working with
         /// </summary>
@@ -51,14 +88,20 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
             //set filepath to where file will be saved
             var directoryPath = HttpContext.Current.Server.MapPath("~/Images/WorkingWith");
 
+            var newPath = Path.Combine(directoryPath, fileName);
+            //check if file exists
+            if (File.Exists(newPath))
+            {
+                var dateString = DateTime.Now.ToString("yyyyMMddHHmmss");
+                fileName = dateString + '_' + fileName;
+            }
+
             //move file from temp folder to main folder, ovveride if needed
             //File.Move(file.LocalFileName, imagePath);
             using (var imgSizer = new ImageResizer(file.LocalFileName))
             {
                 imgSizer.ResizeForWorkingWith();
                 imgSizer.SaveWorkingWith(fileName,directoryPath);
-
-                imgSizer.SaveImages(directoryPath, fileName);
             }
 
             //dynamic path in db
@@ -93,13 +136,14 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
         {
             //get from db
             var workingWithDb = await db.WorkingWiths.FindAsync(workingWithVm.Id);
-
-
+            
+            
             // new file was uploaded
-            if (file != null) 
+            if (file != null)
             {
-                //delete previous
-                File.Delete(workingWithDb.PhotoUrl);
+                var photoUrl = HttpContext.Current.Server.MapPath(workingWithDb.PhotoUrl);
+                //Path.Combine(root, workingWithDb.PhotoUrl);
+                
 
                 //save new
                 //extract file name
@@ -117,20 +161,32 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
                 //set filepath to where file will be saved
                 var directoryPath = HttpContext.Current.Server.MapPath("~/Images/WorkingWith");
 
+                var newPath = Path.Combine(directoryPath, fileName);
+                //check if file exists
+                if (File.Exists(newPath))
+                {
+                    var dateString = DateTime.Now.ToString("yyyyMMddHHmmss");
+                    fileName = dateString + '_' + fileName;
+                }
+
                 //move file from temp folder to main folder, ovveride if needed
                 //File.Move(file.LocalFileName, imagePath);
                 using (var imgSizer = new ImageResizer(file.LocalFileName))
                 {
                     imgSizer.ResizeForWorkingWith();
                     imgSizer.SaveWorkingWith(fileName, directoryPath);
-
-                    imgSizer.SaveImages(directoryPath, fileName);
                 }
 
                 //dynamic path in db
                 workingWithVm.PhotoUrl = "/Images/WorkingWith/" + fileName;
 
                 File.Delete(file.LocalFileName); //delete bodypart
+                //delete previous
+                if (workingWithVm.PhotoUrl != workingWithDb.PhotoUrl)
+                {
+                    File.Delete(photoUrl);
+                }
+                
 
             }
 
@@ -143,7 +199,7 @@ namespace NivesBrelihPhotography.HelperClasses.DatabaseCommunication
             workingWithDb.PhotoUrl = workingWithVm.PhotoUrl;
      
 
-            db.WorkingWiths.Add(workingWithDb); //add to db
+            db.Entry(workingWithDb).State = EntityState.Modified;
 
 
             await db.SaveChangesAsync(); //Save changes to db

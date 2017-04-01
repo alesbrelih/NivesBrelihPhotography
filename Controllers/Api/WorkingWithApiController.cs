@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -17,12 +18,21 @@ namespace NivesBrelihPhotography.Controllers.Api
 
         //get all working withs
         [HttpGet]
-        public async Task<HttpResponseMessage> GetWorkingWiths()
+        public async Task<HttpResponseMessage> GetWorkingWiths(int? id = null)
         {
             try
             {
-                var query = await WorkingWithDatabase.GetAll(_db);
-                return Request.CreateResponse(HttpStatusCode.OK, query);
+                if (id != null) //return single
+                {
+                    var single = await WorkingWithDatabase.GetSingle(id, _db);
+                    return Request.CreateResponse(HttpStatusCode.OK, single);
+                }
+                else //return list
+                {
+                    var query = await WorkingWithDatabase.GetAll(_db);
+                    return Request.CreateResponse(HttpStatusCode.OK, query);
+                }
+                
 
             }
             catch (Exception ex)
@@ -31,15 +41,32 @@ namespace NivesBrelihPhotography.Controllers.Api
             }
         }
 
+        //[HttpGet]
+        //public async Task<HttpResponseMessage> GetSingleWorkingWith(int id)
+        //{
+        //    try
+        //    {
+        //        var query = await WorkingWithDatabase.GetSingle(id,_db);
+        //        return Request.CreateResponse(HttpStatusCode.OK, query);
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
+        //    }
+        //}
+
         // add new working with
         [HttpPost]
-        public async Task<HttpResponseMessage> AddWorkingWith([FromBody] HttpRequestMessage workingWithVm)
+        public async Task<HttpResponseMessage> AddWorkingWith(HttpRequestMessage workingWithVm)
         {
             //check if working with vm isnt null
             if (workingWithVm == null)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "No request body");
             }
+
+            MultipartFileData photoFile = null;
 
             //try to add
             try
@@ -57,28 +84,36 @@ namespace NivesBrelihPhotography.Controllers.Api
                 await Request.Content.ReadAsMultipartAsync(provider);
 
                 //set multipart content data and get uploaded file
-                MultipartFileData photoFile = getMultipartContent(requestBody, provider);
+                photoFile = getMultipartContent(requestBody, provider);
 
-                await WorkingWithDatabase.AddWorkingWith(requestBody,photoFile, _db);
+                await WorkingWithDatabase.AddWorkingWith(requestBody, photoFile, _db);
+
                 return Request.CreateResponse(HttpStatusCode.OK, "Success");
             }
             catch (Exception ex)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
             }
+            finally
+            {
+                if (photoFile != null && File.Exists(photoFile.LocalFileName))
+                {
+                    File.Delete(photoFile.LocalFileName); //clear temp folder
+                }
+            }
 
         }
 
         // edit working with
         [HttpPut]
-        public async Task<HttpResponseMessage> EditWorkingWith([FromBody] AdminAboutWorkingWithModify workingWithVm)
+        public async Task<HttpResponseMessage> EditWorkingWith(HttpRequestMessage workingWithVm)
         {
             //check if data was send
             if (workingWithVm == null)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "No working with data was provided");
             }
-
+            MultipartFileData photoFile = null;
             //try to edit
             try
             {
@@ -96,14 +131,23 @@ namespace NivesBrelihPhotography.Controllers.Api
                 await Request.Content.ReadAsMultipartAsync(provider);
 
                 //set multipart content data and get uploaded file
-                MultipartFileData photoFile = getMultipartContent(requestBody, provider);
+                photoFile = getMultipartContent(requestBody, provider);
 
-                await WorkingWithDatabase.EditWorkingWith(workingWithVm,photoFile,_db);
+                //get data
+                await WorkingWithDatabase.EditWorkingWith(requestBody, photoFile, _db);
                 return Request.CreateResponse(HttpStatusCode.OK, "Success");
             }
             catch (Exception ex)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
+            }
+            finally
+            {
+
+                if (photoFile != null && File.Exists(photoFile.LocalFileName))
+                {
+                    File.Delete(photoFile.LocalFileName);
+                }
             }
         }
 
@@ -157,6 +201,10 @@ namespace NivesBrelihPhotography.Controllers.Api
                     else if (key == "LinkText")
                     {
                         workingWithData.LinkText = val;
+                    }
+                    else if (key == "Importance")
+                    {
+                        workingWithData.Importance = int.Parse(val);
                     }
                 }
             }
