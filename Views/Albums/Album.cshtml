@@ -38,15 +38,16 @@
     </div>
     @*visible on smaller sscreens instead of big cover photo*@
     <div class="album-view-description-small-screen">
-        <br />
+        <br/>
         <h3>@Model.AlbumDescription.AlbumName</h3>
         @*<p class="date">@Model.AlbumDescription.AlbumDate</p>*@
         @if (@Model.AlbumDescription.AlbumText != null && @Model.AlbumDescription.AlbumText != "/")
         {
             <p class="description">@Model.AlbumDescription.AlbumText</p>
         }
-        <hr />
+        <hr/>
     </div>
+
     <div id="photos" class="masonry-layout album-body" data-photo-type="photos">
         <div class="grid-sizer col-xs-12 col-sm-6 col-md-4"></div>
         @foreach (var photo in Model.AlbumPhotos)
