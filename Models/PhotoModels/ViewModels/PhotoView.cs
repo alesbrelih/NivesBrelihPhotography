@@ -18,5 +18,11 @@ namespace NivesBrelihPhotography.Models.PhotoModels.ViewModels
         [Display(Name = "Photo Title")]
         [Required(ErrorMessage = "Write photo title.")]
         public string PhotoTitle { get; set; }
+
+        //orientation
+        public string Orientation { get; set; }
+
+        //return orientation string
+        public string GetOrientation => Orientation == "P" ? "portrait" : "landscape";
     }
 }

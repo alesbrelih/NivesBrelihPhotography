@@ -32,35 +32,35 @@
 
 
         </div>
-        <div class="background-img" style="background: url('/Images/Photos/ORG/@Model.AlbumDescription.AlbumCover'); background-size: cover; background-position: center;">
+        <div id="move-to-bottom" class="background-img" style="background: url('/Images/Photos/ORG/@Model.AlbumDescription.AlbumCover'); background-size: cover; background-position: center;">
             <div class="glyphicon glyphicon-menu-down"></div>
         </div>
     </div>
     @*visible on smaller sscreens instead of big cover photo*@
     <div class="album-view-description-small-screen">
-        <br />
+        <br/>
         <h3>@Model.AlbumDescription.AlbumName</h3>
         @*<p class="date">@Model.AlbumDescription.AlbumDate</p>*@
         @if (@Model.AlbumDescription.AlbumText != null && @Model.AlbumDescription.AlbumText != "/")
         {
             <p class="description">@Model.AlbumDescription.AlbumText</p>
         }
-        <hr />
+        <hr/>
     </div>
-    <div id="photos" class="masonry-layout album-body" data-photo-type="photos">
-        <div class="grid-sizer col-xs-12 col-sm-6 col-md-4"></div>
+
+    <div id="photos" class="owl-carousel owl-theme album-body" data-photo-type="photos">
+
         @foreach (var photo in Model.AlbumPhotos)
         {
-            <div class="masonry-image img-container col-xs-12 col-sm-6 col-md-4">
-                <div class="img-wrapper">
-                    <a href="~/Images/Photos/MID/@photo.PhotoUrl" data-lightbox="@Model.AlbumDescription.AlbumId">
-                        <img alt="@photo.PhotoTitle" src="/Images/Photos/MIN/@photo.PhotoUrl" class="img-responsive"/>
-                        <div class="img-description">
-                            <span>@photo.PhotoTitle</span>
-                        </div>
-                    </a>
+            <div class="owl-photo masonry-image">
+                <a href="~/Images/Photos/MID/@photo.PhotoUrl" data-lightbox="@Model.AlbumDescription.AlbumId">
+                    <img alt="@photo.PhotoTitle" src="/Images/Photos/MID/@photo.PhotoUrl" class="img-responsive"/>
+                    <div class="img-description">
+                        <span>@photo.PhotoTitle</span>
+                    </div>
+                </a>
                 </div>
-            </div>
+
         }
     </div>
 </div>

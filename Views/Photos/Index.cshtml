@@ -7,39 +7,34 @@
 }
 <br>
 <div class="row">
-    <label id="category-button" type="button" class="btn btn-default">
-        @*<span class="glyphicon glyphicon-menu-hamburger"></span>*@
-        <span class="glyphicon glyphicon-menu-up"></span>
-        
-    </label>
-    @*category nav bar for photos*@
-    <div id="category-navigation" class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+    <div class="portfolio-categories-container">
+        <ul id="portfolio-categories" class="categories row">
+            @*category for all can be hardcoded*@
+            @*calling masonry on updated targets with OnSuccess*@
+            <li>
+                @Ajax.ActionLink("All", "Index", null, new AjaxOptions() { InsertionMode = InsertionMode.ReplaceWith, UpdateTargetId = "photos", OnSuccess = "SetMasonryPhotosIndex()" }, null)
+            </li>
 
-            <ul id="category-selector" class="nav nav-pills nav-stacked text-center">
-                @*category for all can be hardcoded*@
-                @*calling masonry on updated targets with OnSuccess*@
-                <li>
-                    @Ajax.ActionLink("All", "Index", null, new AjaxOptions() {InsertionMode = InsertionMode.ReplaceWith, UpdateTargetId = "photos", OnSuccess = "SetMasonryPhotosIndex()"}, new {@class = "h5"})
-                </li>
-
-                @*dynamical display of all categories*@
-                @{
-                    foreach (Category category in ViewBag.Categories)
-                    {
-                        <li role="presentation">
-                            @Ajax.ActionLink(category.CategoryTitle, "Index", new {categoryId = category.CategoryId}, new AjaxOptions() {InsertionMode = InsertionMode.ReplaceWith, UpdateTargetId = "photos", OnSuccess = "SetMasonryPhotosIndex()" }, new {@class = "h5"})
-                        </li>
-                    }
+            @*dynamical display of all categories*@
+            @{
+                foreach (Category category in ViewBag.Categories)
+                {
+                    <li role="presentation">
+                        @Ajax.ActionLink(category.CategoryTitle, "Index", new { categoryId = category.CategoryId }, new AjaxOptions() { InsertionMode = InsertionMode.ReplaceWith, UpdateTargetId = "photos", OnSuccess = "SetMasonryPhotosIndex()" }, null)
+                    </li>
                 }
-            </ul>
-
+            }
+        </ul>
     </div>
-
 
     <div id="photo-container" class="col-md-12">
 
         @Html.Partial("_indexPhotos", Model)
 
+    </div>
+
+    <div id="move-to-top">
+        <span class="glyphicon glyphicon-menu-up"></span>
     </div>
 
 </div>

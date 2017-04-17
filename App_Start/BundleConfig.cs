@@ -11,7 +11,10 @@ namespace NivesBrelihPhotography
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery.unobtrusive-ajax.js",
-                        "~/Scripts/Lightbox/lightbox.js"
+                        "~/Scripts/bg-loaded.js",
+                        "~/Scripts/jQtransit/jquery.transit.min.js",
+                        "~/Scripts/Lightbox/lightbox.js",
+                        "~/Scripts/OwlCarousel/owl.carousel.min.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -30,7 +33,9 @@ namespace NivesBrelihPhotography
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Content/Lightbox/lightbox.css"));
+                      "~/Content/Lightbox/lightbox.css",
+                      "~/Content/OwlCarousel/owl.carousel.css",
+                      "~/Content/OwlCarousel/owl.theme.default.css"));
 
 
             bundles.Add(new ScriptBundle("~/bundles/page-index-scripts").Include(
@@ -94,18 +99,6 @@ namespace NivesBrelihPhotography
                 ));
 
 
-            //about reference
-            bundles.Add(new StyleBundle("~/Content/about-reference-styles").Include(
-                "~/Content/ImgDescriptions_Styles/photo-cover-descriptions.css",
-                "~/Content/EnlargePhoto_Lib_Styles/enlarge-photo-styles.css",
-                "~/Content/About_Section/about-reference.css"
-                ));
-            bundles.Add(new ScriptBundle("~/bundles/about-reference-scripts").Include(
-                "~/Scripts/ImgDescription_Scripts/cover-descriptions-scripts.js",
-                "~/Scripts/EnlargePhoto_Lib/enlarge-photo-scripts.js",
-                "~/Scripts/About_Section/about-reference.js"
-                ));
-
             //about reviews - currently only style bundle
             bundles.Add(new StyleBundle("~/Content/about-reviews-styles").Include(
                 "~/Content/About_Section/about-reviews.css"
@@ -148,9 +141,15 @@ namespace NivesBrelihPhotography
             // references controller bundles
 
             //scripts
-            bundles.Add(new ScriptBundle("~/bundles/references-index-scripts").Include(
-                "~/Scripts/References_Section/references-index.js"
+            bundles.Add(new ScriptBundle("~/bundles/references-reference-scripts").Include(
+                "~/Scripts/References_Section/references-reference.js"
                 ));
+
+            // styles
+            bundles.Add(new StyleBundle("~/Content/references-reference-styles").Include(
+                "~/Content/References_Styles/references-reference.css"
+                ));
+
 
             // styles
             bundles.Add(new StyleBundle("~/Content/references-index-styles").Include(
@@ -158,7 +157,7 @@ namespace NivesBrelihPhotography
                 ));
 
             // home welcome carousel bundles
-            
+
             //scripts
             bundles.Add(new ScriptBundle("~/bundles/welcome-carousel-scripts").Include(
                     "~/Scripts/WelcomeCarousel_Scripts/welcome-carousel.js"

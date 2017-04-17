@@ -5,7 +5,7 @@
     var app = angular.module("adminApp");
 
     // admin album edit controller
-    function albumEditComponentController(AlbumsService,$q,PhotosService,$scope) {
+    function albumEditComponentController(AlbumsService,$q,PhotosService,CategoriesService) {
         
         //current scope
         var vm = this;
@@ -21,15 +21,23 @@
 
                 vm.Album = album;
                 vm.Photos = photos;
+                
+                if (vm.Album.CategoryId && vm.Album.CategoryId != null) {
+                    vm.Album.CategoryId = vm.Album.CategoryId.toString();
+                }
 
                 },
             function(err) {
                 console.log(err);
             });
         }
-
-        //get data
-        getAllData();
+        vm.$onInit = function () {
+            vm.Categories = CategoriesService.Categories;
+            //get data
+            getAllData();
+            
+        }
+        
 
         //edit album
         vm.EditAlbum = function() {
@@ -44,7 +52,7 @@
 
     }
 
-    albumEditComponentController.$inject = ["AlbumsService", "$q","PhotosService","$scope"];
+    albumEditComponentController.$inject = ["AlbumsService", "$q","PhotosService","CategoriesService"];
 
     //register component
     app.component("adminAlbumsEdit", {

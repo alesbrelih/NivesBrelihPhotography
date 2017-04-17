@@ -29,7 +29,10 @@
         //set scroll for category navigation
         $("#category-navigation").niceScroll();
 
-        //function that sets masonry on photos
+        //move to top btn
+        $("#move-to-top").on("click", function() {
+            $("body").animate({ "scrollTop": "0px" }, 500);
+        });
 
 
         //currentPageofPhotos
@@ -90,7 +93,13 @@
         }
 
 //when scroled to bottom trying to load more images if wanted to
-        $(window).scroll(function() {
+        $(window).scroll(function () {
+
+            if ($(window).scrollTop() === 0) {
+                $("#move-to-top").fadeOut();
+            } else {
+                $("#move-to-top").fadeIn();
+            }
 
             //if we havent reached the end of photos already we try loading more
             if (!photosEnd) {

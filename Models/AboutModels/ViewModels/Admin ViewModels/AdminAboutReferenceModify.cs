@@ -14,6 +14,8 @@ namespace NivesBrelihPhotography.Models.AboutModels.ViewModels.Admin_ViewModels
 
         public string Description { get; set; }
 
+        public int? LeadPhotoId { get; set; }
+
         public ICollection<string> ReferencePhotos { get; set; }
 
         //empty constructor

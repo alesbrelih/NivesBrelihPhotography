@@ -18,47 +18,84 @@ namespace NivesBrelihPhotography.Controllers
         private NbpContext db = new NbpContext();
 
         // GET: Albums
-        [Route("{pageNumber=0}")]
-        public async Task<ActionResult> Index(int pageNumber = 0)
+        [Route("{pageNumber=0}/{categoryId=null}")]
+        public async Task<ActionResult> Index(int pageNumber = 0, int? categoryId = null)
         {
             //ajax request
             //
             if (Request.IsAjaxRequest())
             {
-                var query = await db.AlbumCovers.OrderBy(x => x.Album.AlbumDate).Skip(pageNumber * 10)
-                    .Take(10)
-                    .Select(x => new PhotoAlbumView()
-                    {
-                        PhotoAlbumId = x.Album.PhotoAlbumId,
-                        AlbumName = x.Album.AlbumName,
-                        AlbumPhotoUrl = x.Photo.PhotoUrl ?? Properties.Resources.NoAlbumCoverPhoto,
-                        AlbumDate = x.Album.AlbumDate
-                    }).ToListAsync();
 
-                if (pageNumber == 0)
+                if (pageNumber != 0)
                 {
-                    return PartialView("_indexAlbums", query);
+                    var query = await db.AlbumCovers
+                        .OrderBy(x => x.Album.AlbumDate)
+                        .Skip(pageNumber*10)
+                        .Take(10)
+                        .Select(x => new PhotoAlbumView()
+                        {
+                            PhotoAlbumId = x.Album.PhotoAlbumId,
+                            AlbumName = x.Album.AlbumName,
+                            AlbumPhotoUrl = x.Photo.PhotoUrl ?? Properties.Resources.NoAlbumCoverPhoto,
+                            AlbumDate = x.Album.AlbumDate
+                        }).ToListAsync();
 
+                    return Json(query, JsonRequestBehavior.AllowGet);
                 }
                 else
                 {
-                    return Json(query, JsonRequestBehavior.AllowGet);
+                    if (categoryId == null)
+                    {
+                        var query = await db.AlbumCovers.OrderBy(x => x.Album.AlbumDate)
+                        .Skip(pageNumber * 10)
+                        .Take(10)
+                        .Select(x => new PhotoAlbumView()
+                        {
+                            PhotoAlbumId = x.Album.PhotoAlbumId,
+                            AlbumName = x.Album.AlbumName,
+                            AlbumPhotoUrl = x.Photo.PhotoUrl ?? Properties.Resources.NoAlbumCoverPhoto,
+                            AlbumDate = x.Album.AlbumDate
+                        }).ToListAsync();
+                        return PartialView("_indexAlbums", query);
+                    }
+                    else
+                    {
+                        var query = await db.AlbumCovers.OrderBy(x => x.Album.AlbumDate)
+                        .Where(x => x.Album.CategoryId == categoryId)
+                        .Skip(pageNumber * 10)
+                        .Take(10)
+                        .Select(x => new PhotoAlbumView()
+                        {
+                            PhotoAlbumId = x.Album.PhotoAlbumId,
+                            AlbumName = x.Album.AlbumName,
+                            AlbumPhotoUrl = x.Photo.PhotoUrl ?? Properties.Resources.NoAlbumCoverPhoto,
+                            AlbumDate = x.Album.AlbumDate
+                        }).ToListAsync();
+                        return PartialView("_indexAlbums", query);
+                    }
+                    
+
+                    
                 }
+  
             }
             //query to find all albums and its cover photos
-            else
-            {
-                var query = await db.AlbumCovers.OrderBy(x => x.Album.AlbumDate)
-                    .Take(10).Select(x => new PhotoAlbumView()
-                    {
-                        PhotoAlbumId = x.Album.PhotoAlbumId,
-                        AlbumName = x.Album.AlbumName,
-                        AlbumPhotoUrl = x.Photo.PhotoUrl ?? Properties.Resources.NoAlbumCoverPhoto,
-                        AlbumDate = x.Album.AlbumDate
-                    }).ToListAsync();
-                return View(query);
-            }
+            
+            var queryDefault = await db.AlbumCovers.OrderBy(x => x.Album.AlbumDate)
+                .Take(10).Select(x => new PhotoAlbumView()
+                {
+                    PhotoAlbumId = x.Album.PhotoAlbumId,
+                    AlbumName = x.Album.AlbumName,
+                    AlbumPhotoUrl = x.Photo.PhotoUrl ?? Properties.Resources.NoAlbumCoverPhoto,
+                    AlbumDate = x.Album.AlbumDate
+                }).ToListAsync();
 
+            //get categories with albums
+            var categories =
+                await db.Categories.Where(x => x.Albums.Count > 0).OrderBy(x => x.CategoryTitle).ToListAsync();
+            ViewBag.Categories = categories;
+
+            return View(queryDefault);
         }
 
         // GET: Single album

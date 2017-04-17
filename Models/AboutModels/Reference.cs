@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NivesBrelihPhotography.Models.PhotoModels;
 
 namespace NivesBrelihPhotography.Models.AboutModels
 {
@@ -21,7 +22,12 @@ namespace NivesBrelihPhotography.Models.AboutModels
 
         public string ReferenceDescription { get; set; }
 
-        //all photos
+        // lead photo //added 26.2.2017
+        [ForeignKey("LeadPhotoId")]
+        public virtual Photo LeadPhoto { get; set; }
+        public int? LeadPhotoId { get; set; }
+
+        //all photos    
         public virtual ICollection<ReferencePhoto> Photos { get; set; }
 
 

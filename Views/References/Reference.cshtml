@@ -1,0 +1,48 @@
+﻿@using System.Web.Razor.Generator
+@model NivesBrelihPhotography.Models.AboutModels.ViewModels.ReferenceDetailsView
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="reference-wrapper">
+    <div class="reference-header">
+        <h4>@Model.Title</h4>
+        @if (!string.IsNullOrEmpty(Model.Description))
+        {
+            <p>
+                @Model.Description
+            </p>
+
+        }
+        
+    </div>
+    <div class="owl-carousel owl-theme">
+        
+        @foreach (var photo in Model.ReferencePhotos)
+        {
+            
+           <img src="/Images/Photos/MID/@photo.PhotoUrl" class="@photo.GetOrientation" alt="@photo.PhotoTitle" />
+    
+
+
+        }
+    </div>
+</div>
+
+
+@section scripts
+{
+
+    @Scripts.Render("~/bundles/references-reference-scripts");
+
+
+}
+@section CustomStyles
+{
+    @Styles.Render("~/Content/references-reference-styles")
+}
+
+
+
+

@@ -1,82 +1,68 @@
-﻿
-/*references wrapper styles */
-.references-wrapper {
-    position: absolute;
-    top: 90px;
-    bottom: 40px;
-    left: 0px;
-    right: 0px;
-    overflow: hidden;
+﻿.reference-group {
+        display: table;
+        height: 300px;
+        border-bottom: 1px solid #eee;
+        transition: all 150ms ease-in-out;
+        cursor: pointer;
+        
+    }
+.reference-link:hover {
+    text-decoration: none !important;
 }
-    
-    /* left anchor*/
-    .references-wrapper .left-anchor-container {
-        position: fixed;
-        width: 100px;
-        height: 200px;
-        left: 0px;
-        top: 50%;
-        transform: translateY(-50%);
+    .reference-group:hover {
+        background-color: #efefef;
+        border-radius: 4px;
+        
+        box-shadow: 0px 0px 5px #333;
+
+    }
+    .reference-group:hover p {
+        color: #333 !important;
+        
+    }
+    .reference-group:first-of-type {
+        margin-top: 20px;
+    }
+    .reference-group:last-of-type{
+        border: none;
+    }
+    .reference-group .reference-photo-index {
+        display: table-cell;
+        width: 50%;
+        vertical-align: middle;
+        padding: 10px;
+        
+    }
+    .reference-group .reference-photo-index img {
+        border-radius: 4px;
+        border: 1px solid #eee;
+    }
+    .reference-group .reference-photo-index img.ref-photo {
+        max-width: 80%;
+    }
+    .reference-group .reference-text-index {
+        display: table-cell;
+        vertical-align: middle;
+        padding: 10px;
+        text-align: center;
+        font-family: 'Kaushan Script', cursive;
+        color: #777777 !important;
+
+        
     }
 
-    /* right anchor*/
-    .references-wrapper .right-anchor-container {
-        position: fixed;
-        right: 0px;
-        width: 100px;
-        height: 200px;
-        top: 50%;
-        transform: translateY(-50%);
+    .pagination-container {
+        text-align: center;
+        font-size: 0.85em;
+        
     }
-
-/*anchor span container*/
-.anchor-wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    color: white;
-}
-    
-/*right*/
-    .anchor-wrapper.right {
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
+    .pagination-container .pagination li>a {
+        font-family: 'Kaushan Script';
+        color: #777;
     }
-    /*left*/
-    .anchor-wrapper.left {
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
+    .pagination-container .pagination li:hover:not(.active) a {
+        color: #333;
     }
-
-    /*hover*/
-    .anchor-wrapper:hover {
-        color: black;
-        background-color: white;
-        background-color: rgba(255, 255, 255, 0.4);
-    }
-
-    /*glyphicon*/
-    .anchor-wrapper .glyphicon {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 2em;
-    }
-
-/* references content*/
-.references-wrapper .references-content {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    white-space: nowrap;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-    .references-wrapper .references-content .reference-photo-carousel {
-        max-height: 100%;
-        display: inline-block;
+    .pagination-container .pagination li.active:hover a {
+        color: #777;
     }

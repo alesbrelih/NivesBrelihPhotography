@@ -15,6 +15,7 @@
                 vm.CurrentReference = success[1].data;
                 vm.Photos = success[0].photos;
 
+                console.log(vm.CurrentReference);
 
             });
 

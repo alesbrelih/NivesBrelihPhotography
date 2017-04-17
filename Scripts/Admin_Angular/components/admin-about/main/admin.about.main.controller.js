@@ -33,6 +33,11 @@
                 state:"about-reviews",
                 title: "Reviews",
                 body: "Reviews section, where you can add,modify or delete reviews"
+            },
+            {
+                state:"about-working-with",
+                title: "Working With",
+                body: "Working With section, where you can add,modify or delete persons / cooperations you are working with."
             }
         ];
 

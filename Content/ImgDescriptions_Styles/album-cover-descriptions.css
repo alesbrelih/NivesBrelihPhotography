@@ -112,7 +112,18 @@
     /*font size*/
     font-size: 20px;
 
+    background-color: rgba(51,51,51, 0.8);
+    padding: 15px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+
+    letter-spacing: 0.05em;
+
     /*font outline text (black lines)*/
+    -ms-text-shadow: -1px -1px 0 #000,  
+                 1px -1px 0 #000,
+                 -1px 1px 0 #000,
+                 1px 1px 0 #000;
     text-shadow: -1px -1px 0 #000,  
     1px -1px 0 #000,
     -1px 1px 0 #000,
@@ -120,7 +131,11 @@
 
     /*visible on the black background*/
     z-index: 150;
+    -webkit-box-shadow: 0px 0px 5px black;
+    -ms-box-shadow: 0px 0px 5px black;
+    box-shadow: 0px 0px 5px black;
 }
+
 .album-date {
     /*block position so its displayed below album name*/
     display: block;

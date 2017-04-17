@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NivesBrelihPhotography.Models.CategoryModels;
 
 namespace NivesBrelihPhotography.Models.PhotoModels
 {
@@ -21,6 +22,12 @@ namespace NivesBrelihPhotography.Models.PhotoModels
         public DateTime AlbumDate{ get; set; }  //album date
 
         public string AlbumDescription { get; set; } //album description
+
+        //album category // added 26.2.2017
+        [ForeignKey("CategoryId")]
+        public virtual Category Category { get; set; }
+
+        public int? CategoryId { get; set; }
 
 
         public virtual ICollection<Photo> AlbumPhotos { get; set; }  //all album photos

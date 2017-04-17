@@ -1,6 +1,14 @@
 ﻿// functional scoping, to avoid global variables
+$("#move-to-bottom").bgLoaded(
+{
+    afterLoaded: function () {
+        $(".description-wrapper").animate({
+            width: "30%" 
+            }, 4000);
+    }
 
-(function (jQuery) {
+});
+(function (jQuery,lightbox) {
     var $ = jQuery;
 
     $(function () {
@@ -68,15 +76,43 @@
         //enable enlarge photo
         //EnablePhotoZoom("#content-container", ".masonry-image");
 
-        //setMasonry
-        $($("#content-container").imagesLoaded(function () {
-            $('.masonry-layout').masonry({
-                // options
-                itemSelector: '.masonry-image',
-                columnWidth: '.grid-sizer'
-                //percentPosition: true
-            });
-        }));
+        $(".owl-carousel.album-body").imagesLoaded(function() {
+            //setMasonry
+            $(".owl-carousel.album-body").owlCarousel({
+                autoWidth: true,
+                lazyLoad: 3,
+                margin: 2,
+                autoplay: true,
+                loop: true,
+                center: true,
+                nav: true,
+                dots: true,
+                autoplayHoverPause: true,
+                smartSpeed: 2000,
+                navSpeed: 2000,
+                autoplaySpeed: 2000,
+                navText: ['<span class="glyphicon glyphicon-chevron-left"></span>', '<span class="glyphicon glyphicon-chevron-right"></span>'],
+                onInitialized: function (event) {
+                    $(".owl-carousel.album-body").fadeIn();
+                    $(".owl-prev").addClass("owl-prev-custom");
+                    $(".owl-next").addClass("owl-next-custom");
+                }
+        });
+        
+
+            
+        });
+        
+        $("#move-to-bottom").on("click", function (ev) {
+            var $topOff = $("#photos").offset().top;
+            $("body").animate({
+                scrollTop: $topOff
+
+            }, 1500);
+        });
+        lightbox.option({
+            showImageNumberLabel: false
+        });
 
         //on scroll
         $(window).scroll(function () {
@@ -109,6 +145,6 @@
         });
     });
 
-})(window.jQuery);
+})(window.jQuery,window.lightbox);
 
 

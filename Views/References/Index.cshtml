@@ -1,37 +1,29 @@
-﻿@model ICollection<NivesBrelihPhotography.Models.AboutModels.ReferencePhoto>
+﻿@using PagedList.Mvc
+@model PagedList.PagedList<NivesBrelihPhotography.Models.AboutModels.ViewModels.ReferenceView>
 @{
     ViewBag.Title = "References";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="references-wrapper">
-    <div class="references-content">
-        <div class="left-anchor-container">
-            <div id="left-arrow" class="anchor-wrapper left">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-            </div>
-        </div>
-
-        @foreach (var photo in Model)
-        {
-            <img class="reference-photo-carousel" src="/Images/Photos/MID/@photo.Photo.PhotoUrl"/>
-        }
-
-        <div class="right-anchor-container">
-            <div id="right-arrow" class="anchor-wrapper right">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-            </div>
-        </div>
-    </div>
-</div>
-@section scripts
+@foreach (var reference in @Model)
 {
+    <a class="reference-link" href="/References/Reference/@reference.ReferenceId">
+        <div class="reference-group">
 
-    @Scripts.Render("~/bundles/references-index-scripts");
+            <div class="reference-photo-index">
+                <img class="img-responsive ref-photo" src="/Images/Photos/MID/@reference.LeadPhoto.PhotoUrl" alt="@reference.LeadPhoto.PhotoTitle" />
+            </div>
+            <div class="reference-text-index">
+                <p>@reference.Title</p>
+            </div>
 
+        </div>
+    </a>
 }
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
 @section CustomStyles
 {
-    @Styles.Render("~/Content/references-index-styles")
+    @Styles.Render("~/Content/references-index-styles");
 }
-

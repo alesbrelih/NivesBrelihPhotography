@@ -1,4 +1,5 @@
 ﻿@using System.Collections
+@using NivesBrelihPhotography.Models.CategoryModels
 @model IEnumerable<NivesBrelihPhotography.Models.PhotoModels.ViewModels.PhotoAlbumView>
 
 @{
@@ -10,12 +11,68 @@
 
 <br/>
 
+<div class="album-categories-container">
+    <ul id="album-categories" class="categories row">
+        @*category for all can be hardcoded*@
+        @*calling masonry on updated targets with OnSuccess*@
+        <li>
+            @Ajax.ActionLink("All", "Index", null, new AjaxOptions() { InsertionMode = InsertionMode.ReplaceWith, UpdateTargetId = "photos", OnSuccess = "SetMasonryAlbums()" }, null)
+        </li>
+
+        @*dynamical display of all categories*@
+        @{
+            foreach (Category category in ViewBag.Categories)
+            {
+                <li role="presentation">
+                    @Ajax.ActionLink(category.CategoryTitle, "Index", new { categoryId = category.CategoryId }, new AjaxOptions() { InsertionMode = InsertionMode.ReplaceWith, UpdateTargetId = "photos", OnSuccess = "SetMasonryAlbums()" }, null)
+                </li>
+            }
+        }
+    </ul>
+
+</div>
 
 <div id="content-container">
 
-    @Html.Partial("_indexAlbums",Model)
+    @Html.Partial("_indexAlbums", Model)
 
 </div>
+<style>
+    .album-categories-container ul.categories {
+
+        margin: 0px 30px 20px 0;
+    }
+     .album-categories-container ul.categories li {
+         display: inline-block;
+         float: right;
+
+         font-family: 'Quicksand', cursive;
+         
+         font-size: 1.05em;
+         font-weight: bold;
+         padding: 0 5px;
+         font-style: oblique;
+     }
+     .album-categories-container ul.categories li:not(:last-of-type):before {
+         content: '/';
+         padding-right: 10px;
+     }
+     .album-categories-container ul.categories li a {
+         color: #333;
+     }
+     /*.album-categories-container ul.categories li a:active {
+         color: #eb6864 !important;
+         text-decoration: none;
+     }
+     .album-categories-container ul.categories li a:focus {
+         color: #eb6864 !important;
+         text-decoration: none;
+     }*/
+     .album-categories-container ul.categories li:hover a{
+         color: #eb6864 !important;
+         text-decoration: none;
+     }
+</style>
 
 @section scripts
 {

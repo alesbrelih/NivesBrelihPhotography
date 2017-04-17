@@ -141,4 +141,7 @@
   <data name="Slovenian" xml:space="preserve">
     <value>Slovensko</value>
   </data>
+  <data name="WorkingWith" xml:space="preserve">
+    <value>Sodelujem z</value>
+  </data>
 </root>

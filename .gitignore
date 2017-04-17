@@ -53,3 +53,4 @@ bin
 App_Data
 obj
 /Images/Photos
+/Temp/BodyPart_*

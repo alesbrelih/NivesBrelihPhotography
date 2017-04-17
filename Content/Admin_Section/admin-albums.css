@@ -48,6 +48,31 @@
         margin-left :20px;
     }
 
+    /* new category section*/
+    /*new category label (opens input to create category)*/
+    #albums-add-wrapper #new-category {
+         color: #eb6864;
+         cursor: pointer;
+     }
+    #albums-add-wrapper #new-category:hover {
+        text-decoration: underline;
+    }
+
+    /*wrapper form new category input fields*/
+    #albums-add-wrapper .new-category-wrapper {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        
+    }
+    #albums-add-wrapper .new-category-wrapper i {
+        color:#eb6864;
+        font-size: 1.5em;
+        margin-left: 20px;
+        cursor: pointer;
+    }
+
+
     /*responsivness*/
     @media(max-width: 550px) {
          #albums-view .albums-actions {

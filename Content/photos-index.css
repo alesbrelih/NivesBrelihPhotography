@@ -1,41 +1,35 @@
 ﻿/*IMAGES, CONTAINERS AND IMAGE DESCRIPTIONS CSS*/
 
-    /*remove overflow*/
-    .overflow-hidden {
-        overflow: hidden;
-    }
+/*remove overflow*/
+.overflow-hidden {
+    overflow: hidden;
+}
 
-    
-    /*CATEGORY SELECTION CSS*/
 
-    /*category navigation div styles*/
-     #category-navigation {
+/*CATEGORY SELECTION CSS*/
 
-         /*first hidden to toggle it with jquery*/
-         display: none; 
+/*category navigation div styles*/
+#category-navigation {
+    /*first hidden to toggle it with jquery*/
+    display: none;
+    /*fixed position to be always on screen*/
+    position: fixed;
+    /*location*/
+    bottom: 100px;
+    right: 100px;
+    /*visual changes to div*/
+    padding: 0;
+    background-color: white;
+    border: 1px groove darkgray;
+    border-radius: 4px;
+    z-index: 1000;
+    /*limit size*/
+    max-height: 50vh;
+    overflow-y: auto;
+}
 
-         /*fixed position to be always on screen*/
-         position: fixed; 
-
-         /*location*/
-         bottom: 100px;
-         right: 100px;
-
-         /*visual changes to div*/
-         padding: 0;
-         background-color: white;
-         border: 1px groove darkgray;
-         border-radius: 4px;
-         z-index: 1000;
-
-         /*limit size*/
-         max-height: 50vh;
-         overflow-y: auto;
-     }
-
-     /*category navigation links*/
+    /*category navigation links*/
     #category-navigation a {
-
         /*visual changes*/
         margin-top: 0 !important;
         margin-bottom: 0 !important;
@@ -45,50 +39,43 @@
         font-weight: normal !important;
         /*font-family: 'Quicksand', "Times New Roman", Times, serif;*/
     }
-    #category-navigation a:hover {
-        text-decoration: none !important;
-        background-color: #eeeeee !important;
-    }
 
-    /*category button*/
-    #category-button {
+        #category-navigation a:hover {
+            text-decoration: none !important;
+            background-color: #eeeeee !important;
+        }
 
-        /*position fixed to be always shown on screen*/
-        position: fixed;
-
-        /*size*/
-        /*height: 40px;
+/*category button*/
+#category-button {
+    /*position fixed to be always shown on screen*/
+    position: fixed;
+    /*size*/
+    /*height: 40px;
         width: 45px;*/
-
-        padding: 25px 30px;
-        
-        
-        font-size: 1.2em;
-
-        /*location to right*/
-        right: 100px;
-
-        /*location*/
-        bottom: 40px;
-        z-index: 1000;
-        
-        /*visual changes*/
-        background-color: white;
-        color: darkgray;
-        border-color: darkgray;
-    }
+    padding: 25px 30px;
+    font-size: 1.2em;
+    /*location to right*/
+    right: 100px;
+    /*location*/
+    bottom: 40px;
+    z-index: 1000;
+    /*visual changes*/
+    background-color: white;
+    color: darkgray;
+    border-color: darkgray;
+}
 
     /*category button on hover visual changes*/
     #category-button:hover {
-        background-color:#eee;
+        background-color: #eee;
         color: black;
+    }
+/*category button when clicked, same as hover*/
+.category-button-active {
+    background-color: #eee !important;
+    color: black !important;
+}
 
-    }
-    /*category button when clicked, same as hover*/
-    .category-button-active {
-        background-color:#eee !important;
-        color: black !important;
-    }
 #category-button > span {
     position: absolute;
     top: 50%;
@@ -100,20 +87,78 @@
     transform: translate(-50%, -50%);
 }
 
+#move-to-top {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 40px; /*on screen > 1200 else 40px*/
+    -webkit-box-shadow: 0px 0px 3px black;
+    -ms-box-shadow: 0px 0px 3px black;
+    box-shadow: 0px 0px 3px black;
+    background-color: white;
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #333;
+    z-index: 1231231231;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+    transition: all 150ms ease-in;
+    cursor: pointer;
+}
+
+    #move-to-top:hover {
+        background-color: white;
+    }
+
+    #move-to-top .glyphicon {
+        padding: 20px;
+        font-size: 1.5em;
+    }
+
+
+.portfolio-categories-container ul.categories {
+    margin: 0px 30px 20px 0;
+}
+
+    .portfolio-categories-container ul.categories li {
+        display: inline-block;
+        float: right;
+        font-family: 'Quicksand', cursive;
+        font-size: 1.05em;
+        font-weight: bold;
+        padding: 0 5px;
+        font-style: oblique;
+    }
+
+        .portfolio-categories-container ul.categories li:not(:last-of-type):before {
+            content: '/';
+            padding-right: 10px;
+        }
+
+        .portfolio-categories-container ul.categories li a {
+            color: #333;
+        }
+
+        .portfolio-categories-container ul.categories li:hover a {
+            color: #eb6864 !important;
+            text-decoration: none;
+        }
+
+@media (min-width: 1200px) {
+    #move-to-top {
+        right: 240px;
+    }
+}
+
 /*responsivness for navigation button / list*/
 @media(max-width: 800px) {
-    
+
     #category-button {
         right: 60px;
     }
-    #category-navigation {
 
+    #category-navigation {
         left: 30px;
         right: 30px;
-
         width: auto !important;
     }
-
 }
-
-

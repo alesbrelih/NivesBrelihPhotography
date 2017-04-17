@@ -51,6 +51,14 @@
       <HintPath>..\packages\Microsoft.AspNet.WebHelpers.3.2.3\lib\net45\Microsoft.Web.Helpers.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -209,6 +217,7 @@
     <Compile Include="Controllers\Api\ReferencesApiController.cs" />
     <Compile Include="Controllers\Api\ReviewsApiController.cs" />
     <Compile Include="Controllers\Api\SocialsApiController.cs" />
+    <Compile Include="Controllers\Api\WorkingWithApiController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -228,6 +237,7 @@
     <Compile Include="HelperClasses\DatabaseCommunication\CategoriesDatabase.cs" />
     <Compile Include="HelperClasses\DatabaseCommunication\PhotosDatabase.cs" />
     <Compile Include="HelperClasses\DatabaseCommunication\ProfileDatabase.cs" />
+    <Compile Include="HelperClasses\DatabaseCommunication\WorkingWithDatabase.cs" />
     <Compile Include="HelperClasses\FileManipulate.cs" />
     <Compile Include="HelperClasses\HelperMethods.cs" />
     <Compile Include="HelperClasses\HttpPostedFileBaseExtensions.cs" />
@@ -243,6 +253,7 @@
     <Compile Include="Models\AboutModels\ViewModels\Admin ViewModels\AdminAboutProfileLinkUpdate.cs" />
     <Compile Include="Models\AboutModels\ViewModels\Admin ViewModels\AdminAboutReferenceModify.cs" />
     <Compile Include="Models\AboutModels\ViewModels\Admin ViewModels\AdminAboutReferencesListItem.cs" />
+    <Compile Include="Models\AboutModels\ViewModels\Admin ViewModels\AdminAboutWorkingWithModify.cs" />
     <Compile Include="Models\AboutModels\ViewModels\Admin ViewModels\AdminPhotoShootReviewCreate.cs" />
     <Compile Include="Models\AboutModels\ViewModels\PhotoShotReviewView.cs" />
     <Compile Include="Models\AboutModels\ViewModels\ProfileLinkView.cs" />
@@ -250,6 +261,7 @@
     <Compile Include="Models\AboutModels\ViewModels\ReferenceDetailsView.cs" />
     <Compile Include="Models\AboutModels\ViewModels\ReferencePhotoView.cs" />
     <Compile Include="Models\AboutModels\ViewModels\ReferenceView.cs" />
+    <Compile Include="Models\AboutModels\WorkingWith.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BlogModels\Blog.cs" />
     <Compile Include="Models\BlogModels\BlogCategory.cs" />
@@ -359,8 +371,12 @@
     <Content Include="Content\ImgDescriptions_Styles\cover-descriptions-containers.css" />
     <Content Include="Content\ImgDescriptions_Styles\photo-cover-descriptions.css" />
     <Content Include="Content\Lightbox\lightbox.css" />
+    <Content Include="Content\OwlCarousel\owl.carousel.css" />
+    <Content Include="Content\OwlCarousel\owl.theme.default.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\photos-index.css" />
     <Content Include="Content\References_Styles\references-index.css" />
+    <Content Include="Content\References_Styles\references-reference.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="Content\WelcomeCarousel_Styles\welcome-carousel.css" />
     <Content Include="favicon.ico" />
@@ -374,6 +390,8 @@
     <Content Include="Images\Lightbox\loading.gif" />
     <Content Include="Images\Lightbox\next.png" />
     <Content Include="Images\Lightbox\prev.png" />
+    <Content Include="Images\OwlCarousel\ajax-loader.gif" />
+    <Content Include="Images\OwlCarousel\owl.video.play.png" />
     <Content Include="Images\Photos\MID\include.txt" />
     <Content Include="Images\Photos\MIN\include.txt" />
     <Content Include="Images\Photos\nivesBrelihPhoto.jpg" />
@@ -404,6 +422,7 @@
     <Content Include="Images\Profile\include.txt" />
     <Content Include="Images\Profile_Img\nives.jpg" />
     <Content Include="Images\RichPreview\link_photo.jpg" />
+    <Content Include="Images\WorkingWith\include.txt" />
     <Content Include="nbpIcon.ico" />
     <Content Include="Scripts\Admin_Angular\app.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-about\main\admin.about.main.controller.js" />
@@ -413,6 +432,9 @@
     <Content Include="Scripts\Admin_Angular\components\admin-about\references\edit\admin.about.references.edit.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-about\reviews\admin.about.reviews.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-about\social-links\admin.about.social.links.component.js" />
+    <Content Include="Scripts\Admin_Angular\components\admin-about\working-with\add\admin.about.working.with.add.component.js" />
+    <Content Include="Scripts\Admin_Angular\components\admin-about\working-with\admin.about.working.with.component.js" />
+    <Content Include="Scripts\Admin_Angular\components\admin-about\working-with\edit\admin.about.working.with.edit.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-albums\add\admin.albums.add.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-albums\admin.albums.component.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-albums\edit\admin.albums.edit.component.js" />
@@ -436,6 +458,7 @@
     <Content Include="Scripts\Admin_Angular\services\CmsService\cms.service.js" />
     <Content Include="Scripts\Admin_Angular\services\PhotosService\photos.service.js" />
     <Content Include="Scripts\Admin_Angular\services\ProfileService\profile.service.js" />
+    <Content Include="Scripts\Admin_Angular\services\WorkingWithService\working.with.service.js" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-about\main\admin.about.main.controller.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-about\personal\admin.about.personal.controller.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-about\references\add\admin.about.references.add.component.html" />
@@ -443,6 +466,9 @@
     <Content Include="Scripts\Admin_Angular\templates\components\admin-about\references\edit\admin.about.references.edit.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-about\reviews\admin.about.reviews.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-about\social-links\admin.about.social.links.component.html" />
+    <Content Include="Scripts\Admin_Angular\templates\components\admin-about\working-with\add\admin.about.working.with.add.component.html" />
+    <Content Include="Scripts\Admin_Angular\templates\components\admin-about\working-with\admin.about.working.with.component.html" />
+    <Content Include="Scripts\Admin_Angular\templates\components\admin-about\working-with\edit\admin.about.working.with.edit.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-albums\add\admin.albums.add.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-albums\admin.albums.component.html" />
     <Content Include="Scripts\Admin_Angular\templates\components\admin-albums\edit\admin.albums.edit.component.html" />
@@ -512,6 +538,7 @@
     <Content Include="Scripts\Admin_Section\admin-index.js" />
     <Content Include="Scripts\AlbumPhotos_Section\album-photos-from-blog.js" />
     <Content Include="Scripts\AlbumPhotos_Section\album-section.js" />
+    <Content Include="Scripts\bg-loaded.js" />
     <Content Include="Scripts\Blog_Section\blog-index.js" />
     <Content Include="Scripts\Blog_Section\blog-view.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -519,9 +546,12 @@
     <Content Include="Scripts\EnlargePhoto_Lib\enlarge-photo-scripts.js" />
     <Content Include="Scripts\imagesloaded.pkgd.min.js" />
     <Content Include="Scripts\ImgDescription_Scripts\cover-descriptions-scripts.js" />
+    <Content Include="Scripts\jQtransit\jquery.transit.min.js" />
     <Content Include="Scripts\Lightbox\lightbox-plus-jquery.js" />
     <Content Include="Scripts\Lightbox\lightbox.js" />
     <Content Include="Scripts\Nicescroll\jquery.nicescroll.min.js" />
+    <Content Include="Scripts\OwlCarousel\owl.carousel.js" />
+    <Content Include="Scripts\OwlCarousel\owl.carousel.min.js" />
     <Content Include="Scripts\photosIndex.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -535,6 +565,7 @@
     <Content Include="Scripts\masonry.pkgd.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\References_Section\references-index.js" />
+    <Content Include="Scripts\References_Section\references-reference.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\WelcomeCarousel_Scripts\welcome-carousel.js" />
@@ -603,6 +634,8 @@
     <Content Include="Views\References\Index.cshtml" />
     <Content Include="Views\Shared\_LogoWithText.cshtml" />
     <Content Include="Views\Shared\_Logo.cshtml" />
+    <Content Include="Views\References\Reference.cshtml" />
+    <Content Include="Views\About\WorkingWith.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Base\" />

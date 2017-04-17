@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using NivesBrelihPhotography.Models.PhotoModels;
 
 namespace NivesBrelihPhotography.Models.CategoryModels
 {
@@ -15,5 +16,8 @@ namespace NivesBrelihPhotography.Models.CategoryModels
 
         [Required]
         public string CategoryTitle { get; set; }
+
+        //albums of selected category
+        public virtual ICollection<PhotoAlbum> Albums { get; set; }
     }
 }

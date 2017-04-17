@@ -76,6 +76,13 @@ namespace NivesBrelihPhotography.Controllers
             return View(reviewsVm);
         }
 
+        // GET: WorkingWith
+        public async Task<ActionResult> WorkingWith()
+        {
+            var query = await _db.WorkingWiths.OrderByDescending(x => x.Importance).ToListAsync();
+            return View(query);
+        }
+
         //disposing
         protected override void Dispose(bool disposing)
         {

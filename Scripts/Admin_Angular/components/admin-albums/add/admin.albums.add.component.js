@@ -5,7 +5,7 @@
     var app = angular.module("adminApp");
 
     //controller function
-    function albumsAddController(PhotosService,AlbumsService,$uibModal) {
+    function albumsAddController(PhotosService,AlbumsService,CategoriesService,$uibModal) {
 
         //current scope
         var vm = this;
@@ -23,6 +23,10 @@
             AlbumCover: null,
             Photos: []
         };
+
+        vm.$onInit = function() {
+            vm.Categories = CategoriesService.Categories;
+        }
 
 
         //creates album
@@ -54,10 +58,21 @@
             vm.addPhoto = false;
         }
 
+        //create category
+        vm.CreateCategory = function () {
+
+            //hide new category input if category created.
+            CategoriesService.CreateCategory(vm.Category, true).then(function (success) {
+                vm.newCategoryForm = false;
+            }, function (err) {
+                console.log(err);
+            });
+        }
+
 
     }
 
-    albumsAddController.$inject = ["PhotosService", "AlbumsService","$uibModal"];
+    albumsAddController.$inject = ["PhotosService", "AlbumsService","CategoriesService","$uibModal"];
 
     //register component
     app.component("adminAlbumsAdd", {
