@@ -14,7 +14,7 @@ namespace NivesBrelihPhotography
                         "~/Scripts/bg-loaded.js",
                         "~/Scripts/jQtransit/jquery.transit.min.js",
                         "~/Scripts/Lightbox/lightbox.js",
-                        "~/Scripts/OwlCarousel/owl.carousel.js"
+                        "~/Scripts/OwlCarousel/owl.carousel.min.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
