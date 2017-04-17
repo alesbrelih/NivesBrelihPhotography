@@ -81,6 +81,12 @@ body {
     
 
 }
+.navbar-collapse.in {
+    -webkit-box-shadow: 0 4px 2px -2px black;
+    -ms-box-shadow: 0 4px 2px -2px black;
+    box-shadow: 0 4px 2px -2px black;
+}
+
 .navbar-default .navbar-nav > li > a{
     color: #333 !important;
 }
