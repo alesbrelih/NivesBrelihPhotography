@@ -39,7 +39,9 @@
         border-right: 2px solid #ccc;
         border-bottom: none;
     }
-
+    .album-view-wrapper .masonry-image {
+        border: none !important;
+    }
     /*bg img*/
     .album-view-wrapper .album-view-description .background-img {
         -ms-flex: 1;
@@ -149,9 +151,9 @@
 #move-to-bottom {
         cursor: pointer;
     }
-    .owl-carousel.album-body {
+    /*.owl-carousel.album-body {
         display: none;
-    }
+    }*/
     .owl-prev-custom {           
         left: 20px;
     }

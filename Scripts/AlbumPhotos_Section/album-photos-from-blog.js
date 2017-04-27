@@ -8,8 +8,43 @@ $("#move-to-bottom").bgLoaded(
     }
 
 });
-(function (jQuery,lightbox) {
+
+(function (jQuery,lightbox, document) {
     var $ = jQuery;
+
+    function fixHeight() {
+        var maxHeight = 0;
+        $.each($(".owl-item"),function(index, item) {
+            if ($(item).height() > maxHeight) {
+                maxHeight = $(item).height();
+            }
+        });
+        $(".owl-stage, .owl-stage-outer").css("height", maxHeight);
+    }
+
+    $(window).load(function () {
+        $(".owl-carousel.album-body").owlCarousel({
+            autoWidth: true,
+            autoplay: true,
+            loop: true,
+            margin: 3,
+            center: true,
+            dots: true,
+            autoplayHoverPause: true,
+            smartSpeed: 2000,
+            navSpeed: 2000,
+            autoplaySpeed: 2000,
+            navText: ['<span class="glyphicon glyphicon-chevron-left"></span>', '<span class="glyphicon glyphicon-chevron-right"></span>'],
+            onInitialized: function(ev) {
+                fixHeight();
+            },
+            onResized:function(ev) {
+                fixHeight();
+            }
+
+        });
+    });
+    
 
     $(function () {
 
@@ -75,33 +110,6 @@ $("#move-to-bottom").bgLoaded(
 
         //enable enlarge photo
         //EnablePhotoZoom("#content-container", ".masonry-image");
-
-        $(".owl-carousel.album-body").imagesLoaded(function() {
-            //setMasonry
-            $(".owl-carousel.album-body").owlCarousel({
-                autoWidth: true,
-                lazyLoad: 3,
-                margin: 2,
-                autoplay: true,
-                loop: true,
-                center: true,
-                nav: true,
-                dots: true,
-                autoplayHoverPause: true,
-                smartSpeed: 2000,
-                navSpeed: 2000,
-                autoplaySpeed: 2000,
-                navText: ['<span class="glyphicon glyphicon-chevron-left"></span>', '<span class="glyphicon glyphicon-chevron-right"></span>'],
-                onInitialized: function (event) {
-                    $(".owl-carousel.album-body").fadeIn();
-                    $(".owl-prev").addClass("owl-prev-custom");
-                    $(".owl-next").addClass("owl-next-custom");
-                }
-        });
-        
-
-            
-        });
         
         $("#move-to-bottom").on("click", function (ev) {
             var $topOff = $("#photos").offset().top;
@@ -113,6 +121,8 @@ $("#move-to-bottom").bgLoaded(
         lightbox.option({
             showImageNumberLabel: false
         });
+
+       
 
         //on scroll
         $(window).scroll(function () {
