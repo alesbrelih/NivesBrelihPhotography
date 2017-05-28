@@ -6,7 +6,8 @@
     }
     .reference-header p {
         margin-top: 20px;
-        font-family: 'Quicksand';
+        /*font-family: 'Quicksand';*/
+        font-family: 'Gilda Display', sans-serif;
     }
     h4 {
         font-weight: 300;

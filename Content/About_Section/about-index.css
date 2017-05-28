@@ -48,7 +48,8 @@
         top: 0;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-family: 'Kaushan Script', cursive;
+        /*font-family: 'Kaushan Script', cursive;*/
+        font-family: 'Petit Formal Script', cursive;
     }
     /*every ul inside should have 0 list style and default padding*/
     .about-content-container ul {
@@ -59,7 +60,8 @@
 /*default body container styles*/
 .container-body {
     text-align: center;
-    font-family: 'Quicksand', "Times New Roman", Times, serif;
+    /*font-family: 'Quicksand', "Times New Roman", Times, serif;*/
+    font-family: 'Gilda Display', sans-serif;
     color: #555;
 }
     /*default ul style - when normalize used*/

@@ -98,14 +98,16 @@
             
         }
         .album-view-wrapper .album-view-description .description-wrapper .text-wrapper .title h3 {
-            font-family: 'Kaushan Script', cursive !important;
+            /*font-family: 'Kaushan Script', cursive !important;*/
+            font-family: 'Petit Formal Script', cursive;
         }
         /*DATE STYLES*/
         .album-view-wrapper .album-view-description .description-wrapper .text-wrapper .date {
             margin-top: 10px;
             margin-bottom: 30px;
             font-style: italic;
-            font-family: 'Kaushan Script', cursive !important;
+            /*font-family: 'Kaushan Script', cursive !important;*/
+            font-family: 'Petit Formal Script', cursive;
         }
 
         /*DESCRIPTION STYLES*/

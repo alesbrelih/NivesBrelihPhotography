@@ -45,7 +45,8 @@
         vertical-align: middle;
         padding: 10px;
         text-align: center;
-        font-family: 'Kaushan Script', cursive;
+        /*font-family: 'Kaushan Script', cursive;*/
+        font-family: 'Petit Formal Script', cursive;
         color: #777777 !important;
 
         
@@ -57,7 +58,8 @@
         
     }
     .pagination-container .pagination li>a {
-        font-family: 'Kaushan Script';
+        /*font-family: 'Kaushan Script';*/
+        font-family: 'Petit Formal Script', cursive;
         color: #777;
     }
     .pagination-container .pagination li:hover:not(.active) a {

@@ -1,5 +1,5 @@
 ﻿/*img container*/
-.img-container {
+#photos-portfolio .img-container {
 /*remove padding from left and righ side of images*/
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -12,13 +12,13 @@
     justify-content: center;
     align-items: center;
 }
-.img-container .img-wrapper {
+#photos-portfolio .img-container .img-wrapper {
     position: relative;
     display: inline-block;
 }
 
 /*adding inline border hack*/
-.img-container .img-wrapper:before {
+#photos-portfolio .img-container:hover .img-wrapper:before {
     content: "";
     position: absolute;
     top: 0;
@@ -31,7 +31,7 @@
     box-shadow: inset 0 0 4px 2px #000000;
 
 }
-.masonry-image {
+#photos-portfolio .masonry-image {
          /*remove padding from left and righ side of images*/
          padding-left: 0 !important;
          padding-right: 0 !important;
@@ -43,7 +43,7 @@
          cursor: pointer;
      }
 
-.img-description {
+#photos-portfolio .img-description {
         /*img description visible on hover above picture*/
 
         position: absolute;
@@ -55,7 +55,8 @@
 
         /*text color*/
         color: whitesmoke;
-        font-family: 'Kaushan Script', cursive;
+        /*font-family: 'Kaushan Script', cursive;*/
+        font-family: 'Petit Formal Script', cursive;
 
         /*positioned botom side, 25% height*/
         left: 0;
@@ -89,14 +90,14 @@
     }
 
     /*shows description*/
-    .show-description {
+    #photos-portfolio .show-description {
         opacity: 1;
         /* IE 8 */
         -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     }
 
         /*font type form image description*/
-.img-description span {
+#photos-portfolio .img-description span {
     /*font-style: italic;*/
     /*vertical centering*/
     position: absolute;

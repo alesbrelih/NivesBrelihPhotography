@@ -56,6 +56,10 @@
     src: url('/fonts/Custom Fonts/Quicksand/Quicksand-Light.ttf') format('truetype');
 }
 
+
+
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script|Open+Sans');
+
 /*CUSTOM FONTS IMPORTING - END*/
 
 /*CUSTOM STYLES IN PAGE - START*/
@@ -69,22 +73,41 @@
 /*CUSTOM FONTS USAGE*/
 
 body {
-    font-family: "Jura-Regular";
+    font-family: "Lato";
     padding-top: 50px;
     padding-bottom: 20px;
 }
 
 .navbar {
     /*font-family: "Jura-Regular","News Cycle", "Arial Narrow Bold";*/
-    font-family: 'Kaushan Script', cursive;
+    /*font-family: 'Kaushan Script', cursive;*/
+    font-family: 'Petit Formal Script', cursive;
     font-weight: normal;
     
 
 }
-.navbar-collapse.in {
-    -webkit-box-shadow: 0 4px 2px -2px black;
-    -ms-box-shadow: 0 4px 2px -2px black;
-    box-shadow: 0 4px 2px -2px black;
+.navbar .navbar-header {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    width: 130px;
+    height: 130px;
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.navbar .container {
+    position: relative;
+}
+ul.navbar-nav {
+    margin-left: 140px;
+}
+.navbar-default .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    width: 100%;
+    background-color: white;
 }
 
 .navbar-default .navbar-nav > li > a{
@@ -95,14 +118,19 @@ body {
 }
 
 .navbar-brand {
-    font-family: "JaneAusU", "News Cycle", "Arial Narrow Bold";
+    font-family: "Petit Formal Script", "News Cycle", "Arial Narrow Bold";
     text-transform: none;
     font-weight: normal;
+}
+.body-content {
+    margin-top: 120px;
+    letter-spacing: 0.015em;
 }
 
 h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
     /*font-family: "Jura-Regular","News Cycle", "Arial Narrow Bold",sans-serif !important;*/
-    font-family: 'Kaushan Script', cursive;
+    /*font-family: 'Kaushan Script', cursive;*/
+    font-family: 'Petit Formal Script', cursive;
 }
 
 #language-selector li{
@@ -128,7 +156,11 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
     padding: 5px 20px 5px 15px;
 }
 .navbar-header > a.logo-container svg {
-    height: 100%;
+    height: 130px;
+    width: 130px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .navbar-header > a.logo-container path{
     fill: #333333;
@@ -146,6 +178,32 @@ ul.nav li a:hover {
     text-decoration: underline !important;
 }
 
+ul.nav.navbar-nav {
+    margin-left: 0px;
+    text-align: center;
+    width: 100%;
+
+}
+ul.nav.navbar-nav li {
+    display: inline-block;
+    float: none;
+}
+
+@media (max-width: 768px) {
+    .body-content {
+        margin-top: 45px;
+    }
+    ul.nav.navbar-nav li {
+        display: block;
+    }
+    .navbar-toggle {
+        position: absolute;
+        right: 0px;
+        top: 50%;
+        margin-top: 0px;
+        transform: translateY(-50%);
+    }
+}
 
 /*CUSTOM FONTS USAGE - END*/
 

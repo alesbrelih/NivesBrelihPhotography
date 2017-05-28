@@ -1,5 +1,6 @@
-﻿/*img container*/
-.img-container {
+﻿
+/*img container*/
+#albums-covers .img-container {
 /*remove padding from left and righ side of images*/
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -12,13 +13,13 @@
     align-items: center;
 }
 
-.img-container .img-wrapper {
+#albums-covers .img-container .img-wrapper {
     position: relative;
     display: inline-block;
 }
 
 /*adding inline border hack*/
-.img-container .img-wrapper:before {
+#albums-covers .img-container .img-wrapper:before {
     content: "";
     position: absolute;
     top: 0;
@@ -31,7 +32,7 @@
     box-shadow: inset 0 0 4px 2px #000000;
 
 }
-.masonry-image {
+#albums-covers .masonry-image {
          /*remove padding from left and righ side of images*/
          padding-left: 0 !important;
          padding-right: 0 !important;
@@ -44,7 +45,7 @@
      }
 
 /*div over photo on which text will be displayed*/
-.album-background {
+#albums-covers .album-background {
     /*img description visible on hover above picture*/
     position: absolute;
 
@@ -54,7 +55,8 @@
 
     /*text color*/
     color: whitesmoke;
-    font-family: 'Kaushan Script', cursive;
+    /*font-family: 'Kaushan Script', cursive;*/
+    font-family: 'Petit Formal Script', cursive;
 
     /*positioned botom side, 25% height*/
     left: 0;
@@ -75,7 +77,7 @@
 }
 
 /*shows description for jquery if needed*/
-.show-background {
+#albums-covers .show-background {
     /*opacity: 1;*/
     /* IE 8 */
     /*-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";*/
@@ -112,13 +114,12 @@
     /*font size*/
     font-size: 20px;
 
-    background-color: rgba(51,51,51, 0.8);
     padding: 15px;
     -ms-border-radius: 4px;
     border-radius: 4px;
 
-    letter-spacing: 0.05em;
-
+    letter-spacing: 0.0em;
+    font-family: 'Gilde Display', serif;
     /*font outline text (black lines)*/
     -ms-text-shadow: -1px -1px 0 #000,  
                  1px -1px 0 #000,
@@ -131,9 +132,7 @@
 
     /*visible on the black background*/
     z-index: 150;
-    -webkit-box-shadow: 0px 0px 5px black;
-    -ms-box-shadow: 0px 0px 5px black;
-    box-shadow: 0px 0px 5px black;
+
 }
 
 .album-date {
@@ -146,6 +145,7 @@
     /*top margin for space between album name and album date*/
     margin-top: 5%;
    /*font-style: italic;*/
-    font-family: 'Quicksand';
+    /*font-family: 'Quicksand';*/
+    font-family: 'Gilda Display', sans-serif;
     font-weight: bold;
 }

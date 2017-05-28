@@ -122,11 +122,11 @@
     .portfolio-categories-container ul.categories li {
         display: inline-block;
         float: right;
-        font-family: 'Quicksand', cursive;
+        /*font-family: 'Quicksand', cursive;*/
+        font-family: 'Gilda Display', sans-serif;
         font-size: 1.05em;
-        font-weight: bold;
+        font-style: italic;
         padding: 0 5px;
-        font-style: oblique;
     }
 
         .portfolio-categories-container ul.categories li:not(:last-of-type):before {

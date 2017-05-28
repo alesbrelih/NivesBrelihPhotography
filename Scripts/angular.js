@@ -257,7 +257,7 @@ function isArrayLike(obj) {
   //   via the forEach method when constructing the jqLite object in the first place
   if (isArray(obj) || isString(obj) || (jqLite && obj instanceof jqLite)) return true;
 
-  // Support: iOS 8.2 (not reproducible in simulator)
+  // Support: iOS 8.2 (not reproducible in simuLator)
   // "length" in obj used to prevent JIT error (gh-11508)
   var length = "length" in Object(obj) && obj.length;
 
