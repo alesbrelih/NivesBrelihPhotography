@@ -169,6 +169,12 @@ namespace NivesBrelihPhotography
                 ));
 
 
+            //conditions
+            bundles.Add(new StyleBundle("~/Content/conditions-styles").Include(
+                    "~/Content/Conditions_Section/conditions-index.css"
+                ));
+
+
             // ------ ANGULAR BASE BUNDLES ------- //
 
 

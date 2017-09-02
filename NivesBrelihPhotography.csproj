@@ -367,6 +367,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Conditions_Section\conditions-index.css" />
     <Content Include="Content\CustomStyles.css" />
     <Content Include="Content\EnlargePhoto_Lib_Styles\enlarge-photo-styles.css" />
     <Content Include="Content\ImgDescriptions_Styles\album-cover-descriptions.css" />

@@ -2,25 +2,26 @@
 <!DOCTYPE html>
 <html>
 <head prefix="og: http://ogp.me/ns#">
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Nives Brelih Photography</title>
-    <meta name="description" content="Se stopite ob tem pogledu? Za več fotografij kliknite na povezavo."/>
-    <meta property="og:title" content="Nives Brelih Photography"/>
-    <meta property="og:description" content="Se stopite ob tem pogledu? Za več fotografij kliknite na povezavo."/>
-    <meta property="og:url" content="http://www.nivesbrelihphotography.si/"/>
-    <meta property="og:image" content="/Images/RichPreview/link_photo.jpg"/>
+    <meta name="description" content="Se stopite ob tem pogledu? Za več fotografij kliknite na povezavo." />
+    <meta property="og:title" content="Nives Brelih Photography" />
+    <meta property="og:description" content="Se stopite ob tem pogledu? Za več fotografij kliknite na povezavo." />
+    <meta property="og:url" content="http://www.nivesbrelihphotography.si/" />
+    <meta property="og:image" content="/Images/RichPreview/link_photo.jpg" />
     <link rel="icon" href="/nbpIcon.ico">
-    <link rel="shortcut icon" href="/nbpIcon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/nbpIcon.ico" type="image/x-icon" />
     <link href="https://fonts.googleapis.com/css?family=Petit+Formal+Script" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Alegreya" rel="stylesheet">
     @Analytics.GetGoogleAsyncHtml("UA-92392838-1");
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @RenderSection("CustomStyles",required:false)
+    @RenderSection("CustomStyles", required: false)
 
-    
-   
+
+
 
 </head>
 <body>
@@ -46,7 +47,7 @@
                     <li>@Html.ActionLink(NivesBrelihPhotography.Resources.Layout.LayoutText.References, "Index", "References")</li>
                     <li>@Html.ActionLink(NivesBrelihPhotography.Resources.Layout.LayoutText.WorkingWith, "WorkingWith", "About")</li>
                     <li>@Html.ActionLink(NivesBrelihPhotography.Resources.Layout.LayoutText.About, "Index", "About")</li>
-                    <li>@Html.ActionLink(NivesBrelihPhotography.Resources.Layout.LayoutText.About, "Index", "About")</li>
+                    <li>@Html.ActionLink(NivesBrelihPhotography.Resources.Layout.LayoutText.Conditions, "Index", "Conditions")</li>
                 </ul>
                 @*@Html.Partial("_LoginPartial")*@
                 @*@Html.Partial("_LanguageSelectPartial")*@

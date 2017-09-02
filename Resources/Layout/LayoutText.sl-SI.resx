@@ -126,6 +126,9 @@
   <data name="Blog" xml:space="preserve">
     <value>Blog</value>
   </data>
+  <data name="Conditions" xml:space="preserve">
+    <value>Splošni pogoji</value>
+  </data>
   <data name="English" xml:space="preserve">
     <value>Angleško</value>
   </data>
