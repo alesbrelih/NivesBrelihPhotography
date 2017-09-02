@@ -16,6 +16,9 @@
         //set catgories
         vm.categories = CategoriesService.Categories;
         CategoriesService.GetCategories();
+        vm.Category = {
+            CategoryName: ""
+        };
 
         //set albums
         vm.albums = AlbumsService.Albums;
@@ -32,6 +35,16 @@
             BlogsService.CreateBlog(vm.Blog);
         }
 
+        //create category
+        vm.CreateCategory = function () {
+
+            //hide new category input if category created.
+            CategoriesService.CreateCategory(vm.Category, true).then(function (success) {
+                vm.newCategoryForm = false;
+            }, function (err) {
+                console.log(err);
+            });
+        }
 
     }
 
