@@ -221,6 +221,7 @@
     <Compile Include="Controllers\Api\WorkingWithApiController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\ConditionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -639,6 +640,7 @@
     <Content Include="Views\Shared\_Logo.cshtml" />
     <Content Include="Views\References\Reference.cshtml" />
     <Content Include="Views\About\WorkingWith.cshtml" />
+    <Content Include="Views\Conditions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Base\" />
