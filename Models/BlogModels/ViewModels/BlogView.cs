@@ -21,34 +21,34 @@ namespace NivesBrelihPhotography.Models.BlogModels.ViewModels
                 switch (BlogDate.Month)
                 {
                     case (1):
-                        month = "January";
+                        month = "Januar";
                         break;
                     case (2):
-                        month = "February";
+                        month = "Februar";
                         break;
                     case (3):
-                        month = "March";
+                        month = "Marec";
                         break;
                     case (4):
                         month = "April";
                         break;
                     case (5):
-                        month = "May";
+                        month = "Maj";
                         break;
                     case (6):
-                        month = "June";
+                        month = "Junij";
                         break;
                     case (7):
-                        month = "July";
+                        month = "Julij";
                         break;
                     case (8):
-                        month = "August";
+                        month = "Avgust";
                         break;
                     case (9):
                         month = "September";
                         break;
                     case (10):
-                        month = "October";
+                        month = "Oktober";
                         break;
                     case (11):
                         month = "November";
