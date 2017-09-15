@@ -1,0 +1,17 @@
+﻿.bussiness-conditions-wrapper p:not(:last-of-type) {
+    margin-bottom: 35px;
+}
+
+.bussiness-conditions-wrapper h4:first-of-type {
+    margin-top: 35px;
+}
+
+.bussiness-conditions-wrapper h4 {
+    font-weight: 300;
+}
+
+    .bussiness-conditions-wrapper h4.font-family-text {
+        font-family: 'Alegreya';
+        color: #777777;
+
+    }

@@ -48,6 +48,7 @@ $("#move-to-bottom").bgLoaded(
 
     $(function () {
 
+
         //set up nicescroll
         $(".album-view-description .description-wrapper .text-wrapper .description").niceScroll();
 
@@ -57,15 +58,19 @@ $("#move-to-bottom").bgLoaded(
             pageNumber: 1,
             endScroll: false
         }
+        var ajaxLoadPictures = false;
+
         //load more photos
         function loadContent() {
 
+            ajaxLoadPictures = true;
             $.get("/Projects/Project/"+$albumId+"/"+pageControl.pageNumber, function (data) {
 
                 if (jQuery.isEmptyObject(data)) {
 
                     //if nothing is returned we end scroll function that loads more photos
                     pageControl.endScroll = true;
+                    ajaxLoadPictures = false;
                     return;
                 }
 
@@ -97,6 +102,7 @@ $("#move-to-bottom").bgLoaded(
                     //show before masonry append
                     jqueryHtml.show();
                     container.masonry('appended', jqueryHtml);
+                    ajaxLoadPictures = false;
                     pageControl.pageNumber++;
                 });
 
@@ -145,7 +151,7 @@ $("#move-to-bottom").bgLoaded(
                 }
             }
 
-            if (!pageControl.endScroll) {
+            if (!pageControl.endScroll && !ajaxLoadPictures) {
                 if ($(window).scrollTop() + $(window).height() == $(document).height()) {  //check for new albums/photos once we reach bottom
 
                     loadContent();

@@ -423,7 +423,6 @@
     <Content Include="fonts\Custom Fonts\Jura\Jura-Regular.otf" />
     <Content Include="fonts\Custom Fonts\jane_austen\JaneAusU.ttf" />
     <Content Include="Images\Profile\include.txt" />
-    <Content Include="Images\Profile_Img\nives.jpg" />
     <Content Include="Images\RichPreview\link_photo.jpg" />
     <Content Include="Images\WorkingWith\include.txt" />
     <Content Include="nbpIcon.ico" />
@@ -513,6 +512,7 @@
     <Content Include="fonts\Custom Fonts\Quicksand\Quicksand-Medium.ttf" />
     <Content Include="fonts\Custom Fonts\Quicksand\Quicksand-Regular.ttf" />
     <None Include="Properties\PublishProfiles\nivesbrelihphotography.si - Web Deploy %286%29.pubxml" />
+    <None Include="Properties\PublishProfiles\nivesbrelihphotography.si - Web Deploy.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -644,6 +644,7 @@
     <Content Include="Views\Conditions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Images\Profile_Img\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Language\" />
   </ItemGroup>

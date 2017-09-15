@@ -20,7 +20,7 @@
     
     var $ = jQuery;
 
-
+    var ajaxLoadPictures = false;
     //DOM on READY function
     ///////////////////////
 
@@ -51,12 +51,14 @@
         //function to dynamically load json pictures 
         function loadPictures() {
             //route to controller that returns json
+            ajaxLoadPictures = true;
             $.get("/Photos/LoadPhotos", { pageNumber: pageNm + 1 }, function(data) {
                 //checking if returned json is null and stopping function
                 if (jQuery.isEmptyObject(data)) {
 
                     //we reached all photos in that category
                     photosEnd = true;
+                    ajaxLoadPictures = false;
                     return;
                 }
                 //html to be inserted
@@ -86,6 +88,7 @@
                     //show photos and append with masonry
                     jqueryHtml.show();
                     photoContainer.masonry('appended', jqueryHtml);
+                    ajaxLoadPictures = false;
                     
                 });
                 pageNm++;
@@ -102,7 +105,7 @@
             }
 
             //if we havent reached the end of photos already we try loading more
-            if (!photosEnd) {
+            if (!photosEnd && !ajaxLoadPictures) {
                 if ($(window).scrollTop() + $(window).height() == $(document).height()) {
                     loadPictures();
                 }
