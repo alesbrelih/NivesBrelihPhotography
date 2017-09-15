@@ -33,11 +33,12 @@
     /*show pointer cursor on every img hover*/
     .blog-content img {
         cursor: pointer;
+        
     }
 
     /*additional css for two photo group container*/
      .two-photo-group {
-         width: 90%;
+         max-width: 90%;
          margin-left: auto;
          margin-right: auto;
      }
@@ -64,7 +65,7 @@
 
     /*container size for images outside two photo group*/
     .blog-content > img {
-        width: 90%;
+        max-width: 90%;
         margin-left: auto;
         margin-right: auto;
     }
@@ -97,6 +98,10 @@
 }
     .blog-album-link{
         color: white;
+
     }
+.blog-album-link .album-name{
+    color: white;
+}
 
 

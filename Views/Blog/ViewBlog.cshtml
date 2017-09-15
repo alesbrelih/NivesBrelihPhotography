@@ -34,16 +34,16 @@
         @if (Model.AlbumLink)
         {
             <hr/>
-            <div class="row padding-sides-5p blog-album-link">
+            <div class="row padding-sides-5p">
                 <div class="pull-right">
                     <h5>More Photos</h5>
                 </div>
             </div>
-                <div class="row padding-sides-5p">
+                <div class="row padding-sides-5p blog-album-link">
 
                     
                     <div class="col-md-push-6 col-md-6 col-lg-push-8 col-lg-4 no-side-padding">
-                        <a href="@Url.Action("Album","Albums",new {albumId=Model.Album.PhotoAlbumId})">
+                        <a href="@Url.Action("Album","Albums",new {id=Model.Album.PhotoAlbumId})">
                             <div class="img-container">
                                 <img src="/Images/Photos/MIN/@Model.Album.AlbumPhotoUrl" class="img-responsive" />
                                 <div class="album-background">
