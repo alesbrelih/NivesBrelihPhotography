@@ -23,6 +23,7 @@
         var pageNm = 1; //starting page number
         var scrollEnd = false;
         var ajaxLoadPictures = false;
+        var $loaderWrapper = $(".loader-wrapper-photos");
 
         /*Masonry function*/
         function setMasonry() {
@@ -44,12 +45,14 @@
         function loadContent() {
             //get new albums on controller with next pageNumber
             ajaxLoadPictures = true;
+            $loaderWrapper.fadeIn();
             $.get("/Projects/"+pageNm, function (data) {
 
                 //check if it didnt return anything (end of photos/albums)
                 if (jQuery.isEmptyObject(data)) {
                     scrollEnd = true;
                     ajaxLoadPictures = false;
+                    $loaderWrapper.fadeOut();
                     return;
                 }
 
@@ -93,6 +96,7 @@
                     //show new content after photos rendered
                     jqueryHtml.show();
                     photoContainer.masonry("appended", jqueryHtml);
+                    $loaderWrapper.fadeOut();
                     ajaxLoadPictures = false;
                 });
 

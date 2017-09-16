@@ -21,6 +21,9 @@
     var $ = jQuery;
 
     var ajaxLoadPictures = false;
+
+    var $loaderWrapper = $(".loader-wrapper-photos");
+
     //DOM on READY function
     ///////////////////////
 
@@ -52,6 +55,8 @@
         function loadPictures() {
             //route to controller that returns json
             ajaxLoadPictures = true;
+
+            $loaderWrapper.fadeIn();
             $.get("/Photos/LoadPhotos", { pageNumber: pageNm + 1 }, function(data) {
                 //checking if returned json is null and stopping function
                 if (jQuery.isEmptyObject(data)) {
@@ -59,6 +64,7 @@
                     //we reached all photos in that category
                     photosEnd = true;
                     ajaxLoadPictures = false;
+                    $loaderWrapper.fadeOut();
                     return;
                 }
                 //html to be inserted
@@ -89,6 +95,7 @@
                     jqueryHtml.show();
                     photoContainer.masonry('appended', jqueryHtml);
                     ajaxLoadPictures = false;
+                    $loaderWrapper.fadeOut();
                     
                 });
                 pageNm++;

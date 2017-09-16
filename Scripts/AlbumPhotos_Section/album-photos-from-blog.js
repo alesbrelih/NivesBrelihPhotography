@@ -22,7 +22,13 @@ $("#move-to-bottom").bgLoaded(
         $(".owl-stage, .owl-stage-outer").css("height", maxHeight);
     }
 
-    $(window).load(function () {
+
+        
+
+    
+
+    $(function () {
+
         $(".owl-carousel.album-body").owlCarousel({
             autoWidth: true,
             autoplay: true,
@@ -35,19 +41,14 @@ $("#move-to-bottom").bgLoaded(
             navSpeed: 2000,
             autoplaySpeed: 2000,
             navText: ['<span class="glyphicon glyphicon-chevron-left"></span>', '<span class="glyphicon glyphicon-chevron-right"></span>'],
-            onInitialized: function(ev) {
+            onInitialized: function (ev) {
                 fixHeight();
             },
-            onResized:function(ev) {
+            onResized: function (ev) {
                 fixHeight();
             }
 
         });
-    });
-    
-
-    $(function () {
-
 
         //set up nicescroll
         $(".album-view-description .description-wrapper .text-wrapper .description").niceScroll();
@@ -64,6 +65,7 @@ $("#move-to-bottom").bgLoaded(
         function loadContent() {
 
             ajaxLoadPictures = true;
+            $loaderWrapper.fadeIn();
             $.get("/Projects/Project/"+$albumId+"/"+pageControl.pageNumber, function (data) {
 
                 if (jQuery.isEmptyObject(data)) {
