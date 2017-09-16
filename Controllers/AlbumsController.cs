@@ -108,57 +108,40 @@ namespace NivesBrelihPhotography.Controllers
                 return RedirectToAction("Index");
             }
 
-            //ajax request
-            if (Request.IsAjaxRequest())
+           
+
+
+            var selectedAlbum = await db.PhotoAlbums.FirstAsync(x => x.PhotoAlbumId == id);  //selected album
+
+            //if no album was found in db, go to index
+            if (selectedAlbum == null)
             {
-                var albumPhotos =
-                    await db.Photos.Where(x => x.PhotoAlbumId == id).OrderBy(x => x.Uploaded)
-                        .Skip(10 * pageNumber)
-                        .Take(10)
-                        .Select(x => new PhotoViewWithAlbumId()
-                        {
-                            AlbumId = id,
-                            PhotoUrl = x.PhotoUrl,
-                            PhotoTitle = x.PhotoTitle
-                        }).ToListAsync();
-                return Json(albumPhotos, JsonRequestBehavior.AllowGet);
+                return RedirectToAction("Index");
             }
-            else                  //normal call - no ajax
 
-            {
+            //get cover photo
+            var coverPhoto = db.AlbumCovers.First(x => x.AlbumId == id).Photo;  //album cover photo
 
-                var selectedAlbum = await db.PhotoAlbums.FirstAsync(x => x.PhotoAlbumId == id);  //selected album
-
-                //if no album was found in db, go to index
-                if (selectedAlbum == null)
-                {
-                    return RedirectToAction("Index");
-                }
-
-                //get cover photo
-                var coverPhoto = db.AlbumCovers.First(x => x.AlbumId == id).Photo;  //album cover photo
-
-                //case no cover photo set
-                var coverPhotoUrl = coverPhoto == null ? Properties.Resources.NoAlbumCoverPhoto : coverPhoto.PhotoUrl;
+            //case no cover photo set
+            var coverPhotoUrl = coverPhoto == null ? Properties.Resources.NoAlbumCoverPhoto : coverPhoto.PhotoUrl;
 
 
 
-                //album photos
-                var albumPhotos =
-                    await db.Photos.Where(x => x.PhotoAlbumId == id).OrderBy(x => x.Uploaded)
-                        .Take(10)
-                        .Select(x => new PhotoView() { PhotoTitle = x.PhotoTitle, PhotoUrl = x.PhotoUrl })
-                        .ToListAsync();
+            //album photos
+            var albumPhotos =
+                await db.Photos.Where(x => x.PhotoAlbumId == id).OrderBy(x => x.Uploaded)
+                    .Select(x => new PhotoView() { PhotoTitle = x.PhotoTitle, PhotoUrl = x.PhotoUrl })
+                    .ToListAsync();
 
-                //viewmodel with album description and album photos
-                var albumDesc = new AlbumView(selectedAlbum.PhotoAlbumId, selectedAlbum.AlbumName, selectedAlbum.AlbumDate,
-                    selectedAlbum.AlbumDescription,coverPhotoUrl);
+            //viewmodel with album description and album photos
+            var albumDesc = new AlbumView(selectedAlbum.PhotoAlbumId, selectedAlbum.AlbumName, selectedAlbum.AlbumDate,
+                selectedAlbum.AlbumDescription,coverPhotoUrl);
 
-                //return normal view
+            //return normal view
 
-                //return view
-                return View(new AlbumAndPhotosView(albumDesc, albumPhotos));
-            }
+            //return view
+            return View(new AlbumAndPhotosView(albumDesc, albumPhotos));
+            
 
         }
 

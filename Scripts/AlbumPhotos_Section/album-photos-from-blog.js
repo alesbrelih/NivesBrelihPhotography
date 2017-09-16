@@ -59,59 +59,7 @@ $("#move-to-bottom").bgLoaded(
             pageNumber: 1,
             endScroll: false
         }
-        var ajaxLoadPictures = false;
-
-        //load more photos
-        function loadContent() {
-
-            ajaxLoadPictures = true;
-            $loaderWrapper.fadeIn();
-            $.get("/Projects/Project/"+$albumId+"/"+pageControl.pageNumber, function (data) {
-
-                if (jQuery.isEmptyObject(data)) {
-
-                    //if nothing is returned we end scroll function that loads more photos
-                    pageControl.endScroll = true;
-                    ajaxLoadPictures = false;
-                    return;
-                }
-
-                var $html = "";
-
-                $.each(data, function (index, item) {
-                    var row = '<div class="masonry-image img-container col-xs-12 col-sm-6 col-md-4">' +
-                        '<div class="img-wrapper">'+
-                            '<a href="/Images/Photos/MID/'+item.PhotoUrl+'" data-lightbox="'+item.AlbumId+'">'+
-                                '<img alt="'+item.PhotoTitle+'" src="/Images/Photos/MIN/' + item.PhotoUrl + '" class="img-responsive"/>' +
-                                '<div class="img-description"><span>' + item.PhotoTitle + '</span></div>' +
-                            '</a>'+
-                        '</div>'+
-                        '</div>';
-                    $html += row;
-                });
-
-                //changing html to json so masonry appended can be called on
-                var jqueryHtml = jQuery($html);
-
-                //hide before append to body
-                jqueryHtml.hide();
-
-                //addin masonry to new photos
-                var container = $("#photos");
-                container.append(jqueryHtml);
-                container.imagesLoaded(function () {
-
-                    //show before masonry append
-                    jqueryHtml.show();
-                    container.masonry('appended', jqueryHtml);
-                    ajaxLoadPictures = false;
-                    pageControl.pageNumber++;
-                });
-
-
-            });
-
-        }
+ 
 
         //show background on hover for better visibiltiy :D
         EnableShowBackgroundOnHover("#content-container", ".masonry-image", "photos");
@@ -149,14 +97,6 @@ $("#move-to-bottom").bgLoaded(
                 if (!$(arrow).hasClass("hide")) {
                     $(arrow).fadeOut(250);
                     $(arrow).addClass("hide");
-
-                }
-            }
-
-            if (!pageControl.endScroll && !ajaxLoadPictures) {
-                if ($(window).scrollTop() + $(window).height() == $(document).height()) {  //check for new albums/photos once we reach bottom
-
-                    loadContent();
 
                 }
             }
