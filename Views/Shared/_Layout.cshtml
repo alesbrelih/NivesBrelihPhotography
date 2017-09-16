@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Alegreya" rel="stylesheet">
     @Analytics.GetGoogleAsyncHtml("UA-92392838-1");
     @Styles.Render("~/Content/css")
+    <script src="/Scripts/base/helper.js"></script>
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("CustomStyles", required: false)
 
@@ -48,6 +49,7 @@
                     <li>@Html.ActionLink(NivesBrelihPhotography.Resources.Layout.LayoutText.WorkingWith, "WorkingWith", "About")</li>
                     <li>@Html.ActionLink(NivesBrelihPhotography.Resources.Layout.LayoutText.About, "Index", "About")</li>
                     <li>@Html.ActionLink(NivesBrelihPhotography.Resources.Layout.LayoutText.Conditions, "Index", "Conditions")</li>
+                    <li>@Html.ActionLink(NivesBrelihPhotography.Resources.Layout.LayoutText.PriceList, "Index", "PriceList")</li>
                 </ul>
                 @*@Html.Partial("_LoginPartial")*@
                 @*@Html.Partial("_LanguageSelectPartial")*@
@@ -67,6 +69,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/base")
     @RenderSection("scripts", required: false)
     
 </body>

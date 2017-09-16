@@ -138,6 +138,9 @@
   <data name="Photos" xml:space="preserve">
     <value>Potrfolio</value>
   </data>
+  <data name="PriceList" xml:space="preserve">
+    <value>Price list</value>
+  </data>
   <data name="References" xml:space="preserve">
     <value>References</value>
   </data>

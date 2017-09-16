@@ -227,6 +227,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Api\PhotosApiController.cs" />
     <Compile Include="Controllers\PhotosController.cs" />
+    <Compile Include="Controllers\PriceListController.cs" />
     <Compile Include="Controllers\ReferencesController.cs" />
     <Compile Include="DbContexts\NbpContext.cs" />
     <Compile Include="Enums\DbResults.cs" />
@@ -541,6 +542,8 @@
     <Content Include="Scripts\Admin_Section\admin-index.js" />
     <Content Include="Scripts\AlbumPhotos_Section\album-photos-from-blog.js" />
     <Content Include="Scripts\AlbumPhotos_Section\album-section.js" />
+    <Content Include="Scripts\Base\base.js" />
+    <Content Include="Scripts\Base\helper.js" />
     <Content Include="Scripts\bg-loaded.js" />
     <Content Include="Scripts\Blog_Section\blog-index.js" />
     <Content Include="Scripts\Blog_Section\blog-view.js" />
@@ -642,6 +645,7 @@
     <Content Include="Views\References\Reference.cshtml" />
     <Content Include="Views\About\WorkingWith.cshtml" />
     <Content Include="Views\Conditions\Index.cshtml" />
+    <Content Include="Views\PriceList\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\Profile_Img\" />

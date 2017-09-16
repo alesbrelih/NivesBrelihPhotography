@@ -124,6 +124,15 @@ namespace NivesBrelihPhotography.Resources.Layout {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Price list.
+        /// </summary>
+        public static string PriceList {
+            get {
+                return ResourceManager.GetString("PriceList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to References.
         /// </summary>
         public static string References {
