@@ -8,6 +8,7 @@ using System.Web.Http;
 using NivesBrelihPhotography.DbContexts;
 using NivesBrelihPhotography.HelperClasses.DatabaseCommunication;
 using NivesBrelihPhotography.Models.PhotoModels.ViewModels.Admin_ViewModels.Album;
+using NivesBrelihPhotography.HelperClasses;
 
 namespace NivesBrelihPhotography.Controllers.Api
 {
@@ -27,6 +28,7 @@ namespace NivesBrelihPhotography.Controllers.Api
             }
             catch (Exception ex)
             {
+                ErrorHandler.ServerError(ServerType.API, ex);
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest,ex.Message);
             }
             
@@ -46,6 +48,7 @@ namespace NivesBrelihPhotography.Controllers.Api
             catch (Exception ex)
             {
                 //return exception
+                ErrorHandler.ServerError(ServerType.API, ex);
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
@@ -66,6 +69,7 @@ namespace NivesBrelihPhotography.Controllers.Api
             }
             catch (Exception ex)
             {
+                ErrorHandler.ServerError(ServerType.API, ex);
                 if (ex.Message == "Selected cover photo is invalid")
                 {
                     return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
@@ -91,6 +95,7 @@ namespace NivesBrelihPhotography.Controllers.Api
             }
             catch (Exception ex)
             {
+                ErrorHandler.ServerError(ServerType.API, ex);
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
@@ -115,6 +120,7 @@ namespace NivesBrelihPhotography.Controllers.Api
             }
             catch (Exception ex)
             {
+                ErrorHandler.ServerError(ServerType.API, ex);
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }

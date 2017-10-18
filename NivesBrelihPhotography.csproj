@@ -241,6 +241,7 @@
     <Compile Include="HelperClasses\DatabaseCommunication\PhotosDatabase.cs" />
     <Compile Include="HelperClasses\DatabaseCommunication\ProfileDatabase.cs" />
     <Compile Include="HelperClasses\DatabaseCommunication\WorkingWithDatabase.cs" />
+    <Compile Include="HelperClasses\ErrorHandler.cs" />
     <Compile Include="HelperClasses\FileManipulate.cs" />
     <Compile Include="HelperClasses\HelperMethods.cs" />
     <Compile Include="HelperClasses\HttpPostedFileBaseExtensions.cs" />
@@ -426,6 +427,7 @@
     <Content Include="Images\Profile\include.txt" />
     <Content Include="Images\RichPreview\link_photo.jpg" />
     <Content Include="Images\WorkingWith\include.txt" />
+    <Content Include="Log\API\log.txt" />
     <Content Include="nbpIcon.ico" />
     <Content Include="Scripts\Admin_Angular\app.js" />
     <Content Include="Scripts\Admin_Angular\components\admin-about\main\admin.about.main.controller.js" />

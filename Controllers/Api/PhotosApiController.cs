@@ -39,6 +39,7 @@ namespace NivesBrelihPhotography.Controllers.Api
                 }
                 catch(Exception ex)
                 {
+                    ErrorHandler.ServerError(ServerType.API, ex);
                     return ResponseMessage(Request.CreateErrorResponse(HttpStatusCode.BadRequest,ex.Message));
                 }
                 
@@ -48,6 +49,7 @@ namespace NivesBrelihPhotography.Controllers.Api
             {
                 try
                 {
+
                     //query for db, need only size and page, everything else will take angular over
                     var query = PhotosDatabase.ReturnPhotosForAdminPhotoIndex(page, pagesize, _db);
 
@@ -55,6 +57,7 @@ namespace NivesBrelihPhotography.Controllers.Api
                 }
                 catch (Exception err)
                 {
+                    ErrorHandler.ServerError(ServerType.API, err);
                     if (err.Message == "end")
                     {
                         return ResponseMessage(Request.CreateResponse(HttpStatusCode.NoContent,"No more photos"));
@@ -81,6 +84,7 @@ namespace NivesBrelihPhotography.Controllers.Api
             //error 
             catch (Exception e)
             {
+                ErrorHandler.ServerError(ServerType.API, e);
                 return ResponseMessage(Request.CreateResponse(HttpStatusCode.BadRequest, e.Message));
             }
             
@@ -123,7 +127,7 @@ namespace NivesBrelihPhotography.Controllers.Api
 
             catch (System.Exception ex)
             {
-
+                ErrorHandler.ServerError(ServerType.API, ex);
                 //catch any other error
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
@@ -145,6 +149,7 @@ namespace NivesBrelihPhotography.Controllers.Api
             catch(Exception ex)
             {
                 //throw exception
+                ErrorHandler.ServerError(ServerType.API, ex);
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
             }
             

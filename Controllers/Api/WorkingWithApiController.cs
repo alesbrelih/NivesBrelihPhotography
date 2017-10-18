@@ -9,6 +9,7 @@ using System.Web.Http;
 using NivesBrelihPhotography.DbContexts;
 using NivesBrelihPhotography.HelperClasses.DatabaseCommunication;
 using NivesBrelihPhotography.Models.AboutModels.ViewModels.Admin_ViewModels;
+using NivesBrelihPhotography.HelperClasses;
 
 namespace NivesBrelihPhotography.Controllers.Api
 {
@@ -37,6 +38,7 @@ namespace NivesBrelihPhotography.Controllers.Api
             }
             catch (Exception ex)
             {
+                ErrorHandler.ServerError(ServerType.API, ex);
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
             }
         }
@@ -92,6 +94,7 @@ namespace NivesBrelihPhotography.Controllers.Api
             }
             catch (Exception ex)
             {
+                ErrorHandler.ServerError(ServerType.API, ex);
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
             }
             finally
@@ -139,6 +142,7 @@ namespace NivesBrelihPhotography.Controllers.Api
             }
             catch (Exception ex)
             {
+                ErrorHandler.ServerError(ServerType.API, ex);
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
             }
             finally
@@ -168,6 +172,7 @@ namespace NivesBrelihPhotography.Controllers.Api
             }
             catch (Exception ex)
             {
+                ErrorHandler.ServerError(ServerType.API, ex);
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
             }
         }
