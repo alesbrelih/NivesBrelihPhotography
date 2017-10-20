@@ -34,6 +34,7 @@ $("#move-to-bottom").bgLoaded(
             autoplay: true,
             loop: true,
             margin: 3,
+            lazyLoad: true,
             center: true,
             dots: true,
             autoplayHoverPause: true,
