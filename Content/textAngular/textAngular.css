@@ -191,3 +191,15 @@
     border-top-width: 0;
     border-bottom-color: #fff;
 }
+
+text-angular p:not(:last-of-type) {
+    margin-bottom: 35px;
+}
+
+
+
+text-angular h4 {
+    font-weight: 300;
+    font-family: 'Alegreya';
+    color: #777777;
+}

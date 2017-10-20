@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NivesBrelihPhotography.DbContexts;
+using NivesBrelihPhotography.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +10,14 @@ namespace NivesBrelihPhotography.Controllers
 {
     public class ConditionsController : Controller
     {
+        private NbpContext _db = new NbpContext();
+
         // GET: Conditions
         public ActionResult Index()
         {
-            return View();
+            TermsConditions terms = _db.TermsConditions.FirstOrDefault();
+            string content = terms != null ? terms.Content : "";
+            return View((object)content);
         }
     }
 }

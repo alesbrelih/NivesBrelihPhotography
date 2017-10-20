@@ -10,8 +10,7 @@
     font-weight: 300;
 }
 
-    .bussiness-conditions-wrapper h4.font-family-text {
+    .bussiness-conditions-wrapper h4:not(.conditions-header) {
         font-family: 'Alegreya';
         color: #777777;
-
     }

@@ -9,6 +9,7 @@ using NivesBrelihPhotography.Models.BlogModels;
 using NivesBrelihPhotography.Models.CategoryModels;
 using NivesBrelihPhotography.Models.CommentModels;
 using NivesBrelihPhotography.Models.PhotoModels;
+using NivesBrelihPhotography.Models;
 
 namespace NivesBrelihPhotography.DbContexts
 {
@@ -62,6 +63,9 @@ namespace NivesBrelihPhotography.DbContexts
 
         //working with table
         public DbSet<WorkingWith> WorkingWiths { get; set; }
+
+        //terms conditions
+        public DbSet<TermsConditions> TermsConditions { get; set; }
 
         #endregion
 

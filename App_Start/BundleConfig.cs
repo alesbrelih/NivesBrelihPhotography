@@ -181,6 +181,17 @@ namespace NivesBrelihPhotography
 
             // ------ ANGULAR BASE BUNDLES ------- //
 
+            //TEXT ANGULAR
+            bundles.Add(new ScriptBundle("~/bundles/text-angular-scripts").Include(
+                "~/Scripts/textAngular/textAngular-rangy.min.js",
+                "~/Scripts/textAngular/textAngular-sanitize.js",
+                "~/Scripts/textAngular/textAngularSetup.js",
+                "~/Scripts/textAngular/textAngular.js"
+                
+                ));
+            bundles.Add(new StyleBundle("~/Content/text-angular-styles").Include(
+                "~/Content/textAngular/textAngular.css"
+                ));
 
             //dependencies
             bundles.Add(new ScriptBundle("~/bundles/angular-dependencies").Include(
