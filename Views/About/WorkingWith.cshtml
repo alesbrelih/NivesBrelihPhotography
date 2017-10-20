@@ -18,17 +18,25 @@
                 </header>
                 <section class="working-with-content">
 
-                    <section class="working-with-information">
-                        <section class="text">
-                            <p>@workingWith.Description</p>
-                            <a href="@workingWith.Link">@workingWith.LinkText</a>
+                    @if ((workingWith.Description != "/" && workingWith.Description != "") || (workingWith.LinkText != "/" && workingWith.LinkText != ""))
+                    {
+                        <section class="working-with-information">
+                            <section class="text">
+                                <p>@workingWith.Description</p>
+                                <a href="@workingWith.Link">@workingWith.LinkText</a>
+                            </section>
+                            <section class="anchor-right">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </section>
                         </section>
-                        <section class="anchor-right">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </section>
-                    </section>
-                    <img src="@workingWith.PhotoUrl" alt="@workingWith.Title" class="img-responsive working-with-photo" />
-                   
+                        <img src="@workingWith.PhotoUrl" alt="@workingWith.Title" class="img-responsive working-with-photo" />
+                    }
+                    else
+                    {
+                        <a href="@workingWith.Link">
+                            <img src="@workingWith.PhotoUrl" alt="@workingWith.Title" class="img-responsive working-with-photo" />
+                        </a>
+                    }
                 </section>
             </article>
         </div>
@@ -43,11 +51,11 @@
 
             var scrollInProgress = false;
 
-            $(".working-with-container").on("mousemove", function () {
+            $(".working-with-information").on("mousemove", function () {
                 var currentEl = $(this);
                 if (scrollInProgress != true) {
                     scrollInProgress = true;
-                    currentEl.find(".working-with-information").transition({ x: '0px' }, 500, function () {
+                    currentEl.transition({ x: '0px' }, 500, function () {
                         currentEl.find(".anchor-right").fadeOut();
                     });
                 }
@@ -55,7 +63,7 @@
             }).on("mouseleave", function () {
                 var currentEl = $(this);
 
-                currentEl.find(".working-with-information").transition({ x: '-80%' }, 500,function() {
+                currentEl.transition({ x: '-80%' }, 500,function() {
                     currentEl.find(".anchor-right").fadeIn();
                     scrollInProgress = false;
                 });
