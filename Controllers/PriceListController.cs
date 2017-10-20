@@ -7,7 +7,7 @@ using System.Web.Mvc;
 namespace NivesBrelihPhotography.Controllers
 {
     [RoutePrefix("Cenik")]
-    public class PriceListController : Controller
+    public class PriceListController : BaseController
     {
         // GET: PriceList
         [Route]

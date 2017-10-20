@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace NivesBrelihPhotography.Controllers
 {
-    public class ConditionsController : Controller
+    public class ConditionsController : BaseController
     {
         private NbpContext _db = new NbpContext();
 
