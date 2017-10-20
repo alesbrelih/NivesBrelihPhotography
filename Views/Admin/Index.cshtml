@@ -7,7 +7,8 @@
 {
     @Styles.Render("~/Content/admin-index-styles")
     @Styles.Render("~/Content/angular-styles")
-    
+    @Styles.Render("~/Content/text-angular-styles")
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 }
 <div class="angular-app" ng-app="adminApp" ui-view>
 
@@ -19,7 +20,7 @@
 @section scripts
 {
     @Scripts.Render("~/bundles/angular-dependencies");
-
+    @Scripts.Render("~/bundles/text-angular-scripts")
     @Scripts.Render("~/bundles/angular-scripts");
 
 }

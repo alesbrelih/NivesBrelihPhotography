@@ -168,7 +168,13 @@
                     }]
                         
                     }
-                });
+                })
+                // --- TERMS CONDITIONS --- //
+                .state("terms-conditions", {
+                    url: "/terms-conditions",
+                    template: "<admin-terms-conditions></admin-terms-conditions>"
+                })
+                ;
             
             $urlRouterProvider.otherwise("/");
         }

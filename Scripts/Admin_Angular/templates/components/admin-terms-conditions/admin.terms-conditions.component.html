@@ -1,0 +1,23 @@
+﻿<div id="admin-terms-conditions-view">
+    <p class="back-anchor">
+        <a ui-sref="view">Back</a>
+    </p>
+
+    <h3>Terms & Conditions</h3>
+    <br />
+    <div class="form-wrapper">
+
+        <form class="form-horizontal" novalidate ng-submit="vm.updateTerms()">
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <text-angular ng-model="vm.terms.Content"></text-angular>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Create</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

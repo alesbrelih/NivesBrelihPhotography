@@ -32,6 +32,11 @@
                 body: "Add, modify and delete existing categories."
             },
             {
+                state: "terms-conditions",
+                title: "Terms and conditions",
+                body: "Set terms and conditions"
+            },
+            {
                 state: "about-main",
                 title: "About",
                 body: "Edit your personal information and social links. Modify your references and reviews."
