@@ -33,8 +33,9 @@
         $("#category-navigation").niceScroll();
 
         //move to top btn
-        $("#move-to-top").on("click", function() {
-            $("body").animate({ "scrollTop": "0px" }, 500);
+        $("#move-to-top").on("click", function () {
+            console.log("CLICKED");
+            $("html,body").animate({ "scrollTop": "0px" }, 500);
         });
 
 
