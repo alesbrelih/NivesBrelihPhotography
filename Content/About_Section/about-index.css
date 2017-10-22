@@ -27,6 +27,7 @@
     padding-bottom: 30px;
     /*margin bottom*/
     margin-bottom: 30px !important;
+    position: relative;
 }
 
     /*default container title - top center of border*/
@@ -160,12 +161,32 @@
 }
 
 .show-more-reviews {
-    float: right;
+    text-align: right;
     margin-right: 10px;
     margin-top: 20px;
     color: #eb6864;
     cursor: pointer;
 }
+
+
+.about-reviews-container {
+    margin-top: 50px;
+}
+    .about-reviews-container .owl-item {
+        width: 100%;
+        color: #918e8e;
+    }
+.about-reviews-container .review-content {
+    font-style: italic;
+    font-size: 1.1em;
+}
+.about-reviews-container .reviewer {
+    margin-right: 40px;
+}
+    .about-reviews-container .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+        background-color: #eb6864;
+    }
+
 
 /*#reviews-container .container-body li::first-letter {
          margin-left: 20px !important;
