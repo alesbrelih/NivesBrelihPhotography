@@ -9,8 +9,8 @@
 <br />
 
 <div class="row masonry-layout">
-    <div class="grid-sizer col-xs-12  col-md-6 col-lg-4"></div>
-    <div class="col-xs-12 col-md-6 col-lg-4 masonry-content">
+    <div class="grid-sizer col-xs-12  col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-md-6 col-lg col-lg-6 masonry-content">
         <div id="profile-container" class="about-content-container">
             <div class="container-title">
                 @NivesBrelihPhotography.Resources.About.AboutText.AboutMe
@@ -30,7 +30,7 @@
     @*display only there are social links to display*@
     @if (Model.SocialLinks.Count > 0)
     {
-    <div class="col-xs-12 col-md-6 col-lg-4 masonry-content">
+    <div class="col-xs-12 col-md-6 col-lg-6 masonry-content">
         <div id="social-links-container" class="about-content-container">
 
             <div class="container-title">
@@ -49,7 +49,7 @@
         </div>
     </div>
     }
-    <div class="col-xs-12 col-md-6 col-lg-4  masonry-content">
+    <div class="col-xs-12 col-md-6 col-lg-6  masonry-content">
         <div id="contact-container" class="about-content-container">
             <div class="container-title">
                 @NivesBrelihPhotography.Resources.About.AboutText.Contact
