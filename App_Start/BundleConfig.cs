@@ -154,6 +154,13 @@ namespace NivesBrelihPhotography
                 "~/Content/References_Styles/references-reference.css"
                 ));
 
+            // references working with
+            bundles.Add(new StyleBundle("~/Content/working-with-styles").Include(
+                "~/Content/WorkingWith_Section/workingwith-index.css"
+                ));
+            bundles.Add(new ScriptBundle("~/bundles/working-with-scripts").Include(
+                "~/Scripts/WorkingWith_Section/workingwith-index.js"
+                ));
 
             // styles
             bundles.Add(new StyleBundle("~/Content/references-index-styles").Include(
