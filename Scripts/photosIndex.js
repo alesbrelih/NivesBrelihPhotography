@@ -22,12 +22,39 @@
 
     var ajaxLoadPictures = false;
 
+    var $categoryNavShowHide = false;
+
     var $loaderWrapper = $(".loader-wrapper-photos");
+
+    function setSmallScreenNavigation() {
+        $("body").on("click", ".portfolio-categories-container.dropdown-container .categories-action-label", function () {
+            if (!$categoryNavShowHide) {
+                $categoryNavShowHide = true;
+
+                var $wrapper = $(".portfolio-categories-container.dropdown-container .dropdown-wrapper");
+                if ($wrapper.hasClass('shown')) {
+                    $wrapper.slideUp('fast', function () {
+                        $wrapper.removeClass("shown");
+                        $categoryNavShowHide = false;
+                    })
+                } else {
+                    $wrapper.slideDown('fast', function () {
+                        $wrapper.addClass('shown');
+                        $categoryNavShowHide = false;
+                    })
+                }
+                console.log($wrapper);
+            }
+            
+        });
+    }
 
     //DOM on READY function
     ///////////////////////
 
-    $(function() {
+    $(function () {
+
+        setSmallScreenNavigation();
 
         //set scroll for category navigation
         $("#category-navigation").niceScroll();

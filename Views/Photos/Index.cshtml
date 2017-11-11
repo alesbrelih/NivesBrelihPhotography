@@ -7,7 +7,7 @@
 }
 <br>
 <div id="photos-portfolio" class="row">
-    <div class="portfolio-categories-container">
+    <div class="portfolio-categories-container hidden-xs">
         <ul id="portfolio-categories" class="categories row">
             @*category for all can be hardcoded*@
             @*calling masonry on updated targets with OnSuccess*@
@@ -26,6 +26,23 @@
             }
         </ul>
     </div>
+    <div class="clearfix">
+        <div class="portfolio-categories-container dropdown-container visible-xs">
+            <span class="categories-action-label">
+                Kategorije <span class="fa fa-angle-down"></span>
+            </span>
+
+            <div class="dropdown-wrapper text-center" style="display: none;">
+                @foreach (Category category in ViewBag.Categories)
+            {
+                    <div class="dropdown-anchor-wrapper">
+                        @Ajax.ActionLink(category.CategoryTitle, "Index", new { categoryId = category.CategoryId }, new AjaxOptions() { InsertionMode = InsertionMode.ReplaceWith, UpdateTargetId = "photos", OnSuccess = "SetMasonryPhotosIndex()" }, null)
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    
 
     <div id="photo-container" class="col-md-12">
 
