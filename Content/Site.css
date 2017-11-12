@@ -72,6 +72,10 @@
 
 /*CUSTOM FONTS USAGE*/
 
+.relative-wrapper {
+    position:relative;
+}
+
 body {
     font-family: "'Alegreya";
     padding-top: 50px;
@@ -115,7 +119,12 @@ ul.navbar-nav {
 
 .navbar-default .navbar-nav > li > a{
     color: #333 !important;
+    transition: all 150ms ease-in;
 }
+    .navbar-default .navbar-nav > li > a:hover {
+        text-decoration: none !important;
+        color: #eb6864 !important;
+    }
 .navbar-default { /*no bottom border on navbar*/
     border: none !important;
 }
