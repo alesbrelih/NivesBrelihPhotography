@@ -87,6 +87,11 @@
     background-color: rgba(0, 0, 0, 0.70)
 }
 
+    #albums-covers .show-background .album-name {
+        -ms-text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    }
+
 
 
 
@@ -121,14 +126,14 @@
     letter-spacing: 0.0em;
     font-family: 'Gilde Display', serif;
     /*font outline text (black lines)*/
-    -ms-text-shadow: -1px -1px 0 #000,  
-                 1px -1px 0 #000,
-                 -1px 1px 0 #000,
-                 1px 1px 0 #000;
-    text-shadow: -1px -1px 0 #000,  
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-     1px 1px 0 #000;
+    -ms-text-shadow: -1px -1px 0 #333,  
+                 1px -1px 0 #333,
+                 -1px 1px 0 #333,
+                 1px 1px 0 #333;
+    text-shadow: -1px -1px 0 #333,  
+    1px -1px 0 #333,
+    -1px 1px 0 #333,
+     1px 1px 0 #333;
 
     /*visible on the black background*/
     z-index: 150;

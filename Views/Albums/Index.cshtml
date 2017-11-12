@@ -11,7 +11,7 @@
 
 <br/>
 <div id="albums-covers">
-    <div class="album-categories-container">
+    <div class="album-categories-container hidden-xs">
         <ul id="album-categories" class="categories row">
             @*category for all can be hardcoded*@
             @*calling masonry on updated targets with OnSuccess*@
@@ -29,7 +29,22 @@
                 }
             }
         </ul>
+    </div>
+    <div class="clearfix">
+        <div class="album-categories-container dropdown-container visible-xs">
+            <span class="categories-action-label">
+                Kategorije <span class="fa fa-angle-down"></span>
+            </span>
 
+            <div class="dropdown-wrapper text-center" style="display: none;">
+                @foreach (Category category in ViewBag.Categories)
+            {
+                    <div class="dropdown-anchor-wrapper text-center">
+                        @Ajax.ActionLink(category.CategoryTitle, "Index", new { categoryId = category.CategoryId }, new AjaxOptions() { InsertionMode = InsertionMode.ReplaceWith, UpdateTargetId = "photos", OnSuccess = "SetMasonryAlbums(true)" }, null)
+                    </div>
+                }
+            </div>
+        </div>
     </div>
 
     <div id="content-container">
@@ -41,45 +56,6 @@
         <div class="loader-photos"></div>
     </div>
 </div>
-
-
-
-<style>
-    .album-categories-container ul.categories {
-
-        margin: 0px 30px 20px 0;
-    }
-     .album-categories-container ul.categories li {
-         display: inline-block;
-         float: right;
-
-         /*font-family: 'Quicksand', cursive;*/
-         font-family: 'Alegreya', sans-serif;
-         font-size: 1.05em;
-         font-style: italic;
-         padding: 0 5px;
-
-     }
-     .album-categories-container ul.categories li:not(:last-of-type):before {
-         content: '/';
-         padding-right: 10px;
-     }
-     .album-categories-container ul.categories li a {
-         color: #333;
-     }
-     /*.album-categories-container ul.categories li a:active {
-         color: #eb6864 !important;
-         text-decoration: none;
-     }
-     .album-categories-container ul.categories li a:focus {
-         color: #eb6864 !important;
-         text-decoration: none;
-     }*/
-     .album-categories-container ul.categories li:hover a{
-         color: #eb6864 !important;
-         text-decoration: none;
-     }
-</style>
 
 @section scripts
 {
