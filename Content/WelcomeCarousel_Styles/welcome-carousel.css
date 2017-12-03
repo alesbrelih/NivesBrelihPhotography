@@ -90,9 +90,9 @@
     padding-left: 20px;
     transition: 150ms all ease-in-out;
 }*/
-.continue > a:hover .enter-page-title {
+/*.continue > a:hover .enter-page-title {
     text-decoration: underline;
-}
+}*/
 body {
     padding: 0px !important;
 }
