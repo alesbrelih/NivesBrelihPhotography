@@ -14,12 +14,17 @@ $("#move-to-bottom").bgLoaded(
 
     function fixHeight() {
         var maxHeight = 0;
-        $.each($(".owl-item"),function(index, item) {
-            if ($(item).height() > maxHeight) {
-                maxHeight = $(item).height();
-            }
-        });
-        $(".owl-stage, .owl-stage-outer").css("height", maxHeight);
+
+        //because buggy carousel gets initialized event before images shown
+        if ($(".owl-carousel.owl-loaded").length != 0) {
+            $.each($(".owl-item"), function (index, item) {
+                if ($(item).height() > maxHeight) {
+                    maxHeight = $(item).height();
+                }
+            });
+            $(".owl-stage-outer").css("height", maxHeight);
+        }
+        
     }
 
 
@@ -28,28 +33,36 @@ $("#move-to-bottom").bgLoaded(
     
 
     $(function () {
+        $(window).load(function () {
+            $(".owl-carousel.album-body").owlCarousel({
+                autoWidth: true,
+                autoplay: true,
+                loop: true,
+                margin: 3,
+                lazyLoad: true,
+                center: true,
+                dots: true,
+                autoplayHoverPause: true,
+                smartSpeed: 2000,
+                navSpeed: 2000,
+                autoplaySpeed: 2000,
+                navText: ['<span class="glyphicon glyphicon-chevron-left"></span>', '<span class="glyphicon glyphicon-chevron-right"></span>'],
+                onInitialized: function (ev) {
+                    fixHeight();
+                },
+                onInitialize: function (ev) {
+                    fixHeight();
+                },
+                onResized: function (ev) {
+                    fixHeight();
+                },
+                onLoadLazy: function (ev) {
+                    fixHeight();
+                }
 
-        $(".owl-carousel.album-body").owlCarousel({
-            autoWidth: true,
-            autoplay: true,
-            loop: true,
-            margin: 3,
-            lazyLoad: true,
-            center: true,
-            dots: true,
-            autoplayHoverPause: true,
-            smartSpeed: 2000,
-            navSpeed: 2000,
-            autoplaySpeed: 2000,
-            navText: ['<span class="glyphicon glyphicon-chevron-left"></span>', '<span class="glyphicon glyphicon-chevron-right"></span>'],
-            onInitialized: function (ev) {
-                fixHeight();
-            },
-            onResized: function (ev) {
-                fixHeight();
-            }
-
-        });
+            });
+        })
+        
 
         //set up nicescroll
         $(".album-view-description .description-wrapper .text-wrapper .description").niceScroll();
@@ -69,8 +82,9 @@ $("#move-to-bottom").bgLoaded(
         //EnablePhotoZoom("#content-container", ".masonry-image");
         
         $("#move-to-bottom").on("click", function (ev) {
+            console.log("CLICK")
             var $topOff = $("#photos").offset().top;
-            $("body").animate({
+            $("html, body").animate({
                 scrollTop: $topOff
 
             }, 1500);
